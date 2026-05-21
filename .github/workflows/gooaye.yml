@@ -1,0 +1,42 @@
+name: GooayeBot Auto Report
+
+on:
+  schedule:
+    # Wednesday 20:00 CST (UTC+8) = 12:00 UTC
+    - cron: '0 12 * * 3'
+    # Saturday 20:00 CST (UTC+8) = 12:00 UTC
+    - cron: '0 12 * * 6'
+  workflow_dispatch:   # Allow manual trigger from GitHub UI
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y ffmpeg fonts-noto-cjk
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run GooayeBot
+        env:
+          OPENAI_API_KEY:     ${{ secrets.OPENAI_API_KEY }}
+          GMAIL_USER:         ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENTS:         ${{ secrets.RECIPIENTS }}
+          MODEL:              gpt-5.4
+          PYTHONUTF8:         "1"
+        run: python gooaye_bot.py

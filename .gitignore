@@ -1,0 +1,9 @@
+config.json
+last_episode.json
+reports/
+gooaye.mp3
+gooaye_compressed.mp3
+ffmpeg.exe
+ffprobe.exe
+__pycache__/
+*.pyc
