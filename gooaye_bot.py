@@ -506,23 +506,234 @@ body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sa
 .report-content td { padding: 7px 12px; border-bottom: 1px solid #e0e4ea; color: #2c2c3e; }
 .report-content hr { border: none; border-top: 1px solid #d8dde8; margin: 24px 0; }
 .page-footer { text-align: center; color: #8a9ab5; font-size: .8em; margin-top: 28px; padding: 16px; }
+
+/* ── Layout ──────────────────────────────────────────────────── */
+.page-outer { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.page-flex  { display: flex; gap: 24px; align-items: flex-start; padding: 28px 0 60px; }
+.toc-col    { width: 176px; flex-shrink: 0; position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+.main-col   { flex: 1; min-width: 0; }
+
+/* ── Desktop TOC ─────────────────────────────────────────────── */
+.toc-box    { background: white; border-radius: 8px; border: 1px solid #d8dde8; padding: 14px 12px; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.toc-ttl    { font-size: .72em; font-weight: 700; color: #0d2137; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #eef0f5; }
+.toc-list   { list-style: none; padding: 0; margin: 0; }
+.toc-list a { display: block; padding: 5px 8px; font-size: .8em; color: #5a6a7a; text-decoration: none; border-left: 2px solid transparent; border-radius: 0 3px 3px 0; transition: all .15s; line-height: 1.4; }
+.toc-list a:hover, .toc-list a.tac { color: #0d2137; border-left-color: #c89b32; font-weight: 600; background: #f5f7fb; }
+
+/* ── Mobile TOC ──────────────────────────────────────────────── */
+.toc-mob  { display: none; position: sticky; top: 0; z-index: 50; background: white; border-bottom: 2px solid #c89b32; overflow-x: auto; scrollbar-width: none; }
+.toc-mob::-webkit-scrollbar { display: none; }
+.toc-mob ul { display: flex; list-style: none; padding: 0 12px; margin: 0; white-space: nowrap; }
+.toc-mob a  { display: inline-block; padding: 9px 14px; font-size: .8em; color: #5a6a7a; text-decoration: none; border-bottom: 2px solid transparent; transition: all .15s; }
+.toc-mob a:hover, .toc-mob a.tac { color: #0d2137; border-bottom-color: #c89b32; font-weight: 600; }
+
+/* ── Stock cards ─────────────────────────────────────────────── */
+.stock-card { border: 1px solid #d8dde8; border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.stock-card > summary { list-style: none; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 11px 16px; background: #f5f7fb; cursor: pointer; user-select: none; transition: background .15s; }
+.stock-card > summary::-webkit-details-marker { display: none; }
+.stock-card > summary:hover { background: #eef2f7; }
+.stock-card[open] > summary { background: #0d2137; }
+.stock-card[open] .sc-code { color: #c89b32; }
+.stock-card[open] .sc-name { color: white; }
+.stock-card[open] .sc-theme { color: #8ab0cc; background: rgba(255,255,255,.08); }
+.stock-card[open] .sc-chev { transform: rotate(180deg); color: #c89b32; }
+.sc-code  { font-weight: 700; color: #0f3460; font-size: .86em; font-family: monospace; }
+.sc-name  { font-weight: 600; color: #1a1a2e; font-size: .95em; }
+.sc-theme { font-size: .74em; color: #5a6a7a; background: #e8edf5; padding: 2px 9px; border-radius: 10px; }
+.sc-right { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.sc-rtxt  { font-size: .8em; font-weight: 700; }
+.sc-bars  { display: flex; gap: 2px; align-items: center; }
+.cb-dot   { display: inline-block; width: 9px; height: 9px; border-radius: 2px; }
+.sc-chev  { font-size: .65em; color: #8a9ab5; transition: transform .2s; margin-left: 4px; }
+.sc-body  { padding: 16px 20px; background: white; border-top: 1px solid #e8eaf0; }
+.sc-body ul { padding-left: 0; list-style: none; margin: 0; }
+.sc-body li { padding: 6px 0; border-bottom: 1px solid #f5f7fb; font-size: .9em; color: #2c2c3e; display: flex; flex-wrap: wrap; gap: 4px; }
+.sc-body li:last-child { border-bottom: none; }
+.sc-body li strong { color: #0d2137; min-width: 88px; flex-shrink: 0; }
+
+/* ── Holdings bar chart (report body) ───────────────────────── */
+.hc-chart { margin: 12px 0 20px; }
+.hc-row   { display: grid; grid-template-columns: 160px 1fr; gap: 10px; align-items: center; padding: 5px 0; border-bottom: 1px solid #f0f3f8; }
+.hc-row:last-child { border-bottom: none; }
+.hc-name  { display: block; font-weight: 700; font-size: .86em; color: #0f3460; }
+.hc-theme { display: block; font-size: .72em; color: #7a9ab5; margin-top: 1px; }
+.hc-track { position: relative; background: #f0f3f8; border-radius: 3px; height: 24px; }
+.hc-fill  { height: 100%; background: linear-gradient(90deg, #0d2137, #1e4a6e); border-radius: 3px; }
+.hc-lbl   { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-weight: 700; font-size: .82em; color: #0d2137; }
+
+/* ── Summary card holdings bar chart ────────────────────────── */
+.shc-row   { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+.shc-name  { font-size: .82em; font-weight: 700; color: #0f3460; width: 96px; flex-shrink: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.shc-track { flex: 1; background: #e8edf5; border-radius: 3px; height: 16px; position: relative; }
+.shc-fill  { height: 100%; background: linear-gradient(90deg, #0d2137, #1e4a6e); border-radius: 3px; }
+.shc-pct   { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: .72em; font-weight: 700; color: #0d2137; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .toc-col { display: none; }
+  .toc-mob { display: block; }
+  .page-flex { padding: 20px 0 40px; }
+}
 @media (max-width: 620px) {
   .summary-grid { grid-template-columns: 1fr; }
   .summary-section { border-right: none; }
-  .report-content { padding: 20px 18px; }
-  .report-content h1 { margin-left: -18px; margin-right: -18px; }
+  .report-content { padding: 18px 16px; }
+  .report-content h1 { margin-left: -16px; margin-right: -16px; }
+  .hc-row { grid-template-columns: 1fr; }
+  .sc-body li { flex-direction: column; }
+  .sc-body li strong { min-width: auto; }
 }
 """
 
+# ─── JavaScript 互動功能 ──────────────────────────────────────────────────────
+
+JS_BLOCK = """<script>
+(function(){
+'use strict';
+
+const RATINGS = ['強烈看多','看多','觀察中','中性','謹慎'];
+const R_COL = {'強烈看多':'#c0392b','看多':'#b8860b','觀察中':'#2980b9','中性':'#7f8c8d','謹慎':'#884400'};
+const R_LV  = {'強烈看多':5,'看多':4,'觀察中':3,'中性':2,'謹慎':1};
+
+function convBar(r){
+  const lv=R_LV[r]||0, col=R_COL[r]||'#ccc';
+  return Array.from({length:5},(_,i)=>
+    `<span class="cb-dot" style="background:${i<lv?col:'#dde2ea'}"></span>`
+  ).join('');
+}
+
+/* ── 1. Stock cards ──────────────────────────────────────────── */
+const report = document.getElementById('report');
+if(report){
+  [...report.querySelectorAll('h3')].forEach(h3=>{
+    const m = h3.textContent.match(/^\[(.+?)\]\s*(.+)/);
+    if(!m) return;
+    const [,code,name] = m;
+
+    const sibs=[];
+    let el=h3.nextElementSibling;
+    while(el && !['H1','H2','H3'].includes(el.tagName)){ sibs.push(el); el=el.nextElementSibling; }
+
+    let rating='', theme='';
+    sibs.forEach(s=>{
+      const t=s.textContent;
+      if(!rating && t.includes('信心評級')) for(const r of RATINGS) if(t.includes(r)){rating=r;break;}
+      if(!theme  && t.includes('產業主題')){
+        const tm=t.match(/產業主題[：:]\s*([^；;。\n\r]{2,25})/);
+        if(tm) theme=tm[1].replace(/[\[\]【】（）()]/g,'').trim();
+      }
+    });
+
+    const card=document.createElement('details');
+    card.className='stock-card';
+    const rHtml=rating?`<span class="sc-rtxt" style="color:${R_COL[rating]}">${rating}</span><span class="sc-bars">${convBar(rating)}</span>`:'';
+    const tHtml=theme?`<span class="sc-theme">${theme}</span>`:'';
+    card.innerHTML=`<summary><span class="sc-code">[${code}]</span><span class="sc-name">${name}</span>${tHtml}<span class="sc-right">${rHtml}<span class="sc-chev">▼</span></span></summary><div class="sc-body"></div>`;
+    sibs.forEach(s=>card.querySelector('.sc-body').appendChild(s));
+    h3.parentNode.insertBefore(card,h3); h3.remove();
+  });
+}
+
+/* ── 2. Holdings bar chart ───────────────────────────────────── */
+if(report){
+  report.querySelectorAll('table').forEach(tbl=>{
+    const ths=[...tbl.querySelectorAll('thead th')].map(t=>t.textContent.trim());
+    const pi=ths.findIndex(t=>t.includes('比重'));
+    if(pi<0) return;
+    const rows=[...tbl.querySelectorAll('tbody tr')];
+    if(!rows.length) return;
+    const chart=document.createElement('div');
+    chart.className='hc-chart';
+    rows.forEach(tr=>{
+      const c=[...tr.querySelectorAll('td')].map(td=>td.textContent.trim());
+      if(!c[0]) return;
+      const pn=parseFloat(c[pi])||0;
+      chart.innerHTML+=`<div class="hc-row"><div><span class="hc-name">${c[0]}</span><span class="hc-theme">${c[1]||''}</span></div><div class="hc-track"><div class="hc-fill" style="width:${Math.min(pn,100)}%"></div><span class="hc-lbl">${c[pi]}</span></div></div>`;
+    });
+    tbl.parentNode.insertBefore(chart,tbl); tbl.remove();
+  });
+}
+
+/* ── 3. TOC ──────────────────────────────────────────────────── */
+const tocD=document.getElementById('toc-d');
+const tocM=document.getElementById('toc-m');
+if(report && tocD){
+  const heads=[...report.querySelectorAll('h1')];
+  heads.forEach((h,i)=>{
+    h.id='s'+i;
+    const label=h.textContent.replace(/^[零一二三四五六七八九十]+[、.．]\s*/,'').replace(/^[一-龥]+、/,'').trim();
+    [tocD,tocM].forEach(ul=>{
+      if(!ul) return;
+      const li=document.createElement('li');
+      li.innerHTML=`<a href="#s${i}">${label}</a>`;
+      ul.appendChild(li);
+    });
+  });
+
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(()=>{
+      const sy=window.scrollY+130;
+      let active=heads[0];
+      heads.forEach(h=>{ if(h.offsetTop<=sy) active=h; });
+      if(active){
+        document.querySelectorAll('.toc-list a,.toc-mob a').forEach(a=>{
+          a.classList.toggle('tac', a.getAttribute('href')==='#'+active.id);
+        });
+      }
+      ticking=false;
+    });
+  },{passive:true});
+}
+
+/* ── 4. Smooth scroll ────────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(!t) return; e.preventDefault();
+    t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+})();
+</script>"""
+
 def _build_summary_html(data):
+    import re as _re
     view = data.get('market_view', '')
     bc = 'badge-bull' if '多' in view else ('badge-bear' if '空' in view else 'badge-neutral')
-    RC = {'強烈看多': 'r-sbull', '看多': 'r-bull', '觀察中': 'r-watch', '中性': 'r-neutral', '謹慎': 'r-bear'}
+
+    R_COL = {'強烈看多':'#c0392b','看多':'#b8860b','觀察中':'#2980b9','中性':'#7f8c8d','謹慎':'#884400'}
+    R_LV  = {'強烈看多':5,'看多':4,'觀察中':3,'中性':2,'謹慎':1}
+    def _dots(rating):
+        lv = R_LV.get(rating, 0); col = R_COL.get(rating, '#ccc')
+        return ''.join(f'<span style="display:inline-block;width:6px;height:6px;border-radius:1px;'
+                       f'background:{col if i < lv else "#dde2ea"};margin:0 1px"></span>' for i in range(5))
+
     signals = ''.join(f'<li>{s}</li>' for s in data['signals']) or '<li>—</li>'
-    sr = ''.join(f'<tr><td class="code">[{s["code"]}]</td><td>{s["name"]}</td><td class="{RC.get(s["rating"],"r-neutral")}">{s["rating"]}</td></tr>' for s in data['stocks'])
+
+    # Stocks with conviction bars
+    sr = ''.join(
+        f'<tr><td class="code">[{s["code"]}]</td><td>{s["name"]}</td>'
+        f'<td style="color:{R_COL.get(s["rating"],"#888")};font-weight:700;white-space:nowrap">'
+        f'{s["rating"]}&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle">{_dots(s["rating"])}</span></td></tr>'
+        for s in data['stocks']
+    )
     stocks = (f'<table class="summary-table"><thead><tr><th>代號</th><th>名稱</th><th>評級</th></tr></thead><tbody>{sr}</tbody></table>') if sr else '<p style="color:#999;font-size:.85em">—</p>'
-    hr = ''.join(f'<tr><td>{r[0]}</td><td>{r[1] if len(r)>1 else ""}</td><td class="weight">{r[2] if len(r)>2 else ""}</td></tr>' for r in data['core_holdings'] if r and r[0])
-    holdings = (f'<table class="summary-table"><thead><tr><th>標的</th><th>主題</th><th>比重</th></tr></thead><tbody>{hr}</tbody></table>') if hr else '<p style="color:#999;font-size:.85em">—</p>'
+
+    # Holdings as bar chart
+    hc = ''
+    for r in data['core_holdings']:
+        if not r or not r[0]: continue
+        name = r[0]; theme = r[1] if len(r) > 1 else ''; pct_s = r[2] if len(r) > 2 else ''
+        m = _re.search(r'(\d+(?:\.\d+)?)', pct_s)
+        pct_n = float(m.group(1)) if m else 0
+        hc += (f'<div class="shc-row"><span class="shc-name" title="{name}">{name}</span>'
+               f'<div class="shc-track"><div class="shc-fill" style="width:{min(pct_n,100):.0f}%"></div>'
+               f'<span class="shc-pct">{pct_s}</span></div></div>')
+    holdings = f'<div>{hc}</div>' if hc else '<p style="color:#999;font-size:.85em">—</p>'
+
     risks = ''.join(f'<li>{r}</li>' for r in data['risks']) or '<li>—</li>'
     badge = f'<span class="badge {bc}">大盤：{view}</span>' if view else ''
     return f"""<div class="summary-card">
@@ -558,11 +769,23 @@ def convert_to_html(md_content, ep_title, date_str, output_path):
   <div class="cover-date">{date_str}</div>
   <div class="cover-disclaimer">本報告由人工智慧模型輔助生成，內容僅供參考，不構成任何投資建議或邀約。<br>投資有風險，入市前請獨立評估，自行承擔決策責任。</div>
 </div></div>
-<div class="container">
+<nav class="toc-mob"><ul id="toc-m"></ul></nav>
+<div class="page-outer"><div class="page-flex">
+  <aside class="toc-col">
+    <div class="toc-box">
+      <div class="toc-ttl">目錄</div>
+      <ul class="toc-list" id="toc-d"></ul>
+    </div>
+  </aside>
+  <div class="main-col">
+    <div class="container">
 {summary_html}
-<div class="report-content">{body_html}</div>
-</div>
+<div class="report-content" id="report">{body_html}</div>
+    </div>
+  </div>
+</div></div>
 <div class="page-footer">本報告基於 {ep_title}，分析日期：{date_str} · 由 AI 模型輔助生成 · 僅供參考，不構成投資建議</div>
+{JS_BLOCK}
 </body>
 </html>"""
         os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
