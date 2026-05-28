@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>股癌研報 · EP665 | 🌸 · 2026-05-28</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", sans-serif; background: #eef1f5; color: #1a1a2e; line-height: 1.75; font-size: 15px; }
+.cover { background: linear-gradient(160deg, #0d2137 60%, #1a3a5c); border-bottom: 4px solid #c89b32; }
+.cover-inner { max-width: 860px; margin: 0 auto; padding: 52px 32px 44px; text-align: center; }
+.cover h1 { font-size: 2em; font-weight: 700; letter-spacing: 3px; color: white; margin-bottom: 8px; }
+.cover-subtitle { color: #c89b32; font-size: 1.25em; font-weight: 600; margin-bottom: 24px; }
+.cover-ep { color: #b0c8de; font-size: 0.95em; margin-bottom: 4px; }
+.cover-date { color: #7a9ab5; font-size: 0.85em; margin-bottom: 28px; }
+.cover-disclaimer { font-size: 0.78em; color: #4a6a85; line-height: 1.6; }
+.container { max-width: 860px; margin: 0 auto; padding: 28px 24px 60px; }
+.summary-card { background: white; border-radius: 8px; border: 1px solid #d8dde8; box-shadow: 0 2px 12px rgba(0,0,0,.07); margin-bottom: 28px; overflow: hidden; }
+.summary-header { background: #0d2137; color: white; padding: 12px 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.summary-title { font-size: 1em; font-weight: 700; letter-spacing: 1px; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: .82em; font-weight: 700; }
+.badge-bull { background: #c89b32; color: white; }
+.badge-bear { background: #c0392b; color: white; }
+.badge-neutral { background: #5a6a7a; color: white; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.summary-section { padding: 16px 20px; border-right: 1px solid #e8eaf0; border-bottom: 1px solid #e8eaf0; }
+.summary-section:nth-child(even) { border-right: none; }
+.signals-section { grid-column: 1 / -1; border-right: none; }
+.risks-section { grid-column: 1 / -1; border-right: none; border-bottom: none; }
+.summary-section h4 { color: #0d2137; font-size: .8em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 2px solid #c89b32; display: inline-block; }
+.signals-section ol { display: flex; gap: 10px; flex-wrap: wrap; list-style: none; counter-reset: sig; }
+.signals-section li { counter-increment: sig; flex: 1 1 200px; background: #f5f7fb; border-left: 3px solid #c89b32; padding: 6px 10px; border-radius: 0 4px 4px 0; font-size: .88em; color: #2c2c3e; }
+.signals-section li::before { content: counter(sig) ". "; font-weight: 700; color: #c89b32; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: .83em; }
+.summary-table th { background: #f0f3f8; color: #0d2137; padding: 5px 8px; text-align: left; font-weight: 600; }
+.summary-table td { padding: 4px 8px; border-bottom: 1px solid #eef0f5; color: #2c2c3e; }
+.summary-table .code { font-weight: 700; color: #0f3460; }
+.r-sbull { color: #c0392b; font-weight: 700; } .r-bull { color: #b8860b; font-weight: 700; }
+.r-watch { color: #2980b9; } .r-neutral { color: #7f8c8d; } .r-bear { color: #884400; }
+.weight { font-weight: 700; color: #c89b32; }
+.risks-section ul { padding-left: 0; display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.risks-section li { list-style: none; font-size: .88em; color: #2c2c3e; padding-left: 14px; position: relative; }
+.risks-section li::before { content: "▸"; color: #c89b32; position: absolute; left: 0; font-weight: 700; }
+.report-content { background: white; border-radius: 8px; border: 1px solid #d8dde8; padding: 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+.report-content h1 { background: #0d2137; color: white; padding: 10px 16px; margin: 28px -32px 18px; font-size: 1.05em; letter-spacing: .5px; }
+.report-content h1:first-child { margin-top: -28px; border-radius: 7px 7px 0 0; }
+.report-content h2 { color: #0d2137; font-size: 1em; margin: 20px 0 10px; padding-bottom: 4px; border-bottom: 2px solid #c89b32; display: inline-block; }
+.report-content h3 { background: #f5f7fb; color: #0f3460; padding: 7px 14px; margin: 16px 0 10px; font-size: .98em; border-left: 3px solid #c89b32; border-radius: 0 4px 4px 0; }
+.report-content p { margin: 8px 0; color: #2c2c3e; font-size: .94em; }
+.report-content ul, .report-content ol { padding-left: 22px; margin: 8px 0; }
+.report-content li { margin: 4px 0; color: #2c2c3e; font-size: .92em; }
+.report-content li::marker { color: #c89b32; }
+.report-content strong { color: #0d2137; font-weight: 600; }
+.report-content em { color: #5a6a7a; }
+.report-content blockquote { border-left: 3px solid #c89b32; background: #fdfbf3; padding: 10px 16px; margin: 12px 0; color: #555; border-radius: 0 4px 4px 0; }
+.report-content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .88em; }
+.report-content thead tr { background: #0d2137; color: white; }
+.report-content thead th { padding: 9px 12px; text-align: left; font-weight: 600; }
+.report-content tbody tr:nth-child(even) { background: #f5f7fb; }
+.report-content tbody tr:hover { background: #eef2f7; }
+.report-content td { padding: 7px 12px; border-bottom: 1px solid #e0e4ea; color: #2c2c3e; }
+.report-content hr { border: none; border-top: 1px solid #d8dde8; margin: 24px 0; }
+.page-footer { text-align: center; color: #8a9ab5; font-size: .8em; margin-top: 28px; padding: 16px; }
+@media (max-width: 620px) {
+  .summary-grid { grid-template-columns: 1fr; }
+  .summary-section { border-right: none; }
+  .report-content { padding: 20px 18px; }
+  .report-content h1 { margin-left: -18px; margin-right: -18px; }
+}
+</style>
+</head>
+<body>
+<div class="cover"><div class="cover-inner">
+  <h1>股癌 Podcast</h1>
+  <div class="cover-subtitle">AI 深度投資研報</div>
+  <div class="cover-ep">EP665 | 🌸</div>
+  <div class="cover-date">2026-05-28</div>
+  <div class="cover-disclaimer">本報告由人工智慧模型輔助生成，內容僅供參考，不構成任何投資建議或邀約。<br>投資有風險，入市前請獨立評估，自行承擔決策責任。</div>
+</div></div>
+<div class="container">
+<div class="summary-card">
+  <div class="summary-header"><span class="summary-title">本集快覽</span><span class="badge badge-bull">大盤：做多</span></div>
+  <div class="summary-grid">
+    <div class="summary-section signals-section"><h4>三大核心訊號</h4><ol><li>主持人對台股維持中性偏多，趨勢股續抱優先</li><li>被動元件漲價已從題材轉向全球性景氣驗證</li><li>SpaceX IPO將帶動衛星與太空算力新敘事</li></ol></div>
+    <div class="summary-section stocks-section"><h4>點名個股</h4><table class="summary-table"><thead><tr><th>代號</th><th>名稱</th><th>評級</th></tr></thead><tbody><tr><td class="code">[2327]</td><td>國巨</td><td class="r-bull">看多</td></tr><tr><td class="code">[TSM]</td><td>台積電</td><td class="r-neutral">中性</td></tr><tr><td class="code">[2454]</td><td>聯發科</td><td class="r-neutral">中性</td></tr><tr><td class="code">[PLTR]</td><td>Palantir</td><td class="r-neutral">中性</td></tr><tr><td class="code">[TSLA]</td><td>Tesla</td><td class="r-neutral">中性</td></tr><tr><td class="code">[NVDA]</td><td>Nvidia</td><td class="r-bull">看多</td></tr><tr><td class="code">[SPACEX]</td><td>SpaceX</td><td class="r-sbull">強烈看多</td></tr></tbody></table></div>
+    <div class="summary-section holdings-section"><h4>核心持股建議</h4><table class="summary-table"><thead><tr><th>標的</th><th>主題</th><th>比重</th></tr></thead><tbody><tr><td>2327 國巨</td><td>被動元件漲價</td><td class="weight">25%</td></tr><tr><td>2454 聯發科</td><td>AI資料中心/ASIC/CPO</td><td class="weight">20%</td></tr><tr><td>2308 台達電</td><td>AI電力與基建</td><td class="weight">20%</td></tr><tr><td>3017 奇鋐</td><td>AI散熱</td><td class="weight">20%</td></tr><tr><td>1504 東元</td><td>AIDC電力設備</td><td class="weight">15%</td></tr></tbody></table></div>
+    <div class="summary-section risks-section"><h4>主要風險</h4><ul><li>最大尾部風險：</li><li>短期擾動因素：</li><li>本次分析盲點：</li></ul></div>
+  </div>
+</div>
+<div class="report-content"><h1>執行摘要</h1>
+<p>本集三大核心訊號（每點一行，精煉至 30 字以內）：<br />
+1. 主持人對台股維持中性偏多，趨勢股續抱優先<br />
+2. 被動元件漲價已從題材轉向全球性景氣驗證<br />
+3. SpaceX IPO將帶動衛星與太空算力新敘事</p>
+<h1>一、市場環境與主持人核心觀點</h1>
+<p><strong>多空研判：</strong> 中性偏多。<br />
+主持人明確表示「現在市場還是沒有什麼好評論，反正就是一直噴一直噴」，且對於前波承壓後續續漲的格局採取接受趨勢、尊重市場的態度。他沒有出現系統性看空訊號，反而強調前面「捏住軟蛋的這波就特別爽」，顯示其核心立場仍偏向順勢多頭。不過，他也沒有主張全面追價，而是承認很多上漲超出自己原先預期，因此屬於中性偏多而非極端樂觀。</p>
+<p><strong>資金輪動方向：</strong><br />
+主持人明確提到的輪動主軸如下：</p>
+<ul>
+<li>資金持續集中在<strong>被動元件</strong></li>
+<li><strong>載板</strong>仍維持強勢</li>
+<li><strong>機器人概念股</strong>出現明顯資金追逐</li>
+<li>過去做過一波的<strong>衛星概念</strong>，市場已開始相信、題材熱度提升</li>
+<li>未來可能從傳統衛星通訊進一步轉向<strong>衛星 AI 運算 / 太空資料中心</strong></li>
+</ul>
+<p>退潮或相對弱化方向，主持人並未明講太多，但有兩個暗示：<br />
+- 自己多數<strong>傳統衛星股部位已出脫</strong><br />
+- <strong>散熱</strong>近期股價表現相對不佳，但他認為若太空算力成形，之後可能重新受惠</p>
+<p><strong>整體操作哲學：</strong><br />
+主持人的核心操作原則可整理為三點：</p>
+<ol>
+<li>
+<p><strong>尊重趨勢，趨勢未壞不輕易下車</strong><br />
+   他坦言過去這種位置自己可能會減碼，但這次因行情結構特殊、漲勢遠超成本，因此選擇不減反加。</p>
+</li>
+<li>
+<p><strong>押注自己懂的那一段，不追求全段吃滿</strong><br />
+   他多次提到自己賺的是「魚頭」，不執著賺魚尾；當市場從少數人相信進入多數人相信時，會開始調節。</p>
+</li>
+<li>
+<p><strong>投資本質仍是機率遊戲，重點是提高勝率而非追求穩贏</strong><br />
+   他明確說每天做的事都有點像賭，只是要讓自己像是「灌鉛骰子」，透過資訊、分析、產業理解提高勝率。</p>
+</li>
+</ol>
+<p><strong>本集最重要的產業主軸：</strong>  </p>
+<ol>
+<li>
+<p><strong>被動元件</strong><br />
+   這是主持人對現況最明確、最具驗證性的產業判斷。他提到國巨對外說明中 BB Ratio 上升、特規品稼動率接近 90%、標準品稼動率 80% 以上，且不只台灣，Vishay、VPG、中國江海、日本同業等全球趨勢同步往上，這讓他認為被動元件已從短線炒作，轉向全球性景氣與漲價循環。</p>
+</li>
+<li>
+<p><strong>SpaceX / 衛星 AI 運算 / 太空資料中心</strong><br />
+   這是本集最重要的前瞻性主軸。主持人明確表示 SpaceX IPO 他一定會先上車，且其真正有興趣的不只是 Starlink，而是馬斯克未來可能把 SpaceX包裝成某種「Neo Cloud」或太空算力平台。這部分目前仍偏敘事早期，但他顯然認為這將是未來 2-3 年最值得提早卡位的題材之一。</p>
+</li>
+</ol>
+<h1>二、主持人點名個股</h1>
+<h3>[2327] 國巨</h3>
+<ul>
+<li><strong>信心評級：</strong> [看多]</li>
+<li><strong>產業主題：</strong> 被動元件漲價</li>
+<li><strong>主持人核心論述：</strong> 主持人明確提到國巨在對外說明中表示 BB Ratio 拉升，特規品稼動率接近 90%，標準品也在 80% 以上，顯示需求與價格同步改善。他進一步以 2018 年景氣高峰作為歷史對照，認為投資人可以比對當年毛利率、營收高點，再推估這一輪若漲價斜率更快，後續 EPS 與目標價都有上修空間。這裡他的核心不是短線題材，而是週期再啟動。</li>
+<li><strong>新聞佐證：</strong> 「關不住！國巨再飆752元新高 2700名股東勇敢進場每張大賺12萬元」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 若已有部位以趨勢持有為主，未持有者宜等短線量縮或均線靠攏再分批布局</li>
+</ul>
+<h3>[TSM] 台積電</h3>
+<ul>
+<li><strong>信心評級：</strong> [中性]</li>
+<li><strong>產業主題：</strong> AI先進製程 / 員工分紅爭議</li>
+<li><strong>主持人核心論述：</strong> 主持人提到近期市場熱議台積電分紅「越賺越多、分得越少」，對員工情緒表示理解，但他也轉述市場說法：比例看似下降，長期總額仍可能增加。他沒有直接評論公司治理優劣，而是傾向把這視為技術性調整，並提醒應往長期看。</li>
+<li><strong>新聞佐證：</strong> 「台積電衝上2,360元、改寫新天價 市值61兆元締新猷」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [過熱慎追]</li>
+<li><strong>操作參考：</strong> 核心資產可續抱，但不建議在短線創高急漲後大幅追價</li>
+</ul>
+<h3>[2454] 聯發科</h3>
+<ul>
+<li><strong>信心評級：</strong> [中性]</li>
+<li><strong>產業主題：</strong> AI資料中心 / 長期成長修復</li>
+<li><strong>主持人核心論述：</strong> 主持人把聯發科拿來作為長期持有的例子：前幾年市場認為動能轉弱，但隨 AI 題材與新應用切入，股價與敘事重新向上。他用這個例子說明，遇到短期失望不代表長線走完，優質公司可能因新成長曲線而再次被市場重估。</li>
+<li><strong>新聞佐證：</strong> 「聯發科參展Computex 秀資料中心解決方案/光通訊技術」— tw.stock.yahoo.com；「聯發科COMPUTEX亮點一次看！　輝達助陣超級電腦、CPO技術來了」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 可視為 AI 平台型資產，拉回再接優於追高</li>
+</ul>
+<h3>[PLTR] Palantir</h3>
+<ul>
+<li><strong>信心評級：</strong> [中性]</li>
+<li><strong>產業主題：</strong> 美股成長股 / IPO後卡位策略</li>
+<li><strong>主持人核心論述：</strong> 主持人提及 Palantir 上市時自己是「先買再說」，作為其 IPO 投資框架的參考案例。這不是當前主推個股，而是用來說明他對 SpaceX 的策略：先建立參考部位，再視後續產業驗證與價格變化調整持股。</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估：</strong> [震盪整理等待]</li>
+<li><strong>操作參考：</strong> 此處更適合作為 IPO 策略方法論參考，不是本集台股主線配置標的</li>
+</ul>
+<h3>[TSLA] Tesla</h3>
+<ul>
+<li><strong>信心評級：</strong> [中性]</li>
+<li><strong>產業主題：</strong> 馬斯克生態系 / 機器人 / 自駕 / 能源</li>
+<li><strong>主持人核心論述：</strong> 主持人表示若 SpaceX 上市，自己可能會降低部分 Tesla 持股，因為本質上是在押馬斯克的故事。他特別指出 Tesla 已不再只是電動車故事，市場關注重心轉向能源、Optimus、人形機器人、自駕等，因此投資公司本身也是持續重估與重定義的過程。</li>
+<li><strong>新聞佐證：</strong> 「SpaceX-Tesla merger chatter reignites as Musk pushes rocket company toward Nasdaq」— cnbc.com</li>
+<li><strong>現況評估：</strong> [震盪整理等待]</li>
+<li><strong>操作參考：</strong> 若為馬斯克生態系配置，未來可視 SpaceX 上市後重新平衡部位</li>
+</ul>
+<h3>[NVDA] Nvidia</h3>
+<ul>
+<li><strong>信心評級：</strong> [看多]</li>
+<li><strong>產業主題：</strong> AI算力平台 / 伺服器架構升級</li>
+<li><strong>主持人核心論述：</strong> 主持人將 Nvidia 作為產業突破的典型案例，指出市場當年普遍認為更高階整機櫃架構技術難度過高、良率不佳、驗證過不了，但最後靠資本投入與供應鏈硬推仍然落地。他用這個案例支撐自己的延伸推論：太空 AI 伺服器雖然現在看起來困難，但未必做不到。</li>
+<li><strong>新聞佐證：</strong> 「Taiwan chip stocks climb after Nvidia announces $150 billion spending plans」— search.cnbc.com；「Nvidia stock faces a key level that could make or break where it goes next」— cnbc.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 作為 AI 基礎設施龍頭可續抱，逢市場對成長斜率疑慮修正時布局</li>
+</ul>
+<h3>[SPACEX] SpaceX</h3>
+<ul>
+<li><strong>信心評級：</strong> [強烈看多]</li>
+<li><strong>產業主題：</strong> 衛星通訊 / Starlink / 太空算力 / IPO</li>
+<li><strong>主持人核心論述：</strong> 這是本集最鮮明的標的。主持人明確表示無論估值如何，SpaceX IPO 自己一定會先上車，至少先建立部位。他認為目前市場主流仍聚焦 Starlink 作為獲利來源，但更值得提前關注的是 SpaceX 未來可能發展成某種太空算力、衛星資料中心、Neo Cloud 平台。其邏輯核心是：SpaceX 最強能力就是低成本、高頻率把 payload 打上去，而 AI 時代真正稀缺的是能源與算力，如果軌道運算具可行性，SpaceX 幾乎天然站在第一棒。</li>
+<li><strong>新聞佐證：</strong> 「SpaceX首次IPO傳向日資募資20億美元，發行規模待定」— tw.stock.yahoo.com；「SpaceX IPO Could Rewrite the Record Books for Public Listings」— finance.yahoo.com；「Retail investors get direct access to SpaceX IPO through major brokerage platforms」— search.cnbc.com</li>
+<li><strong>現況評估：</strong> [低度關注尚未爆發]</li>
+<li><strong>操作參考：</strong> 若上市初期可採核心倉位先卡位、後續依估值與商業模式揭露再加碼</li>
+</ul>
+<h1>三、延伸推論標的</h1>
+<p>以下屬於我的延伸推論，不是主持人明確點名。</p>
+<h3>[2492] 華新科</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]</li>
+<li><strong>產業主題：</strong> 被動元件漲價</li>
+<li><strong>受惠邏輯：</strong> 全球被動元件需求回升 → 特規品與高階產品漲價擴散 → 台灣二線至一線 MLCC / 晶片電阻廠同步受惠</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 若國巨已偏高，可關注補漲與評價落差機會</li>
+</ul>
+<h3>[8046] 南電</h3>
+<ul>
+<li><strong>推論強度：</strong> [中關聯]</li>
+<li><strong>產業主題：</strong> 載板 / AI高階封裝</li>
+<li><strong>受惠邏輯：</strong> 主持人明示載板仍在噴 → AI GPU/ASIC 高階封裝需求延續 → ABF 載板供應鏈維持高稼動與評價修復</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 強勢股宜等回測月線或整理量縮後切入</li>
+</ul>
+<h3>[3037] 欣興</h3>
+<ul>
+<li><strong>推論強度：</strong> [中關聯]</li>
+<li><strong>產業主題：</strong> 載板 / 伺服器板</li>
+<li><strong>受惠邏輯：</strong> AI 伺服器與高階運算需求強 → 載板、伺服器板層數與規格升級 → 欣興接單與ASP同步改善</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 逢技術性回檔分批承接，避免長紅追價</li>
+</ul>
+<h3>[3017] 奇鋐</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]</li>
+<li><strong>產業主題：</strong> 散熱 / AI伺服器 / 未來太空運算散熱</li>
+<li><strong>受惠邏輯：</strong> AI 算力提升帶來高熱密度 → 高階散熱需求升級 → 若未來衛星/軌道運算成形，具驗證能力的散熱廠更具想像空間</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估：</strong> [震盪整理等待]</li>
+<li><strong>操作參考：</strong> 短線若因資金轉向而回檔，可視為中期主線整理布局點</li>
+</ul>
+<h3>[3653] 健策</h3>
+<ul>
+<li><strong>推論強度：</strong> [中關聯]</li>
+<li><strong>產業主題：</strong> 散熱 / AI基建</li>
+<li><strong>受惠邏輯：</strong> GPU/ASIC 功耗續升 → 高效散熱與機構件需求同步增加 → 未來若進入更極端環境應用，具高可靠度供應商受益</li>
+<li><strong>新聞佐證：</strong> 「佳世達攜手AMD布局AI基礎設施　旗下其曜偕健策攻散熱」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [震盪整理等待]</li>
+<li><strong>操作參考：</strong> 不追短線噴發，等待市場輪動回到散熱族群再布局</li>
+</ul>
+<h3>[2308] 台達電</h3>
+<ul>
+<li><strong>推論強度：</strong> [中關聯]</li>
+<li><strong>產業主題：</strong> 電源 / AI資料中心基建</li>
+<li><strong>受惠邏輯：</strong> 主持人強調 AI 算力核心瓶頸在能源與資料中心 → 電源管理、電力轉換、AIDC基建成長 → 台達作為電力與散熱整合龍頭受惠</li>
+<li><strong>新聞佐證：</strong> 「聯發科快追上高通 台達電市值破6.5兆 謝金河：從一人武林變群山效應」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 作為低波動 AI 基建核心資產，可在急漲後回檔時分批加碼</li>
+</ul>
+<h3>[1513] 中興電</h3>
+<ul>
+<li><strong>推論強度：</strong> [中關聯]</li>
+<li><strong>產業主題：</strong> 電力基建 / AI用電</li>
+<li><strong>受惠邏輯：</strong> AI 資料中心擴建 → 電力設施與變電需求上升 → 重電與電網設備商長線訂單能見度提升</li>
+<li><strong>新聞佐證：</strong> 「黃仁勳喊話『需要更多電力』 台電緊急回應了」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 中長線逢整理偏多看待，不追短期情緒高點</li>
+</ul>
+<h3>[1504] 東元</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]</li>
+<li><strong>產業主題：</strong> AIDC電力設備 / 北美資料中心</li>
+<li><strong>受惠邏輯：</strong> AI資料中心建置加速 → 電力能源設備需求擴大 → 東元加碼AIDC與北美、東南亞市場，具基本面延伸性</li>
+<li><strong>新聞佐證：</strong> 「東元兩年完成四起併購，AI資料中心占電力能源事業比重朝50%邁進」— tw.stock.yahoo.com；「東元：爭取鴻海新廠設備訂單　攻北美東南亞AIDC」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 適合偏中期投資人，趁非主流時分批建立部位</li>
+</ul>
+<h3>[6279] 胡連</h3>
+<ul>
+<li><strong>推論強度：</strong> [中關聯]</li>
+<li><strong>產業主題：</strong> 汽車零組件 / 關稅調降</li>
+<li><strong>受惠邏輯：</strong> 美國對台汽車零件關稅下調 → 出口競爭力回升 → 車用連接器與零組件供應商評價有望修復</li>
+<li><strong>新聞佐證：</strong> 「美對台汽車零組件稅率15%　東陽：產業正面可公平競爭」— tw.stock.yahoo.com；「美放寬對台部分關稅！汽車零組件上限15% 回溯5/1生效」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 若車用族群全面漲停，不宜追最熱，改等分歧後布局中段股</li>
+</ul>
+<h3>[1319] 東陽</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]</li>
+<li><strong>產業主題：</strong> 汽車零組件 / 關稅受惠</li>
+<li><strong>受惠邏輯：</strong> 232關稅鬆綁 → 輸美汽車零件稅率下修至15% → AM件與外銷車用零件獲利改善預期升溫</li>
+<li><strong>新聞佐證：</strong> 「焦點股》銷美汽車零組件關稅降至15％ 東陽等10檔齊攻漲停」— tw.stock.yahoo.com；「『關稅大紅包』送暖！東陽等10檔汽車零組件個股全漲停」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [過熱慎追]</li>
+<li><strong>操作參考：</strong> 事件驅動急漲後先等換手，避免追在政策情緒高點</li>
+</ul>
+<h1>四、整體投資策略</h1>
+<p><strong>大盤研判：</strong> 做多。<br />
+依據在於：主持人對整體行情沒有出現結構性警訊，反而承認市場持續上行且資金不斷尋找新故事；搭配新聞面可見台股在台積電、AI基建、關稅利多等多線推動下創高，整體仍屬多頭主導。</p>
+<p><strong>核心持股建議（3-5 檔）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>標的</th>
+<th>產業主題</th>
+<th>建議比重</th>
+<th>操作策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2327 國巨</td>
+<td>被動元件漲價</td>
+<td>25%</td>
+<td>趨勢持有，等拉回再加碼</td>
+</tr>
+<tr>
+<td>2454 聯發科</td>
+<td>AI資料中心/ASIC/CPO</td>
+<td>20%</td>
+<td>中期持有，利用整理期布局</td>
+</tr>
+<tr>
+<td>2308 台達電</td>
+<td>AI電力與基建</td>
+<td>20%</td>
+<td>作為低波動核心資產續抱</td>
+</tr>
+<tr>
+<td>3017 奇鋐</td>
+<td>AI散熱</td>
+<td>20%</td>
+<td>等族群回檔後承接</td>
+</tr>
+<tr>
+<td>1504 東元</td>
+<td>AIDC電力設備</td>
+<td>15%</td>
+<td>非主流時分批布局，拉長持有</td>
+</tr>
+</tbody>
+</table>
+<p><strong>積極型佈局（可承受 20%+ 回撤）：</strong><br />
+可採「雙主題高彈性組合」：</p>
+<ul>
+<li>被動元件：國巨、華新科</li>
+<li>AI基建：奇鋐、健策、欣興/南電</li>
+<li>前瞻題材：衛星/太空運算相關供應鏈的早期卡位</li>
+</ul>
+<p>進場邏輯不是全面追高，而是等強勢股第一次明顯技術整理、量縮、回測支撐再承接。這類部位的本質是賺「估值擴張 + 題材發酵」，因此需接受高波動與高換手。</p>
+<p><strong>保守型佈局（下行保護優先）：</strong><br />
+建議以「AI基建龍頭 + 電力設備 + 指數化資產」為主：</p>
+<ul>
+<li>台達電</li>
+<li>聯發科</li>
+<li>東元</li>
+<li>台積電</li>
+<li>搭配一部分台股大型 ETF 或現金部位</li>
+</ul>
+<p>邏輯上避開最熱題材股，轉向有基本面、現金流與產業地位支撐的標的。若美債殖利率上行或中東油價再波動，這組合承受能力相對較佳。</p>
+<h1>五、關鍵風險提示</h1>
+<ol>
+<li>
+<p><strong>最大尾部風險：</strong><br />
+   AI 資本支出增速若在 2026 下半年明顯放緩，將同時打擊載板、散熱、電源、被動元件與相關高估值供應鏈。尤其主持人看好的太空算力仍屬遠期敘事，一旦市場風格轉向現金流與低估值，題材股修正會非常劇烈。</p>
+</li>
+<li>
+<p><strong>短期擾動因素：</strong>  </p>
+</li>
+<li>美國公債殖利率持續走高，壓抑高本益比科技股評價  </li>
+<li>中東局勢反覆，油價接近或突破 100 美元，影響通膨與利率預期  </li>
+<li>台股短線漲幅過大，指數逼近整數關卡後容易出現獲利了結  </li>
+<li>
+<p>SpaceX IPO 若最終估值、配售或治理條款不如預期，將影響太空題材熱度</p>
+</li>
+<li>
+<p><strong>本次分析盲點：</strong><br />
+   本報告對 SpaceX 與衛星 AI 運算的評估，部分建立在主持人的前瞻敘事與產業鏈蛛絲馬跡之上，目前仍缺乏完整商業模型與財務驗證，因此這一段更接近高階主題投資推演，而非成熟基本面投資結論。另 Podcast 內容本身偏主觀交易者視角，不等同於公司正式財測。</p>
+</li>
+</ol>
+<hr />
+<p><em>本報告基於 Podcast 集數：EP665 | ，分析日期：2026-05-28，由 AI 模型 gpt-5.4 輔助生成。</em><br />
+<em>資訊僅供參考，不構成任何投資建議或邀約。投資有風險，決策請獨立判斷。</em></p></div>
+</div>
+<div class="page-footer">本報告基於 EP665 | 🌸，分析日期：2026-05-28 · 由 AI 模型輔助生成 · 僅供參考，不構成投資建議</div>
+</body>
+</html>
