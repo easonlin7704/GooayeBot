@@ -344,9 +344,14 @@ def generate_final_report(text, search_results, ep_title, client, model):
 
 # 五、關鍵風險提示
 
-1. **最大尾部風險：** 說明若此風險發生，對上述標的的衝擊程度。
-2. **短期擾動因素：** 一週內可能造成波動的事件或數據。
-3. **本次分析盲點：** 主觀說明本報告可能的侷限性或未充分考慮之處。
+### 最大尾部風險
+說明若此風險發生，對上述標的的衝擊程度與應對方式。
+
+### 短期擾動因素
+列點說明一週內可能造成市場波動的事件或數據（2-4 點）。
+
+### 本次分析盲點
+主觀說明本報告可能的侷限性或未充分考慮之處。
 
 ---
 *本報告基於 Podcast 集數：{ep_title}，分析日期：{today}，由 AI 模型 {model} 輔助生成。*
@@ -399,8 +404,9 @@ def _extract_summary_data(md_content):
         'signals': [], 'market_view': '',
         'stocks': [], 'core_holdings': [], 'risks': [],
     }
+    lines = md_content.split('\n')
     section = ''
-    for line in md_content.split('\n'):
+    for i, line in enumerate(lines):
         s = line.strip()
         if re.match(r'^#{1,2}\s+[^#]', s):
             section = re.sub(r'^#+\s+', '', s).strip()
@@ -437,15 +443,23 @@ def _extract_summary_data(md_content):
                     data['core_holdings'].append(cells[:4])
         # 五、關鍵風險提示
         if '關鍵風險' in section:
-            # Format 1: "1. **標題：** 描述文字"
+            def _next_desc(start_idx):
+                for j in range(start_idx + 1, min(start_idx + 5, len(lines))):
+                    nxt = lines[j].strip()
+                    if nxt and not nxt.startswith('#') and not re.match(r'^\d+[\.\)]', nxt):
+                        return _strip_inline_md(nxt)
+                return ''
+            # Format 1: "1. **標題：** 描述文字" (description may be on same or next line)
             m = re.match(r'^\d+[\.\)]\s*\*\*(.+?)\*\*[：:]?\s*(.*)', s)
             if m and len(data['risks']) < 3:
                 label = _strip_inline_md(m.group(1).rstrip('：:'))
-                desc = _strip_inline_md(m.group(2))
+                desc = _strip_inline_md(m.group(2)) or _next_desc(i)
                 data['risks'].append(f"{label}：{desc[:42]}" if desc else label)
-            # Format 2: "### 標題" (GPT 有時改用 H3)
+            # Format 2: "### 標題" (H3 heading, description on next line)
             elif s.startswith('### ') and len(data['risks']) < 3:
-                data['risks'].append(s[4:].strip())
+                heading = s[4:].strip()
+                desc = _next_desc(i)
+                data['risks'].append(f"{heading}：{desc[:42]}" if desc else heading)
     return data
 
 
@@ -619,7 +633,7 @@ if(report){
       const t=s.textContent;
       if(!rating && t.includes('信心評級')) for(const r of RATINGS) if(t.includes(r)){rating=r;break;}
       if(!theme  && t.includes('產業主題')){
-        const tm=t.match(/產業主題[：:]\s*([^；;。\n\r]{2,25})/);
+        const tm=t.match(/產業主題[：:]\s*([^；;。]{2,25})/);
         if(tm) theme=tm[1].replace(/[\[\]【】（）()]/g,'').trim();
       }
     });
