@@ -10,7 +10,6 @@ import feedparser
 from time import mktime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.application import MIMEApplication
 from openai import OpenAI
 
 # ==========================================
@@ -366,9 +365,12 @@ def generate_final_report(text, search_results, ep_title, client, model):
     except Exception as e:
         return f"報告生成失敗: {e}"
 
-# ─── PDF 生成 ────────────────────────────────────────────────────────────────
+# ─── HTML 報告生成 ───────────────────────────────────────────────────────────
 
-EMOJI_MAP = {
+GITHUB_PAGES_BASE = "https://easonlin7704.github.io/GooayeBot"
+DOCS_DIR = "docs/reports"
+
+_EMOJI_STRIP = {
     '🎙️': '', '📰': '', '🚦': '', '🔥': '[過熱慎追]',
     '🍺': '[趨勢發酵中]', '💎': '[低度關注]', '🦁': '', '🛡️': '',
     '⏳': '', '🧐': '', '🚀': '', '✅': '', '❌': '',
@@ -376,71 +378,19 @@ EMOJI_MAP = {
     '🎉': '', '⬇️': '', '🔨': '', '📄': '', '📻': '', '⏰': '',
 }
 
-NAVY   = (13,  33,  55)
-GOLD   = (200, 155, 50)
-LGRAY  = (245, 246, 248)
-DGRAY  = (80,  80,  80)
-WHITE  = (255, 255, 255)
-BLACK  = (30,  30,  30)
-BLUE   = (15,  52,  96)
-
-def _find_cjk_fonts():
-    """Auto-detect CJK font paths on Windows and Linux.
-    Prefer TC-specific OTF on Linux: NotoSansCJK-Bold.ttc is a multi-language
-    collection and fpdf2 may pick the wrong subfont, causing garbled text in
-    Windows PDF viewers. OTF files are single-language and always render cleanly."""
-    candidates = [
-        # Windows: Microsoft JhengHei (single-font TTC, renders correctly on Windows)
-        (r'C:\Windows\Fonts\msjh.ttc',   r'C:\Windows\Fonts\msjhbd.ttc'),
-        # Ubuntu: TC-specific OTF (best cross-platform compatibility)
-        ('/usr/share/fonts/opentype/noto/NotoSansCJKtc-Regular.otf',
-         '/usr/share/fonts/opentype/noto/NotoSansCJKtc-Bold.otf'),
-        ('/usr/share/fonts/truetype/noto/NotoSansCJKtc-Regular.otf',
-         '/usr/share/fonts/truetype/noto/NotoSansCJKtc-Bold.otf'),
-        # TTC fallback: use Regular for Bold to avoid garbled Windows rendering
-        ('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',
-         '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'),
-        ('/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc',
-         '/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc'),
-    ]
-    for normal, bold in candidates:
-        if os.path.exists(normal):
-            bold_path = bold if os.path.exists(bold) else normal
-            return normal, bold_path
-    raise FileNotFoundError(
-        "找不到 CJK 字型。Windows 請確認 msjh.ttc 存在；"
-        "Linux 請執行 sudo apt-get install -y fonts-noto-cjk"
-    )
-
-FONT_NORMAL, FONT_BOLD = 'placeholder', 'placeholder'  # resolved at runtime
-
-def _clean_for_pdf(text):
+def _clean_text(text):
     import re
-    for emoji, replacement in EMOJI_MAP.items():
-        text = text.replace(emoji, replacement)
+    for emoji, rep in _EMOJI_STRIP.items():
+        text = text.replace(emoji, rep)
     text = re.sub(r'[\U00010000-\U0010FFFF]', '', text)
-    text = re.sub(r'[︎️️︎]', '', text)
     return text
 
 def _strip_inline_md(text):
-    """Remove markdown inline markers for plain rendering."""
     import re
     text = re.sub(r'\*\*(.+?)\*\*', r'\1', text)
     text = re.sub(r'\*(.+?)\*',     r'\1', text)
     text = re.sub(r'`(.+?)`',       r'\1', text)
     return text.strip()
-
-def _write_bold_line(pdf, line, font_size=10, line_h=6):
-    """Write a line that may contain **bold** segments."""
-    import re
-    parts = re.split(r'(\*\*.*?\*\*)', line)
-    for part in parts:
-        if part.startswith('**') and part.endswith('**'):
-            pdf.set_font('CJK', 'B', font_size)
-            pdf.write(line_h, part[2:-2])
-        else:
-            pdf.set_font('CJK', '', font_size)
-            pdf.write(line_h, part)
 
 def _extract_summary_data(md_content):
     """Parse key sections from report markdown for the one-page summary."""
@@ -493,427 +443,170 @@ def _extract_summary_data(md_content):
     return data
 
 
-def _render_summary_page(pdf, md_content, ep_title, date_str):
-    """Render a one-page executive summary after the cover."""
-    from fpdf import XPos, YPos
-    import re
+HTML_CSS = """
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", sans-serif; background: #eef1f5; color: #1a1a2e; line-height: 1.75; font-size: 15px; }
+.cover { background: linear-gradient(160deg, #0d2137 60%, #1a3a5c); border-bottom: 4px solid #c89b32; }
+.cover-inner { max-width: 860px; margin: 0 auto; padding: 52px 32px 44px; text-align: center; }
+.cover h1 { font-size: 2em; font-weight: 700; letter-spacing: 3px; color: white; margin-bottom: 8px; }
+.cover-subtitle { color: #c89b32; font-size: 1.25em; font-weight: 600; margin-bottom: 24px; }
+.cover-ep { color: #b0c8de; font-size: 0.95em; margin-bottom: 4px; }
+.cover-date { color: #7a9ab5; font-size: 0.85em; margin-bottom: 28px; }
+.cover-disclaimer { font-size: 0.78em; color: #4a6a85; line-height: 1.6; }
+.container { max-width: 860px; margin: 0 auto; padding: 28px 24px 60px; }
+.summary-card { background: white; border-radius: 8px; border: 1px solid #d8dde8; box-shadow: 0 2px 12px rgba(0,0,0,.07); margin-bottom: 28px; overflow: hidden; }
+.summary-header { background: #0d2137; color: white; padding: 12px 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.summary-title { font-size: 1em; font-weight: 700; letter-spacing: 1px; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: .82em; font-weight: 700; }
+.badge-bull { background: #c89b32; color: white; }
+.badge-bear { background: #c0392b; color: white; }
+.badge-neutral { background: #5a6a7a; color: white; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.summary-section { padding: 16px 20px; border-right: 1px solid #e8eaf0; border-bottom: 1px solid #e8eaf0; }
+.summary-section:nth-child(even) { border-right: none; }
+.signals-section { grid-column: 1 / -1; border-right: none; }
+.risks-section { grid-column: 1 / -1; border-right: none; border-bottom: none; }
+.summary-section h4 { color: #0d2137; font-size: .8em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 2px solid #c89b32; display: inline-block; }
+.signals-section ol { display: flex; gap: 10px; flex-wrap: wrap; list-style: none; counter-reset: sig; }
+.signals-section li { counter-increment: sig; flex: 1 1 200px; background: #f5f7fb; border-left: 3px solid #c89b32; padding: 6px 10px; border-radius: 0 4px 4px 0; font-size: .88em; color: #2c2c3e; }
+.signals-section li::before { content: counter(sig) ". "; font-weight: 700; color: #c89b32; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: .83em; }
+.summary-table th { background: #f0f3f8; color: #0d2137; padding: 5px 8px; text-align: left; font-weight: 600; }
+.summary-table td { padding: 4px 8px; border-bottom: 1px solid #eef0f5; color: #2c2c3e; }
+.summary-table .code { font-weight: 700; color: #0f3460; }
+.r-sbull { color: #c0392b; font-weight: 700; } .r-bull { color: #b8860b; font-weight: 700; }
+.r-watch { color: #2980b9; } .r-neutral { color: #7f8c8d; } .r-bear { color: #884400; }
+.weight { font-weight: 700; color: #c89b32; }
+.risks-section ul { padding-left: 0; display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.risks-section li { list-style: none; font-size: .88em; color: #2c2c3e; padding-left: 14px; position: relative; }
+.risks-section li::before { content: "▸"; color: #c89b32; position: absolute; left: 0; font-weight: 700; }
+.report-content { background: white; border-radius: 8px; border: 1px solid #d8dde8; padding: 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+.report-content h1 { background: #0d2137; color: white; padding: 10px 16px; margin: 28px -32px 18px; font-size: 1.05em; letter-spacing: .5px; }
+.report-content h1:first-child { margin-top: -28px; border-radius: 7px 7px 0 0; }
+.report-content h2 { color: #0d2137; font-size: 1em; margin: 20px 0 10px; padding-bottom: 4px; border-bottom: 2px solid #c89b32; display: inline-block; }
+.report-content h3 { background: #f5f7fb; color: #0f3460; padding: 7px 14px; margin: 16px 0 10px; font-size: .98em; border-left: 3px solid #c89b32; border-radius: 0 4px 4px 0; }
+.report-content p { margin: 8px 0; color: #2c2c3e; font-size: .94em; }
+.report-content ul, .report-content ol { padding-left: 22px; margin: 8px 0; }
+.report-content li { margin: 4px 0; color: #2c2c3e; font-size: .92em; }
+.report-content li::marker { color: #c89b32; }
+.report-content strong { color: #0d2137; font-weight: 600; }
+.report-content em { color: #5a6a7a; }
+.report-content blockquote { border-left: 3px solid #c89b32; background: #fdfbf3; padding: 10px 16px; margin: 12px 0; color: #555; border-radius: 0 4px 4px 0; }
+.report-content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .88em; }
+.report-content thead tr { background: #0d2137; color: white; }
+.report-content thead th { padding: 9px 12px; text-align: left; font-weight: 600; }
+.report-content tbody tr:nth-child(even) { background: #f5f7fb; }
+.report-content tbody tr:hover { background: #eef2f7; }
+.report-content td { padding: 7px 12px; border-bottom: 1px solid #e0e4ea; color: #2c2c3e; }
+.report-content hr { border: none; border-top: 1px solid #d8dde8; margin: 24px 0; }
+.page-footer { text-align: center; color: #8a9ab5; font-size: .8em; margin-top: 28px; padding: 16px; }
+@media (max-width: 620px) {
+  .summary-grid { grid-template-columns: 1fr; }
+  .summary-section { border-right: none; }
+  .report-content { padding: 20px 18px; }
+  .report-content h1 { margin-left: -18px; margin-right: -18px; }
+}
+"""
 
-    data = _extract_summary_data(md_content)
-    W = pdf.w - pdf.l_margin - pdf.r_margin
-
-    pdf.add_page()
-    pdf.set_margins(18, 20, 18)
-
-    # ── Banner ──────────────────────────────────────────────────────────────
-    pdf.set_fill_color(*NAVY)
-    pdf.rect(0, pdf.get_y() - 4, pdf.w, 14, 'F')
-    ep_disp = ep_title if len(ep_title) < 28 else ep_title[:25] + '...'
-    pdf.set_font('CJK', 'B', 11)
-    pdf.set_text_color(*WHITE)
-    pdf.set_x(pdf.l_margin)
-    pdf.cell(W - 28, 8, f'本集一頁式快覽  ·  {ep_disp}  ·  {date_str}',
-             new_x=XPos.RIGHT, new_y=YPos.TOP)
+def _build_summary_html(data):
     view = data.get('market_view', '')
-    if view:
-        badge_color = (200, 55, 55) if '空' in view else GOLD
-        pdf.set_fill_color(*badge_color)
-        pdf.set_font('CJK', 'B', 10)
-        pdf.cell(28, 8, f' 大盤：{view[:5]}', fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-    else:
-        pdf.ln(8)
-    pdf.set_text_color(*BLACK)
-    pdf.ln(4)
+    bc = 'badge-bull' if '多' in view else ('badge-bear' if '空' in view else 'badge-neutral')
+    RC = {'強烈看多': 'r-sbull', '看多': 'r-bull', '觀察中': 'r-watch', '中性': 'r-neutral', '謹慎': 'r-bear'}
+    signals = ''.join(f'<li>{s}</li>' for s in data['signals']) or '<li>—</li>'
+    sr = ''.join(f'<tr><td class="code">[{s["code"]}]</td><td>{s["name"]}</td><td class="{RC.get(s["rating"],"r-neutral")}">{s["rating"]}</td></tr>' for s in data['stocks'])
+    stocks = (f'<table class="summary-table"><thead><tr><th>代號</th><th>名稱</th><th>評級</th></tr></thead><tbody>{sr}</tbody></table>') if sr else '<p style="color:#999;font-size:.85em">—</p>'
+    hr = ''.join(f'<tr><td>{r[0]}</td><td>{r[1] if len(r)>1 else ""}</td><td class="weight">{r[2] if len(r)>2 else ""}</td></tr>' for r in data['core_holdings'] if r and r[0])
+    holdings = (f'<table class="summary-table"><thead><tr><th>標的</th><th>主題</th><th>比重</th></tr></thead><tbody>{hr}</tbody></table>') if hr else '<p style="color:#999;font-size:.85em">—</p>'
+    risks = ''.join(f'<li>{r}</li>' for r in data['risks']) or '<li>—</li>'
+    badge = f'<span class="badge {bc}">大盤：{view}</span>' if view else ''
+    return f"""<div class="summary-card">
+  <div class="summary-header"><span class="summary-title">本集快覽</span>{badge}</div>
+  <div class="summary-grid">
+    <div class="summary-section signals-section"><h4>三大核心訊號</h4><ol>{signals}</ol></div>
+    <div class="summary-section stocks-section"><h4>點名個股</h4>{stocks}</div>
+    <div class="summary-section holdings-section"><h4>核心持股建議</h4>{holdings}</div>
+    <div class="summary-section risks-section"><h4>主要風險</h4><ul>{risks}</ul></div>
+  </div>
+</div>"""
 
-    # ── 三大核心訊號 ────────────────────────────────────────────────────────
-    pdf.set_fill_color(*NAVY)
-    pdf.set_text_color(*WHITE)
-    pdf.set_font('CJK', 'B', 10)
-    pdf.cell(W, 8, '  本集三大核心訊號', fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-    pdf.set_text_color(*BLACK)
-    pdf.ln(2)
-    for j, sig in enumerate(data['signals'][:3], 1):
-        row_y = pdf.get_y()
-        pdf.set_xy(pdf.l_margin + 4, row_y)
-        pdf.set_font('CJK', 'B', 9); pdf.set_text_color(*GOLD)
-        pdf.cell(7, 6, f'{j}.')
-        pdf.set_xy(pdf.l_margin + 11, row_y)
-        pdf.set_font('CJK', '', 9); pdf.set_text_color(*BLACK)
-        pdf.cell(W - 11, 6, sig[:52] if len(sig) > 52 else sig, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-    if not data['signals']:
-        pdf.set_font('CJK', '', 9); pdf.set_text_color(*DGRAY)
-        pdf.cell(W, 6, '  （無法解析核心訊號，請參閱詳細報告）', new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-    pdf.ln(4)
-
-    # ── Gold divider ─────────────────────────────────────────────────────────
-    pdf.set_draw_color(*GOLD); pdf.set_line_width(0.5)
-    pdf.line(pdf.l_margin, pdf.get_y(), pdf.w - pdf.r_margin, pdf.get_y())
-    pdf.set_line_width(0.2); pdf.ln(3)
-
-    # ── Two columns: 點名個股 + 核心持股建議 ────────────────────────────────
-    col_gap = 8
-    col_w = (W - col_gap) / 2
-    col1_x = pdf.l_margin
-    col2_x = pdf.l_margin + col_w + col_gap
-    sec_y = pdf.get_y()
-    row_h = 5.5
-
-    # Column headers (absolute positioning)
-    for cx, title in [(col1_x, '  點名個股'), (col2_x, '  核心持股建議')]:
-        pdf.set_xy(cx, sec_y)
-        pdf.set_fill_color(*NAVY); pdf.set_text_color(*WHITE)
-        pdf.set_font('CJK', 'B', 10)
-        pdf.cell(col_w, 8, title, fill=True)
-    pdf.set_text_color(*BLACK)
-
-    RCOL = {'強烈看多': (200, 50, 50), '看多': (170, 120, 15),
-            '觀察中': (55, 95, 165), '中性': DGRAY, '謹慎': (115, 75, 45)}
-
-    # Left: stocks
-    yl = sec_y + 9
-    for st in data['stocks'][:11]:
-        pdf.set_xy(col1_x + 2, yl)
-        pdf.set_font('CJK', 'B', 8); pdf.set_text_color(*BLUE)
-        pdf.cell(20, row_h, st['code'][:8])
-        pdf.set_xy(col1_x + 22, yl)
-        pdf.set_font('CJK', '', 8); pdf.set_text_color(*BLACK)
-        pdf.cell(col_w - 40, row_h, st['name'][:9])
-        pdf.set_xy(col1_x + col_w - 18, yl)
-        pdf.set_font('CJK', 'B', 7)
-        pdf.set_text_color(*RCOL.get(st['rating'], DGRAY))
-        pdf.cell(18, row_h, st['rating'][:5] if st['rating'] else '')
-        yl += row_h
-    if not data['stocks']:
-        pdf.set_xy(col1_x + 2, sec_y + 9)
-        pdf.set_font('CJK', '', 8); pdf.set_text_color(*DGRAY)
-        pdf.cell(col_w - 4, row_h, '無點名個股資料')
-
-    # Right: core holdings
-    yr = sec_y + 9
-    for row in data['core_holdings'][:8]:
-        if not row or not row[0]: continue
-        pdf.set_xy(col2_x + 2, yr)
-        pdf.set_font('CJK', 'B', 8); pdf.set_text_color(*BLUE)
-        pdf.cell(22, row_h, row[0][:9])
-        pdf.set_xy(col2_x + 24, yr)
-        pdf.set_font('CJK', '', 8); pdf.set_text_color(*BLACK)
-        pdf.cell(col_w - 37, row_h, (row[1] if len(row) > 1 else '')[:12])
-        pdf.set_xy(col2_x + col_w - 13, yr)
-        pdf.set_font('CJK', 'B', 8); pdf.set_text_color(*GOLD)
-        pdf.cell(13, row_h, (row[2] if len(row) > 2 else '')[:5])
-        yr += row_h
-
-    pdf.set_xy(pdf.l_margin, max(yl, yr) + 5)
-
-    # ── Gold divider ─────────────────────────────────────────────────────────
-    pdf.set_draw_color(*GOLD); pdf.set_line_width(0.5)
-    pdf.line(pdf.l_margin, pdf.get_y(), pdf.w - pdf.r_margin, pdf.get_y())
-    pdf.set_line_width(0.2); pdf.ln(3)
-
-    # ── 主要風險提示 ─────────────────────────────────────────────────────────
-    pdf.set_fill_color(*NAVY); pdf.set_text_color(*WHITE)
-    pdf.set_font('CJK', 'B', 10)
-    pdf.cell(W, 8, '  主要風險提示', fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-    pdf.set_text_color(*BLACK); pdf.ln(2)
-    for risk in data['risks'][:3]:
-        row_y = pdf.get_y()
-        pdf.set_xy(pdf.l_margin + 4, row_y)
-        pdf.set_font('CJK', 'B', 9); pdf.set_text_color(*GOLD)
-        pdf.cell(6, 6, '▸')
-        pdf.set_xy(pdf.l_margin + 10, row_y)
-        pdf.set_font('CJK', '', 9); pdf.set_text_color(*BLACK)
-        pdf.cell(W - 10, 6, risk[:46] if len(risk) > 46 else risk, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-    if not data['risks']:
-        pdf.set_font('CJK', '', 9); pdf.set_text_color(*DGRAY)
-        pdf.cell(W, 6, '  （請參閱報告第五節）', new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-
-    # ── Bottom disclaimer ────────────────────────────────────────────────────
-    pdf.set_y(pdf.h - 22)
-    pdf.set_draw_color(*GOLD); pdf.set_line_width(0.5)
-    pdf.line(pdf.l_margin, pdf.get_y(), pdf.w - pdf.r_margin, pdf.get_y())
-    pdf.set_line_width(0.2); pdf.ln(3)
-    pdf.set_font('CJK', '', 7.5); pdf.set_text_color(*DGRAY)
-    pdf.cell(0, 5, '本報告由 AI 輔助生成，僅供參考，不構成任何投資建議或邀約。投資有風險，決策請獨立判斷。', align='C')
-    pdf.set_text_color(*BLACK)
-
-
-def convert_to_pdf(md_content, output_path):
-    import re
-    from fpdf import FPDF, XPos, YPos
-
+def convert_to_html(md_content, ep_title, date_str, output_path):
     try:
-        font_normal, font_bold = _find_cjk_fonts()
-        cleaned = _clean_for_pdf(md_content)
-
-        # ── PDF class with header/footer ────────────────────────────────────
-        class ReportPDF(FPDF):
-            ep_title  = ''
-            date_str  = ''
-
-            def header(self):
-                if self.page_no() <= 1:
-                    return
-                self.set_font('CJK', '', 8)
-                self.set_text_color(*DGRAY)
-                self.set_x(self.l_margin)
-                self.cell(0, 5, f'股癌 Podcast  AI 投資研報  {self.date_str}',
-                          new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-                self.set_draw_color(210, 210, 210)
-                self.line(self.l_margin, self.get_y(),
-                          self.w - self.r_margin, self.get_y())
-                self.ln(3)
-                self.set_text_color(*BLACK)
-
-            def footer(self):
-                if self.page_no() <= 1:
-                    return
-                self.set_y(-13)
-                self.set_font('CJK', '', 8)
-                self.set_text_color(*DGRAY)
-                self.cell(0, 5,
-                          f'第 {self.page_no()} 頁   |   本報告由 AI 輔助生成，僅供參考，不構成投資建議',
-                          align='C')
-
-        pdf = ReportPDF(orientation='P', unit='mm', format='A4')
-        pdf.add_font('CJK',              fname=font_normal)
-        pdf.add_font('CJK', style='B',  fname=font_bold)
-        pdf.add_font('CJK', style='I',  fname=font_normal)
-        pdf.add_font('CJK', style='BI', fname=font_bold)
-        pdf.set_auto_page_break(auto=True, margin=20)
-
-        # Extract episode title & date from footer line
-        date_match = re.search(r'分析日期：(\d{4}-\d{2}-\d{2})', md_content)
-        ep_match   = re.search(r'集數：(EP\d+[^\，,，\n]*)', md_content)
-        pdf.date_str  = date_match.group(1) if date_match else time.strftime('%Y-%m-%d')
-        pdf.ep_title  = ep_match.group(1).strip()   if ep_match  else ''
-
-        # ── Cover page ──────────────────────────────────────────────────────
-        pdf.add_page()
-        pdf.set_margins(0, 0, 0)
-
-        # Dark background
-        pdf.set_fill_color(*NAVY)
-        pdf.rect(0, 0, pdf.w, pdf.h, 'F')
-
-        # Gold top bar
-        pdf.set_fill_color(*GOLD)
-        pdf.rect(0, 52, pdf.w, 3, 'F')
-
-        # Main title
-        pdf.set_y(65)
-        pdf.set_font('CJK', 'B', 30)
-        pdf.set_text_color(*WHITE)
-        pdf.cell(0, 16, '股癌 Podcast', align='C', new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-
-        pdf.set_font('CJK', 'B', 20)
-        pdf.set_text_color(*GOLD)
-        pdf.cell(0, 12, 'AI 深度投資研報', align='C', new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-        pdf.ln(10)
-
-        # Episode
-        pdf.set_font('CJK', '', 14)
-        pdf.set_text_color(200, 215, 230)
-        ep_display = pdf.ep_title if len(pdf.ep_title) < 36 else pdf.ep_title[:33] + '...'
-        pdf.cell(0, 9, ep_display, align='C', new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-        pdf.ln(4)
-
-        # Date
-        pdf.set_font('CJK', '', 12)
-        pdf.set_text_color(140, 170, 200)
-        pdf.cell(0, 8, pdf.date_str, align='C', new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-        pdf.ln(50)
-
-        # Divider line
-        pdf.set_fill_color(*GOLD)
-        pdf.rect(0, pdf.h - 52, pdf.w, 2, 'F')
-
-        # Disclaimer
-        pdf.set_y(pdf.h - 42)
-        pdf.set_font('CJK', '', 9)
-        pdf.set_text_color(110, 120, 130)
-        pdf.set_x(20)
-        pdf.multi_cell(pdf.w - 40, 6,
-                       '本報告由人工智慧模型輔助生成，內容僅供參考，不構成任何投資建議或邀約。\n'
-                       '投資有風險，入市前請獨立評估，自行承擔決策責任。',
-                       align='C')
-
-        # ── Summary page (one-page overview) ────────────────────────────────
-        _render_summary_page(pdf, cleaned, pdf.ep_title, pdf.date_str)
-
-        # ── Content pages ───────────────────────────────────────────────────
-        pdf.add_page()
-        pdf.set_margins(18, 20, 18)
-
-        lines = cleaned.split('\n')
-        i = 0
-        while i < len(lines):
-            raw = lines[i]
-            line = raw.strip()
-
-            # --- H1: navy bar with white text ---
-            if line.startswith('# ') and not line.startswith('## '):
-                title = line[2:].strip()
-                pdf.ln(4)
-                pdf.set_fill_color(*NAVY)
-                pdf.set_text_color(*WHITE)
-                pdf.set_font('CJK', 'B', 13)
-                pdf.cell(0, 11, f'  {title}',
-                         fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-                pdf.ln(4)
-                pdf.set_text_color(*BLACK)
-
-            # --- H2: gold underline ---
-            elif line.startswith('## '):
-                title = line[3:].strip()
-                pdf.ln(3)
-                pdf.set_font('CJK', 'B', 12)
-                pdf.set_text_color(*NAVY)
-                pdf.cell(0, 8, title, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-                y = pdf.get_y()
-                pdf.set_draw_color(*GOLD)
-                pdf.set_line_width(0.8)
-                pdf.line(pdf.l_margin, y, pdf.l_margin + 55, y)
-                pdf.set_line_width(0.2)
-                pdf.ln(3)
-                pdf.set_text_color(*BLACK)
-
-            # --- H3: light blue box (stock entry) ---
-            elif line.startswith('### '):
-                title = line[4:].strip()
-                pdf.ln(3)
-                pdf.set_fill_color(*LGRAY)
-                pdf.set_text_color(*BLUE)
-                pdf.set_font('CJK', 'B', 11)
-                pdf.cell(0, 9, f'  {title}',
-                         fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-                pdf.set_text_color(*BLACK)
-                pdf.ln(1)
-
-            # --- Horizontal rule ---
-            elif line == '---':
-                pdf.ln(2)
-                pdf.set_draw_color(200, 200, 200)
-                pdf.line(pdf.l_margin, pdf.get_y(),
-                         pdf.w - pdf.r_margin, pdf.get_y())
-                pdf.ln(4)
-
-            # --- Table row ---
-            elif line.startswith('|') and line.endswith('|'):
-                cells = [c.strip() for c in line.strip('|').split('|')]
-                if all(set(c) <= set('-: ') for c in cells):
-                    i += 1
-                    continue
-                col_w = (pdf.w - pdf.l_margin - pdf.r_margin) / max(len(cells), 1)
-                is_header = (i > 0 and lines[i-1].strip().startswith('|'))
-                if not is_header:
-                    pdf.set_fill_color(*NAVY)
-                    pdf.set_text_color(*WHITE)
-                    pdf.set_font('CJK', 'B', 9)
-                else:
-                    pdf.set_fill_color(*LGRAY)
-                    pdf.set_text_color(*BLACK)
-                    pdf.set_font('CJK', '', 9)
-                for c in cells:
-                    pdf.cell(col_w, 7, c, border=1,
-                             fill=not is_header, new_x=XPos.RIGHT, new_y=YPos.TOP)
-                pdf.ln(7)
-                pdf.set_text_color(*BLACK)
-
-            # --- Bullet / list item ---
-            elif re.match(r'^[-*]\s', line) or re.match(r'^\d+\.\s', line):
-                # Determine indent level
-                indent = len(raw) - len(raw.lstrip())
-                is_numbered = re.match(r'^\d+\.\s', line)
-                content = re.sub(r'^[-*\d.]\s+', '', line)
-                x_offset = 6 + indent * 0.5
-                pdf.set_x(pdf.l_margin + x_offset)
-                # Bullet symbol
-                pdf.set_font('CJK', 'B', 10)
-                pdf.set_text_color(*GOLD)
-                bullet = f'{line.split(".")[0]}.' if is_numbered else '·'
-                pdf.cell(5, 6, bullet, new_x=XPos.RIGHT, new_y=YPos.TOP)
-                pdf.set_text_color(*BLACK)
-                # Content
-                avail_w = pdf.w - pdf.r_margin - pdf.get_x()
-                parts = re.split(r'(\*\*.*?\*\*)', content)
-                start_x = pdf.get_x()
-                start_y = pdf.get_y()
-                plain = _strip_inline_md(content)
-                pdf.set_font('CJK', '', 10)
-                pdf.multi_cell(avail_w, 6, plain,
-                               new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-
-            # --- Blockquote ---
-            elif line.startswith('> '):
-                content = _strip_inline_md(line[2:])
-                pdf.ln(1)
-                pdf.set_fill_color(250, 248, 235)
-                x0 = pdf.l_margin + 4
-                y0 = pdf.get_y()
-                pdf.set_x(x0 + 5)
-                pdf.set_font('CJK', 'I', 10)
-                pdf.set_text_color(*DGRAY)
-                pdf.multi_cell(pdf.w - pdf.r_margin - x0 - 5, 6, content,
-                               new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-                y1 = pdf.get_y()
-                pdf.set_fill_color(*GOLD)
-                pdf.rect(x0, y0, 2, y1 - y0, 'F')
-                pdf.set_text_color(*BLACK)
-                pdf.ln(1)
-
-            # --- Empty line ---
-            elif line == '':
-                pdf.ln(2)
-
-            # --- Regular paragraph ---
-            else:
-                plain = _strip_inline_md(line)
-                if plain:
-                    pdf.set_font('CJK', '', 10)
-                    pdf.set_text_color(40, 40, 40)
-                    pdf.multi_cell(0, 6, plain,
-                                   new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-                    pdf.set_text_color(*BLACK)
-
-            i += 1
-
-        pdf.output(output_path)
-        size_kb = os.path.getsize(output_path) / 1024
-        print(f"✅ PDF 生成完成（{size_kb:.0f} KB）: {output_path}")
+        import markdown as md_lib
+        cleaned = _clean_text(md_content)
+        summary_html = _build_summary_html(_extract_summary_data(cleaned))
+        body_html = md_lib.Markdown(extensions=['tables', 'nl2br']).convert(cleaned)
+        ep_short = ep_title if len(ep_title) < 40 else ep_title[:37] + '...'
+        html = f"""<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>股癌研報 · {ep_short} · {date_str}</title>
+<style>{HTML_CSS}</style>
+</head>
+<body>
+<div class="cover"><div class="cover-inner">
+  <h1>股癌 Podcast</h1>
+  <div class="cover-subtitle">AI 深度投資研報</div>
+  <div class="cover-ep">{ep_short}</div>
+  <div class="cover-date">{date_str}</div>
+  <div class="cover-disclaimer">本報告由人工智慧模型輔助生成，內容僅供參考，不構成任何投資建議或邀約。<br>投資有風險，入市前請獨立評估，自行承擔決策責任。</div>
+</div></div>
+<div class="container">
+{summary_html}
+<div class="report-content">{body_html}</div>
+</div>
+<div class="page-footer">本報告基於 {ep_title}，分析日期：{date_str} · 由 AI 模型輔助生成 · 僅供參考，不構成投資建議</div>
+</body>
+</html>"""
+        os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(html)
+        print(f"✅ HTML 生成完成（{os.path.getsize(output_path)//1024} KB）: {output_path}")
         return True
-
     except Exception as e:
-        print(f"❌ PDF 生成失敗: {e}")
-        import traceback
-        traceback.print_exc()
+        print(f"❌ HTML 生成失敗: {e}")
+        import traceback; traceback.print_exc()
         return False
+
+def push_html_to_pages(html_path):
+    """Commit and push the HTML report to the repo for GitHub Pages."""
+    try:
+        for cmd in [
+            ['git', 'config', 'user.name', 'github-actions[bot]'],
+            ['git', 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'],
+            ['git', 'add', html_path],
+            ['git', 'commit', '-m', f'report: add {os.path.basename(html_path)}'],
+            ['git', 'push'],
+        ]:
+            r = subprocess.run(cmd, capture_output=True, text=True)
+            if r.returncode != 0 and r.stderr.strip():
+                print(f"  git: {r.stderr.strip()}")
+        print("✅ 已推送到 GitHub Pages")
+        return True
+    except Exception as e:
+        print(f"❌ Git push 失敗: {e}")
+        return False
+
 
 # ─── 寄送 Email ──────────────────────────────────────────────────────────────
 
-def send_email(subject, body, pdf_path, config):
+def send_email(subject, body_html, config):
     recipients = config.get("recipients", [config["gmail_user"]])
     print(f"📧 正在寄送報告至 {recipients}...")
     try:
-        msg = MIMEMultipart()
+        msg = MIMEMultipart('alternative')
         msg['From'] = config['gmail_user']
         msg['To'] = ', '.join(recipients)
         msg['Subject'] = subject
-        msg.attach(MIMEText(body, 'plain', 'utf-8'))
-
-        with open(pdf_path, 'rb') as f:
-            attach = MIMEApplication(f.read(), _subtype='pdf')
-            attach.add_header(
-                'Content-Disposition', 'attachment',
-                filename=os.path.basename(pdf_path)
-            )
-            msg.attach(attach)
-
+        msg.attach(MIMEText(body_html, 'html', 'utf-8'))
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
             server.login(config['gmail_user'], config['gmail_app_password'])
             server.send_message(msg)
         print("✅ 郵件寄送成功！")
         return True
     except smtplib.SMTPAuthenticationError:
-        print("❌ Gmail 認證失敗，請確認 config.json 中的應用程式密碼是否正確。")
+        print("❌ Gmail 認證失敗，請確認應用程式密碼是否正確。")
         return False
     except Exception as e:
         print(f"❌ 郵件寄送失敗: {e}")
@@ -991,33 +684,50 @@ def run():
 
     final_output = report_content
 
-    # 7. 存 Markdown
+    # 7. 存 Markdown（備份）
     ts = time.strftime('%Y%m%d_%H%M')
-    safe_title = ep['title'].replace('|', '').replace('/', '').strip()
     md_path = f"{REPORT_DIR}/研報_{ts}.md"
     with open(md_path, "w", encoding="utf-8") as f:
         f.write(final_output)
     print(f"📄 Markdown 存檔：{md_path}")
 
-    # 8. 轉 PDF
-    pdf_path = f"{REPORT_DIR}/研報_{ts}.pdf"
-    pdf_ok = convert_to_pdf(final_output, pdf_path)
+    # 8. 轉 HTML
+    date_str = time.strftime('%Y-%m-%d')
+    html_filename = f"report_{ts}.html"
+    html_path = os.path.join(DOCS_DIR if is_cloud else REPORT_DIR, html_filename)
+    html_ok = convert_to_html(final_output, ep['title'], date_str, html_path)
 
-    # 9. 寄送 Email
-    if pdf_ok and os.path.exists(pdf_path):
+    # 9. 推送到 GitHub Pages（雲端）並寄 Email
+    report_url = None
+    if is_cloud and html_ok:
+        if push_html_to_pages(html_path):
+            report_url = f"{GITHUB_PAGES_BASE}/reports/{html_filename}"
+            print(f"🌐 報告網址：{report_url}")
+
+    if html_ok:
         subject = f"【股癌研報】{ep['title']} — {time.strftime('%Y/%m/%d')}"
-        body = (
-            f"您好，\n\n"
-            f"本週股癌 Podcast 分析研報已自動產生，請見附件 PDF。\n\n"
-            f"集數：{ep['title']}\n"
-            f"發布日期：{ep['published']}\n"
-            f"分析模型：{model}\n"
-            f"執行時間：{time.strftime('%Y-%m-%d %H:%M')}\n\n"
-            f"此郵件由自動排程系統發送。"
-        )
-        send_email(subject, body, pdf_path, config)
+        if report_url:
+            body_html = f"""<div style="font-family:-apple-system,'Microsoft JhengHei',sans-serif;max-width:600px;margin:0 auto;">
+<div style="background:#0d2137;color:white;padding:24px 28px;border-bottom:3px solid #c89b32;">
+  <h2 style="margin:0;font-size:1.1em;">股癌 Podcast AI 投資研報</h2>
+</div>
+<div style="background:white;padding:24px 28px;border:1px solid #dde2ea;">
+  <p style="color:#2c2c3e;margin-bottom:16px;">您好，本週股癌 Podcast 分析研報已自動產生。</p>
+  <table style="width:100%;font-size:.9em;color:#444;margin-bottom:20px;">
+    <tr><td style="padding:4px 0;color:#888;width:80px">集數</td><td>{ep['title']}</td></tr>
+    <tr><td style="padding:4px 0;color:#888">分析日期</td><td>{date_str}</td></tr>
+    <tr><td style="padding:4px 0;color:#888">模型</td><td>{model}</td></tr>
+  </table>
+  <div style="text-align:center;margin:24px 0;">
+    <a href="{report_url}" style="background:#0d2137;color:white;padding:12px 28px;text-decoration:none;border-radius:4px;font-weight:700;font-size:1em;border-bottom:3px solid #c89b32;">點此開啟完整研報 →</a>
+  </div>
+  <p style="color:#aaa;font-size:.8em;text-align:center;">此郵件由自動排程系統發送。報告內容由 AI 輔助生成，僅供參考。</p>
+</div></div>"""
+        else:
+            body_html = f"<p>股癌研報已生成，集數：{ep['title']}，請至 GitHub 查看。</p>"
+        send_email(subject, body_html, config)
     else:
-        print("⚠️  PDF 不存在，跳過寄送。")
+        print("⚠️  HTML 生成失敗，跳過寄送。")
 
     # 10. 記錄已處理（防止重複執行）
     save_last_episode(ep)
