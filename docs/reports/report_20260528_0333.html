@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>股癌研報 · EP665 | 🌸 · 2026-05-28</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", sans-serif; background: #eef1f5; color: #1a1a2e; line-height: 1.75; font-size: 15px; }
+.cover { background: linear-gradient(160deg, #0d2137 60%, #1a3a5c); border-bottom: 4px solid #c89b32; }
+.cover-inner { max-width: 860px; margin: 0 auto; padding: 52px 32px 44px; text-align: center; }
+.cover h1 { font-size: 2em; font-weight: 700; letter-spacing: 3px; color: white; margin-bottom: 8px; }
+.cover-subtitle { color: #c89b32; font-size: 1.25em; font-weight: 600; margin-bottom: 24px; }
+.cover-ep { color: #b0c8de; font-size: 0.95em; margin-bottom: 4px; }
+.cover-date { color: #7a9ab5; font-size: 0.85em; margin-bottom: 28px; }
+.cover-disclaimer { font-size: 0.78em; color: #4a6a85; line-height: 1.6; }
+.container { max-width: 860px; margin: 0 auto; padding: 28px 24px 60px; }
+.summary-card { background: white; border-radius: 8px; border: 1px solid #d8dde8; box-shadow: 0 2px 12px rgba(0,0,0,.07); margin-bottom: 28px; overflow: hidden; }
+.summary-header { background: #0d2137; color: white; padding: 12px 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.summary-title { font-size: 1em; font-weight: 700; letter-spacing: 1px; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: .82em; font-weight: 700; }
+.badge-bull { background: #c89b32; color: white; }
+.badge-bear { background: #c0392b; color: white; }
+.badge-neutral { background: #5a6a7a; color: white; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.summary-section { padding: 16px 20px; border-right: 1px solid #e8eaf0; border-bottom: 1px solid #e8eaf0; }
+.summary-section:nth-child(even) { border-right: none; }
+.signals-section { grid-column: 1 / -1; border-right: none; }
+.risks-section { grid-column: 1 / -1; border-right: none; border-bottom: none; }
+.summary-section h4 { color: #0d2137; font-size: .8em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 2px solid #c89b32; display: inline-block; }
+.signals-section ol { display: flex; gap: 10px; flex-wrap: wrap; list-style: none; counter-reset: sig; }
+.signals-section li { counter-increment: sig; flex: 1 1 200px; background: #f5f7fb; border-left: 3px solid #c89b32; padding: 6px 10px; border-radius: 0 4px 4px 0; font-size: .88em; color: #2c2c3e; }
+.signals-section li::before { content: counter(sig) ". "; font-weight: 700; color: #c89b32; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: .83em; }
+.summary-table th { background: #f0f3f8; color: #0d2137; padding: 5px 8px; text-align: left; font-weight: 600; }
+.summary-table td { padding: 4px 8px; border-bottom: 1px solid #eef0f5; color: #2c2c3e; }
+.summary-table .code { font-weight: 700; color: #0f3460; }
+.r-sbull { color: #c0392b; font-weight: 700; } .r-bull { color: #b8860b; font-weight: 700; }
+.r-watch { color: #2980b9; } .r-neutral { color: #7f8c8d; } .r-bear { color: #884400; }
+.weight { font-weight: 700; color: #c89b32; }
+.risks-section ul { padding-left: 0; display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.risks-section li { list-style: none; font-size: .88em; color: #2c2c3e; padding-left: 14px; position: relative; }
+.risks-section li::before { content: "▸"; color: #c89b32; position: absolute; left: 0; font-weight: 700; }
+.report-content { background: white; border-radius: 8px; border: 1px solid #d8dde8; padding: 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+.report-content h1 { background: #0d2137; color: white; padding: 10px 16px; margin: 28px -32px 18px; font-size: 1.05em; letter-spacing: .5px; }
+.report-content h1:first-child { margin-top: -28px; border-radius: 7px 7px 0 0; }
+.report-content h2 { color: #0d2137; font-size: 1em; margin: 20px 0 10px; padding-bottom: 4px; border-bottom: 2px solid #c89b32; display: inline-block; }
+.report-content h3 { background: #f5f7fb; color: #0f3460; padding: 7px 14px; margin: 16px 0 10px; font-size: .98em; border-left: 3px solid #c89b32; border-radius: 0 4px 4px 0; }
+.report-content p { margin: 8px 0; color: #2c2c3e; font-size: .94em; }
+.report-content ul, .report-content ol { padding-left: 22px; margin: 8px 0; }
+.report-content li { margin: 4px 0; color: #2c2c3e; font-size: .92em; }
+.report-content li::marker { color: #c89b32; }
+.report-content strong { color: #0d2137; font-weight: 600; }
+.report-content em { color: #5a6a7a; }
+.report-content blockquote { border-left: 3px solid #c89b32; background: #fdfbf3; padding: 10px 16px; margin: 12px 0; color: #555; border-radius: 0 4px 4px 0; }
+.report-content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .88em; }
+.report-content thead tr { background: #0d2137; color: white; }
+.report-content thead th { padding: 9px 12px; text-align: left; font-weight: 600; }
+.report-content tbody tr:nth-child(even) { background: #f5f7fb; }
+.report-content tbody tr:hover { background: #eef2f7; }
+.report-content td { padding: 7px 12px; border-bottom: 1px solid #e0e4ea; color: #2c2c3e; }
+.report-content hr { border: none; border-top: 1px solid #d8dde8; margin: 24px 0; }
+.page-footer { text-align: center; color: #8a9ab5; font-size: .8em; margin-top: 28px; padding: 16px; }
+
+/* ── Layout ──────────────────────────────────────────────────── */
+.page-outer { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.page-flex  { display: flex; gap: 24px; align-items: flex-start; padding: 28px 0 60px; }
+.toc-col    { width: 176px; flex-shrink: 0; position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+.main-col   { flex: 1; min-width: 0; }
+
+/* ── Desktop TOC ─────────────────────────────────────────────── */
+.toc-box    { background: white; border-radius: 8px; border: 1px solid #d8dde8; padding: 14px 12px; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.toc-ttl    { font-size: .72em; font-weight: 700; color: #0d2137; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #eef0f5; }
+.toc-list   { list-style: none; padding: 0; margin: 0; }
+.toc-list a { display: block; padding: 5px 8px; font-size: .8em; color: #5a6a7a; text-decoration: none; border-left: 2px solid transparent; border-radius: 0 3px 3px 0; transition: all .15s; line-height: 1.4; }
+.toc-list a:hover, .toc-list a.tac { color: #0d2137; border-left-color: #c89b32; font-weight: 600; background: #f5f7fb; }
+
+/* ── Mobile TOC ──────────────────────────────────────────────── */
+.toc-mob  { display: none; position: sticky; top: 0; z-index: 50; background: white; border-bottom: 2px solid #c89b32; overflow-x: auto; scrollbar-width: none; }
+.toc-mob::-webkit-scrollbar { display: none; }
+.toc-mob ul { display: flex; list-style: none; padding: 0 12px; margin: 0; white-space: nowrap; }
+.toc-mob a  { display: inline-block; padding: 9px 14px; font-size: .8em; color: #5a6a7a; text-decoration: none; border-bottom: 2px solid transparent; transition: all .15s; }
+.toc-mob a:hover, .toc-mob a.tac { color: #0d2137; border-bottom-color: #c89b32; font-weight: 600; }
+
+/* ── Stock cards ─────────────────────────────────────────────── */
+.stock-card { border: 1px solid #d8dde8; border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.stock-card > summary { list-style: none; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 11px 16px; background: #f5f7fb; cursor: pointer; user-select: none; transition: background .15s; }
+.stock-card > summary::-webkit-details-marker { display: none; }
+.stock-card > summary:hover { background: #eef2f7; }
+.stock-card[open] > summary { background: #0d2137; }
+.stock-card[open] .sc-code { color: #c89b32; }
+.stock-card[open] .sc-name { color: white; }
+.stock-card[open] .sc-theme { color: #8ab0cc; background: rgba(255,255,255,.08); }
+.stock-card[open] .sc-chev { transform: rotate(180deg); color: #c89b32; }
+.sc-code  { font-weight: 700; color: #0f3460; font-size: .86em; font-family: monospace; }
+.sc-name  { font-weight: 600; color: #1a1a2e; font-size: .95em; }
+.sc-theme { font-size: .74em; color: #5a6a7a; background: #e8edf5; padding: 2px 9px; border-radius: 10px; }
+.sc-right { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.sc-rtxt  { font-size: .8em; font-weight: 700; }
+.sc-bars  { display: flex; gap: 2px; align-items: center; }
+.cb-dot   { display: inline-block; width: 9px; height: 9px; border-radius: 2px; }
+.sc-chev  { font-size: .65em; color: #8a9ab5; transition: transform .2s; margin-left: 4px; }
+.sc-body  { padding: 16px 20px; background: white; border-top: 1px solid #e8eaf0; }
+.sc-body ul { padding-left: 0; list-style: none; margin: 0; }
+.sc-body li { padding: 6px 0; border-bottom: 1px solid #f5f7fb; font-size: .9em; color: #2c2c3e; display: flex; flex-wrap: wrap; gap: 4px; }
+.sc-body li:last-child { border-bottom: none; }
+.sc-body li strong { color: #0d2137; min-width: 88px; flex-shrink: 0; }
+
+/* ── Holdings bar chart (report body) ───────────────────────── */
+.hc-chart { margin: 12px 0 20px; }
+.hc-row   { display: grid; grid-template-columns: 160px 1fr; gap: 10px; align-items: center; padding: 5px 0; border-bottom: 1px solid #f0f3f8; }
+.hc-row:last-child { border-bottom: none; }
+.hc-name  { display: block; font-weight: 700; font-size: .86em; color: #0f3460; }
+.hc-theme { display: block; font-size: .72em; color: #7a9ab5; margin-top: 1px; }
+.hc-track { position: relative; background: #f0f3f8; border-radius: 3px; height: 24px; }
+.hc-fill  { height: 100%; background: linear-gradient(90deg, #0d2137, #1e4a6e); border-radius: 3px; }
+.hc-lbl   { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-weight: 700; font-size: .82em; color: #0d2137; }
+
+/* ── Summary card holdings bar chart ────────────────────────── */
+.shc-row   { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+.shc-name  { font-size: .82em; font-weight: 700; color: #0f3460; width: 96px; flex-shrink: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.shc-track { flex: 1; background: #e8edf5; border-radius: 3px; height: 16px; position: relative; }
+.shc-fill  { height: 100%; background: linear-gradient(90deg, #0d2137, #1e4a6e); border-radius: 3px; }
+.shc-pct   { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: .72em; font-weight: 700; color: #0d2137; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .toc-col { display: none; }
+  .toc-mob { display: block; }
+  .page-flex { padding: 20px 0 40px; }
+}
+@media (max-width: 620px) {
+  .summary-grid { grid-template-columns: 1fr; }
+  .summary-section { border-right: none; }
+  .report-content { padding: 18px 16px; }
+  .report-content h1 { margin-left: -16px; margin-right: -16px; }
+  .hc-row { grid-template-columns: 1fr; }
+  .sc-body li { flex-direction: column; }
+  .sc-body li strong { min-width: auto; }
+}
+</style>
+</head>
+<body>
+<div class="cover"><div class="cover-inner">
+  <h1>股癌 Podcast</h1>
+  <div class="cover-subtitle">AI 深度投資研報</div>
+  <div class="cover-ep">EP665 | 🌸</div>
+  <div class="cover-date">2026-05-28</div>
+  <div class="cover-disclaimer">本報告由人工智慧模型輔助生成，內容僅供參考，不構成任何投資建議或邀約。<br>投資有風險，入市前請獨立評估，自行承擔決策責任。</div>
+</div></div>
+<nav class="toc-mob"><ul id="toc-m"></ul></nav>
+<div class="page-outer"><div class="page-flex">
+  <aside class="toc-col">
+    <div class="toc-box">
+      <div class="toc-ttl">目錄</div>
+      <ul class="toc-list" id="toc-d"></ul>
+    </div>
+  </aside>
+  <div class="main-col">
+    <div class="container">
+<div class="summary-card">
+  <div class="summary-header"><span class="summary-title">本集快覽</span><span class="badge badge-bull">大盤：做多</span></div>
+  <div class="summary-grid">
+    <div class="summary-section signals-section"><h4>三大核心訊號</h4><ol><li>台股仍屬強多頭，主流股回檔即有承接。</li><li>被動元件景氣擴散至全球，非短線炒作。</li><li>SpaceX IPO將打開衛星AI運算新敘事。</li></ol></div>
+    <div class="summary-section stocks-section"><h4>點名個股</h4><table class="summary-table"><thead><tr><th>代號</th><th>名稱</th><th>評級</th></tr></thead><tbody><tr><td class="code">[2327]</td><td>國巨</td><td style="color:#b8860b;font-weight:700;white-space:nowrap">看多&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[2454]</td><td>聯發科</td><td style="color:#b8860b;font-weight:700;white-space:nowrap">看多&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[2330]</td><td>台積電</td><td style="color:#7f8c8d;font-weight:700;white-space:nowrap">中性&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[TSLA]</td><td>Tesla</td><td style="color:#7f8c8d;font-weight:700;white-space:nowrap">中性&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[PLTR]</td><td>Palantir</td><td style="color:#7f8c8d;font-weight:700;white-space:nowrap">中性&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[NVDA]</td><td>Nvidia</td><td style="color:#b8860b;font-weight:700;white-space:nowrap">看多&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[SPACEX]</td><td>SpaceX</td><td style="color:#c0392b;font-weight:700;white-space:nowrap">強烈看多&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#c0392b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#c0392b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#c0392b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#c0392b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#c0392b;margin:0 1px"></span></span></td></tr></tbody></table></div>
+    <div class="summary-section holdings-section"><h4>核心持股建議</h4><div><div class="shc-row"><span class="shc-name" title="2330 台積電">2330 台積電</span><div class="shc-track"><div class="shc-fill" style="width:25%"></div><span class="shc-pct">25%</span></div></div><div class="shc-row"><span class="shc-name" title="2454 聯發科">2454 聯發科</span><div class="shc-track"><div class="shc-fill" style="width:20%"></div><span class="shc-pct">20%</span></div></div><div class="shc-row"><span class="shc-name" title="2327 國巨">2327 國巨</span><div class="shc-track"><div class="shc-fill" style="width:20%"></div><span class="shc-pct">20%</span></div></div><div class="shc-row"><span class="shc-name" title="2308 台達電">2308 台達電</span><div class="shc-track"><div class="shc-fill" style="width:20%"></div><span class="shc-pct">20%</span></div></div><div class="shc-row"><span class="shc-name" title="3037 欣興">3037 欣興</span><div class="shc-track"><div class="shc-fill" style="width:15%"></div><span class="shc-pct">15%</span></div></div></div></div>
+    <div class="summary-section risks-section"><h4>主要風險</h4><ul><li>最大尾部風險</li><li>短期擾動因素</li><li>本次分析盲點</li></ul></div>
+  </div>
+</div>
+<div class="report-content" id="report"><h1>執行摘要</h1>
+<p>本集三大核心訊號（每點一行，精煉至 30 字以內）：<br />
+1. 台股仍屬強多頭，主流股回檔即有承接。<br />
+2. 被動元件景氣擴散至全球，非短線炒作。<br />
+3. SpaceX IPO將打開衛星AI運算新敘事。</p>
+<h1>一、市場環境與主持人核心觀點</h1>
+<p><strong>多空研判：</strong> 多頭。<br />
+主持人明確表示「市場還是沒有什麼好評論，反正就是一直噴一直噴」，並指出即便部分族群出現「假摔」，資金仍快速回流主流方向，代表市場風險偏好極高、回檔承接力強。這不是防守型行情，而是典型趨勢多頭。<br />
+延伸推論：結合新聞面可見台積電再創高、台股盤中逼近 4.5 萬點、232 關稅優惠帶動非半導體出口族群急漲，顯示指數與題材股同步擴散，屬高風險偏好環境。</p>
+<p><strong>資金輪動方向：</strong><br />
+主持人明確提到：<br />
+- 被動元件「整組做壞掉」，屬持續發動主軸。<br />
+- 載板「還是整天在那邊噴」。<br />
+- 機器人類股近期噴很多，屬市場願意提前交易未來成長的題材。<br />
+- 衛星相關股票年初已走過一波，接下來他更關注的是「衛星上的 AI 運算／太空資料中心」新分支。<br />
+- 散熱近期台股表現不好，但若切入軌道伺服器，單位價值量可能很大。</p>
+<p>延伸推論：<br />
+近期資金有兩條主線並進：<br />
+1. 已有營收/產能驗證的 AI 基建與零組件：晶圓、CoWoS、HBM、ABF、被動元件、散熱。<br />
+2. 尚未大規模貢獻營收、但估值提前反映的遠期題材：機器人、衛星、太空運算、光通訊/CPO。<br />
+這代表市場從「業績成長」擴散至「估值想像力」。</p>
+<p><strong>整體操作哲學：</strong><br />
+主持人核心主張相當一致：<br />
+- 不追求穩贏，而是提高勝率。<br />
+- 在高勝率處重壓，但承認本質仍有賭的成分。<br />
+- 面對強趨勢股，不一定要照教科書減碼，會依市場結構與籌碼狀況做主觀微調。<br />
+- 題材、營收、產業趨勢是核心選股邏輯。<br />
+- 長期投資不是一次決定，而是每次都重新決定「要不要繼續持有」。</p>
+<p>延伸推論：<br />
+這套方法更接近機構中的「主題成長＋動態部位管理」，不是純價值，也不是純技術，而是基本面與市場情緒結合的趨勢投資框架。</p>
+<p><strong>本集最重要的產業主軸：</strong>  </p>
+<ol>
+<li>
+<p><strong>被動元件</strong><br />
+這是主持人本集對「已經漲很多、但仍可能有基本面支撐」講得最完整的族群。他明確引用國巨法說內容，提到 BB Ratio 向上、特規品稼動率約 90%、標準品約 80% 多，並且比對全球同業如 Vishay、VPG、中國江海、日本廠商，認為不是單一地區或單一公司的人為炒作，而是全球性景氣改善與漲價循環。</p>
+</li>
+<li>
+<p><strong>SpaceX／衛星 AI 運算／太空資料中心</strong><br />
+這是主持人最具前瞻性的討論主題。他的明確說法是，SpaceX IPO 後他會先上車，且不只看 Starlink 現有網路業務，更重視未來把運算、資料中心、算力出租甚至 AI 伺服器酬載送上軌道的可能性。他認為市場現在還沒完全交易這個敘事，但一旦形成，供應鏈可能先走題材段，再進入量產段。</p>
+</li>
+</ol>
+<h1>二、主持人點名個股</h1>
+<h3>[2327] 國巨</h3>
+<ul>
+<li><strong>信心評級：</strong> [看多]</li>
+<li><strong>產業主題：</strong> 被動元件漲價 / 景氣循環向上</li>
+<li><strong>主持人核心論述：</strong> 主持人明確指出，國巨在對外說明中提到 BB Ratio 持續拉升，特規品稼動率約 90%，標準品也在 80% 多，顯示需求與接單同步改善。他進一步用 2018 年被動元件大多頭作為歷史對照，認為後續可從毛利率、營收、漲價速度與學習曲線去估算本輪循環能走多遠，並測算明年 EPS 與目標價。重點不是「有沒有景氣」，而是「這次會走到多強」。</li>
+<li><strong>新聞佐證：</strong> 「國巨『關禁閉』一度重挫8%...分析師曝一關鍵看多：看看聯發科」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 已非低位起漲區，宜等回檔或震盪整理後分批承接，不宜情緒性追價。</li>
+</ul>
+<h3>[2454] 聯發科</h3>
+<ul>
+<li><strong>信心評級：</strong> [看多]</li>
+<li><strong>產業主題：</strong> AI ASIC / 資料中心 / 矽光子</li>
+<li><strong>主持人核心論述：</strong> 主持人提到聯發科是前幾年市場覺得「軟掉」的公司，但現在因 AI 動能重新轉強，拿來類比台積電員工分紅爭議下的長期思維：短期技術性調整不改變長期價值。他的重點不在短線價位，而在於「若你扛得住前面的疲弱，就能吃到後面的果實」。</li>
+<li><strong>新聞佐證：</strong> 「聯發科COMPUTEX秀肌肉！展現ASIC與矽光子最新技術」— tw.stock.yahoo.com；「聯發科COMPUTEX亮點一次看！　輝達助陣超級電腦、CPO技術來了」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 若看好 AI ASIC 與資料中心布局，回檔至均線區可分批布局，偏向中期持有。</li>
+</ul>
+<h3>[2330] 台積電</h3>
+<ul>
+<li><strong>信心評級：</strong> [中性]</li>
+<li><strong>產業主題：</strong> 先進製程 / AI 半導體核心資產</li>
+<li><strong>主持人核心論述：</strong> 主持人談到的焦點並非股價，而是分紅爭議。他明確區分：自己沒有替公司洗地，但認為台積電在台灣仍是極具吸引力的就業與產業平台，當前分紅較保守更像是技術性修正，而非長期競爭力出問題。他的論述偏向企業長期價值與人才穩定性的觀察，不是直接的投資推薦。</li>
+<li><strong>新聞佐證：</strong> 「台積電衝上2,360元、改寫新天價 市值61兆元締新猷」— tw.stock.yahoo.com；「分紅爭議燒不完？專家揭『台積電面臨最大危機』：員工最不滿1件事」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [過熱慎追]</li>
+<li><strong>操作參考：</strong> 作為核心資產可續抱，但短線創高後不建議追價，等市場波動收斂再評估加碼。</li>
+</ul>
+<h3>[TSLA] Tesla</h3>
+<ul>
+<li><strong>信心評級：</strong> [中性]</li>
+<li><strong>產業主題：</strong> 馬斯克生態系 / 電動車轉向 AI、能源、自駕</li>
+<li><strong>主持人核心論述：</strong> 主持人明確表示，若 SpaceX 上市，他可能會降低部分 Tesla 持股，因為他壓的是「馬斯克的故事」，而不是單一產品週期。他指出 Tesla 的估值重心早已從電動車出貨轉向能源、Optimus、自駕，因此持股邏輯也應跟著企業敘事改變。</li>
+<li><strong>新聞佐證：</strong> 「SpaceX-Tesla merger chatter reignites as Musk pushes rocket company toward Nasdaq」— cnbc.com</li>
+<li><strong>現況評估：</strong> [震盪整理等待]</li>
+<li><strong>操作參考：</strong> 若已持有，可視為馬斯克生態系配置；新倉需觀察 SpaceX 上市後資金分流效應。</li>
+</ul>
+<h3>[PLTR] Palantir</h3>
+<ul>
+<li><strong>信心評級：</strong> [中性]</li>
+<li><strong>產業主題：</strong> AI 軟體 / 敘事型成長股</li>
+<li><strong>主持人核心論述：</strong> 主持人將 Palantir 作為過去「新上市先上車卡位」的案例，說明面對高敘事公司時，他傾向先建立基礎部位，再依走勢與估值調整。這是方法論分享，不是當下主推標的。</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估：</strong> [震盪整理等待]</li>
+<li><strong>操作參考：</strong> 屬高估值成長股，適合事件驅動分批布局，不宜一次性重壓。</li>
+</ul>
+<h3>[NVDA] Nvidia</h3>
+<ul>
+<li><strong>信心評級：</strong> [看多]</li>
+<li><strong>產業主題：</strong> AI 運算 / GPU / 平台型半導體</li>
+<li><strong>主持人核心論述：</strong> 主持人用 Nvidia 作為產業演進典型案例：市場最早買的是顯示卡，但如今顯示卡在公司結構中已被包進更大的 Edge 業務，代表企業價值會隨技術與應用場景改變。他也引用 GB 系列導入時，市場原本認為技術難度過高，但最後在大量資本投入下仍被硬推過去，以此支持自己對太空 AI 運算最終可被資本解決的看法。</li>
+<li><strong>新聞佐證：</strong> 「黃仁勳：輝達在台投資將衝1500億美元　台灣已成AI全球核心」— tw.stock.yahoo.com；「Taiwan chip stocks climb after Nvidia announces $150 billion spending plans」— search.cnbc.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 逢技術性拉回布局，仍是 AI 資本開支主軸，不建議逆勢做空。</li>
+</ul>
+<h3>[SPACEX] SpaceX</h3>
+<ul>
+<li><strong>信心評級：</strong> [強烈看多]</li>
+<li><strong>產業主題：</strong> 衛星通訊 / Starlink / 太空資料中心 / 衛星AI運算</li>
+<li><strong>主持人核心論述：</strong> 主持人非常明確表示，SpaceX 若 IPO，「不管估值怎麼樣我都一定會先上車一點」，且自己的做法可能是一開始先卡一半部位。其邏輯分三層：第一，Starlink 已是穩定獲利與現金流來源；第二，Direct-to-cell 等通訊延伸仍有成長；第三，也是他最重視的，是未來 SpaceX 可能切入衛星上的算力出租、太空資料中心、把 AI 伺服器酬載送上軌道，形成新的 Neo Cloud 敘事。這部分仍屬前瞻設想，但他明顯已將其視為中長期估值重估核心。</li>
+<li><strong>新聞佐證：</strong> 「SpaceX首次IPO傳向日資募資20億美元，發行規模待定」— tw.stock.yahoo.com；「SpaceX IPO傳聞助攻 美國太空股盤中上漲引資金關注」— tw.stock.yahoo.com；「Retail investors get direct access to SpaceX IPO through major brokerage platforms」— search.cnbc.com</li>
+<li><strong>現況評估：</strong> [低度關注尚未爆發]</li>
+<li><strong>操作參考：</strong> 若 IPO 成真，可採事件型分批建倉；先建基礎部位，再依招股書與業務揭露調整。</li>
+</ul>
+<h1>三、延伸推論標的</h1>
+<h3>[3037] 欣興</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]</li>
+<li><strong>產業主題：</strong> ABF載板 / AI伺服器基板</li>
+<li><strong>受惠邏輯：</strong> AI 伺服器與高階運算需求提升 → ABF 與高層數載板用量增加 → 欣興作為台系核心供應商受惠</li>
+<li><strong>新聞佐證：</strong> 「台股下半年還能衝？大摩上修CSP投資，晶圓、CoWoS、HBM與ABF載板產能連動，揭半導體2027『成長數字』！」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 載板已進入強勢族群，回測月線或大量區支撐再介入風險報酬較佳。</li>
+</ul>
+<h3>[8046] 南電</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]</li>
+<li><strong>產業主題：</strong> ABF載板 / HPC</li>
+<li><strong>受惠邏輯：</strong> AI 晶片封裝複雜度提升 → ABF 載板需求與ASP走升 → 南電受惠於高階載板供需結構改善</li>
+<li><strong>新聞佐證：</strong> 「台股下半年還能衝？大摩上修CSP投資，晶圓、CoWoS、HBM與ABF載板產能連動，揭半導體2027『成長數字』！」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 強勢多頭中不宜追長紅，宜等短線換手後再分批。</li>
+</ul>
+<h3>[3008] 大立光</h3>
+<ul>
+<li><strong>推論強度：</strong> [中關聯]</li>
+<li><strong>產業主題：</strong> 機器人 / 視覺模組</li>
+<li><strong>受惠邏輯：</strong> 主持人認為市場願意交易機器人未來成長 → 人形機器人核心感測需求包括鏡頭與光學 → 大立光有機會切入高階視覺供應鏈</li>
+<li><strong>新聞佐證：</strong> 「昔日股王火力全開！大立光本周亮第3顆漲停燈 分析師：續航力還很強」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 若作為機器人視覺題材參與，宜小部位，等待更多訂單驗證。</li>
+</ul>
+<h3>[3653] 健策</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]</li>
+<li><strong>產業主題：</strong> AI散熱 / 高功耗運算散熱</li>
+<li><strong>受惠邏輯：</strong> AI 算力密度持續提升 → 散熱是不可迴避瓶頸 → 若未來延伸至特殊酬載與高可靠散熱，驗證通過者單價值量更高</li>
+<li><strong>新聞佐證：</strong> 「佳世達攜手AMD布局AI基礎設施　旗下其曜偕健策攻散熱」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [震盪整理等待]</li>
+<li><strong>操作參考：</strong> 近期散熱相對落後，可視為補漲觀察名單，等量縮整理後介入。</li>
+</ul>
+<h3>[2382] 廣達</h3>
+<ul>
+<li><strong>推論強度：</strong> [中關聯]</li>
+<li><strong>產業主題：</strong> AI伺服器 / 資料中心資本開支</li>
+<li><strong>受惠邏輯：</strong> Nvidia 與 CSP 資本支出上修 → AI 機櫃與伺服器出貨續增 → 廣達作為核心 ODM 持續受惠</li>
+<li><strong>新聞佐證：</strong> 「台股下半年還能衝？大摩上修CSP投資，晶圓、CoWoS、HBM與ABF載板產能連動，揭半導體2027『成長數字』！」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 作為大型權值 AI 股，可逢回布局，適合中大型資金。</li>
+</ul>
+<h3>[2308] 台達電</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]</li>
+<li><strong>產業主題：</strong> 電源管理 / AI基礎設施 / 散熱</li>
+<li><strong>受惠邏輯：</strong> AI 資料中心擴建 → 高功率電源、散熱、基礎設施需求同步增長 → 台達電受惠範圍廣且能見度高</li>
+<li><strong>新聞佐證：</strong> 「股價緊逼台積電！台達電強漲近9%挑戰2300元大關 分析師曝『創高關鍵』」— tw.stock.yahoo.com；「聯發科快追上高通 台達電市值破6.5兆」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 核心多頭股，適合趨勢持有，避免短線追價過深。</li>
+</ul>
+<h3>[3017] 奇鋐</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]</li>
+<li><strong>產業主題：</strong> 液冷 / AI散熱 / 機櫃級散熱</li>
+<li><strong>受惠邏輯：</strong> GB 系列與高密度運算推進 → 散熱規格升級至液冷與高階模組 → 奇鋐直接受惠 AI 伺服器平台升級</li>
+<li><strong>新聞佐證：</strong> 「佳世達集團佈局AI基礎設施 攜手AMD打造機櫃級AI資料中心方案」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [震盪整理等待]</li>
+<li><strong>操作參考：</strong> 若市場風格由題材轉回業績，奇鋐有望重獲資金青睞，可於季線附近分批布局。</li>
+</ul>
+<h3>[6279] 胡連</h3>
+<ul>
+<li><strong>推論強度：</strong> [中關聯]</li>
+<li><strong>產業主題：</strong> 汽車零組件 / 關稅優惠受惠</li>
+<li><strong>受惠邏輯：</strong> 美國對台汽車零組件 232 關稅優惠上路 → 台系汽車零組件出口競爭力改善 → 胡連等車用零件供應商評價上修</li>
+<li><strong>新聞佐證：</strong> 「美對台汽車零組件稅率15%　東陽：產業正面可公平競爭」— tw.stock.yahoo.com；「台股焦點：胡連(6279.TW)」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [趨勢發酵中]</li>
+<li><strong>操作參考：</strong> 關稅題材首日急漲後不追，等待消息消化與基本面跟上。</li>
+</ul>
+<h3>[1310] 台苯 / [1301] 台塑 / [1303] 南亞（以台塑為代表）</h3>
+<h3>[1301] 台塑</h3>
+<ul>
+<li><strong>推論強度：</strong> [弱關聯]</li>
+<li><strong>產業主題：</strong> 傳產景氣修復 / 半導體材料延伸</li>
+<li><strong>受惠邏輯：</strong> 主持人未直接談塑化，但新聞顯示公司積極轉向半導體等前瞻應用 → 若 AI 帶動材料升級與製造投資 → 傳產龍頭有機會修復評價</li>
+<li><strong>新聞佐證：</strong> 「台塑投資292億元推動前瞻產品　鎖定半導體應用等3領域」— tw.stock.yahoo.com；「台塑連2年虧損　郭文筆致歉：今年業績轉虧為盈」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> [低度關注尚未爆發]</li>
+<li><strong>操作參考：</strong> 僅適合景氣反轉型投資人，小部位觀察，不屬本集主線。</li>
+</ul>
+<h1>四、整體投資策略</h1>
+<p><strong>大盤研判：</strong> 做多。<br />
+依據在於：主持人口頭明確維持強勢偏多判斷，且新聞面同步印證台積電創高、AI 資本支出上修、台股受 232 關稅利多與權值股帶動續創高。雖短線乖離偏大，但結構未壞。</p>
+<p><strong>核心持股建議（3-5 檔）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>標的</th>
+<th>產業主題</th>
+<th>建議比重</th>
+<th>操作策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2330 台積電</td>
+<td>先進製程 / AI核心資產</td>
+<td>25%</td>
+<td>核心持有，急漲不追，回檔分批加碼</td>
+</tr>
+<tr>
+<td>2454 聯發科</td>
+<td>AI ASIC / 資料中心</td>
+<td>20%</td>
+<td>中期趨勢持有，拉回均線承接</td>
+</tr>
+<tr>
+<td>2327 國巨</td>
+<td>被動元件景氣上行</td>
+<td>20%</td>
+<td>等震盪後分批布局，重視法說與報價</td>
+</tr>
+<tr>
+<td>2308 台達電</td>
+<td>AI基建 / 電源散熱</td>
+<td>20%</td>
+<td>作為穩健型 AI 配置，續抱為主</td>
+</tr>
+<tr>
+<td>3037 欣興</td>
+<td>ABF載板 / HPC</td>
+<td>15%</td>
+<td>題材延續性強，拉回支撐再切入</td>
+</tr>
+</tbody>
+</table>
+<p><strong>積極型佈局（可承受 20%+ 回撤）：</strong><br />
+可採「雙主線＋事件驅動」配置：<br />
+- 主線一：被動元件與載板，重點放在國巨、欣興、南電。<br />
+- 主線二：AI 基建補漲與高彈性題材，重點放在奇鋐、健策、聯發科。<br />
+- 事件驅動：SpaceX IPO 概念延伸，觀察低軌衛星、散熱、光通訊與太空零組件鏈。<br />
+進場邏輯不是追第一根長紅，而是等急漲後首次像樣整理、量縮不破關鍵均線時切入。</p>
+<p><strong>保守型佈局（下行保護優先）：</strong><br />
+以大型權值與現金流穩定企業為主：<br />
+- 台積電<br />
+- 台達電<br />
+- 廣達<br />
+- 聯發科<br />
+- 搭配 20-30% 現金或短債/貨幣型部位<br />
+理由是目前市場極熱，雖不建議全面防禦，但保守型資金應避免追逐過度題材化的小型股，優先配置有業績、有市佔、有資本支出能見度的龍頭。</p>
+<h1>五、關鍵風險提示</h1>
+<ol>
+<li>
+<p><strong>最大尾部風險：</strong><br />
+中東局勢與油價失控上行，進一步推升通膨與美債殖利率。若 Brent 站穩高檔、Fed 再度偏鷹，將同時壓縮高估值 AI 股與題材股本益比，對 SpaceX 概念、機器人、載板等高彈性資產衝擊最大，對台積電、台達電等大型權值亦有評價回調壓力。</p>
+</li>
+<li>
+<p><strong>短期擾動因素：</strong>  </p>
+</li>
+<li>6 月 FOMC 前官員談話與通膨預期變化  </li>
+<li>美國對中高關稅常態化，可能引發供應鏈再評價  </li>
+<li>台股指數與權值股創高後的技術性獲利了結  </li>
+<li>
+<p>SpaceX IPO 若進一步釋出估值區間，可能造成馬斯克概念股間資金重分配</p>
+</li>
+<li>
+<p><strong>本次分析盲點：</strong>  </p>
+</li>
+<li>主持人對 SpaceX「衛星 AI 運算／太空資料中心」的觀點，現階段高度屬於前瞻推演，尚缺正式財務模型與商業驗證。  </li>
+<li>Podcast 內容偏重趨勢與題材形成，較少討論估值安全邊際，因此若市場風格切換，回撤可能超過一般投資人預期。  </li>
+<li>本報告依逐字稿與新聞交叉整理，但未納入公司最新法說全文、即時報價與賣方模型，對短期目標價推估需保留彈性。</li>
+</ol>
+<hr />
+<p><em>本報告基於 Podcast 集數：EP665 | ，分析日期：2026-05-28，由 AI 模型 gpt-5.4 輔助生成。</em><br />
+<em>資訊僅供參考，不構成任何投資建議或邀約。投資有風險，決策請獨立判斷。</em></p></div>
+    </div>
+  </div>
+</div></div>
+<div class="page-footer">本報告基於 EP665 | 🌸，分析日期：2026-05-28 · 由 AI 模型輔助生成 · 僅供參考，不構成投資建議</div>
+<script>
+(function(){
+'use strict';
+
+const RATINGS = ['強烈看多','看多','觀察中','中性','謹慎'];
+const R_COL = {'強烈看多':'#c0392b','看多':'#b8860b','觀察中':'#2980b9','中性':'#7f8c8d','謹慎':'#884400'};
+const R_LV  = {'強烈看多':5,'看多':4,'觀察中':3,'中性':2,'謹慎':1};
+
+function convBar(r){
+  const lv=R_LV[r]||0, col=R_COL[r]||'#ccc';
+  return Array.from({length:5},(_,i)=>
+    `<span class="cb-dot" style="background:${i<lv?col:'#dde2ea'}"></span>`
+  ).join('');
+}
+
+/* ── 1. Stock cards ──────────────────────────────────────────── */
+const report = document.getElementById('report');
+if(report){
+  [...report.querySelectorAll('h3')].forEach(h3=>{
+    const m = h3.textContent.match(/^\[(.+?)\]\s*(.+)/);
+    if(!m) return;
+    const [,code,name] = m;
+
+    const sibs=[];
+    let el=h3.nextElementSibling;
+    while(el && !['H1','H2','H3'].includes(el.tagName)){ sibs.push(el); el=el.nextElementSibling; }
+
+    let rating='', theme='';
+    sibs.forEach(s=>{
+      const t=s.textContent;
+      if(!rating && t.includes('信心評級')) for(const r of RATINGS) if(t.includes(r)){rating=r;break;}
+      if(!theme  && t.includes('產業主題')){
+        const tm=t.match(/產業主題[：:]\s*([^；;。
+]{2,25})/);
+        if(tm) theme=tm[1].replace(/[\[\]【】（）()]/g,'').trim();
+      }
+    });
+
+    const card=document.createElement('details');
+    card.className='stock-card';
+    const rHtml=rating?`<span class="sc-rtxt" style="color:${R_COL[rating]}">${rating}</span><span class="sc-bars">${convBar(rating)}</span>`:'';
+    const tHtml=theme?`<span class="sc-theme">${theme}</span>`:'';
+    card.innerHTML=`<summary><span class="sc-code">[${code}]</span><span class="sc-name">${name}</span>${tHtml}<span class="sc-right">${rHtml}<span class="sc-chev">▼</span></span></summary><div class="sc-body"></div>`;
+    sibs.forEach(s=>card.querySelector('.sc-body').appendChild(s));
+    h3.parentNode.insertBefore(card,h3); h3.remove();
+  });
+}
+
+/* ── 2. Holdings bar chart ───────────────────────────────────── */
+if(report){
+  report.querySelectorAll('table').forEach(tbl=>{
+    const ths=[...tbl.querySelectorAll('thead th')].map(t=>t.textContent.trim());
+    const pi=ths.findIndex(t=>t.includes('比重'));
+    if(pi<0) return;
+    const rows=[...tbl.querySelectorAll('tbody tr')];
+    if(!rows.length) return;
+    const chart=document.createElement('div');
+    chart.className='hc-chart';
+    rows.forEach(tr=>{
+      const c=[...tr.querySelectorAll('td')].map(td=>td.textContent.trim());
+      if(!c[0]) return;
+      const pn=parseFloat(c[pi])||0;
+      chart.innerHTML+=`<div class="hc-row"><div><span class="hc-name">${c[0]}</span><span class="hc-theme">${c[1]||''}</span></div><div class="hc-track"><div class="hc-fill" style="width:${Math.min(pn,100)}%"></div><span class="hc-lbl">${c[pi]}</span></div></div>`;
+    });
+    tbl.parentNode.insertBefore(chart,tbl); tbl.remove();
+  });
+}
+
+/* ── 3. TOC ──────────────────────────────────────────────────── */
+const tocD=document.getElementById('toc-d');
+const tocM=document.getElementById('toc-m');
+if(report && tocD){
+  const heads=[...report.querySelectorAll('h1')];
+  heads.forEach((h,i)=>{
+    h.id='s'+i;
+    const label=h.textContent.replace(/^[零一二三四五六七八九十]+[、.．]\s*/,'').replace(/^[一-龥]+、/,'').trim();
+    [tocD,tocM].forEach(ul=>{
+      if(!ul) return;
+      const li=document.createElement('li');
+      li.innerHTML=`<a href="#s${i}">${label}</a>`;
+      ul.appendChild(li);
+    });
+  });
+
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(()=>{
+      const sy=window.scrollY+130;
+      let active=heads[0];
+      heads.forEach(h=>{ if(h.offsetTop<=sy) active=h; });
+      if(active){
+        document.querySelectorAll('.toc-list a,.toc-mob a').forEach(a=>{
+          a.classList.toggle('tac', a.getAttribute('href')==='#'+active.id);
+        });
+      }
+      ticking=false;
+    });
+  },{passive:true});
+}
+
+/* ── 4. Smooth scroll ────────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(!t) return; e.preventDefault();
+    t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+})();
+</script>
+</body>
+</html>
