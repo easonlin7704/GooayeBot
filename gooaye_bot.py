@@ -402,8 +402,8 @@ def _extract_summary_data(md_content):
     section = ''
     for line in md_content.split('\n'):
         s = line.strip()
-        if re.match(r'^#\s+[^#]', s):
-            section = s[2:].strip()
+        if re.match(r'^#{1,2}\s+[^#]', s):
+            section = re.sub(r'^#+\s+', '', s).strip()
             continue
         # 執行摘要 — numbered signals (handles "1. 1. ..." double-numbering from GPT)
         if '執行摘要' in section:
@@ -437,9 +437,15 @@ def _extract_summary_data(md_content):
                     data['core_holdings'].append(cells[:4])
         # 五、關鍵風險提示
         if '關鍵風險' in section:
-            m = re.match(r'^\d+\.\s*\*\*(.+?)\*\*', s)
+            # Format 1: "1. **標題：** 描述文字"
+            m = re.match(r'^\d+[\.\)]\s*\*\*(.+?)\*\*[：:]?\s*(.*)', s)
             if m and len(data['risks']) < 3:
-                data['risks'].append(m.group(1))
+                label = _strip_inline_md(m.group(1).rstrip('：:'))
+                desc = _strip_inline_md(m.group(2))
+                data['risks'].append(f"{label}：{desc[:42]}" if desc else label)
+            # Format 2: "### 標題" (GPT 有時改用 H3)
+            elif s.startswith('### ') and len(data['risks']) < 3:
+                data['risks'].append(s[4:].strip())
     return data
 
 
