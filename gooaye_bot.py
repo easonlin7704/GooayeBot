@@ -385,21 +385,28 @@ BLACK  = (30,  30,  30)
 BLUE   = (15,  52,  96)
 
 def _find_cjk_fonts():
-    """Auto-detect CJK font paths on Windows and Linux."""
+    """Auto-detect CJK font paths on Windows and Linux.
+    Prefer TC-specific OTF on Linux: NotoSansCJK-Bold.ttc is a multi-language
+    collection and fpdf2 may pick the wrong subfont, causing garbled text in
+    Windows PDF viewers. OTF files are single-language and always render cleanly."""
     candidates = [
-        # Windows: Microsoft JhengHei
+        # Windows: Microsoft JhengHei (single-font TTC, renders correctly on Windows)
         (r'C:\Windows\Fonts\msjh.ttc',   r'C:\Windows\Fonts\msjhbd.ttc'),
-        # Ubuntu: fonts-noto-cjk (apt install fonts-noto-cjk)
-        ('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',
-         '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc'),
+        # Ubuntu: TC-specific OTF (best cross-platform compatibility)
+        ('/usr/share/fonts/opentype/noto/NotoSansCJKtc-Regular.otf',
+         '/usr/share/fonts/opentype/noto/NotoSansCJKtc-Bold.otf'),
         ('/usr/share/fonts/truetype/noto/NotoSansCJKtc-Regular.otf',
          '/usr/share/fonts/truetype/noto/NotoSansCJKtc-Bold.otf'),
+        # TTC fallback: use Regular for Bold to avoid garbled Windows rendering
+        ('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',
+         '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'),
         ('/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc',
-         '/usr/share/fonts/noto-cjk/NotoSansCJK-Bold.ttc'),
+         '/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc'),
     ]
     for normal, bold in candidates:
         if os.path.exists(normal):
-            return normal, bold if os.path.exists(bold) else normal
+            bold_path = bold if os.path.exists(bold) else normal
+            return normal, bold_path
     raise FileNotFoundError(
         "找不到 CJK 字型。Windows 請確認 msjh.ttc 存在；"
         "Linux 請執行 sudo apt-get install -y fonts-noto-cjk"
@@ -434,6 +441,200 @@ def _write_bold_line(pdf, line, font_size=10, line_h=6):
         else:
             pdf.set_font('CJK', '', font_size)
             pdf.write(line_h, part)
+
+def _extract_summary_data(md_content):
+    """Parse key sections from report markdown for the one-page summary."""
+    import re
+    data = {
+        'signals': [], 'market_view': '',
+        'stocks': [], 'core_holdings': [], 'risks': [],
+    }
+    section = ''
+    for line in md_content.split('\n'):
+        s = line.strip()
+        if re.match(r'^#\s+[^#]', s):
+            section = s[2:].strip()
+            continue
+        # 執行摘要 — numbered signals (handles "1. 1. ..." double-numbering from GPT)
+        if '執行摘要' in section:
+            m = re.match(r'^\d+[\.\)]\s*\d*[\.\)]?\s*(.+)', s)
+            if m and len(data['signals']) < 3:
+                sig = _strip_inline_md(m.group(1)).strip()
+                if sig:
+                    data['signals'].append(sig)
+        # 二、主持人點名個股
+        if '點名個股' in section:
+            if s.startswith('### '):
+                m = re.match(r'\[(.+?)\]\s*(.+)', s[4:].strip())
+                if m:
+                    data['stocks'].append({'code': m.group(1), 'name': m.group(2).strip(), 'rating': '', 'theme': ''})
+            elif data['stocks']:
+                if '信心評級' in s:
+                    m = re.search(r'\[(.+?)\]', s)
+                    if m: data['stocks'][-1]['rating'] = m.group(1)
+                elif '產業主題' in s and '：' in s:
+                    data['stocks'][-1]['theme'] = _strip_inline_md(s.split('：', 1)[1]).strip()
+        # 四、整體投資策略
+        if '整體投資策略' in section:
+            if '大盤研判' in s and not data['market_view']:
+                clean_s = re.sub(r'\*+', '', s)
+                m = re.search(r'大盤研判[：:]\s*[（(]?([^\s）)，,。\n]{1,8})', clean_s)
+                if m: data['market_view'] = m.group(1).strip('（(）) ')
+            if s.startswith('|') and s.endswith('|'):
+                cells = [c.strip() for c in s.strip('|').split('|')]
+                if (not all(set(c) <= set('-: ') for c in cells)
+                        and cells[0] not in ('標的', '') and len(cells) >= 3):
+                    data['core_holdings'].append(cells[:4])
+        # 五、關鍵風險提示
+        if '關鍵風險' in section:
+            m = re.match(r'^\d+\.\s*\*\*(.+?)\*\*', s)
+            if m and len(data['risks']) < 3:
+                data['risks'].append(m.group(1))
+    return data
+
+
+def _render_summary_page(pdf, md_content, ep_title, date_str):
+    """Render a one-page executive summary after the cover."""
+    from fpdf import XPos, YPos
+    import re
+
+    data = _extract_summary_data(md_content)
+    W = pdf.w - pdf.l_margin - pdf.r_margin
+
+    pdf.add_page()
+    pdf.set_margins(18, 20, 18)
+
+    # ── Banner ──────────────────────────────────────────────────────────────
+    pdf.set_fill_color(*NAVY)
+    pdf.rect(0, pdf.get_y() - 4, pdf.w, 14, 'F')
+    ep_disp = ep_title if len(ep_title) < 28 else ep_title[:25] + '...'
+    pdf.set_font('CJK', 'B', 11)
+    pdf.set_text_color(*WHITE)
+    pdf.set_x(pdf.l_margin)
+    pdf.cell(W - 28, 8, f'本集一頁式快覽  ·  {ep_disp}  ·  {date_str}',
+             new_x=XPos.RIGHT, new_y=YPos.TOP)
+    view = data.get('market_view', '')
+    if view:
+        badge_color = (200, 55, 55) if '空' in view else GOLD
+        pdf.set_fill_color(*badge_color)
+        pdf.set_font('CJK', 'B', 10)
+        pdf.cell(28, 8, f' 大盤：{view[:5]}', fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    else:
+        pdf.ln(8)
+    pdf.set_text_color(*BLACK)
+    pdf.ln(4)
+
+    # ── 三大核心訊號 ────────────────────────────────────────────────────────
+    pdf.set_fill_color(*NAVY)
+    pdf.set_text_color(*WHITE)
+    pdf.set_font('CJK', 'B', 10)
+    pdf.cell(W, 8, '  本集三大核心訊號', fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.set_text_color(*BLACK)
+    pdf.ln(2)
+    for j, sig in enumerate(data['signals'][:3], 1):
+        row_y = pdf.get_y()
+        pdf.set_xy(pdf.l_margin + 4, row_y)
+        pdf.set_font('CJK', 'B', 9); pdf.set_text_color(*GOLD)
+        pdf.cell(7, 6, f'{j}.')
+        pdf.set_xy(pdf.l_margin + 11, row_y)
+        pdf.set_font('CJK', '', 9); pdf.set_text_color(*BLACK)
+        pdf.cell(W - 11, 6, sig[:52] if len(sig) > 52 else sig, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    if not data['signals']:
+        pdf.set_font('CJK', '', 9); pdf.set_text_color(*DGRAY)
+        pdf.cell(W, 6, '  （無法解析核心訊號，請參閱詳細報告）', new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.ln(4)
+
+    # ── Gold divider ─────────────────────────────────────────────────────────
+    pdf.set_draw_color(*GOLD); pdf.set_line_width(0.5)
+    pdf.line(pdf.l_margin, pdf.get_y(), pdf.w - pdf.r_margin, pdf.get_y())
+    pdf.set_line_width(0.2); pdf.ln(3)
+
+    # ── Two columns: 點名個股 + 核心持股建議 ────────────────────────────────
+    col_gap = 8
+    col_w = (W - col_gap) / 2
+    col1_x = pdf.l_margin
+    col2_x = pdf.l_margin + col_w + col_gap
+    sec_y = pdf.get_y()
+    row_h = 5.5
+
+    # Column headers (absolute positioning)
+    for cx, title in [(col1_x, '  點名個股'), (col2_x, '  核心持股建議')]:
+        pdf.set_xy(cx, sec_y)
+        pdf.set_fill_color(*NAVY); pdf.set_text_color(*WHITE)
+        pdf.set_font('CJK', 'B', 10)
+        pdf.cell(col_w, 8, title, fill=True)
+    pdf.set_text_color(*BLACK)
+
+    RCOL = {'強烈看多': (200, 50, 50), '看多': (170, 120, 15),
+            '觀察中': (55, 95, 165), '中性': DGRAY, '謹慎': (115, 75, 45)}
+
+    # Left: stocks
+    yl = sec_y + 9
+    for st in data['stocks'][:11]:
+        pdf.set_xy(col1_x + 2, yl)
+        pdf.set_font('CJK', 'B', 8); pdf.set_text_color(*BLUE)
+        pdf.cell(20, row_h, st['code'][:8])
+        pdf.set_xy(col1_x + 22, yl)
+        pdf.set_font('CJK', '', 8); pdf.set_text_color(*BLACK)
+        pdf.cell(col_w - 40, row_h, st['name'][:9])
+        pdf.set_xy(col1_x + col_w - 18, yl)
+        pdf.set_font('CJK', 'B', 7)
+        pdf.set_text_color(*RCOL.get(st['rating'], DGRAY))
+        pdf.cell(18, row_h, st['rating'][:5] if st['rating'] else '')
+        yl += row_h
+    if not data['stocks']:
+        pdf.set_xy(col1_x + 2, sec_y + 9)
+        pdf.set_font('CJK', '', 8); pdf.set_text_color(*DGRAY)
+        pdf.cell(col_w - 4, row_h, '無點名個股資料')
+
+    # Right: core holdings
+    yr = sec_y + 9
+    for row in data['core_holdings'][:8]:
+        if not row or not row[0]: continue
+        pdf.set_xy(col2_x + 2, yr)
+        pdf.set_font('CJK', 'B', 8); pdf.set_text_color(*BLUE)
+        pdf.cell(22, row_h, row[0][:9])
+        pdf.set_xy(col2_x + 24, yr)
+        pdf.set_font('CJK', '', 8); pdf.set_text_color(*BLACK)
+        pdf.cell(col_w - 37, row_h, (row[1] if len(row) > 1 else '')[:12])
+        pdf.set_xy(col2_x + col_w - 13, yr)
+        pdf.set_font('CJK', 'B', 8); pdf.set_text_color(*GOLD)
+        pdf.cell(13, row_h, (row[2] if len(row) > 2 else '')[:5])
+        yr += row_h
+
+    pdf.set_xy(pdf.l_margin, max(yl, yr) + 5)
+
+    # ── Gold divider ─────────────────────────────────────────────────────────
+    pdf.set_draw_color(*GOLD); pdf.set_line_width(0.5)
+    pdf.line(pdf.l_margin, pdf.get_y(), pdf.w - pdf.r_margin, pdf.get_y())
+    pdf.set_line_width(0.2); pdf.ln(3)
+
+    # ── 主要風險提示 ─────────────────────────────────────────────────────────
+    pdf.set_fill_color(*NAVY); pdf.set_text_color(*WHITE)
+    pdf.set_font('CJK', 'B', 10)
+    pdf.cell(W, 8, '  主要風險提示', fill=True, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.set_text_color(*BLACK); pdf.ln(2)
+    for risk in data['risks'][:3]:
+        row_y = pdf.get_y()
+        pdf.set_xy(pdf.l_margin + 4, row_y)
+        pdf.set_font('CJK', 'B', 9); pdf.set_text_color(*GOLD)
+        pdf.cell(6, 6, '▸')
+        pdf.set_xy(pdf.l_margin + 10, row_y)
+        pdf.set_font('CJK', '', 9); pdf.set_text_color(*BLACK)
+        pdf.cell(W - 10, 6, risk[:46] if len(risk) > 46 else risk, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    if not data['risks']:
+        pdf.set_font('CJK', '', 9); pdf.set_text_color(*DGRAY)
+        pdf.cell(W, 6, '  （請參閱報告第五節）', new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+    # ── Bottom disclaimer ────────────────────────────────────────────────────
+    pdf.set_y(pdf.h - 22)
+    pdf.set_draw_color(*GOLD); pdf.set_line_width(0.5)
+    pdf.line(pdf.l_margin, pdf.get_y(), pdf.w - pdf.r_margin, pdf.get_y())
+    pdf.set_line_width(0.2); pdf.ln(3)
+    pdf.set_font('CJK', '', 7.5); pdf.set_text_color(*DGRAY)
+    pdf.cell(0, 5, '本報告由 AI 輔助生成，僅供參考，不構成任何投資建議或邀約。投資有風險，決策請獨立判斷。', align='C')
+    pdf.set_text_color(*BLACK)
+
 
 def convert_to_pdf(md_content, output_path):
     import re
@@ -534,6 +735,9 @@ def convert_to_pdf(md_content, output_path):
                        '本報告由人工智慧模型輔助生成，內容僅供參考，不構成任何投資建議或邀約。\n'
                        '投資有風險，入市前請獨立評估，自行承擔決策責任。',
                        align='C')
+
+        # ── Summary page (one-page overview) ────────────────────────────────
+        _render_summary_page(pdf, cleaned, pdf.ep_title, pdf.date_str)
 
         # ── Content pages ───────────────────────────────────────────────────
         pdf.add_page()
