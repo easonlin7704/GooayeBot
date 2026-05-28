@@ -1,6 +1,6 @@
 config.json
 last_episode.json
-reports/
+/reports/
 gooaye.mp3
 gooaye_compressed.mp3
 ffmpeg.exe
