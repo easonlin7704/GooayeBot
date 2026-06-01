@@ -427,7 +427,13 @@ def _extract_summary_data(md_content):
             elif data['stocks']:
                 if '信心評級' in s:
                     m = re.search(r'\[(.+?)\]', s)
-                    if m: data['stocks'][-1]['rating'] = m.group(1)
+                    if m:
+                        data['stocks'][-1]['rating'] = m.group(1)
+                    else:
+                        for r in ('強烈看多', '看多', '觀察中', '中性', '謹慎'):
+                            if r in s:
+                                data['stocks'][-1]['rating'] = r
+                                break
                 elif '產業主題' in s and '：' in s:
                     data['stocks'][-1]['theme'] = _strip_inline_md(s.split('：', 1)[1]).strip()
         # 四、整體投資策略
