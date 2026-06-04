@@ -36,6 +36,6 @@ jobs:
           GMAIL_USER:         ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           RECIPIENTS:         ${{ secrets.RECIPIENTS }}
-          MODEL:              gpt-5.4
+          MODEL:              gpt-5.5
           PYTHONUTF8:         "1"
         run: python gooaye_bot.py
