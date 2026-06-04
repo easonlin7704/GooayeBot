@@ -321,7 +321,11 @@ def generate_final_report(text, search_results, ep_title, client, model):
 
 - **推論強度：** （[強關聯] / [中關聯] / [弱關聯]）
 - **產業主題：** 同上
-- **受惠邏輯：** 說明為何此股受惠，邏輯鏈要清晰（A → B → C 格式）
+- **受惠邏輯：** 請完整說明受惠脈絡，涵蓋以下四個面向：
+  （1）觸發條件：主持人點出的哪個趨勢或事件直接帶動此股
+  （2）傳導機制：該趨勢如何具體影響此公司的營收、毛利或出貨量
+  （3）公司定位：此公司在供應鏈中的位置與競爭優勢，為何是這家而非競爭對手
+  （4）受惠時程：預期效益屬短期（1-3個月）或中長期（6個月以上），並說明理由
 - **新聞佐證：** 同上
 - **現況評估：** 同上
 - **操作參考：** 同上
@@ -421,9 +425,16 @@ def _extract_summary_data(md_content):
         # 二、主持人點名個股
         if '點名個股' in section:
             if s.startswith('### '):
-                m = re.match(r'\[(.+?)\]\s*(.+)', s[4:].strip())
+                txt = s[4:].strip()
+                m = re.match(r'\[(.+?)\]\s*(.+)', txt)
                 if m:
-                    data['stocks'].append({'code': m.group(1), 'name': m.group(2).strip(), 'rating': '', 'theme': ''})
+                    code, name = m.group(1), m.group(2).strip()
+                else:
+                    m2 = re.match(r'([A-Za-z0-9][A-Za-z0-9/]*)\s+(.+)', txt)
+                    code = m2.group(1).strip() if m2 else None
+                    name = m2.group(2).strip() if m2 else None
+                if code and name:
+                    data['stocks'].append({'code': code, 'name': name, 'rating': '', 'theme': ''})
             elif data['stocks']:
                 if '信心評級' in s:
                     m = re.search(r'\[(.+?)\]', s)
@@ -626,9 +637,12 @@ function convBar(r){
 const report = document.getElementById('report');
 if(report){
   [...report.querySelectorAll('h3')].forEach(h3=>{
-    const m = h3.textContent.match(/^\[(.+?)\]\s*(.+)/);
-    if(!m) return;
-    const [,code,name] = m;
+    const txt=h3.textContent.trim();
+    let code='',name='';
+    const m1=txt.match(/^\[(.+?)\]\s*(.+)/);
+    if(m1){code=m1[1];name=m1[2].trim();}
+    else{const m2=txt.match(/^([A-Za-z0-9][A-Za-z0-9/]*)\s+(.+)/);if(m2){code=m2[1];name=m2[2].trim();}}
+    if(!code||!name) return;
 
     const sibs=[];
     let el=h3.nextElementSibling;
