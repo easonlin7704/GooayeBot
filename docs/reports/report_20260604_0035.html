@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>股癌研報 · EP667 | 🌍 · 2026-06-04</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", sans-serif; background: #eef1f5; color: #1a1a2e; line-height: 1.75; font-size: 15px; }
+.cover { background: linear-gradient(160deg, #0d2137 60%, #1a3a5c); border-bottom: 4px solid #c89b32; }
+.cover-inner { max-width: 860px; margin: 0 auto; padding: 52px 32px 44px; text-align: center; }
+.cover h1 { font-size: 2em; font-weight: 700; letter-spacing: 3px; color: white; margin-bottom: 8px; }
+.cover-subtitle { color: #c89b32; font-size: 1.25em; font-weight: 600; margin-bottom: 24px; }
+.cover-ep { color: #b0c8de; font-size: 0.95em; margin-bottom: 4px; }
+.cover-date { color: #7a9ab5; font-size: 0.85em; margin-bottom: 28px; }
+.cover-disclaimer { font-size: 0.78em; color: #4a6a85; line-height: 1.6; }
+.container { max-width: 860px; margin: 0 auto; padding: 28px 24px 60px; }
+.summary-card { background: white; border-radius: 8px; border: 1px solid #d8dde8; box-shadow: 0 2px 12px rgba(0,0,0,.07); margin-bottom: 28px; overflow: hidden; }
+.summary-header { background: #0d2137; color: white; padding: 12px 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.summary-title { font-size: 1em; font-weight: 700; letter-spacing: 1px; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: .82em; font-weight: 700; }
+.badge-bull { background: #c89b32; color: white; }
+.badge-bear { background: #c0392b; color: white; }
+.badge-neutral { background: #5a6a7a; color: white; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.summary-section { padding: 16px 20px; border-right: 1px solid #e8eaf0; border-bottom: 1px solid #e8eaf0; }
+.summary-section:nth-child(even) { border-right: none; }
+.signals-section { grid-column: 1 / -1; border-right: none; }
+.risks-section { grid-column: 1 / -1; border-right: none; border-bottom: none; }
+.summary-section h4 { color: #0d2137; font-size: .8em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 2px solid #c89b32; display: inline-block; }
+.signals-section ol { display: flex; gap: 10px; flex-wrap: wrap; list-style: none; counter-reset: sig; }
+.signals-section li { counter-increment: sig; flex: 1 1 200px; background: #f5f7fb; border-left: 3px solid #c89b32; padding: 6px 10px; border-radius: 0 4px 4px 0; font-size: .88em; color: #2c2c3e; }
+.signals-section li::before { content: counter(sig) ". "; font-weight: 700; color: #c89b32; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: .83em; }
+.summary-table th { background: #f0f3f8; color: #0d2137; padding: 5px 8px; text-align: left; font-weight: 600; }
+.summary-table td { padding: 4px 8px; border-bottom: 1px solid #eef0f5; color: #2c2c3e; }
+.summary-table .code { font-weight: 700; color: #0f3460; }
+.r-sbull { color: #c0392b; font-weight: 700; } .r-bull { color: #b8860b; font-weight: 700; }
+.r-watch { color: #2980b9; } .r-neutral { color: #7f8c8d; } .r-bear { color: #884400; }
+.weight { font-weight: 700; color: #c89b32; }
+.risks-section ul { padding-left: 0; display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.risks-section li { list-style: none; font-size: .88em; color: #2c2c3e; padding-left: 14px; position: relative; }
+.risks-section li::before { content: "▸"; color: #c89b32; position: absolute; left: 0; font-weight: 700; }
+.report-content { background: white; border-radius: 8px; border: 1px solid #d8dde8; padding: 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+.report-content h1 { background: #0d2137; color: white; padding: 10px 16px; margin: 28px -32px 18px; font-size: 1.05em; letter-spacing: .5px; }
+.report-content h1:first-child { margin-top: -28px; border-radius: 7px 7px 0 0; }
+.report-content h2 { color: #0d2137; font-size: 1em; margin: 20px 0 10px; padding-bottom: 4px; border-bottom: 2px solid #c89b32; display: inline-block; }
+.report-content h3 { background: #f5f7fb; color: #0f3460; padding: 7px 14px; margin: 16px 0 10px; font-size: .98em; border-left: 3px solid #c89b32; border-radius: 0 4px 4px 0; }
+.report-content p { margin: 8px 0; color: #2c2c3e; font-size: .94em; }
+.report-content ul, .report-content ol { padding-left: 22px; margin: 8px 0; }
+.report-content li { margin: 4px 0; color: #2c2c3e; font-size: .92em; }
+.report-content li::marker { color: #c89b32; }
+.report-content strong { color: #0d2137; font-weight: 600; }
+.report-content em { color: #5a6a7a; }
+.report-content blockquote { border-left: 3px solid #c89b32; background: #fdfbf3; padding: 10px 16px; margin: 12px 0; color: #555; border-radius: 0 4px 4px 0; }
+.report-content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .88em; }
+.report-content thead tr { background: #0d2137; color: white; }
+.report-content thead th { padding: 9px 12px; text-align: left; font-weight: 600; }
+.report-content tbody tr:nth-child(even) { background: #f5f7fb; }
+.report-content tbody tr:hover { background: #eef2f7; }
+.report-content td { padding: 7px 12px; border-bottom: 1px solid #e0e4ea; color: #2c2c3e; }
+.report-content hr { border: none; border-top: 1px solid #d8dde8; margin: 24px 0; }
+.page-footer { text-align: center; color: #8a9ab5; font-size: .8em; margin-top: 28px; padding: 16px; }
+
+/* ── Layout ──────────────────────────────────────────────────── */
+.page-outer { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.page-flex  { display: flex; gap: 24px; align-items: flex-start; padding: 28px 0 60px; }
+.toc-col    { width: 176px; flex-shrink: 0; position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+.main-col   { flex: 1; min-width: 0; }
+
+/* ── Desktop TOC ─────────────────────────────────────────────── */
+.toc-box    { background: white; border-radius: 8px; border: 1px solid #d8dde8; padding: 14px 12px; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.toc-ttl    { font-size: .72em; font-weight: 700; color: #0d2137; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #eef0f5; }
+.toc-list   { list-style: none; padding: 0; margin: 0; }
+.toc-list a { display: block; padding: 5px 8px; font-size: .8em; color: #5a6a7a; text-decoration: none; border-left: 2px solid transparent; border-radius: 0 3px 3px 0; transition: all .15s; line-height: 1.4; }
+.toc-list a:hover, .toc-list a.tac { color: #0d2137; border-left-color: #c89b32; font-weight: 600; background: #f5f7fb; }
+
+/* ── Mobile TOC ──────────────────────────────────────────────── */
+.toc-mob  { display: none; position: sticky; top: 0; z-index: 50; background: white; border-bottom: 2px solid #c89b32; overflow-x: auto; scrollbar-width: none; }
+.toc-mob::-webkit-scrollbar { display: none; }
+.toc-mob ul { display: flex; list-style: none; padding: 0 12px; margin: 0; white-space: nowrap; }
+.toc-mob a  { display: inline-block; padding: 9px 14px; font-size: .8em; color: #5a6a7a; text-decoration: none; border-bottom: 2px solid transparent; transition: all .15s; }
+.toc-mob a:hover, .toc-mob a.tac { color: #0d2137; border-bottom-color: #c89b32; font-weight: 600; }
+
+/* ── Stock cards ─────────────────────────────────────────────── */
+.stock-card { border: 1px solid #d8dde8; border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.stock-card > summary { list-style: none; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 11px 16px; background: #f5f7fb; cursor: pointer; user-select: none; transition: background .15s; }
+.stock-card > summary::-webkit-details-marker { display: none; }
+.stock-card > summary:hover { background: #eef2f7; }
+.stock-card[open] > summary { background: #0d2137; }
+.stock-card[open] .sc-code { color: #c89b32; }
+.stock-card[open] .sc-name { color: white; }
+.stock-card[open] .sc-theme { color: #8ab0cc; background: rgba(255,255,255,.08); }
+.stock-card[open] .sc-chev { transform: rotate(180deg); color: #c89b32; }
+.sc-code  { font-weight: 700; color: #0f3460; font-size: .86em; font-family: monospace; }
+.sc-name  { font-weight: 600; color: #1a1a2e; font-size: .95em; }
+.sc-theme { font-size: .74em; color: #5a6a7a; background: #e8edf5; padding: 2px 9px; border-radius: 10px; }
+.sc-right { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.sc-rtxt  { font-size: .8em; font-weight: 700; }
+.sc-bars  { display: flex; gap: 2px; align-items: center; }
+.cb-dot   { display: inline-block; width: 9px; height: 9px; border-radius: 2px; }
+.sc-chev  { font-size: .65em; color: #8a9ab5; transition: transform .2s; margin-left: 4px; }
+.sc-body  { padding: 16px 20px; background: white; border-top: 1px solid #e8eaf0; }
+.sc-body ul { padding-left: 0; list-style: none; margin: 0; }
+.sc-body li { padding: 6px 0; border-bottom: 1px solid #f5f7fb; font-size: .9em; color: #2c2c3e; display: flex; flex-wrap: wrap; gap: 4px; }
+.sc-body li:last-child { border-bottom: none; }
+.sc-body li strong { color: #0d2137; min-width: 88px; flex-shrink: 0; }
+
+/* ── Holdings bar chart (report body) ───────────────────────── */
+.hc-chart { margin: 12px 0 20px; }
+.hc-row   { display: grid; grid-template-columns: 160px 1fr; gap: 10px; align-items: center; padding: 5px 0; border-bottom: 1px solid #f0f3f8; }
+.hc-row:last-child { border-bottom: none; }
+.hc-name  { display: block; font-weight: 700; font-size: .86em; color: #0f3460; }
+.hc-theme { display: block; font-size: .72em; color: #7a9ab5; margin-top: 1px; }
+.hc-track { position: relative; background: #f0f3f8; border-radius: 3px; height: 24px; }
+.hc-fill  { height: 100%; background: linear-gradient(90deg, #0d2137, #1e4a6e); border-radius: 3px; }
+.hc-lbl   { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-weight: 700; font-size: .82em; color: #0d2137; }
+
+/* ── Summary card holdings bar chart ────────────────────────── */
+.shc-row   { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+.shc-name  { font-size: .82em; font-weight: 700; color: #0f3460; width: 96px; flex-shrink: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.shc-track { flex: 1; background: #e8edf5; border-radius: 3px; height: 16px; position: relative; }
+.shc-fill  { height: 100%; background: linear-gradient(90deg, #0d2137, #1e4a6e); border-radius: 3px; }
+.shc-pct   { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: .72em; font-weight: 700; color: #0d2137; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .toc-col { display: none; }
+  .toc-mob { display: block; }
+  .page-flex { padding: 20px 0 40px; }
+}
+@media (max-width: 620px) {
+  .summary-grid { grid-template-columns: 1fr; }
+  .summary-section { border-right: none; }
+  .report-content { padding: 18px 16px; }
+  .report-content h1 { margin-left: -16px; margin-right: -16px; }
+  .hc-row { grid-template-columns: 1fr; }
+  .sc-body li { flex-direction: column; }
+  .sc-body li strong { min-width: auto; }
+}
+</style>
+</head>
+<body>
+<div class="cover"><div class="cover-inner">
+  <h1>股癌 Podcast</h1>
+  <div class="cover-subtitle">AI 深度投資研報</div>
+  <div class="cover-ep">EP667 | 🌍</div>
+  <div class="cover-date">2026-06-04</div>
+  <div class="cover-disclaimer">本報告由人工智慧模型輔助生成，內容僅供參考，不構成任何投資建議或邀約。<br>投資有風險，入市前請獨立評估，自行承擔決策責任。</div>
+</div></div>
+<nav class="toc-mob"><ul id="toc-m"></ul></nav>
+<div class="page-outer"><div class="page-flex">
+  <aside class="toc-col">
+    <div class="toc-box">
+      <div class="toc-ttl">目錄</div>
+      <ul class="toc-list" id="toc-d"></ul>
+    </div>
+  </aside>
+  <div class="main-col">
+    <div class="container">
+<div class="summary-card">
+  <div class="summary-header"><span class="summary-title">本集快覽</span><span class="badge badge-bull">大盤：做多</span></div>
+  <div class="summary-grid">
+    <div class="summary-section signals-section"><h4>三大核心訊號</h4><ol><li>AI 多頭未結束，但高檔需整理</li><li>光通訊與 AIPC 成新主軸</li><li>台積電、輝達有補漲味道</li></ol></div>
+    <div class="summary-section stocks-section"><h4>點名個股</h4><table class="summary-table"><thead><tr><th>代號</th><th>名稱</th><th>評級</th></tr></thead><tbody><tr><td class="code">[MRVL]</td><td>Marvell Technology</td><td style="color:#2980b9;font-weight:700;white-space:nowrap">觀察中&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[NVDA]</td><td>NVIDIA</td><td style="color:#b8860b;font-weight:700;white-space:nowrap">看多&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[2330]</td><td>台積電 / TSM TSMC ADR</td><td style="color:#b8860b;font-weight:700;white-space:nowrap">看多&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[2454]</td><td>聯發科 MediaTek</td><td style="color:#b8860b;font-weight:700;white-space:nowrap">看多&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#b8860b;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[AVGO]</td><td>Broadcom</td><td style="color:#2980b9;font-weight:700;white-space:nowrap">觀察中&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[SNOW]</td><td>Snowflake</td><td style="color:#2980b9;font-weight:700;white-space:nowrap">觀察中&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[GOOGL]</td><td>Alphabet / Google</td><td style="color:#2980b9;font-weight:700;white-space:nowrap">觀察中&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[QCOM]</td><td>Qualcomm</td><td style="color:#7f8c8d;font-weight:700;white-space:nowrap">中性&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[INTC]</td><td>Intel</td><td style="color:#884400;font-weight:700;white-space:nowrap">謹慎&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#884400;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[ON]</td><td>ON Semiconductor</td><td style="color:#2980b9;font-weight:700;white-space:nowrap">觀察中&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[ADI]</td><td>Analog Devices</td><td style="color:#2980b9;font-weight:700;white-space:nowrap">觀察中&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr></tbody></table></div>
+    <div class="summary-section holdings-section"><h4>核心持股建議</h4><div><div class="shc-row"><span class="shc-name" title="2330 台積電">2330 台積電</span><div class="shc-track"><div class="shc-fill" style="width:25%"></div><span class="shc-pct">25%</span></div></div><div class="shc-row"><span class="shc-name" title="NVDA 輝達">NVDA 輝達</span><div class="shc-track"><div class="shc-fill" style="width:20%"></div><span class="shc-pct">20%</span></div></div><div class="shc-row"><span class="shc-name" title="2454 聯發科">2454 聯發科</span><div class="shc-track"><div class="shc-fill" style="width:10%"></div><span class="shc-pct">10%</span></div></div><div class="shc-row"><span class="shc-name" title="MRVL Marvell">MRVL Marvell</span><div class="shc-track"><div class="shc-fill" style="width:10%"></div><span class="shc-pct">10%</span></div></div><div class="shc-row"><span class="shc-name" title="2308 台達電">2308 台達電</span><div class="shc-track"><div class="shc-fill" style="width:15%"></div><span class="shc-pct">15%</span></div></div></div></div>
+    <div class="summary-section risks-section"><h4>主要風險</h4><ul><li>最大尾部風險：最大尾部風險是中東衝突導致油價進一步飆升，進而推升通膨預期與美債殖利率，使聯準會降息</li><li>短期擾動因素：- 中東衝突與油價：新聞顯示紐約與布蘭特期油連三紅，能源成本可能推升通膨。</li><li>本次分析盲點：本報告主要依據 Podcast 主持人觀點與新聞標題級資訊進行推論，未納入各公司最新</li></ul></div>
+  </div>
+</div>
+<div class="report-content" id="report"><h1>執行摘要</h1>
+<p>本集三大核心訊號（每點一行，精煉至 30 字以內）：<br />
+1. AI 多頭未結束，但高檔需整理<br />
+2. 光通訊與 AIPC 成新主軸<br />
+3. 台積電、輝達有補漲味道</p>
+<h1>一、市場環境與主持人核心觀點</h1>
+<p><strong>多空研判：</strong> 中性偏多。主持人明確表示，台股前段指數以非常陡峭斜率上攻後，直接終結多頭的機率不高，「今年都還是走多」的可能性較高；但過程中一定會有修正與盤整。近期被動元件等熱門族群開始橫盤整理，主持人認為這反而是健康現象，因為若持續急漲，後續下跌風險會更重，也容易被列入處置股。</p>
+<p><strong>資金輪動方向：</strong> 主持人觀察資金仍在 AI 主線內部輪動，從前期被動元件、CPO / 光通訊、AI 伺服器等高彈性標的，逐步出現往大型龍頭補漲的跡象，特別是台積電與輝達。他也提到 Marvell 因黃仁勳點名後急漲，顯示市場資金對「AI 光連結、ASIC、Total Solution」題材高度敏感。退潮端則包括部分前期急漲的被動元件與熱門題材股，開始進入橫盤與整理。</p>
+<p><strong>整體操作哲學：</strong> 主持人的核心操作態度是趨勢持股、不過度交易。他提到，若持股成本有明顯安全墊，熱門股回檔但尚未跌破十日線，沒有必要急著出場；即使修正，也可能觀察月線支撐再決定是否減碼。只有在跌破月線後數日無法站回，才較可能進行風險控管。對再平衡，他主張不應無目的地砍掉強勢股，除非有更明確的新標的需要資金，或確定原持股已過度 FOMO。</p>
+<p><strong>本集最重要的產業主軸：</strong><br />
+1. <strong>光通訊 / CPO / Data Center 互連：</strong> 主持人花大量時間討論 Marvell 演講內容，指出從 rack 內、跨 rack、data center 內到 data center 之間，光連接已形成產業共識。雖然輝達仍強調能用銅線就盡量用銅，但光的成長率與未來擴張性正在拉大。<br />
+2. <strong>AIPC / Edge AI / 地端模型：</strong> 主持人將 DGX Spark、N1X、MediaTek 與筆電 OEM 連結起來，認為這是 AIPC 的第二次挑戰。若開源模型逐步追上封閉模型，且地端算力足以滿足多數個人與企業需求，AIPC 有機會帶動 PC 產業 ASP 與零組件規格升級。</p>
+<h1>二、主持人點名個股</h1>
+<h3>MRVL Marvell Technology</h3>
+<ul>
+<li><strong>信心評級：</strong> 觀察中</li>
+<li><strong>產業主題：</strong> 光通訊 / AI ASIC / Data Center 互連</li>
+<li><strong>主持人核心論述：</strong> 主持人明確指出，Marvell 是本週市場最大震撼點之一，因黃仁勳稱其可能成為下一個兆元企業後，股價從「大牛車」變成「飛天神牛」。主持人承認這波漲勢難以預期，並表示 Marvell 在 DSP 領域不錯，但 ASIC 發展仍在路上，確定性不如 MediaTek 或 Broadcom 明確。Marvell 演講核心則在於 rack 內、跨 rack、data center 內與 data center 之間的資料傳輸，主持人認為產業共識正在形成：光是未來勢在必行的方向。</li>
+<li><strong>新聞佐證：</strong> 「Marvell大翻身創25年最強漲勢 市值超車高通、Sandisk」— tw.stock.yahoo.com；「黃仁勳開金口 邁威爾兩天狂飆38% 納入標普500成新催化劑」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> 過熱慎追</li>
+<li><strong>操作參考：</strong> 題材與資金動能強，但短線漲幅已大，較適合等待回檔或量縮整理後再評估。</li>
+</ul>
+<h3>NVDA NVIDIA</h3>
+<ul>
+<li><strong>信心評級：</strong> 看多</li>
+<li><strong>產業主題：</strong> AI GPU / AI Infra / AIPC / Robotics</li>
+<li><strong>主持人核心論述：</strong> 主持人認為輝達的論述持續進化，從早期「買越多省越多」、推動 GPU 建置，到 Agentic AI、Robotics，再到生活應用與整體 AI Infrastructure supplier。主持人也提到 DGX Spark / N1X 代表輝達從提供 GPU 走向提供整台 laptop solution，可能成為 AIPC 第二次挑戰的關鍵。對股價而言，主持人認為輝達與台積電都是市場中的大龍頭，但交易在相對便宜位置，甚至可能擔任行情最後一棒。</li>
+<li><strong>新聞佐證：</strong> 「Nvidia wants to supercharge your laptop」— economist.com；「告別Intel Inside？『內建輝達』帶貨力更強 供應鏈上演大洗牌」— tw.stock.yahoo.com；「Why a massive Nvidia stock rally may be just getting started」— finance.yahoo.com</li>
+<li><strong>現況評估：</strong> 趨勢發酵中</li>
+<li><strong>操作參考：</strong> 核心 AI 部位可續抱，若因地緣政治或美股回檔出現急跌，可分批承接。</li>
+</ul>
+<h3>2330 台積電 / TSM TSMC ADR</h3>
+<ul>
+<li><strong>信心評級：</strong> 看多</li>
+<li><strong>產業主題：</strong> 先進製程 / AI 晶片代工 / 指數權值補漲</li>
+<li><strong>主持人核心論述：</strong> 主持人明確表示，台積電與輝達類似，都是晶片與 AI 的大龍頭，但不知道為何仍交易在相對便宜位置。他觀察近期台積電型態明顯轉強，加上台灣監管端開了一扇門，投信公司未來一兩個月可能完成公發數調整，後續投信資金進來後有機會推升台積電。他認為市場近期確實有大型龍頭補漲的味道。</li>
+<li><strong>新聞佐證：</strong> 「黃仁勳開金口 台股、台積雙創高」— tw.stock.yahoo.com；「台積電股東會今登場 股東人數逾266萬人創新高」— tw.stock.yahoo.com；「台積電ADR3日下跌10.00美元跌幅2.24%折台股2745.91元」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> 趨勢發酵中</li>
+<li><strong>操作參考：</strong> 作為台股 AI 核心倉位可續抱，若 ADR 受外部風險拉回，反而提供中長線分批布局機會。</li>
+</ul>
+<h3>2454 聯發科 MediaTek</h3>
+<ul>
+<li><strong>信心評級：</strong> 看多</li>
+<li><strong>產業主題：</strong> AIPC / NVIDIA N1X / 客製化晶片設計</li>
+<li><strong>主持人核心論述：</strong> 主持人指出，AIPC 概念股中 MediaTek 絕對是關鍵受惠者，因其協助輝達做晶片設計。相較 Marvell 在 ASIC 仍處於發展路徑，主持人認為 MediaTek 在相關領域的明確性更高。若輝達 DGX Spark / N1X 所代表的地端 AI 運算能成功帶動新一輪 AIPC，MediaTek 將直接受惠於晶片平台與高階 PC 需求。</li>
+<li><strong>新聞佐證：</strong> 「黃仁勳神秘晶片將揭曉！聯發科衝4,710元嗨漲逾9% 分析師看法出爐」— tw.stock.yahoo.com；「【Hot台股】聯發科5000元近關情怯...網哭『發哥晶片都秀出來了』分析師：平常心看待」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> 趨勢發酵中</li>
+<li><strong>操作參考：</strong> 長線可視為 AIPC 核心設計股，短線若快速急漲則不宜追價，等待回測均線較佳。</li>
+</ul>
+<h3>AVGO Broadcom</h3>
+<ul>
+<li><strong>信心評級：</strong> 觀察中</li>
+<li><strong>產業主題：</strong> AI ASIC / 客製化晶片 / AI Infrastructure</li>
+<li><strong>主持人核心論述：</strong> 主持人提到，若比較 AI ASIC 的明確性，Broadcom 與 MediaTek 比 Marvell 更具確定性。他將 Broadcom 放在 AI 客製化晶片與 total solution 競爭的框架下討論。不過，主持人本集未進一步展開 Broadcom 財報或估值，只是用來作為 Marvell ASIC 能見度的對照組。</li>
+<li><strong>新聞佐證：</strong> 「Broadcom stock plunges on weak software sales, unchanged AI chip forecast for the year」— cnbc.com；「Broadcom’s stock falls despite accelerating AI-chip growth」— marketwatch.com</li>
+<li><strong>現況評估：</strong> 震盪整理等待</li>
+<li><strong>操作參考：</strong> AI ASIC 長線邏輯仍在，但短線財報反應偏弱，宜等待市場消化後再切入。</li>
+</ul>
+<h3>SNOW Snowflake</h3>
+<ul>
+<li><strong>信心評級：</strong> 觀察中</li>
+<li><strong>產業主題：</strong> Data Lake / AI 軟體層 / 企業 AI 應用</li>
+<li><strong>主持人核心論述：</strong> 主持人以 Snowflake 員工分享為例，說明企業 AI 使用流程可能由大型語言模型處理語境，再由 Snowflake 的 data lake 與內建模型負責資料梳理與查詢，因此中間資料層與軟體層仍有價值。若未來開源模型追上封閉模型，或地端模型足以滿足多數需求，Snowflake 這類軟體層公司有機會減少支付給外部 LLM 的費用，將更多收入轉化為自身利潤。</li>
+<li><strong>新聞佐證：</strong> 「Stocks making the biggest moves premarket: Snowflake, Best Buy, Kohl's, Dollar Tree &amp; more」— search.cnbc.com</li>
+<li><strong>現況評估：</strong> 低度關注尚未爆發</li>
+<li><strong>操作參考：</strong> 適合作為 AI 應用層觀察標的，需追蹤企業導入率與毛利率是否因模型成本下降而改善。</li>
+</ul>
+<h3>GOOGL Alphabet / Google</h3>
+<ul>
+<li><strong>信心評級：</strong> 觀察中</li>
+<li><strong>產業主題：</strong> AI Total Solution / Cloud / AI 資本支出</li>
+<li><strong>主持人核心論述：</strong> 主持人提到 Google 與 Neo Cloud 合作及投資，本質上也是希望銷售 Total Solution。這代表 AI 戰場已不只是 GPU、ASIC 或單一硬體，而是雲端、模型、算力、資料與服務整包解決方案的競爭。主持人將 Google 放在「AI Infra 供應商競爭範圍擴大」的脈絡下討論。</li>
+<li><strong>新聞佐證：</strong> 「Alphabet's plan to sell $80 billion in stock to fund its AI buildout isn't all bad」— cnbc.com；「AI投資再加碼！Alphabet提高股權融資規模至850億美元，創史上新高」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> 趨勢發酵中</li>
+<li><strong>操作參考：</strong> 若能接受大型科技股資本支出壓力，可作為 AI 平台型資產配置，但需留意股權融資稀釋與 CAPEX 回報率。</li>
+</ul>
+<h3>QCOM Qualcomm</h3>
+<ul>
+<li><strong>信心評級：</strong> 中性</li>
+<li><strong>產業主題：</strong> 第一代 AIPC / ARM PC</li>
+<li><strong>主持人核心論述：</strong> 主持人回顧自己曾購買第一批 Qualcomm 筆電，當時心得是 AIPC「完全不成氣候」，地端 AI 使用基本不敷實戰需求，較像有趣的小談資。這段評論主要用來對比現在輝達 DGX Spark / N1X 可能帶來的 AIPC 第二次挑戰，並非對 Qualcomm 當前基本面的直接看多。</li>
+<li><strong>新聞佐證：</strong> 「Stocks making the biggest moves premarket: Nvidia, Arm, Taylor Morrison, Qualcomm &amp; more」— search.cnbc.com；「Marvell大翻身創25年最強漲勢 市值超車高通、Sandisk」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> 低度關注尚未爆發</li>
+<li><strong>操作參考：</strong> 目前不宜僅因 AIPC 題材追價，需觀察 ARM PC 生態與實際終端需求改善。</li>
+</ul>
+<h3>INTC Intel</h3>
+<ul>
+<li><strong>信心評級：</strong> 謹慎</li>
+<li><strong>產業主題：</strong> 先進封裝 / 玻璃載板 / AI 晶片競爭</li>
+<li><strong>主持人核心論述：</strong> 主持人於回覆玻璃載板與鑽孔、鑽針相關問題時提到，過去已討論過 TGV、TSV、玻璃載板、玻璃基板以及 Intel 的 EMIB。此處重點在於先進封裝與玻璃載板趨勢，而非直接看多 Intel。從語氣看，Intel 是作為技術路線案例被提及。</li>
+<li><strong>新聞佐證：</strong> 「AI晶片年底登場前先遇逆風 英特爾18A良率傳僅50% 遠輸台積電、三星」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> 震盪整理等待</li>
+<li><strong>操作參考：</strong> 若要參與 Intel，需等待 18A 良率、AI 晶片進度與客戶導入出現更明確改善。</li>
+</ul>
+<h3>ON ON Semiconductor</h3>
+<ul>
+<li><strong>信心評級：</strong> 觀察中</li>
+<li><strong>產業主題：</strong> 功率半導體 / 電源管理 / AI 電力基礎設施</li>
+<li><strong>主持人核心論述：</strong> 聽眾提問功率半導體 IDM 與 PMIC 是否可能成為下一波漲價題材，主持人回應，功率元件與功率半導體相關公司基本面確實有顯著改善，有機會成為下一波題材匯聚點。不過他也強調，目前不像 CPO 或被動元件那樣全面發光，因為市場最喜歡的是 ASP 上升、P/E re-rating 與缺貨同時發生的戴維斯雙擊，而功率元件尚未看到全面性嚴重缺貨。</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估：</strong> 低度關注尚未爆發</li>
+<li><strong>操作參考：</strong> 可先建立觀察部位，等待電源櫃、AI 伺服器拉貨或漲價訊號更明確再加碼。</li>
+</ul>
+<h3>ADI Analog Devices</h3>
+<ul>
+<li><strong>信心評級：</strong> 觀察中</li>
+<li><strong>產業主題：</strong> PMIC / 類比 IC / 功率管理</li>
+<li><strong>主持人核心論述：</strong> 主持人將 ADI 所屬的功率與類比管理鏈條納入「基本面改善、可能成為下一波題材」的範圍。他認為若後續電源櫃需求強勁、拉貨放大，功率元件與 PMIC 題材不排除進一步發酵。不過目前尚未看到像被動元件一樣全面缺貨，故仍屬觀察中。</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估：</strong> 低度關注尚未爆發</li>
+<li><strong>操作參考：</strong> 等待 AI 電源架構升級帶來的訂單或漲價證據，避免僅以題材追高。</li>
+</ul>
+<h3>未上市 SpaceX</h3>
+<ul>
+<li><strong>信心評級：</strong> 觀察中</li>
+<li><strong>產業主題：</strong> 太空經濟 / IPO / 高估值成長股</li>
+<li><strong>主持人核心論述：</strong> 主持人於再平衡討論中以 SpaceX 為例，指出若投資人有新標的要買，例如 SpaceX 上市申購或二級市場交易，才可能需要從既有強勢持股中提款。這不是對 SpaceX 基本面的完整分析，而是用來說明再平衡應有明確目的。</li>
+<li><strong>新聞佐證：</strong> 「SpaceX targets $135 IPO price at valuation of $1.77 trillion」— cnbc.com；「SpaceX is worth less than half of its $1.75 trillion IPO target, Morningstar says」— cnbc.com</li>
+<li><strong>現況評估：</strong> 過熱慎追</li>
+<li><strong>操作參考：</strong> 若參與 IPO 或上市後交易，需嚴格控管部位，避免在估值爭議極高時過度集中。</li>
+</ul>
+<h1>三、延伸推論標的</h1>
+<h3>6442 光聖</h3>
+<ul>
+<li><strong>推論強度：</strong> 強關聯</li>
+<li><strong>產業主題：</strong> 光通訊 / CPO / AI Data Center</li>
+<li><strong>受惠邏輯：</strong><br />
+  （1）觸發條件：主持人明確指出，Marvell 演講強化市場共識，AI data center 從 rack 內到跨 data center 的資料傳輸，光連接是勢在必行的方向。<br />
+  （2）傳導機制：AI 伺服器集群規模擴大將推升高速光模組、光收發與光通訊元件需求，帶動相關廠商出貨量與產品組合升級。<br />
+  （3）公司定位：光聖屬台灣光通訊供應鏈代表廠之一，具備高速光通訊元件與資料中心應用題材，較能直接連結 CPO / 光模組需求。<br />
+  （4）受惠時程：短中期皆具催化。短期來自 COMPUTEX 後資金可能再度回流光通訊；中期則取決於 AI data center 實際採用光互連的速度。</li>
+<li><strong>新聞佐證：</strong> 「Marvell大翻身創25年最強漲勢 市值超車高通、Sandisk」— tw.stock.yahoo.com；「黃仁勳開金口 邁威爾兩天狂飆38% 納入標普500成新催化劑」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> 過熱慎追</li>
+<li><strong>操作參考：</strong> 光通訊題材強，但波動大，宜等待急漲後回測支撐再分批布局。</li>
+</ul>
+<h3>3081 聯亞</h3>
+<ul>
+<li><strong>推論強度：</strong> 強關聯</li>
+<li><strong>產業主題：</strong> 光通訊上游 / 雷射元件 / AI Data Center</li>
+<li><strong>受惠邏輯：</strong><br />
+  （1）觸發條件：主持人指出「光」已成為產業強共識，未來資金有機會再度往光通訊方向移動。<br />
+  （2）傳導機制：高速光通訊需求提升，將推升雷射二極體、磊晶與光元件需求，上游元件廠有機會受惠於規格升級與出貨量增加。<br />
+  （3）公司定位：聯亞屬光通訊上游關鍵元件廠，相較單純模組廠，若產業進入規格升級，上游核心元件具備較高技術槓桿。<br />
+  （4）受惠時程：中長期為主，因 CPO 與大規模光互連滲透需要客戶驗證與資本支出落地。</li>
+<li><strong>新聞佐證：</strong> 「Marvell大翻身創25年最強漲勢 市值超車高通、Sandisk」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> 趨勢發酵中</li>
+<li><strong>操作參考：</strong> 可作為光通訊中長線配置，短線若量價過熱則不宜追高。</li>
+</ul>
+<h3>2308 台達電</h3>
+<ul>
+<li><strong>推論強度：</strong> 強關聯</li>
+<li><strong>產業主題：</strong> AI 電源 / 電源櫃 / Data Center 能源管理</li>
+<li><strong>受惠邏輯：</strong><br />
+  （1）觸發條件：主持人提到功率元件與功率半導體基本面改善，且若電源櫃表現良好、拉貨放大，相關題材可能進一步發酵。<br />
+  （2）傳導機制：AI 伺服器功耗上升，將推升電源供應器、電源櫃、散熱與能源管理系統需求，進一步帶動高瓦數、高效率產品 ASP。<br />
+  （3）公司定位：台達電是全球電源管理龍頭，具備資料中心電源、散熱與能源基礎設施完整產品線，受惠 AI data center 擴建的確定性高於單一零組件廠。<br />
+  （4）受惠時程：中長期為主，因 AI data center 建置是多年資本支出循環；短期則受市場評價與漲幅影響。</li>
+<li><strong>新聞佐證：</strong> 「股價緊逼台積電！台達電強漲近9%挑戰2300元大關 分析師曝『創高關鍵』」— tw.stock.yahoo.com；「A new mega-deal shows how AI has turned utilities into hot property」— economist.com</li>
+<li><strong>現況評估：</strong> 過熱慎追</li>
+<li><strong>操作參考：</strong> 基本面趨勢明確，但短線估值與漲幅偏高，適合回檔分批而非追價。</li>
+</ul>
+<h3>2317 鴻海</h3>
+<ul>
+<li><strong>推論強度：</strong> 強關聯</li>
+<li><strong>產業主題：</strong> AI 伺服器 / Rack Solution / NVIDIA 供應鏈</li>
+<li><strong>受惠邏輯：</strong><br />
+  （1）觸發條件：主持人強調 AI 戰場已從單一 GPU、ASIC，轉向 Total Solution；新聞亦顯示黃仁勳密集拜訪台灣供應鏈。<br />
+  （2）傳導機制：AI server rack、機櫃、整機組裝與資料中心方案需求提升，將直接推升鴻海 AI 伺服器營收與產品組合。<br />
+  （3）公司定位：鴻海具備全球 EMS 規模、AI 伺服器整機與機櫃整合能力，是 NVIDIA 生態中最具規模優勢的台廠之一。<br />
+  （4）受惠時程：短中期皆具備，短期受 COMPUTEX 與黃仁勳加持；中期取決於 GB / Rubin 世代 AI 伺服器出貨節奏。</li>
+<li><strong>新聞佐證：</strong> 「鴻海AI完整供應鏈優勢浮現　高盛目標400元」— tw.stock.yahoo.com；「輝達執行長黃仁勳跑攤 按讚鴻海 VR 機櫃 暗示下半年業績爆發」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> 趨勢發酵中</li>
+<li><strong>操作參考：</strong> 若已有部位可續抱，追價需留意短線籌碼過熱，拉回均線是較佳切入點。</li>
+</ul>
+<h3>2357 華碩</h3>
+<ul>
+<li><strong>推論強度：</strong> 中關聯</li>
+<li><strong>產業主題：</strong> AIPC / NVIDIA Inside / 高階筆電</li>
+<li><strong>受惠邏輯：</strong><br />
+  （1）觸發條件：主持人指出 DGX Spark / N1X 可能是 AIPC 第二次挑戰，若地端模型可滿足多數需求，將帶動新一批 AIPC 銷量。<br />
+  （2）傳導機制：AIPC 若成功，筆電 OEM 可受惠於高階機種 ASP 提升，且主板、電源、散熱與被動元件用料規格提高。<br />
+  （3）公司定位：華碩具備高階筆電、電競與創作者 PC 品牌優勢，較能承接「內建輝達」帶來的高階 AIPC 品牌溢價。<br />
+  （4）受惠時程：短期偏題材，中期需驗證終端銷量是否真正優於上一波 AIPC。</li>
+<li><strong>新聞佐證：</strong> 「『內建輝達』有望在PC市場異軍突起 蠶食x86僅存優勢」— tw.stock.yahoo.com；「COMPUTEX題材發燙 台股注意、處置股大噴發…華碩、廣達等99檔榜上有名」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> 趨勢發酵中</li>
+<li><strong>操作參考：</strong> 可觀察 AIPC 新品實際銷售與通路回饋，短線題材急漲不宜重倉追高。</li>
+</ul>
+<h3>6669 緯穎</h3>
+<ul>
+<li><strong>推論強度：</strong> 中關聯</li>
+<li><strong>產業主題：</strong> AI 伺服器 / Cloud Data Center / Rack Scale</li>
+<li><strong>受惠邏輯：</strong><br />
+  （1）觸發條件：主持人強調 AI Infra 建置從單一硬體走向 Total Solution，data center 與 rack-scale 架構重要性提升。<br />
+  （2）傳導機制：雲端服務商持續擴建 AI data center，將推升高階伺服器、機櫃整合與客製化系統需求。<br />
+  （3）公司定位：緯穎專注 hyperscale data center 與高階伺服器，與一般 PC OEM 相比，業務更直接對接雲端 AI 資本支出。<br />
+  （4）受惠時程：中長期較明確，因 hyperscaler 資本支出與新平台轉換通常跨數季至數年。</li>
+<li><strong>新聞佐證：</strong> 「證交所與緯穎接受彭博專訪，聚焦台灣AI強韌供應鏈與生態圈」— tw.stock.yahoo.com</li>
+<li><strong>現況評估：</strong> 趨勢發酵中</li>
+<li><strong>操作參考：</strong> 適合作為 AI server 核心配置，但需避開財報前後高波動與估值過熱區。</li>
+</ul>
+<h1>四、整體投資策略</h1>
+<p><strong>大盤研判：</strong> 做多。依據是主持人判斷台股雖已高檔急漲，但以目前斜率與資金熱度來看，多頭直接終結機率不高；惟中東油價、美元利率與 AI 股擁擠交易會造成短線震盪。</p>
+<p><strong>核心持股建議（3-5 檔）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>標的</th>
+<th>產業主題</th>
+<th>建議比重</th>
+<th>操作策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2330 台積電</td>
+<td>AI 先進製程 / 權值補漲</td>
+<td>25%</td>
+<td>核心持有，利用 ADR 或大盤回檔分批加碼</td>
+</tr>
+<tr>
+<td>NVDA 輝達</td>
+<td>AI GPU / AI Infra / AIPC</td>
+<td>20%</td>
+<td>趨勢持有，不因短線波動輕易出場</td>
+</tr>
+<tr>
+<td>2454 聯發科</td>
+<td>AIPC / NVIDIA N1X</td>
+<td>10%</td>
+<td>等拉回均線分批，避免急漲追高</td>
+</tr>
+<tr>
+<td>MRVL Marvell</td>
+<td>光通訊 / AI ASIC</td>
+<td>10%</td>
+<td>題材強但過熱，僅適合小比重與回檔承接</td>
+</tr>
+<tr>
+<td>2308 台達電</td>
+<td>AI 電源 / Data Center 能源管理</td>
+<td>15%</td>
+<td>中長期配置，短線高檔須分批進場</td>
+</tr>
+</tbody>
+</table>
+<p>其餘 20% 建議保留現金、短天期債券或低波動 ETF，以應對中東局勢、油價與美債殖利率造成的快速回檔。</p>
+<p><strong>積極型佈局（可承受 20%+ 回撤）：</strong><br />
+可採「AI 光通訊 + AIPC + AI 電源」三軸布局。組合上，以 MRVL、光聖、聯亞作為光通訊高 beta；以聯發科、華碩作為 AIPC 第二波題材；以台達電、ON、ADI 作為功率與電源管理延伸題材。進場邏輯不宜在單日急漲後追價，而是等待熱門股被處置、量縮整理或回測 10 日至月線時分批建立。此策略的核心是承認市場仍在多頭，但尊重高檔波動。</p>
+<p><strong>保守型佈局（下行保護優先）：</strong><br />
+保守投資人應以台積電、輝達、台達電作為核心，搭配部分現金或大盤 ETF，避免過度集中在短線處置股、低流動性光通訊小型股或估值爭議大的 IPO 題材。若已空手，不建議一次性追進高 beta 題材，可用三至五次分批方式，優先買入 AI 產業鏈中獲利能見度最高、資產負債表較強、客戶結構清晰的龍頭。</p>
+<h1>五、關鍵風險提示</h1>
+<h3>最大尾部風險</h3>
+<p>最大尾部風險是中東衝突導致油價進一步飆升，進而推升通膨預期與美債殖利率，使聯準會降息空間被壓縮，甚至市場重新定價升息風險。近期新聞已顯示，美伊局勢升級、原油站上高檔、10 年期美債殖利率逼近 4.5%，美股也因中東危機終結標普九連漲。若此風險擴大，高估值 AI 股、台股電子權值與小型題材股都會承受估值壓縮。應對方式是保留現金、避免滿倉槓桿，並將高 beta 題材股控制在可承受範圍。</p>
+<h3>短期擾動因素</h3>
+<ul>
+<li>中東衝突與油價：新聞顯示紐約與布蘭特期油連三紅，能源成本可能推升通膨。</li>
+<li>美國就業與服務業數據：ADP 私營就業與 ISM 服務業指數偏強，可能影響利率預期。</li>
+<li>AI 股財報高標準：CrowdStrike、Broadcom 財報後股價承壓，顯示市場對 AI 題材容錯率下降。</li>
+<li>台股過熱與處置股增加：COMPUTEX 題材帶動多檔注意、處置股，短線追價風險升高。</li>
+</ul>
+<h3>本次分析盲點</h3>
+<p>本報告主要依據 Podcast 主持人觀點與新聞標題級資訊進行推論，未納入各公司最新完整財報模型、逐季 EPS 預估、客戶訂單拆解與估值敏感度分析。其次，AIPC 與地端 AI 模型能否真正帶動終端換機，仍需實際銷售數據驗證；光通訊與 CPO 題材雖具高度想像空間，但商業化時程可能慢於股價反映。最後，若美股 AI 主線因大型科技資本支出回報率遭質疑而同步修正，台灣 AI 供應鏈即使基本面良好，也難以完全免疫。</p>
+<hr />
+<p><em>本報告基於 Podcast 集數：EP667 | ，分析日期：2026-06-04，由 AI 模型 gpt-5.5 輔助生成。</em><br />
+<em>資訊僅供參考，不構成任何投資建議或邀約。投資有風險，決策請獨立判斷。</em></p></div>
+    </div>
+  </div>
+</div></div>
+<div class="page-footer">本報告基於 EP667 | 🌍，分析日期：2026-06-04 · 由 AI 模型輔助生成 · 僅供參考，不構成投資建議</div>
+<script>
+(function(){
+'use strict';
+
+const RATINGS = ['強烈看多','看多','觀察中','中性','謹慎'];
+const R_COL = {'強烈看多':'#c0392b','看多':'#b8860b','觀察中':'#2980b9','中性':'#7f8c8d','謹慎':'#884400'};
+const R_LV  = {'強烈看多':5,'看多':4,'觀察中':3,'中性':2,'謹慎':1};
+
+function convBar(r){
+  const lv=R_LV[r]||0, col=R_COL[r]||'#ccc';
+  return Array.from({length:5},(_,i)=>
+    `<span class="cb-dot" style="background:${i<lv?col:'#dde2ea'}"></span>`
+  ).join('');
+}
+
+/* ── 1. Stock cards ──────────────────────────────────────────── */
+const report = document.getElementById('report');
+if(report){
+  [...report.querySelectorAll('h3')].forEach(h3=>{
+    const txt=h3.textContent.trim();
+    let code='',name='';
+    const m1=txt.match(/^\[(.+?)\]\s*(.+)/);
+    if(m1){code=m1[1];name=m1[2].trim();}
+    else{const m2=txt.match(/^([A-Za-z0-9][A-Za-z0-9/]*)\s+(.+)/);if(m2){code=m2[1];name=m2[2].trim();}}
+    if(!code||!name) return;
+
+    const sibs=[];
+    let el=h3.nextElementSibling;
+    while(el && !['H1','H2','H3'].includes(el.tagName)){ sibs.push(el); el=el.nextElementSibling; }
+
+    let rating='', theme='';
+    sibs.forEach(s=>{
+      const t=s.textContent;
+      if(!rating && t.includes('信心評級')) for(const r of RATINGS) if(t.includes(r)){rating=r;break;}
+      if(!theme  && t.includes('產業主題')){
+        const tm=t.match(/產業主題[：:]\s*([^；;。]{2,25})/);
+        if(tm) theme=tm[1].replace(/[\[\]【】（）()]/g,'').trim();
+      }
+    });
+
+    const card=document.createElement('details');
+    card.className='stock-card';
+    const rHtml=rating?`<span class="sc-rtxt" style="color:${R_COL[rating]}">${rating}</span><span class="sc-bars">${convBar(rating)}</span>`:'';
+    const tHtml=theme?`<span class="sc-theme">${theme}</span>`:'';
+    card.innerHTML=`<summary><span class="sc-code">[${code}]</span><span class="sc-name">${name}</span>${tHtml}<span class="sc-right">${rHtml}<span class="sc-chev">▼</span></span></summary><div class="sc-body"></div>`;
+    sibs.forEach(s=>card.querySelector('.sc-body').appendChild(s));
+    h3.parentNode.insertBefore(card,h3); h3.remove();
+  });
+}
+
+/* ── 2. Holdings bar chart ───────────────────────────────────── */
+if(report){
+  report.querySelectorAll('table').forEach(tbl=>{
+    const ths=[...tbl.querySelectorAll('thead th')].map(t=>t.textContent.trim());
+    const pi=ths.findIndex(t=>t.includes('比重'));
+    if(pi<0) return;
+    const rows=[...tbl.querySelectorAll('tbody tr')];
+    if(!rows.length) return;
+    const chart=document.createElement('div');
+    chart.className='hc-chart';
+    rows.forEach(tr=>{
+      const c=[...tr.querySelectorAll('td')].map(td=>td.textContent.trim());
+      if(!c[0]) return;
+      const pn=parseFloat(c[pi])||0;
+      chart.innerHTML+=`<div class="hc-row"><div><span class="hc-name">${c[0]}</span><span class="hc-theme">${c[1]||''}</span></div><div class="hc-track"><div class="hc-fill" style="width:${Math.min(pn,100)}%"></div><span class="hc-lbl">${c[pi]}</span></div></div>`;
+    });
+    tbl.parentNode.insertBefore(chart,tbl); tbl.remove();
+  });
+}
+
+/* ── 3. TOC ──────────────────────────────────────────────────── */
+const tocD=document.getElementById('toc-d');
+const tocM=document.getElementById('toc-m');
+if(report && tocD){
+  const heads=[...report.querySelectorAll('h1')];
+  heads.forEach((h,i)=>{
+    h.id='s'+i;
+    const label=h.textContent.replace(/^[零一二三四五六七八九十]+[、.．]\s*/,'').replace(/^[一-龥]+、/,'').trim();
+    [tocD,tocM].forEach(ul=>{
+      if(!ul) return;
+      const li=document.createElement('li');
+      li.innerHTML=`<a href="#s${i}">${label}</a>`;
+      ul.appendChild(li);
+    });
+  });
+
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(()=>{
+      const sy=window.scrollY+130;
+      let active=heads[0];
+      heads.forEach(h=>{ if(h.offsetTop<=sy) active=h; });
+      if(active){
+        document.querySelectorAll('.toc-list a,.toc-mob a').forEach(a=>{
+          a.classList.toggle('tac', a.getAttribute('href')==='#'+active.id);
+        });
+      }
+      ticking=false;
+    });
+  },{passive:true});
+}
+
+/* ── 4. Smooth scroll ────────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(!t) return; e.preventDefault();
+    t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+})();
+</script>
+</body>
+</html>
