@@ -723,7 +723,34 @@ if(report && tocD){
   },{passive:true});
 }
 
-/* ── 4. Smooth scroll ────────────────────────────────────────── */
+/* ── 4. Rating badges ────────────────────────────────────────── */
+const BADGE_MAP={
+  '認同前景':'#b8860b','持續關注':'#1a9e8f','有趣題材':'#2980b9','背景提及':'#7f8c8d','保留觀察':'#884400',
+  '強關聯':'#c0392b','中關聯':'#e67e22','弱關聯':'#95a5a6',
+  '過熱慎追':'#e74c3c','趨勢發酵中':'#27ae60','低度關注尚未爆發':'#5d8aa8','震盪整理等待':'#f39c12',
+  '多頭':'#27ae60','中性偏多':'#2ecc71','中性':'#7f8c8d','中性偏空':'#e67e22','空頭':'#c0392b'
+};
+(function applyBadges(root){
+  const tags=Object.keys(BADGE_MAP).sort((a,b)=>b.length-a.length);
+  const re=new RegExp('\\\\[('+(tags.map(t=>t.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\\\$&')).join('|'))+')'+'\\\\]','g');
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);
+  const nodes=[];let n;while(n=walker.nextNode())nodes.push(n);
+  nodes.forEach(tn=>{
+    if(!re.test(tn.textContent))return;re.lastIndex=0;
+    const frag=document.createDocumentFragment();
+    let last=0,m;
+    while((m=re.exec(tn.textContent))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.textContent.slice(last,m.index)));
+      const sp=document.createElement('span');
+      sp.style.cssText='display:inline-block;padding:2px 9px;border-radius:10px;font-size:.75em;font-weight:700;color:white;background:'+BADGE_MAP[m[1]]+';margin:0 3px;vertical-align:middle';
+      sp.textContent=m[1];frag.appendChild(sp);last=m.index+m[0].length;
+    }
+    if(last<tn.textContent.length)frag.appendChild(document.createTextNode(tn.textContent.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+})(report||document.body);
+
+/* ── 5. Smooth scroll ────────────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
