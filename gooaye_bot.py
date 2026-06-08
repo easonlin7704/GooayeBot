@@ -306,12 +306,13 @@ def generate_final_report(text, search_results, ep_title, client, model):
 
 ### [股票代號] [公司名稱]
 
-- **信心評級：** （依主持人語氣強度評定，[強烈看多] / [看多] / [觀察中] / [中性] / [謹慎]）
+- **主持人態度：** （[認同前景] / [持續關注] / [有趣題材] / [背景提及] / [保留觀察]）
+  評級依據：一句話說明為何給予此評級，需引用主持人的具體語氣或論述重點作為依據。
 - **產業主題：** （例：被動元件漲價 / AI ASIC 供應鏈 / 記憶體景氣循環 / 光通訊 / ...）
 - **主持人核心論述：** 精確還原主持人的主要觀點與邏輯，勿過度濃縮，保留關鍵細節。
 - **新聞佐證：** 從輸入資料 A 中引用相關新聞標題（格式：「標題」— 來源）；若無則寫「本期新聞暫無直接佐證」。
-- **現況評估：** （[過熱慎追] / [趨勢發酵中] / [低度關注尚未爆發] / [震盪整理等待] ）
-- **操作參考：** 一句話說明切入思路（如：等拉回至均線附近分批承接 / 趨勢持股不輕易減碼 / 目前觀察，不宜追高）
+- **現況評估（AI研判）：** 必須以「綜合主持人觀點與近期市場新聞研判，」開頭，結合主持人態度與市場現況給出評估（[過熱慎追] / [趨勢發酵中] / [低度關注尚未爆發] / [震盪整理等待]）。
+- **操作參考（AI推論）：** 必須以「基於以上分析推論，非主持人直接建議，」開頭，再說明切入思路。
 
 # 三、延伸推論標的
 
@@ -320,6 +321,7 @@ def generate_final_report(text, search_results, ep_title, client, model):
 ### [股票代號] [公司名稱]
 
 - **推論強度：** （[強關聯] / [中關聯] / [弱關聯]）
+  推論依據：一句話說明為何判定此關聯強度，說明與主持人論述的具體連結點。
 - **產業主題：** 同上
 - **受惠邏輯：** 請完整說明受惠脈絡，涵蓋以下四個面向：
   （1）觸發條件：主持人點出的哪個趨勢或事件直接帶動此股
@@ -327,8 +329,8 @@ def generate_final_report(text, search_results, ep_title, client, model):
   （3）公司定位：此公司在供應鏈中的位置與競爭優勢，為何是這家而非競爭對手
   （4）受惠時程：預期效益屬短期（1-3個月）或中長期（6個月以上），並說明理由
 - **新聞佐證：** 同上
-- **現況評估：** 同上
-- **操作參考：** 同上
+- **現況評估（AI研判）：** 必須以「綜合主持人論述脈絡與近期市場新聞研判，」開頭，結合受惠邏輯與市場現況給出評估。
+- **操作參考（AI推論）：** 必須以「基於以上推論分析，非主持人直接建議，」開頭，再說明切入思路。
 
 # 四、整體投資策略
 
@@ -436,12 +438,12 @@ def _extract_summary_data(md_content):
                 if code and name:
                     data['stocks'].append({'code': code, 'name': name, 'rating': '', 'theme': ''})
             elif data['stocks']:
-                if '信心評級' in s:
+                if '主持人態度' in s:
                     m = re.search(r'\[(.+?)\]', s)
                     if m:
                         data['stocks'][-1]['rating'] = m.group(1)
                     else:
-                        for r in ('強烈看多', '看多', '觀察中', '中性', '謹慎'):
+                        for r in ('認同前景', '持續關注', '有趣題材', '背景提及', '保留觀察'):
                             if r in s:
                                 data['stocks'][-1]['rating'] = r
                                 break
@@ -622,9 +624,9 @@ JS_BLOCK = """<script>
 (function(){
 'use strict';
 
-const RATINGS = ['強烈看多','看多','觀察中','中性','謹慎'];
-const R_COL = {'強烈看多':'#c0392b','看多':'#b8860b','觀察中':'#2980b9','中性':'#7f8c8d','謹慎':'#884400'};
-const R_LV  = {'強烈看多':5,'看多':4,'觀察中':3,'中性':2,'謹慎':1};
+const RATINGS = ['認同前景','持續關注','有趣題材','背景提及','保留觀察'];
+const R_COL = {'認同前景':'#b8860b','持續關注':'#1a9e8f','有趣題材':'#2980b9','背景提及':'#7f8c8d','保留觀察':'#884400'};
+const R_LV  = {'認同前景':5,'持續關注':4,'有趣題材':3,'背景提及':2,'保留觀察':1};
 
 function convBar(r){
   const lv=R_LV[r]||0, col=R_COL[r]||'#ccc';
@@ -651,7 +653,7 @@ if(report){
     let rating='', theme='';
     sibs.forEach(s=>{
       const t=s.textContent;
-      if(!rating && t.includes('信心評級')) for(const r of RATINGS) if(t.includes(r)){rating=r;break;}
+      if(!rating && t.includes('主持人態度')) for(const r of RATINGS) if(t.includes(r)){rating=r;break;}
       if(!theme  && t.includes('產業主題')){
         const tm=t.match(/產業主題[：:]\s*([^；;。]{2,25})/);
         if(tm) theme=tm[1].replace(/[\[\]【】（）()]/g,'').trim();
@@ -738,8 +740,8 @@ def _build_summary_html(data):
     view = data.get('market_view', '')
     bc = 'badge-bull' if '多' in view else ('badge-bear' if '空' in view else 'badge-neutral')
 
-    R_COL = {'強烈看多':'#c0392b','看多':'#b8860b','觀察中':'#2980b9','中性':'#7f8c8d','謹慎':'#884400'}
-    R_LV  = {'強烈看多':5,'看多':4,'觀察中':3,'中性':2,'謹慎':1}
+    R_COL = {'認同前景':'#b8860b','持續關注':'#1a9e8f','有趣題材':'#2980b9','背景提及':'#7f8c8d','保留觀察':'#884400'}
+    R_LV  = {'認同前景':5,'持續關注':4,'有趣題材':3,'背景提及':2,'保留觀察':1}
     def _dots(rating):
         lv = R_LV.get(rating, 0); col = R_COL.get(rating, '#ccc')
         return ''.join(f'<span style="display:inline-block;width:6px;height:6px;border-radius:1px;'
