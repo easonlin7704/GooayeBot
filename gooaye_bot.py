@@ -940,7 +940,7 @@ def run():
     is_cloud = bool(os.environ.get("OPENAI_API_KEY"))  # cloud = env var mode
     if is_cloud:
         # Cloud: stateless, check by publication recency (within 40h)
-        if not _episode_is_recent(ep["published"], hours=60):
+        if not _episode_is_recent(ep["published"], hours=40):
             print(f"⏭️  此集發布已超過 40 小時，本次排程無新集數，跳過。")
             return
     else:
