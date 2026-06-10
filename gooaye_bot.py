@@ -960,9 +960,11 @@ def run():
     # 2. 檢查是否需要處理
     is_cloud = bool(os.environ.get("OPENAI_API_KEY"))  # cloud = env var mode
     if is_cloud:
-        # Cloud: stateless, check by publication recency (within 40h)
-        if not _episode_is_recent(ep["published"], hours=40):
-            print(f"⏭️  此集發布已超過 40 小時，本次排程無新集數，跳過。")
+        # Cloud: stateless, check by publication recency. Default 40h；
+        # 測試時可用 RECENCY_HOURS 環境變數放寬，不需改動程式碼。
+        recency_hours = int(os.environ.get("RECENCY_HOURS") or 40)
+        if not _episode_is_recent(ep["published"], hours=recency_hours):
+            print(f"⏭️  此集發布已超過 {recency_hours} 小時，本次排程無新集數，跳過。")
             return
     else:
         # Local: check last_episode.json
