@@ -17,6 +17,7 @@ CONFIG_FILE = "config.json"
 STATE_FILE = "last_episode.json"
 REPORT_DIR = "reports"
 PODCAST_RSS = "https://feeds.soundon.fm/podcasts/954689a5-3096-43a4-a80b-7810b219cef3.xml"
+DEFAULT_MODEL = "gpt-5.5"
 # ==========================================
 
 RSS_SOURCES = [
@@ -47,7 +48,7 @@ def load_config():
             "gmail_user":        os.environ.get("GMAIL_USER", "lin04070221@gmail.com"),
             "gmail_app_password":os.environ.get("GMAIL_APP_PASSWORD", ""),
             "recipients":        [r.strip() for r in recipients_raw.split(",")],
-            "model":             os.environ.get("MODEL", "gpt-5.4"),
+            "model":             os.environ.get("MODEL", DEFAULT_MODEL),
         }
     # Local mode: read config.json
     if not os.path.exists(CONFIG_FILE):
@@ -56,7 +57,7 @@ def load_config():
             "gmail_user": "lin04070221@gmail.com",
             "gmail_app_password": "請填入 Gmail 應用程式密碼（16碼，不含空格）",
             "recipients": ["lin04070221@gmail.com"],
-            "model": "gpt-5.4"
+            "model": DEFAULT_MODEL
         }
         with open(CONFIG_FILE, "w", encoding="utf-8") as f:
             json.dump(default, f, indent=2, ensure_ascii=False)
@@ -258,14 +259,15 @@ def filter_news(all_news, queries):
 
 # ─── 報告生成 ───────────────────────────────────────────────────────────────
 
-REPORT_SYSTEM_PROMPT = """你是摩根士丹利亞太區首席投資策略分析師，擁有 20 年台美股投資研究經驗。
-你的任務是根據 Podcast 逐字稿與最新財經新聞，出具一份機構等級的深度投資研報。
+REPORT_SYSTEM_PROMPT = """你是一位專業的投資研究編輯，任務是把「股癌 Podcast」主持人的口語觀點，
+忠實整理成一份結構清楚、好讀的投資研報，並結合近期財經新聞補充背景。
 
-寫作原則：
-- 語氣專業、客觀，避免過度主觀情緒
-- 觀點必須有邏輯依據，結論要明確可執行
-- 嚴格區分「主持人明確說的」與「你的延伸推論」
-- 不要在輸出中出現任何格式說明或佔位符文字"""
+核心原則：
+- 第一要務是「忠實還原主持人實際說的話與語氣」，不得把主持人沒講的觀點寫成他的定論。
+- 凡是主持人沒有明說、而是你依產業邏輯或市場新聞推導的內容，必須明確標示為 AI 研判／AI 推論，與主持人原話清楚切割。
+- 主持人風格偏口語、觀察式，請保留這種語感，不要硬套成傳統賣方分析師的強烈定論。
+- 觀點要有依據，但誠實面對不確定性，不誇大、不編造。
+- 不要在輸出中出現任何格式說明、欄位名稱以外的提示文字或佔位符。"""
 
 def generate_final_report(text, search_results, ep_title, client, model):
     print(f"✍️  正在使用 {model} 撰寫分析研報...")
@@ -292,7 +294,7 @@ def generate_final_report(text, search_results, ep_title, client, model):
 
 請依以下面向逐點整理主持人對當前市場的判斷：
 
-**多空研判：** （多頭 / 中性偏多 / 中性 / 中性偏空 / 空頭）說明判斷依據。
+**多空研判：** 從 [多頭] / [中性偏多] / [中性] / [中性偏空] / [空頭] 擇一，並以方括號標示選定項，後接一句判斷依據。
 
 **資金輪動方向：** 資金從哪流向哪，哪些族群在發動，哪些在退潮。
 
@@ -302,16 +304,23 @@ def generate_final_report(text, search_results, ep_title, client, model):
 
 # 二、主持人點名個股
 
-僅列出主持人「親口明確點名」的個股，每檔格式如下（不可遺漏，不可新增未點名者）：
+僅列出主持人「親口明確點名」的個股，每檔格式如下（不可遺漏，不可新增未點名者）。
+
+「主持人態度」依下列判準擇一，並務必以方括號標示：
+- [認同前景]：主持人明確表達看好、認同其後續發展或營運方向。
+- [持續關注]：主持人未直接看好，但表示會持續追蹤、認為值得留意。
+- [有趣題材]：主持人視為有話題性或想像空間，偏中性探討而非表態看好。
+- [背景提及]：僅在說明產業或他股時順帶提到，著墨不深、未明確表態。
+- [保留觀察]：主持人語帶保留、點出疑慮，或認為需再觀察、不宜躁進。
 
 ### [股票代號] [公司名稱]
 
-- **主持人態度：** （[認同前景] / [持續關注] / [有趣題材] / [背景提及] / [保留觀察]）
+- **主持人態度：** 從上列五項擇一，以方括號標示（例：[認同前景]）。
   評級依據：一句話說明為何給予此評級，需引用主持人的具體語氣或論述重點作為依據。
 - **產業主題：** （例：被動元件漲價 / AI ASIC 供應鏈 / 記憶體景氣循環 / 光通訊 / ...）
 - **主持人核心論述：** 精確還原主持人的主要觀點與邏輯，勿過度濃縮，保留關鍵細節。
-- **新聞佐證：** 從輸入資料 A 中引用相關新聞標題（格式：「標題」— 來源）；若無則寫「本期新聞暫無直接佐證」。
-- **現況評估（AI研判）：** 必須以「綜合主持人觀點與近期市場新聞研判，」開頭，結合主持人態度與市場現況給出評估（[過熱慎追] / [趨勢發酵中] / [低度關注尚未爆發] / [震盪整理等待]）。
+- **新聞佐證：** 從輸入資料 A 中「逐字複製」一則相關新聞的原始標題，不可改寫、不可自行編造（格式：「標題」— 來源）；若無相符新聞，一律寫「本期新聞暫無直接佐證」。
+- **現況評估（AI研判）：** 必須以「綜合主持人觀點與近期市場新聞研判，」開頭，結合主持人態度與市場現況給出評估，並以方括號標示其一：[過熱慎追] / [趨勢發酵中] / [低度關注尚未爆發] / [震盪整理等待]。
 - **操作參考（AI推論）：** 必須以「基於以上分析推論，非主持人直接建議，」開頭，再說明切入思路。
 
 # 三、延伸推論標的
@@ -334,7 +343,7 @@ def generate_final_report(text, search_results, ep_title, client, model):
 
 # 四、整體投資策略
 
-**大盤研判：** （明確標示：強烈做多 / 做多 / 中性 / 偏謹慎 / 防禦）加一句依據說明。
+**大盤研判：** 從 [強烈做多] / [做多] / [中性] / [偏謹慎] / [防禦] 擇一，並以方括號標示選定項，後接一句依據說明。
 
 **核心持股建議（3-5 檔）：**
 
@@ -453,8 +462,8 @@ def _extract_summary_data(md_content):
         if '整體投資策略' in section:
             if '大盤研判' in s and not data['market_view']:
                 clean_s = re.sub(r'\*+', '', s)
-                m = re.search(r'大盤研判[：:]\s*[（(]?([^\s）)，,。\n]{1,8})', clean_s)
-                if m: data['market_view'] = m.group(1).strip('（(）) ')
+                m = re.search(r'大盤研判[：:]\s*[\[（(]?([^\s）)\]，,。\n]{1,8})', clean_s)
+                if m: data['market_view'] = m.group(1).strip('（(）)[] ')
             if s.startswith('|') and s.endswith('|'):
                 cells = [c.strip() for c in s.strip('|').split('|')]
                 if (not all(set(c) <= set('-: ') for c in cells)
@@ -618,15 +627,27 @@ body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sa
 }
 """
 
+# ─── 評級色彩單一來源（同時供 JS badge 與摘要卡使用，改評級只改這裡）──────────
+RATING_COLORS = {'認同前景':'#b8860b','持續關注':'#1a9e8f','有趣題材':'#2980b9','背景提及':'#7f8c8d','保留觀察':'#884400'}
+RATING_LEVELS = {'認同前景':5,'持續關注':4,'有趣題材':3,'背景提及':2,'保留觀察':1}
+# 其他標籤色彩（關聯強度 / 現況評估 / 多空與大盤研判）
+EXTRA_BADGE_COLORS = {
+    '強關聯':'#c0392b','中關聯':'#e67e22','弱關聯':'#95a5a6',
+    '過熱慎追':'#e74c3c','趨勢發酵中':'#27ae60','低度關注尚未爆發':'#5d8aa8','震盪整理等待':'#f39c12',
+    '多頭':'#27ae60','中性偏多':'#2ecc71','中性':'#7f8c8d','中性偏空':'#e67e22','空頭':'#c0392b',
+    '強烈做多':'#1e8449','做多':'#27ae60','偏謹慎':'#e67e22','防禦':'#c0392b',
+}
+BADGE_COLORS = {**RATING_COLORS, **EXTRA_BADGE_COLORS}
+
 # ─── JavaScript 互動功能 ──────────────────────────────────────────────────────
 
 JS_BLOCK = """<script>
 (function(){
 'use strict';
 
-const RATINGS = ['認同前景','持續關注','有趣題材','背景提及','保留觀察'];
-const R_COL = {'認同前景':'#b8860b','持續關注':'#1a9e8f','有趣題材':'#2980b9','背景提及':'#7f8c8d','保留觀察':'#884400'};
-const R_LV  = {'認同前景':5,'持續關注':4,'有趣題材':3,'背景提及':2,'保留觀察':1};
+const R_COL = __R_COL__;
+const R_LV  = __R_LV__;
+const RATINGS = Object.keys(R_COL);
 
 function convBar(r){
   const lv=R_LV[r]||0, col=R_COL[r]||'#ccc';
@@ -724,12 +745,7 @@ if(report && tocD){
 }
 
 /* ── 4. Rating badges ────────────────────────────────────────── */
-const BADGE_MAP={
-  '認同前景':'#b8860b','持續關注':'#1a9e8f','有趣題材':'#2980b9','背景提及':'#7f8c8d','保留觀察':'#884400',
-  '強關聯':'#c0392b','中關聯':'#e67e22','弱關聯':'#95a5a6',
-  '過熱慎追':'#e74c3c','趨勢發酵中':'#27ae60','低度關注尚未爆發':'#5d8aa8','震盪整理等待':'#f39c12',
-  '多頭':'#27ae60','中性偏多':'#2ecc71','中性':'#7f8c8d','中性偏空':'#e67e22','空頭':'#c0392b'
-};
+const BADGE_MAP = __BADGE_MAP__;
 (function applyBadges(root){
   const tags=Object.keys(BADGE_MAP).sort((a,b)=>b.length-a.length);
   const re=new RegExp('\\\\[('+(tags.map(t=>t.replace(/[.*+?^${}()|[\\]\\\\]/g,'\\\\$&')).join('|'))+')'+'\\\\]','g');
@@ -762,13 +778,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 })();
 </script>"""
 
+JS_BLOCK = (JS_BLOCK
+    .replace('__R_COL__', json.dumps(RATING_COLORS, ensure_ascii=False))
+    .replace('__R_LV__', json.dumps(RATING_LEVELS, ensure_ascii=False))
+    .replace('__BADGE_MAP__', json.dumps(BADGE_COLORS, ensure_ascii=False)))
+
 def _build_summary_html(data):
     import re as _re
     view = data.get('market_view', '')
     bc = 'badge-bull' if '多' in view else ('badge-bear' if '空' in view else 'badge-neutral')
 
-    R_COL = {'認同前景':'#b8860b','持續關注':'#1a9e8f','有趣題材':'#2980b9','背景提及':'#7f8c8d','保留觀察':'#884400'}
-    R_LV  = {'認同前景':5,'持續關注':4,'有趣題材':3,'背景提及':2,'保留觀察':1}
+    R_COL = RATING_COLORS
+    R_LV  = RATING_LEVELS
     def _dots(rating):
         lv = R_LV.get(rating, 0); col = R_COL.get(rating, '#ccc')
         return ''.join(f'<span style="display:inline-block;width:6px;height:6px;border-radius:1px;'
@@ -921,7 +942,7 @@ def run():
 
     config = load_config()
     client = OpenAI(api_key=config["openai_api_key"])
-    model = config.get("model", "gpt-4o")
+    model = config.get("model", DEFAULT_MODEL)
 
     print("=" * 50)
     print("🚀 股癌分析機器人（全自動版 v2.0）")
