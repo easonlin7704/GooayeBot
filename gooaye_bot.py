@@ -596,6 +596,16 @@ body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sa
 .sc-body li:last-child { border-bottom: none; }
 .sc-body li strong { color: #0d2137; min-width: 88px; flex-shrink: 0; }
 
+/* ── Stock technicals (close + MA sparkline) ─────────────────── */
+.sc-tech  { margin: 0 0 14px; padding: 10px 12px; background: #fafbfd; border: 1px solid #e8eaf0; border-radius: 6px; }
+.sct-row  { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: .86em; margin-bottom: 6px; }
+.sct-px   { font-weight: 700; color: #0d2137; }
+.sct-tv   { color: #5a6a7a; }
+.sct-sig  { margin-left: auto; color: #fff; font-weight: 700; font-size: .78em; padding: 2px 10px; border-radius: 10px; }
+.sct-svg  { width: 100%; height: 70px; display: block; background: #fff; border: 1px solid #eef0f5; border-radius: 4px; }
+.sct-ma   { display: flex; flex-wrap: wrap; gap: 14px; font-size: .78em; font-weight: 700; margin-top: 5px; }
+.sct-na   { color: #999; font-size: .85em; text-align: center; }
+
 /* ── Holdings bar chart (report body) ───────────────────────── */
 .hc-chart { margin: 12px 0 20px; }
 .hc-row   { display: grid; grid-template-columns: 160px 1fr; gap: 10px; align-items: center; padding: 5px 0; border-bottom: 1px solid #f0f3f8; }
@@ -638,6 +648,7 @@ EXTRA_BADGE_COLORS = {
     '強關聯':'#c0392b','中關聯':'#e67e22','弱關聯':'#95a5a6',
     '過熱慎追':'#e74c3c','趨勢發酵中':'#27ae60','低度關注尚未爆發':'#5d8aa8','震盪整理等待':'#f39c12',
     '強牛':'#1e8449','牛中帶熊':'#27ae60','牛熊拉鋸':'#7f8c8d','熊中帶牛':'#e67e22','強熊':'#c0392b',
+    '多頭排列':'#1e8449','空頭排列':'#c0392b','均線糾結':'#7f8c8d',
 }
 BADGE_COLORS = {**RATING_COLORS, **EXTRA_BADGE_COLORS}
 
@@ -688,7 +699,10 @@ if(report){
     const rHtml=rating?`<span class="sc-rtxt" style="color:${R_COL[rating]}">${rating}</span><span class="sc-bars">${convBar(rating)}</span>`:'';
     const tHtml=theme?`<span class="sc-theme">${theme}</span>`:'';
     card.innerHTML=`<summary><span class="sc-code">[${code}]</span><span class="sc-name">${name}</span>${tHtml}<span class="sc-right">${rHtml}<span class="sc-chev">▼</span></span></summary><div class="sc-body"></div>`;
-    sibs.forEach(s=>card.querySelector('.sc-body').appendChild(s));
+    const body=card.querySelector('.sc-body');
+    const tech=(window.__TECH__||{})[code.toUpperCase()];
+    if(tech){ const w=document.createElement('div'); w.innerHTML=tech; while(w.firstChild) body.appendChild(w.firstChild); }
+    sibs.forEach(s=>body.appendChild(s));
     h3.parentNode.insertBefore(card,h3); h3.remove();
   });
 }
@@ -834,11 +848,143 @@ def _build_summary_html(data):
   </div>
 </div>"""
 
+# ─── 個股技術分析（yfinance：收盤 / 日均成交值 / 5,20,120MA / 排列訊號）────────
+TECH_WINDOW = 60          # 走勢圖顯示最近交易日數
+TECH_HISTORY = "10mo"     # 抓取期間，確保 120MA 在可視範圍內完整
+
+def _stock_codes_from_md(md_content):
+    """從報告 markdown 的第二、三部分標題取出個股代號（去重、保序）。"""
+    import re
+    codes, seen, section = [], set(), ''
+    for line in md_content.split('\n'):
+        s = line.strip()
+        if re.match(r'^#{1,2}\s+[^#]', s):
+            section = re.sub(r'^#+\s+', '', s).strip()
+            continue
+        if ('點名個股' in section or '延伸推論' in section) and s.startswith('### '):
+            txt = s[4:].strip()
+            m = re.match(r'\[(.+?)\]', txt) or re.match(r'([A-Za-z0-9][A-Za-z0-9/]*)\s+\S', txt)
+            if m:
+                code = m.group(1).strip().upper()
+                if code and code not in seen:
+                    seen.add(code); codes.append(code)
+    return codes
+
+def _fetch_stock_technical(code):
+    """回傳技術指標 dict 或 None。台股試 .TW→.TWO，美股直接用代號。"""
+    try:
+        import yfinance as yf
+    except Exception:
+        return None
+    code = code.strip().upper()
+    if code.isdigit():
+        candidates = [(code + '.TW', 'TW'), (code + '.TWO', 'TW')]
+    else:
+        candidates = [(code.replace('/', '-'), 'US')]
+    for tkr, market in candidates:
+        try:
+            df = yf.Ticker(tkr).history(period=TECH_HISTORY, interval='1d', auto_adjust=False)
+        except Exception:
+            continue
+        if df is None or df.empty or len(df) < 25:
+            continue
+        close = df['Close'].dropna()
+        if len(close) < 25:
+            continue
+        vol = df['Volume'].reindex(close.index).fillna(0)
+        ma5, ma20, ma120 = (close.rolling(n).mean() for n in (5, 20, 120))
+        turnover = float((close * vol).tail(20).mean())
+        last = float(close.iloc[-1])
+        def _tail(x):
+            v = x.iloc[-1]
+            return None if v != v else float(v)   # NaN → None
+        v5, v20, v120 = _tail(ma5), _tail(ma20), _tail(ma120)
+        if None not in (v5, v20, v120) and last > v5 > v20 > v120:
+            signal = '多頭排列'
+        elif None not in (v5, v20, v120) and last < v5 < v20 < v120:
+            signal = '空頭排列'
+        else:
+            signal = '均線糾結'
+        sl = slice(-TECH_WINDOW, None)
+        def _ser(x):
+            return [None if (v != v) else round(float(v), 3) for v in x.iloc[sl].tolist()]
+        return {
+            'market': market, 'close': last, 'turnover': turnover,
+            'ma5': v5, 'ma20': v20, 'ma120': v120, 'signal': signal,
+            'series': {'close': _ser(close), '5': _ser(ma5), '20': _ser(ma20), '120': _ser(ma120)},
+        }
+    return None
+
+def _tech_svg(series, w=320, h=70, pad=6):
+    """收盤線（粗）＋ 5/20/120MA（細）的內嵌 SVG 走勢圖。"""
+    styles = {'120': ('#9aa7b4', 1), '20': ('#2980b9', 1), '5': ('#c89b32', 1), 'close': ('#0d2137', 1.8)}
+    vals = [v for ser in series.values() for v in ser if v is not None]
+    if not vals:
+        return ''
+    lo, hi = min(vals), max(vals)
+    rng = (hi - lo) or 1.0
+    n = max(len(series['close']), 2)
+    def _points(ser):
+        out = []
+        for i, v in enumerate(ser):
+            if v is None:
+                continue
+            x = pad + i * (w - 2 * pad) / (n - 1)
+            y = pad + (1 - (v - lo) / rng) * (h - 2 * pad)
+            out.append(f"{x:.1f},{y:.1f}")
+        return ' '.join(out)
+    lines = ''
+    for key in ('120', '20', '5', 'close'):     # 收盤最後畫，疊在最上層
+        col, sw = styles[key]
+        p = _points(series.get(key, []))
+        if p:
+            lines += (f'<polyline points="{p}" fill="none" stroke="{col}" '
+                      f'stroke-width="{sw}" stroke-linejoin="round" stroke-linecap="round"/>')
+    return (f'<svg class="sct-svg" viewBox="0 0 {w} {h}" preserveAspectRatio="none" '
+            f'xmlns="http://www.w3.org/2000/svg">{lines}</svg>')
+
+def _tech_block_html(d):
+    sig_col = BADGE_COLORS.get(d['signal'], '#7f8c8d')
+    if d['market'] == 'TW':
+        px = f"{d['close']:.1f}"; tv = f"{d['turnover'] / 1e8:.0f} 億元"
+        fmt = lambda v: '—' if v is None else f"{v:.1f}"
+    else:
+        px = f"{d['close']:.2f}"; tv = f"{d['turnover'] / 1e8:.1f} 億美元"
+        fmt = lambda v: '—' if v is None else f"{v:.2f}"
+    return (
+        '<div class="sc-tech">'
+        f'<div class="sct-row"><span class="sct-px">收盤 {px}</span>'
+        f'<span class="sct-tv">日均成交值 {tv}</span>'
+        f'<span class="sct-sig" style="background:{sig_col}">{d["signal"]}</span></div>'
+        f'{_tech_svg(d["series"])}'
+        f'<div class="sct-ma"><span style="color:#c89b32">5MA {fmt(d["ma5"])}</span>'
+        f'<span style="color:#2980b9">20MA {fmt(d["ma20"])}</span>'
+        f'<span style="color:#7f8c8d">120MA {fmt(d["ma120"])}</span></div>'
+        '</div>'
+    )
+
+def build_tech_map(codes):
+    """{code: 技術區塊 HTML}；抓不到的個股顯示『行情資料暫無』。"""
+    tmap = {}
+    for i, code in enumerate(codes):
+        if i:
+            time.sleep(0.4)   # 禮貌性間隔，降低 Yahoo 限流機率
+        try:
+            d = _fetch_stock_technical(code)
+        except Exception:
+            d = None
+        tmap[code] = _tech_block_html(d) if d else '<div class="sc-tech sct-na">行情資料暫無</div>'
+    if tmap:
+        print(f"📊 技術指標：{sum('sct-na' not in v for v in tmap.values())}/{len(tmap)} 檔成功")
+    return tmap
+
+
 def convert_to_html(md_content, ep_title, date_str, output_path):
     try:
         import markdown as md_lib
         cleaned = _clean_text(md_content)
         summary_html = _build_summary_html(_extract_summary_data(cleaned))
+        tech_json = json.dumps(build_tech_map(_stock_codes_from_md(cleaned)), ensure_ascii=False)
         body_html = md_lib.Markdown(extensions=['tables', 'nl2br']).convert(cleaned)
         ep_short = ep_title if len(ep_title) < 40 else ep_title[:37] + '...'
         html = f"""<!DOCTYPE html>
@@ -873,6 +1019,7 @@ def convert_to_html(md_content, ep_title, date_str, output_path):
   </div>
 </div></div>
 <div class="page-footer">本報告基於 {ep_title}，分析日期：{date_str} · 由 AI 模型輔助生成 · 僅供參考，不構成投資建議</div>
+<script>window.__TECH__ = {tech_json};</script>
 {JS_BLOCK}
 </body>
 </html>"""
