@@ -1039,7 +1039,7 @@ def push_html_to_pages(html_path):
         for cmd in [
             ['git', 'config', 'user.name', 'github-actions[bot]'],
             ['git', 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'],
-            ['git', 'add', html_path],
+            ['git', 'add', '-f', html_path, STATE_FILE],   # 報告＋集數去重狀態一起 commit（-f 繞過 .gitignore）
             ['git', 'commit', '-m', f'report: add {os.path.basename(html_path)}'],
             ['git', 'push'],
         ]:
@@ -1111,7 +1111,11 @@ def run():
     # 2. 檢查是否需要處理
     is_cloud = bool(os.environ.get("OPENAI_API_KEY"))  # cloud = env var mode
     if is_cloud:
-        # Cloud: stateless, check by publication recency. Default 40h；
+        # Cloud: 集數 ID 去重（雙保險，避免任何重複觸發跑兩次）＋ 發布時效檢查。
+        last = load_last_episode()
+        if last.get("id") == ep["id"]:
+            print(f"✅ 此集（{ep['title']}）已於 {last.get('processed_at', '先前')} 處理過，跳過（集數 ID 去重）。")
+            return
         # 測試時可用 RECENCY_HOURS 環境變數放寬，不需改動程式碼。
         recency_hours = int(os.environ.get("RECENCY_HOURS") or 40)
         if not _episode_is_recent(ep["published"], hours=recency_hours):
@@ -1163,7 +1167,10 @@ def run():
     html_path = os.path.join(DOCS_DIR if is_cloud else REPORT_DIR, html_filename)
     html_ok = convert_to_html(final_output, ep['title'], date_str, html_path)
 
-    # 9. 推送到 GitHub Pages（雲端）並寄 Email
+    # 9. 記錄已處理（集數 ID 去重）— 推送前寫入，與報告一起 commit 持久化
+    save_last_episode(ep)
+
+    # 10. 推送到 GitHub Pages（雲端，連同 last_episode.json）並寄 Email
     report_url = None
     if is_cloud and html_ok:
         if push_html_to_pages(html_path):
@@ -1194,9 +1201,6 @@ def run():
         send_email(subject, body_html, config)
     else:
         print("⚠️  HTML 生成失敗，跳過寄送。")
-
-    # 10. 記錄已處理（防止重複執行）
-    save_last_episode(ep)
 
     # 11. 清理暫存音檔
     cleanup()
