@@ -1117,16 +1117,19 @@ def run():
     # 2. 檢查是否需要處理
     is_cloud = bool(os.environ.get("OPENAI_API_KEY"))  # cloud = env var mode
     if is_cloud:
-        # Cloud: 集數 ID 去重（雙保險，避免任何重複觸發跑兩次）＋ 發布時效檢查。
-        last = load_last_episode()
-        if last.get("id") == ep["id"]:
-            print(f"✅ 此集（{ep['title']}）已於 {last.get('processed_at', '先前')} 處理過，跳過（集數 ID 去重）。")
-            return
-        # 測試時可用 RECENCY_HOURS 環境變數放寬，不需改動程式碼。
-        recency_hours = int(os.environ.get("RECENCY_HOURS") or 40)
-        if not _episode_is_recent(ep["published"], hours=recency_hours):
-            print(f"⏭️  此集發布已超過 {recency_hours} 小時，本次排程無新集數，跳過。")
-            return
+        if os.environ.get("FORCE_RUN") == "1":
+            print("⚙️ FORCE_RUN 啟用：略過集數去重與發布時效檢查（測試用）。")
+        else:
+            # Cloud: 集數 ID 去重（雙保險，避免任何重複觸發跑兩次）＋ 發布時效檢查。
+            last = load_last_episode()
+            if last.get("id") == ep["id"]:
+                print(f"✅ 此集（{ep['title']}）已於 {last.get('processed_at', '先前')} 處理過，跳過（集數 ID 去重）。")
+                return
+            # 測試時可用 RECENCY_HOURS 環境變數放寬，不需改動程式碼。
+            recency_hours = int(os.environ.get("RECENCY_HOURS") or 40)
+            if not _episode_is_recent(ep["published"], hours=recency_hours):
+                print(f"⏭️  此集發布已超過 {recency_hours} 小時，本次排程無新集數，跳過。")
+                return
     else:
         # Local: check last_episode.json
         last = load_last_episode()

@@ -38,5 +38,6 @@ jobs:
           RECIPIENTS:         ${{ secrets.RECIPIENTS }}
           MODEL:              gpt-5.6-sol
           RECENCY_HOURS:      ${{ vars.RECENCY_HOURS }}
+          FORCE_RUN:          ${{ vars.FORCE_RUN }}
           PYTHONUTF8:         "1"
         run: python gooaye_bot.py
