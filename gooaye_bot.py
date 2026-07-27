@@ -15,6 +15,7 @@ from openai import OpenAI
 # ==========================================
 CONFIG_FILE = "config.json"
 STATE_FILE = "last_episode.json"
+HISTORY_FILE = "history.json"        # 跨集脈絡累積（每集精簡摘要+脈絡），供近期趨勢回顧
 REPORT_DIR = "reports"
 PODCAST_RSS = "https://feeds.soundon.fm/podcasts/954689a5-3096-43a4-a80b-7810b219cef3.xml"
 DEFAULT_MODEL = "gpt-5.6-sol"
@@ -374,6 +375,11 @@ def generate_final_report(text, search_results, ep_title, client, model):
 ---
 *本報告基於 Podcast 集數：{ep_title}，分析日期：{today}，由 AI 模型 {model} 輔助生成。*
 *資訊僅供參考，不構成任何投資建議或邀約。投資有風險，決策請獨立判斷。*
+
+（以下區塊為系統跨集分析用，不會顯示給讀者，但務必輸出）
+<<<CONTEXT_DIGEST>>>
+在此以 150–250 字，純敘述本集主持人的脈絡（供未來與其他集數比對）：整體市場研判與理由、1–2 個最重要產業主軸及為何重要、關鍵點名個股他「實際的論述重點」（描述論述本身，而非評級標籤）。
+<<<END_CONTEXT_DIGEST>>>
 """
 
     try:
@@ -387,6 +393,127 @@ def generate_final_report(text, search_results, ep_title, client, model):
         return response.choices[0].message.content
     except Exception as e:
         return f"報告生成失敗: {e}"
+
+# ─── 跨集趨勢回顧（history + 近三集研判）──────────────────────────────────────
+import re as _re_hist
+
+_DIGEST_RE = _re_hist.compile(r'<<<CONTEXT_DIGEST>>>(.*?)<<<END_CONTEXT_DIGEST>>>', _re_hist.S)
+
+def _split_context_digest(report_md):
+    """從報告尾端抽出 <<<CONTEXT_DIGEST>>> 區塊，回傳 (乾淨報告, 脈絡摘要)。"""
+    m = _DIGEST_RE.search(report_md)
+    if m:
+        digest = m.group(1).strip()
+        clean = _DIGEST_RE.sub('', report_md).strip()
+        clean = _re_hist.sub(r'<<<[^>]*CONTEXT_DIGEST[^>]*>>>', '', clean).strip()
+        return clean, digest
+    return report_md.strip(), ""
+
+def _fallback_digest(report_md):
+    """GPT 未輸出脈絡摘要時，取「市場環境與主持人核心觀點」段落文字備援。"""
+    grab, buf = False, []
+    for line in report_md.split('\n'):
+        s = line.strip()
+        if s.startswith('# '):
+            grab = ('市場環境' in s or '核心觀點' in s)
+            continue
+        if grab and s:
+            buf.append(_re_hist.sub(r'[*#>`\-]', '', s).strip())
+        if len(''.join(buf)) > 380:
+            break
+    return ''.join(buf)[:380]
+
+def _load_history():
+    if os.path.exists(HISTORY_FILE):
+        try:
+            with open(HISTORY_FILE, encoding="utf-8") as f:
+                data = json.load(f)
+            return data if isinstance(data, list) else []
+        except Exception:
+            return []
+    return []
+
+def _append_history(record, keep=10):
+    hist = _load_history()
+    hist.append(record)
+    hist = hist[-keep:]
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(hist, f, ensure_ascii=False, indent=2)
+    return hist
+
+def _build_trend_facts(records):
+    """從時間排序（舊→新）的集數記錄算出客觀事實：重複主軸、態度變化、多空基調。"""
+    from collections import OrderedDict, defaultdict
+    views = " → ".join((r.get("market_view") or "—") for r in records)
+    seq, names = OrderedDict(), {}
+    for r in records:
+        for s in r.get("stocks", []):
+            code = (s.get("code") or "").strip()
+            if not code:
+                continue
+            names[code] = s.get("name") or code
+            seq.setdefault(code, []).append(s.get("rating") or "—")
+    arrows = [f"{names[c]}({c})：{'→'.join(rs)}" for c, rs in seq.items() if len(rs) >= 2]
+    theme_count = defaultdict(int)
+    for r in records:
+        seen = set()
+        for s in r.get("stocks", []):
+            t = (s.get("theme") or "").strip()
+            if t and t not in seen:
+                theme_count[t] += 1
+                seen.add(t)
+    themes = [f"{t}({c}/{len(records)})" for t, c in sorted(theme_count.items(), key=lambda x: -x[1]) if c >= 2]
+    return {"views": views, "arrows": arrows, "themes": themes}
+
+def generate_trend_review(records, facts, client, model):
+    """讀近幾集脈絡摘要，自由研判趨勢（AI 主體判斷，事實僅供參考）。"""
+    blocks = []
+    for r in records:
+        stocks = "、".join(f"{s.get('name')}({s.get('rating')})"
+                           for s in r.get("stocks", []) if s.get("code"))
+        blocks.append(f"【{r.get('episode')}｜{r.get('date')}】大盤：{r.get('market_view') or '—'}\n"
+                      f"點名：{stocks or '—'}\n脈絡：{r.get('digest') or '（無）'}")
+    ctx = "\n\n".join(blocks)
+    facts_txt = (f"重複主軸：{'；'.join(facts['themes']) or '—'}\n"
+                 f"態度變化：{'；'.join(facts['arrows']) or '—'}\n"
+                 f"多空基調：{facts['views']}")
+    n = len(records)
+    prompt = f"""你正在檢視「股癌 Podcast」最近 {n} 集的脈絡摘要，要寫一段「近期趨勢回顧」。
+
+各集資料（含主持人脈絡摘要）：
+{ctx}
+
+系統整理的客觀事實（僅供參考，不必逐條照抄）：
+{facts_txt}
+
+請自由研判這段期間的趨勢，用一段連貫的繁體中文（150–250 字）說明：
+- 哪些題材或個股在「持續發酵」（跨集加溫），哪些在「轉向或降溫」
+- 有沒有新冒出、或悄悄淡出的主軸
+- 主持人整體重心的位移
+
+原則：
+- 以各集「脈絡摘要」為主要判斷依據；你可以認同、也可以質疑表面的評級標籤變化（例如標籤升但其實只是順口帶過）。
+- 誠實，不得編造超出上述資料的內容；資料不足就說明侷限。
+- 以「綜合近 {n} 集研判，」開頭，明確這是 AI 的跨集研判。
+只輸出這段敘述本身。"""
+    try:
+        resp = client.chat.completions.create(model=model, messages=[{"role": "user", "content": prompt}])
+        return resp.choices[0].message.content.strip()
+    except Exception as e:
+        return f"（趨勢研判產生失敗：{e}）"
+
+def _build_trend_section(records, facts, narrative):
+    """組出報告最前面的「近期趨勢回顧」Markdown 區塊。"""
+    label = (f"{records[0].get('episode')}–{records[-1].get('episode')}"
+             if len(records) > 1 else records[-1].get('episode'))
+    themes = "、".join(facts["themes"]) or "—"
+    arrows = "；".join(facts["arrows"]) or "—"
+    return (f"# 近期趨勢回顧（近 {len(records)} 集：{label}）\n\n"
+            f"**近期客觀事實**\n"
+            f"- 重複主軸：{themes}\n"
+            f"- 態度變化：{arrows}\n"
+            f"- 多空基調：{facts['views']}\n\n"
+            f"**趨勢研判（AI）**\n\n{narrative}\n")
 
 # ─── HTML 報告生成 ───────────────────────────────────────────────────────────
 
@@ -1045,7 +1172,7 @@ def push_html_to_pages(html_path):
         for cmd in [
             ['git', 'config', 'user.name', 'github-actions[bot]'],
             ['git', 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'],
-            ['git', 'add', '-f', html_path, STATE_FILE],   # 報告＋集數去重狀態一起 commit（-f 繞過 .gitignore）
+            ['git', 'add', '-f', html_path, STATE_FILE, HISTORY_FILE],   # 報告＋去重狀態＋跨集脈絡一起 commit（-f 繞過 .gitignore）
             ['git', 'commit', '-m', f'report: add {os.path.basename(html_path)}'],
             ['git', 'push'],
         ]:
@@ -1160,8 +1287,30 @@ def run():
 
     # 6. 生成分析報告
     report_content = generate_final_report(transcript, market_info, ep["title"], client, model)
-
+    report_content, digest = _split_context_digest(report_content)
     final_output = report_content
+
+    # 6b. 本集精簡記錄（重用摘要解析 + 脈絡摘要），供跨集追蹤
+    date_str = time.strftime('%Y-%m-%d')
+    cur_data = _extract_summary_data(_clean_text(report_content))
+    cur_record = {
+        "date": date_str, "episode": ep["title"],
+        "market_view": cur_data.get("market_view", ""),
+        "stocks": cur_data.get("stocks", []),
+        "signals": cur_data.get("signals", []),
+        "digest": digest or _fallback_digest(report_content),
+    }
+
+    # 6c. 近期趨勢回顧（讀過去最多 3 集脈絡；事實由程式算、研判交給 AI）
+    past = _load_history()[-3:]
+    if past:
+        window = past + [cur_record]
+        facts = _build_trend_facts(window)
+        narrative = generate_trend_review(window, facts, client, model)
+        final_output = _build_trend_section(window, facts, narrative) + "\n\n" + report_content
+        print(f"🔭 近期趨勢回顧已產生（涵蓋 {len(window)} 集）。")
+    else:
+        print("ℹ️ 尚無歷史集數，本集略過趨勢回顧（下集起累積後呈現）。")
 
     # 7. 存 Markdown（備份）
     ts = time.strftime('%Y%m%d_%H%M')
@@ -1171,13 +1320,13 @@ def run():
     print(f"📄 Markdown 存檔：{md_path}")
 
     # 8. 轉 HTML
-    date_str = time.strftime('%Y-%m-%d')
     html_filename = f"report_{ts}.html"
     html_path = os.path.join(DOCS_DIR if is_cloud else REPORT_DIR, html_filename)
     html_ok = convert_to_html(final_output, ep['title'], date_str, html_path)
 
-    # 9. 記錄已處理（集數 ID 去重）— 推送前寫入，與報告一起 commit 持久化
+    # 9. 記錄已處理（集數 ID 去重）+ 累積跨集脈絡 — 推送前寫入，與報告一起 commit 持久化
     save_last_episode(ep)
+    _append_history(cur_record)
 
     # 10. 推送到 GitHub Pages（雲端，連同 last_episode.json）並寄 Email
     report_url = None

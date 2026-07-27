@@ -1,0 +1,233 @@
+[
+  {
+    "date": "2026-07-15",
+    "episode": "EP679",
+    "market_view": "牛熊拉鋸",
+    "stocks": [
+      {
+        "code": "2330",
+        "name": "台積電",
+        "rating": "認同前景",
+        "theme": ""
+      },
+      {
+        "code": "MU",
+        "name": "美光",
+        "rating": "背景提及",
+        "theme": ""
+      },
+      {
+        "code": "2492",
+        "name": "華新科",
+        "rating": "保留觀察",
+        "theme": ""
+      },
+      {
+        "code": "6770",
+        "name": "力積電",
+        "rating": "認同前景",
+        "theme": ""
+      },
+      {
+        "code": "2449",
+        "name": "京元電子",
+        "rating": "認同前景",
+        "theme": ""
+      },
+      {
+        "code": "3374",
+        "name": "精材",
+        "rating": "持續關注",
+        "theme": ""
+      },
+      {
+        "code": "NVDA",
+        "name": "輝達",
+        "rating": "背景提及",
+        "theme": ""
+      },
+      {
+        "code": "TSLA",
+        "name": "特斯拉",
+        "rating": "背景提及",
+        "theme": ""
+      },
+      {
+        "code": "PLTR",
+        "name": "Palantir",
+        "rating": "背景提及",
+        "theme": ""
+      }
+    ],
+    "signals": [],
+    "digest": "市場環境與主持人核心觀點 多空研判： 短期：[牛熊拉鋸] 主持人把盤面視為「某種區間來做」，認為大盤離高點其實不到 10%，但熱門股、槓桿股與高人氣族群已出現明顯修正，短線輪動太快、追動能容易被修理。 中期／產業基本面：[牛中帶熊] 主持人目前沒有看到會對 AI 整體需求或產業基本面造成「破壞性影響」的東西，較傾向解讀為過去資金賺太爽後的全面提款與降槓桿。 資金輪動方向： 主持人認為這波下跌核心不是單一通膨、美伊戰爭或升息題材，而是「韓國去槓桿」觸發全球、尤其亞洲市場的風險意識與資金降槓桿。 台股內部資金明顯從前一波過熱、融資堆疊高、討論區人人都在講的族群退潮。 近期比較強的族群包括： 載板 矽晶圓 設備 部分光通訊／光通設備 產物類股 封測與功率相關供應鏈 但主持人特別提醒，現在「猴子都知道這些族群最強」，很多槓桿很大的資金也往剩下的強勢股鑽，因此他不太敢只因為盤面剩這些強就去追。 整體"
+  },
+  {
+    "date": "2026-07-18",
+    "episode": "EP680",
+    "market_view": "熊中帶牛",
+    "stocks": [
+      {
+        "code": "SPACE",
+        "name": "SpaceX",
+        "rating": "認同前景",
+        "theme": ""
+      },
+      {
+        "code": "TSLA",
+        "name": "Tesla",
+        "rating": "認同前景",
+        "theme": ""
+      },
+      {
+        "code": "2330",
+        "name": "台積電 / TSM",
+        "rating": "認同前景",
+        "theme": ""
+      },
+      {
+        "code": "INTC",
+        "name": "Intel",
+        "rating": "背景提及",
+        "theme": ""
+      },
+      {
+        "code": "AAPL",
+        "name": "Apple",
+        "rating": "背景提及",
+        "theme": ""
+      },
+      {
+        "code": "MU",
+        "name": "Micron 美光",
+        "rating": "認同前景",
+        "theme": ""
+      },
+      {
+        "code": "CRDO",
+        "name": "Credo Technology",
+        "rating": "背景提及",
+        "theme": ""
+      },
+      {
+        "code": "ALAB",
+        "name": "Astera Labs",
+        "rating": "背景提及",
+        "theme": ""
+      },
+      {
+        "code": "ADI",
+        "name": "Analog Devices",
+        "rating": "背景提及",
+        "theme": ""
+      },
+      {
+        "code": "2454",
+        "name": "聯發科 / MTK",
+        "rating": "背景提及",
+        "theme": ""
+      },
+      {
+        "code": "6206",
+        "name": "飛捷",
+        "rating": "保留觀察",
+        "theme": ""
+      }
+    ],
+    "signals": [],
+    "digest": "市場環境與主持人核心觀點 多空研判： 短期：[熊中帶牛] 主持人認為大盤高速跌破季線、自己淨值回檔達防守標準，後續即使有人道走廊也不想積極追高 Beta。 長期：[牛中帶熊] 主持人仍明確說自己是「市場長期向上的信奉者」，不相信現金、仍會維持股票曝險，但也提醒 2029、2030 前景好，不代表中間不會有 correction。 資金輪動方向： 主持人觀察，前一陣子資金先從中小型、高 Beta、AI 題材股撤出，往他口中的「盛魁股」台積電靠，因為市場覺得台積電最安全、最穩、也相對便宜。 但禮拜五台積電自己也被砍 6%，導致原本「躲進台積電平滑中小股下跌」的策略被重擊。 他提到原本轉強的族群被市場當成短期避風港，但發現撐不住後，資金一樣殺出來。 美國市場則呈現分化：半導體、CPU、ASIC、部分 AI 相關股摔很重，但大型股、軟體股轉強，所以標普仍在高檔附近。 台股因為 AI、電子零組件占比"
+  },
+  {
+    "date": "2026-07-22",
+    "episode": "EP681",
+    "market_view": "牛熊拉鋸",
+    "stocks": [
+      {
+        "code": "2330/TSM",
+        "name": "台積電",
+        "rating": "持續關注",
+        "theme": "AI 半導體核心供應鏈／大型防守標的"
+      },
+      {
+        "code": "AMD",
+        "name": "Advanced Micro Devices",
+        "rating": "認同前景",
+        "theme": "AI GPU／Helios 機櫃／V"
+      },
+      {
+        "code": "NVDA",
+        "name": "NVIDIA",
+        "rating": "背景提及",
+        "theme": "AI GPU／CUDA 生態／AI "
+      },
+      {
+        "code": "GOOGL",
+        "name": "Alphabet",
+        "rating": "持續關注",
+        "theme": "AI 模型／TPU／自研 AI 晶片"
+      },
+      {
+        "code": "AVGO",
+        "name": "Broadcom",
+        "rating": "背景提及",
+        "theme": "AI ASIC／Google TPU"
+      },
+      {
+        "code": "MRVL",
+        "name": "Marvell Technology",
+        "rating": "有趣題材",
+        "theme": "AI ASIC／TPU infere"
+      },
+      {
+        "code": "INTC",
+        "name": "Intel",
+        "rating": "保留觀察",
+        "theme": "伺服器 CPU／Clearwater"
+      },
+      {
+        "code": "MSFT",
+        "name": "Microsoft",
+        "rating": "背景提及",
+        "theme": "雲端 AI capex／AMD He"
+      },
+      {
+        "code": "META",
+        "name": "Meta Platforms",
+        "rating": "背景提及",
+        "theme": "AI 雲端客戶／模型訓練與推論"
+      },
+      {
+        "code": "ORCL",
+        "name": "Oracle",
+        "rating": "背景提及",
+        "theme": "AI 雲端基礎設施"
+      },
+      {
+        "code": "2327",
+        "name": "國巨",
+        "rating": "保留觀察",
+        "theme": "被動元件／減資增資資本操作"
+      },
+      {
+        "code": "NVTS",
+        "name": "Navitas Semiconductor",
+        "rating": "持續關注",
+        "theme": "800V 機櫃／功率半導體"
+      },
+      {
+        "code": "WOLF",
+        "name": "Wolfspeed",
+        "rating": "持續關注",
+        "theme": "SiC／功率半導體／800V 電力架"
+      },
+      {
+        "code": "STM",
+        "name": "STMicroelectronics",
+        "rating": "持續關注",
+        "theme": "功率半導體／800V AI 機櫃"
+      }
+    ],
+    "signals": [],
+    "digest": "市場環境與主持人核心觀點 多空研判： 短期：[牛熊拉鋸] 主持人把近兩天反彈稱為「人道走廊」，認為台股雖然有漲破重要均線，但反彈上來會碰到套牢賣壓與多條均線，仍屬警戒階段。 長期：[牛中帶熊] 主持人沒有否定 AI 基本面，甚至說許多公司後續營收「就是會好」，但也提醒 AI 這波循環拉得太高，未來大循環回檔一定會很慘，要先做壓力測試。 資金輪動方向： 主持人觀察到，近期資金有從「中小型、高 PER、跌壞的動能股」往「大型股、老 AI、低估值業績股」移動。 他提到很多人下跌時先把錢散進指數、台積電，等大盤回穩後再從指數與台積電拿錢出來，去找新的強勢族群。 盤面上他特別提到載板表現強勢，「今天集體蠻多都漲停」；但很多過去主流股，即使基本面沒有壞，型態已經跌壞，可能進入休息。 老 AI 重新轉強，是因為前面休息很久、估值相對便宜，部分 ODM／伺服器供應鏈 forward PE 可能落在 10"
+  }
+]
