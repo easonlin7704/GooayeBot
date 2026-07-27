@@ -17,7 +17,7 @@ CONFIG_FILE = "config.json"
 STATE_FILE = "last_episode.json"
 REPORT_DIR = "reports"
 PODCAST_RSS = "https://feeds.soundon.fm/podcasts/954689a5-3096-43a4-a80b-7810b219cef3.xml"
-DEFAULT_MODEL = "gpt-5.5"
+DEFAULT_MODEL = "gpt-5.6-sol"
 # ==========================================
 
 RSS_SOURCES = [
