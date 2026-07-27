@@ -496,7 +496,7 @@ def _extract_summary_data(md_content):
 
 HTML_CSS = """
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", sans-serif; background: #eef1f5; color: #1a1a2e; line-height: 1.75; font-size: 15px; }
+body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", sans-serif; background: #eef1f5; color: #1a1a2e; line-height: 1.75; font-size: 15px; overflow-x: hidden; }
 .cover { background: linear-gradient(160deg, #0d2137 60%, #1a3a5c); border-bottom: 4px solid #c89b32; }
 .cover-inner { max-width: 860px; margin: 0 auto; padding: 52px 32px 44px; text-align: center; }
 .cover h1 { font-size: 2em; font-weight: 700; letter-spacing: 3px; color: white; margin-bottom: 8px; }
@@ -513,7 +513,7 @@ body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sa
 .badge-bear { background: #c0392b; color: white; }
 .badge-neutral { background: #5a6a7a; color: white; }
 .summary-grid { display: grid; grid-template-columns: 1fr 1fr; }
-.summary-section { padding: 16px 20px; border-right: 1px solid #e8eaf0; border-bottom: 1px solid #e8eaf0; }
+.summary-section { padding: 16px 20px; border-right: 1px solid #e8eaf0; border-bottom: 1px solid #e8eaf0; min-width: 0; }
 .summary-section:nth-child(even) { border-right: none; }
 .signals-section { grid-column: 1 / -1; border-right: none; }
 .risks-section { grid-column: 1 / -1; border-right: none; border-bottom: none; }
@@ -524,7 +524,8 @@ body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sa
 .summary-table { width: 100%; border-collapse: collapse; font-size: .83em; }
 .summary-table th { background: #f0f3f8; color: #0d2137; padding: 5px 8px; text-align: left; font-weight: 600; }
 .summary-table td { padding: 4px 8px; border-bottom: 1px solid #eef0f5; color: #2c2c3e; }
-.summary-table .code { font-weight: 700; color: #0f3460; }
+.summary-table td, .summary-table th { word-break: break-word; }
+.summary-table .code { font-weight: 700; color: #0f3460; white-space: nowrap; }
 .r-sbull { color: #c0392b; font-weight: 700; } .r-bull { color: #b8860b; font-weight: 700; }
 .r-watch { color: #2980b9; } .r-neutral { color: #7f8c8d; } .r-bear { color: #884400; }
 .weight { font-weight: 700; color: #c89b32; }
@@ -631,9 +632,14 @@ body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sa
 }
 @media (max-width: 620px) {
   .summary-grid { grid-template-columns: 1fr; }
-  .summary-section { border-right: none; }
-  .report-content { padding: 18px 16px; }
-  .report-content h1 { margin-left: -16px; margin-right: -16px; }
+  .summary-section { border-right: none; padding: 14px 13px; }
+  .summary-header { padding: 11px 13px; }
+  .page-outer { padding: 0 7px; }
+  .container { padding: 18px 8px 40px; }
+  .report-content { padding: 16px 13px; }
+  .report-content h1 { margin-left: -13px; margin-right: -13px; }
+  .sc-body { padding: 14px 13px; }
+  .sc-tech { padding: 10px 10px; }
   .hc-row { grid-template-columns: 1fr; }
   .sc-body li { flex-direction: column; }
   .sc-body li strong { min-width: auto; }
@@ -818,7 +824,7 @@ def _build_summary_html(data):
     # Stocks with conviction bars
     sr = ''.join(
         f'<tr><td class="code">[{s["code"]}]</td><td>{s["name"]}</td>'
-        f'<td style="color:{R_COL.get(s["rating"],"#888")};font-weight:700;white-space:nowrap">'
+        f'<td style="color:{R_COL.get(s["rating"],"#888")};font-weight:700">'
         f'{s["rating"]}&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle">{_dots(s["rating"])}</span></td></tr>'
         for s in data['stocks']
     )
