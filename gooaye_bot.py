@@ -282,11 +282,12 @@ def generate_final_report(text, search_results, ep_title, client, model):
 集數：{ep_title}
 {text}
 
-===== 輸出格式要求（嚴格遵守，使用 Markdown） =====
+===== 輸出格式要求（嚴格遵守，使用 Markdown；下列括號內為指令，一律不得輸出到報告中） =====
+（「本集摘要」的三大核心訊號：每點一行、每點精煉至 30 字以內，只寫訊號本身，不要加任何格式說明文字）
 
-# 執行摘要
+# 本集摘要
 
-本集三大核心訊號（每點一行，精煉至 30 字以內）：
+本集三大核心訊號：
 1.
 2.
 3.
@@ -441,58 +442,76 @@ def _append_history(record, keep=10):
         json.dump(hist, f, ensure_ascii=False, indent=2)
     return hist
 
-def _build_trend_facts(records):
-    """從時間排序（舊→新）的集數記錄算出客觀事實：重複主軸、態度變化、多空基調。"""
-    from collections import OrderedDict, defaultdict
-    views = " → ".join((r.get("market_view") or "—") for r in records)
-    seq, names = OrderedDict(), {}
-    for r in records:
-        for s in r.get("stocks", []):
-            code = (s.get("code") or "").strip()
-            if not code:
-                continue
-            names[code] = s.get("name") or code
-            seq.setdefault(code, []).append(s.get("rating") or "—")
-    arrows = [f"{names[c]}({c})：{'→'.join(rs)}" for c, rs in seq.items() if len(rs) >= 2]
-    theme_count = defaultdict(int)
-    for r in records:
-        seen = set()
-        for s in r.get("stocks", []):
-            t = (s.get("theme") or "").strip()
-            if t and t not in seen:
-                theme_count[t] += 1
-                seen.add(t)
-    themes = [f"{t}({c}/{len(records)})" for t, c in sorted(theme_count.items(), key=lambda x: -x[1]) if c >= 2]
-    return {"views": views, "arrows": arrows, "themes": themes}
+# 多空 5 級：數值、顏色、由多到空排序（供趨勢圖）
+_VIEW_LV  = {'強牛': 2, '牛中帶熊': 1, '牛熊拉鋸': 0, '熊中帶牛': -1, '強熊': -2}
+_VIEW_COL = {'強牛': '#1e8449', '牛中帶熊': '#27ae60', '牛熊拉鋸': '#7f8c8d', '熊中帶牛': '#e67e22', '強熊': '#c0392b'}
+_VIEW_ORDER = ['強牛', '牛中帶熊', '牛熊拉鋸', '熊中帶牛', '強熊']
 
-def generate_trend_review(records, facts, client, model):
-    """讀近幾集脈絡摘要，自由研判趨勢（AI 主體判斷，事實僅供參考）。"""
+def _extract_host_short_view(report_md):
+    """從第一部分『多空研判』抓主持人短期多空標籤；無短長之分則取單一標籤。"""
+    m = _re_hist.search(r'多空研判(.{0,300})', report_md, _re_hist.S)
+    seg = m.group(1) if m else ""
+    labels = '|'.join(_VIEW_ORDER)
+    sm = _re_hist.search(r'短期[：:]\s*\[?\s*(' + labels + ')', seg)
+    if sm:
+        return sm.group(1)
+    fm = _re_hist.search(r'(' + labels + ')', seg)
+    return fm.group(1) if fm else ""
+
+def _host_view_seq(records):
+    return [(r.get("episode", ""), r.get("host_short", "")) for r in records]
+
+def _market_trend_svg(records, w=560, h=250):
+    """主持人短期多空的跨集折線圖（縱軸 5 級牛熊，上偏多下偏空）。"""
+    seq = [(ep, v) for ep, v in _host_view_seq(records) if v in _VIEW_LV]
+    if len(seq) < 2:
+        return ""
+    x0, x1, y0, y1 = 118, 505, 26, 196
+    plotH, plotW, n = y1 - y0, x1 - x0, len(seq)
+    yv = lambda v: y0 + (2 - v) / 4 * plotH
+    xi = lambda i: x0 + i * (plotW / (n - 1))
+    p = [f'<svg viewBox="0 0 {w} {h}" xmlns="http://www.w3.org/2000/svg" class="tr-svg" role="img" aria-label="主持人多空短期判斷走勢">']
+    p.append(f'<rect x="{x0}" y="{y0}" width="{plotW}" height="{plotH/2:.1f}" fill="#1e8449" opacity="0.05"/>')
+    p.append(f'<rect x="{x0}" y="{y0+plotH/2:.1f}" width="{plotW}" height="{plotH/2:.1f}" fill="#c0392b" opacity="0.05"/>')
+    for lab in _VIEW_ORDER:
+        v = _VIEW_LV[lab]; y = yv(v); dash = ' stroke-dasharray="4 4"' if v == 0 else ''
+        p.append(f'<line x1="{x0}" y1="{y:.1f}" x2="{x1}" y2="{y:.1f}" stroke="{"#c8b26a" if v==0 else "#e3e8ef"}" stroke-width="1"{dash}/>')
+        p.append(f'<text x="{x0-12}" y="{y+4:.1f}" text-anchor="end" font-size="12.5" font-weight="700" fill="{_VIEW_COL[lab]}">{lab}</text>')
+    pts = " ".join(f"{xi(i):.1f},{yv(_VIEW_LV[v]):.1f}" for i, (_, v) in enumerate(seq))
+    p.append(f'<polyline points="{pts}" fill="none" stroke="#0d2137" stroke-width="2.5" stroke-linejoin="round"/>')
+    for i, (ep, v) in enumerate(seq):
+        x, y, last = xi(i), yv(_VIEW_LV[v]), (i == n - 1)
+        p.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{7 if last else 5.5}" fill="{_VIEW_COL[v]}" stroke="#fff" stroke-width="2"/>')
+        p.append(f'<text x="{x:.1f}" y="{y1+22}" text-anchor="middle" font-size="12" fill="#5a6a7a" font-weight="{700 if last else 400}">{ep}</text>')
+    p.append('</svg>')
+    return ('<div class="trend-chart"><div class="tc-title">主持人多空判斷（短期）走勢</div>'
+            + "".join(p) + '</div>')
+
+def generate_trend_review(records, client, model):
+    """讀近幾集脈絡摘要，自由研判趨勢（AI 主體判斷）。"""
     blocks = []
     for r in records:
         stocks = "、".join(f"{s.get('name')}({s.get('rating')})"
                            for s in r.get("stocks", []) if s.get("code"))
-        blocks.append(f"【{r.get('episode')}｜{r.get('date')}】大盤：{r.get('market_view') or '—'}\n"
+        blocks.append(f"【{r.get('episode')}｜{r.get('date')}】主持人短期多空：{r.get('host_short') or '—'}\n"
                       f"點名：{stocks or '—'}\n脈絡：{r.get('digest') or '（無）'}")
     ctx = "\n\n".join(blocks)
-    facts_txt = (f"重複主軸：{'；'.join(facts['themes']) or '—'}\n"
-                 f"態度變化：{'；'.join(facts['arrows']) or '—'}\n"
-                 f"多空基調：{facts['views']}")
+    seq = " → ".join(f"{ep}:{v or '—'}" for ep, v in _host_view_seq(records))
     n = len(records)
     prompt = f"""你正在檢視「股癌 Podcast」最近 {n} 集的脈絡摘要，要寫一段「近期趨勢回顧」。
 
 各集資料（含主持人脈絡摘要）：
 {ctx}
 
-系統整理的客觀事實（僅供參考，不必逐條照抄）：
-{facts_txt}
+主持人短期多空序列（參考）：{seq}
 
 請自由研判這段期間的趨勢，用一段連貫的繁體中文（150–250 字）說明：
-- 哪些題材或個股在「持續發酵」（跨集加溫），哪些在「轉向或降溫」
+- 哪些題材或個股在「持續發酵」，哪些在「轉向或降溫」
 - 有沒有新冒出、或悄悄淡出的主軸
-- 主持人整體重心的位移
+- 主持人整體重心與多空基調的位移
 
 原則：
-- 以各集「脈絡摘要」為主要判斷依據；你可以認同、也可以質疑表面的評級標籤變化（例如標籤升但其實只是順口帶過）。
+- 以各集「脈絡摘要」為主要判斷依據；可認同、也可質疑表面標籤變化。
 - 誠實，不得編造超出上述資料的內容；資料不足就說明侷限。
 - 以「綜合近 {n} 集研判，」開頭，明確這是 AI 的跨集研判。
 只輸出這段敘述本身。"""
@@ -502,17 +521,14 @@ def generate_trend_review(records, facts, client, model):
     except Exception as e:
         return f"（趨勢研判產生失敗：{e}）"
 
-def _build_trend_section(records, facts, narrative):
-    """組出報告最前面的「近期趨勢回顧」Markdown 區塊。"""
+_TREND_CHART_TOKEN = "TRENDCHARTPLACEHOLDER"
+
+def _build_trend_section(records, narrative):
+    """組報告最前面的「近期趨勢回顧」Markdown（圖用 token 佔位，轉 HTML 後置換）。"""
     label = (f"{records[0].get('episode')}–{records[-1].get('episode')}"
              if len(records) > 1 else records[-1].get('episode'))
-    themes = "、".join(facts["themes"]) or "—"
-    arrows = "；".join(facts["arrows"]) or "—"
     return (f"# 近期趨勢回顧（近 {len(records)} 集：{label}）\n\n"
-            f"**近期客觀事實**\n"
-            f"- 重複主軸：{themes}\n"
-            f"- 態度變化：{arrows}\n"
-            f"- 多空基調：{facts['views']}\n\n"
+            f"{_TREND_CHART_TOKEN}\n\n"
             f"**趨勢研判（AI）**\n\n{narrative}\n")
 
 # ─── HTML 報告生成 ───────────────────────────────────────────────────────────
@@ -557,7 +573,7 @@ def _extract_summary_data(md_content):
             section = re.sub(r'^#+\s+', '', s).strip()
             continue
         # 執行摘要 — numbered signals (handles "1. 1. ..." double-numbering from GPT)
-        if '執行摘要' in section:
+        if '本集摘要' in section or '執行摘要' in section:
             m = re.match(r'^\d+[\.\)]\s*\d*[\.\)]?\s*(.+)', s)
             if m and len(data['signals']) < 3:
                 sig = _strip_inline_md(m.group(1)).strip()
@@ -733,6 +749,11 @@ body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sa
 .sct-svg  { width: 100%; height: 70px; display: block; background: #fff; border: 1px solid #eef0f5; border-radius: 4px; }
 .sct-ma   { display: flex; flex-wrap: wrap; gap: 14px; font-size: .78em; font-weight: 700; margin-top: 5px; }
 .sct-na   { color: #999; font-size: .85em; text-align: center; }
+
+/* ── Market trend chart (近期趨勢回顧) ───────────────────────── */
+.trend-chart { margin: 6px 0 18px; }
+.tc-title { font-size: .82em; font-weight: 700; color: #0d2137; margin-bottom: 6px; }
+.tr-svg { width: 100%; height: auto; display: block; background: #fff; border: 1px solid #eef0f5; border-radius: 6px; }
 
 /* ── Holdings bar chart (report body) ───────────────────────── */
 .hc-chart { margin: 12px 0 20px; }
@@ -1112,13 +1133,16 @@ def build_tech_map(codes):
     return tmap
 
 
-def convert_to_html(md_content, ep_title, date_str, output_path):
+def convert_to_html(md_content, ep_title, date_str, output_path, trend_svg=""):
     try:
         import markdown as md_lib
         cleaned = _clean_text(md_content)
         summary_html = _build_summary_html(_extract_summary_data(cleaned))
         tech_json = json.dumps(build_tech_map(_stock_codes_from_md(cleaned)), ensure_ascii=False)
         body_html = md_lib.Markdown(extensions=['tables', 'nl2br']).convert(cleaned)
+        if trend_svg:
+            body_html = (body_html.replace(f'<p>{_TREND_CHART_TOKEN}</p>', trend_svg)
+                                  .replace(_TREND_CHART_TOKEN, trend_svg))
         ep_short = ep_title if len(ep_title) < 40 else ep_title[:37] + '...'
         html = f"""<!DOCTYPE html>
 <html lang="zh-TW">
@@ -1290,24 +1314,28 @@ def run():
     report_content, digest = _split_context_digest(report_content)
     final_output = report_content
 
-    # 6b. 本集精簡記錄（重用摘要解析 + 脈絡摘要），供跨集追蹤
+    # 6b. 本集精簡記錄（重用摘要解析 + 脈絡摘要 + 主持人短期多空），供跨集追蹤
     date_str = time.strftime('%Y-%m-%d')
     cur_data = _extract_summary_data(_clean_text(report_content))
+    _ep_m = _re_hist.match(r'\s*(EP\d+)', ep["title"])
     cur_record = {
-        "date": date_str, "episode": ep["title"],
+        "date": date_str,
+        "episode": _ep_m.group(1) if _ep_m else ep["title"].strip(),
         "market_view": cur_data.get("market_view", ""),
+        "host_short": _extract_host_short_view(report_content),
         "stocks": cur_data.get("stocks", []),
         "signals": cur_data.get("signals", []),
         "digest": digest or _fallback_digest(report_content),
     }
 
-    # 6c. 近期趨勢回顧（讀過去最多 3 集脈絡；事實由程式算、研判交給 AI）
+    # 6c. 近期趨勢回顧（讀過去最多 3 集）：多空趨勢圖（程式）＋ 趨勢研判（AI）
+    trend_svg = ""
     past = _load_history()[-3:]
     if past:
         window = past + [cur_record]
-        facts = _build_trend_facts(window)
-        narrative = generate_trend_review(window, facts, client, model)
-        final_output = _build_trend_section(window, facts, narrative) + "\n\n" + report_content
+        narrative = generate_trend_review(window, client, model)
+        trend_svg = _market_trend_svg(window)
+        final_output = _build_trend_section(window, narrative) + "\n\n" + report_content
         print(f"🔭 近期趨勢回顧已產生（涵蓋 {len(window)} 集）。")
     else:
         print("ℹ️ 尚無歷史集數，本集略過趨勢回顧（下集起累積後呈現）。")
@@ -1322,7 +1350,7 @@ def run():
     # 8. 轉 HTML
     html_filename = f"report_{ts}.html"
     html_path = os.path.join(DOCS_DIR if is_cloud else REPORT_DIR, html_filename)
-    html_ok = convert_to_html(final_output, ep['title'], date_str, html_path)
+    html_ok = convert_to_html(final_output, ep['title'], date_str, html_path, trend_svg=trend_svg)
 
     # 9. 記錄已處理（集數 ID 去重）+ 累積跨集脈絡 — 推送前寫入，與報告一起 commit 持久化
     save_last_episode(ep)
