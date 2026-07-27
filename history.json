@@ -3,6 +3,7 @@
     "date": "2026-07-15",
     "episode": "EP679",
     "market_view": "牛熊拉鋸",
+    "host_short": "牛熊拉鋸",
     "stocks": [
       {
         "code": "2330",
@@ -66,6 +67,7 @@
     "date": "2026-07-18",
     "episode": "EP680",
     "market_view": "熊中帶牛",
+    "host_short": "熊中帶牛",
     "stocks": [
       {
         "code": "SPACE",
@@ -141,6 +143,7 @@
     "date": "2026-07-22",
     "episode": "EP681",
     "market_view": "牛熊拉鋸",
+    "host_short": "牛熊拉鋸",
     "stocks": [
       {
         "code": "2330/TSM",
@@ -229,156 +232,5 @@
     ],
     "signals": [],
     "digest": "市場環境與主持人核心觀點 多空研判： 短期：[牛熊拉鋸] 主持人把近兩天反彈稱為「人道走廊」，認為台股雖然有漲破重要均線，但反彈上來會碰到套牢賣壓與多條均線，仍屬警戒階段。 長期：[牛中帶熊] 主持人沒有否定 AI 基本面，甚至說許多公司後續營收「就是會好」，但也提醒 AI 這波循環拉得太高，未來大循環回檔一定會很慘，要先做壓力測試。 資金輪動方向： 主持人觀察到，近期資金有從「中小型、高 PER、跌壞的動能股」往「大型股、老 AI、低估值業績股」移動。 他提到很多人下跌時先把錢散進指數、台積電，等大盤回穩後再從指數與台積電拿錢出來，去找新的強勢族群。 盤面上他特別提到載板表現強勢，「今天集體蠻多都漲停」；但很多過去主流股，即使基本面沒有壞，型態已經跌壞，可能進入休息。 老 AI 重新轉強，是因為前面休息很久、估值相對便宜，部分 ODM／伺服器供應鏈 forward PE 可能落在 10"
-  },
-  {
-    "date": "2026-07-27",
-    "episode": "EP682 | 🦕",
-    "market_view": "熊中帶牛",
-    "stocks": [
-      {
-        "code": "AMD",
-        "name": "超微",
-        "rating": "有趣題材",
-        "theme": "** AI加速器／CPU與GPU平台"
-      },
-      {
-        "code": "TSM／2330",
-        "name": "台積電",
-        "rating": "認同前景",
-        "theme": "** AI晶圓代工／先進製程"
-      },
-      {
-        "code": "GOOGL／GOOG",
-        "name": "Alphabet",
-        "rating": "認同前景",
-        "theme": "** 雲端服務／生成式AI資本支出"
-      },
-      {
-        "code": "AAPL",
-        "name": "蘋果",
-        "rating": "保留觀察",
-        "theme": "** 終端AI／消費電子生態系"
-      },
-      {
-        "code": "AMZN",
-        "name": "Amazon",
-        "rating": "背景提及",
-        "theme": "** AWS／AI基礎設施"
-      },
-      {
-        "code": "MSFT",
-        "name": "微軟",
-        "rating": "背景提及",
-        "theme": "** Azure／企業AI"
-      },
-      {
-        "code": "META",
-        "name": "Meta Platforms",
-        "rating": "背景提及",
-        "theme": "** 大型科技資本支出／AI模型"
-      },
-      {
-        "code": "TSLA",
-        "name": "Tesla",
-        "rating": "保留觀察",
-        "theme": "** Physical AI／人形機器人"
-      },
-      {
-        "code": "TXN",
-        "name": "德州儀器",
-        "rating": "認同前景",
-        "theme": "** 類比半導體／功率元件"
-      },
-      {
-        "code": "005930.KS",
-        "name": "三星電子",
-        "rating": "持續關注",
-        "theme": "** DRAM／HBM／記憶體景氣循環"
-      },
-      {
-        "code": "MU",
-        "name": "美光科技",
-        "rating": "持續關注",
-        "theme": "** DRAM／HBM"
-      },
-      {
-        "code": "股票代號未提供",
-        "name": "長鑫存儲（CXMT）",
-        "rating": "背景提及",
-        "theme": "** 中國記憶體國產替代"
-      },
-      {
-        "code": "PLTR",
-        "name": "Palantir Technologies",
-        "rating": "認同前景",
-        "theme": "** 國防AI／垂直軟體"
-      },
-      {
-        "code": "ON",
-        "name": "onsemi",
-        "rating": "持續關注",
-        "theme": "** 功率半導體／資料中心電源"
-      },
-      {
-        "code": "ADI",
-        "name": "Analog Devices",
-        "rating": "持續關注",
-        "theme": "** 類比半導體／電源管理"
-      },
-      {
-        "code": "VSH",
-        "name": "Vishay Intertechnology",
-        "rating": "持續關注",
-        "theme": "** 功率半導體／被動元件"
-      },
-      {
-        "code": "VIC／疑似VICR",
-        "name": "Vicor",
-        "rating": "持續關注",
-        "theme": "** 高密度電源模組／AI伺服器"
-      },
-      {
-        "code": "2481",
-        "name": "強茂",
-        "rating": "持續關注",
-        "theme": "** 功率半導體IDM"
-      },
-      {
-        "code": "3675",
-        "name": "德微",
-        "rating": "持續關注",
-        "theme": "** 二極體／功率半導體IDM"
-      },
-      {
-        "code": "3707",
-        "name": "漢磊",
-        "rating": "持續關注",
-        "theme": "** 功率半導體晶圓代工"
-      },
-      {
-        "code": "逐字稿未明",
-        "name": "傑敏",
-        "rating": "背景提及",
-        "theme": "** 功率半導體製造／封測"
-      },
-      {
-        "code": "6997.T",
-        "name": "Nippon Chemi-Con",
-        "rating": "持續關注",
-        "theme": "** 鋁電解電容"
-      },
-      {
-        "code": "6996.T",
-        "name": "Nichicon",
-        "rating": "認同前景",
-        "theme": "** 鋁電解電容／漲價"
-      }
-    ],
-    "signals": [
-      "科技股全面破底，短線先保命、降頻率",
-      "AI資本支出合理，但運算成本將壓毛利",
-      "記憶體漲價趨緩，功率元件基本面仍好"
-    ],
-    "digest": "主持人認為短線市場已進入泛科技股全面遭到屠殺、指數持續破底且好財報也會被賣出的困難階段，無法確定只是估值修正，或有未知利空提前作動；若個人淨值回撤擴大至約25%至30%，會考慮提高現金並降低交易頻率。產業面則未見明顯轉壞：Google雲端與AI商業化獲得驗證，CSP擴大資本支出是不得不做的競爭投資，但每次AI推論都有成本，可能形成市場規模擴大、毛利率受壓的結構。記憶體前期漲幅極大，第四季至隔年第一季可能轉為持平；功率與類比半導體受資料中心、400V轉800V與漲價支撐。Google、台積電與德州儀器財報或展望良好，Nichicon仍有漲價，但主持人強調基本面良好不代表股價已經止跌。"
   }
 ]
