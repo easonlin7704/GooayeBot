@@ -628,12 +628,12 @@ def _extract_summary_data(md_content):
             if m and len(data['risks']) < 3:
                 label = _strip_inline_md(m.group(1).rstrip('：:'))
                 desc = _strip_inline_md(m.group(2)) or _next_desc(i)
-                data['risks'].append(f"{label}：{desc[:42]}" if desc else label)
+                data['risks'].append(f"{label}：{desc}" if desc else label)
             # Format 2: "### 標題" (H3 heading, description on next line)
             elif s.startswith('### ') and len(data['risks']) < 3:
                 heading = s[4:].strip()
                 desc = _next_desc(i)
-                data['risks'].append(f"{heading}：{desc[:42]}" if desc else heading)
+                data['risks'].append(f"{heading}：{desc}" if desc else heading)
     return data
 
 
