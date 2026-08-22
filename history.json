@@ -1,81 +1,5 @@
 [
   {
-    "date": "2026-07-18",
-    "episode": "EP680",
-    "market_view": "熊中帶牛",
-    "host_short": "熊中帶牛",
-    "stocks": [
-      {
-        "code": "SPACE",
-        "name": "SpaceX",
-        "rating": "認同前景",
-        "theme": ""
-      },
-      {
-        "code": "TSLA",
-        "name": "Tesla",
-        "rating": "認同前景",
-        "theme": ""
-      },
-      {
-        "code": "2330",
-        "name": "台積電 / TSM",
-        "rating": "認同前景",
-        "theme": ""
-      },
-      {
-        "code": "INTC",
-        "name": "Intel",
-        "rating": "背景提及",
-        "theme": ""
-      },
-      {
-        "code": "AAPL",
-        "name": "Apple",
-        "rating": "背景提及",
-        "theme": ""
-      },
-      {
-        "code": "MU",
-        "name": "Micron 美光",
-        "rating": "認同前景",
-        "theme": ""
-      },
-      {
-        "code": "CRDO",
-        "name": "Credo Technology",
-        "rating": "背景提及",
-        "theme": ""
-      },
-      {
-        "code": "ALAB",
-        "name": "Astera Labs",
-        "rating": "背景提及",
-        "theme": ""
-      },
-      {
-        "code": "ADI",
-        "name": "Analog Devices",
-        "rating": "背景提及",
-        "theme": ""
-      },
-      {
-        "code": "2454",
-        "name": "聯發科 / MTK",
-        "rating": "背景提及",
-        "theme": ""
-      },
-      {
-        "code": "6206",
-        "name": "飛捷",
-        "rating": "保留觀察",
-        "theme": ""
-      }
-    ],
-    "signals": [],
-    "digest": "市場環境與主持人核心觀點 多空研判： 短期：[熊中帶牛] 主持人認為大盤高速跌破季線、自己淨值回檔達防守標準，後續即使有人道走廊也不想積極追高 Beta。 長期：[牛中帶熊] 主持人仍明確說自己是「市場長期向上的信奉者」，不相信現金、仍會維持股票曝險，但也提醒 2029、2030 前景好，不代表中間不會有 correction。 資金輪動方向： 主持人觀察，前一陣子資金先從中小型、高 Beta、AI 題材股撤出，往他口中的「盛魁股」台積電靠，因為市場覺得台積電最安全、最穩、也相對便宜。 但禮拜五台積電自己也被砍 6%，導致原本「躲進台積電平滑中小股下跌」的策略被重擊。 他提到原本轉強的族群被市場當成短期避風港，但發現撐不住後，資金一樣殺出來。 美國市場則呈現分化：半導體、CPU、ASIC、部分 AI 相關股摔很重，但大型股、軟體股轉強，所以標普仍在高檔附近。 台股因為 AI、電子零組件占比"
-  },
-  {
     "date": "2026-07-22",
     "episode": "EP681",
     "market_view": "牛熊拉鋸",
@@ -928,5 +852,97 @@
       "AI表外承諾是尚未爆發的尾部風險"
     ],
     "digest": "主持人認為本次科技股回檔放在七月急跌、八月快速修復的脈絡下仍屬可控，只要不加速破底並轉為橫盤，反而可尋找下一個主流；但AI表外租賃、採購承諾與供應商融資已是潛在尾部風險。產業上以記憶體及封裝測試最重要：記憶體是最缺、展望最清楚的零組件，其股價能否維持強勢會影響其他Components；封測則是Bottleneck Trade指標。NVIDIA被用來說明購置設備、包產能及光通備料策略；美光僅涉及員工分紅問答；貿聯與Amphenol則是主持人說明線材、連接器研究經驗的案例，均非直接薦股。"
+  },
+  {
+    "date": "2026-08-22",
+    "episode": "EP690",
+    "market_view": "牛中帶熊",
+    "host_short": "牛中帶熊",
+    "stocks": [
+      {
+        "code": "MRVL",
+        "name": "Marvell Technology",
+        "rating": "認同前景",
+        "theme": "** Google TPU生態系／AI ASIC／COT晶片設計"
+      },
+      {
+        "code": "GOOGL",
+        "name": "Alphabet",
+        "rating": "認同前景",
+        "theme": "** AI雲端服務／自研TPU／COT"
+      },
+      {
+        "code": "AVGO",
+        "name": "Broadcom",
+        "rating": "保留觀察",
+        "theme": "** AI ASIC Turnkey／Google TPU／COT轉型"
+      },
+      {
+        "code": "2454",
+        "name": "聯發科",
+        "rating": "認同前景",
+        "theme": "** Google TPU／AI ASIC設計服務／COT"
+      },
+      {
+        "code": "AMD",
+        "name": "Advanced Micro Devices",
+        "rating": "有趣題材",
+        "theme": "** COT Chiplet／CPU IP／Google自研晶片"
+      },
+      {
+        "code": "3661",
+        "name": "世芯-KY",
+        "rating": "認同前景",
+        "theme": "** ASIC設計服務／COT／先進製程產能"
+      },
+      {
+        "code": "3443",
+        "name": "創意",
+        "rating": "認同前景",
+        "theme": "** ASIC設計服務／COT／台積電生態系"
+      },
+      {
+        "code": "2330",
+        "name": "台積電",
+        "rating": "背景提及",
+        "theme": "** AI先進製程／ASIC投片／先進封裝"
+      },
+      {
+        "code": "INTC",
+        "name": "Intel",
+        "rating": "背景提及",
+        "theme": "** 晶圓代工／Google ASIC潛在投片"
+      },
+      {
+        "code": "AAPL",
+        "name": "Apple",
+        "rating": "背景提及",
+        "theme": "** Chiplet設計／供應鏈議價權"
+      },
+      {
+        "code": "MRNA",
+        "name": "Moderna",
+        "rating": "保留觀察",
+        "theme": "** mRNA個人化癌症疫苗／生技新藥"
+      },
+      {
+        "code": "6446",
+        "name": "藥華藥",
+        "rating": "背景提及",
+        "theme": "** 生技新藥／商業化"
+      },
+      {
+        "code": "MU",
+        "name": "Micron Technology",
+        "rating": "保留觀察",
+        "theme": "** AI記憶體／人才競爭／景氣循環"
+      }
+    ],
+    "signals": [
+      "盤勢健康但追漲容易被修理",
+      "Google加速轉向COT自研模式",
+      "Marvell新案偏利多、博通承壓"
+    ],
+    "digest": "主持人認為盤面雖黏、追漲延續性差，但不少個股已逐步收復七月底失土，基本面標的呈現漲後休息、再墊高的走法，因此整體仍相對樂觀。本集核心是Google與Marvell合作及COT模式：Google可能自行掌握主晶片、光罩、投片與關鍵採購，再把周邊晶片、IP及設計服務分給多家夥伴。Marvell取得的較像新開周邊案，未直接取代聯發科或Broadcom既有TPU主晶片；對聯發科、世芯與創意未必是利空，甚至可能因Google增加案量而受惠。Broadcom則因原有Turnkey高毛利模式可能被削弱，負面解讀較合理。主持人另提醒生技股即使臨床成功，仍有商業化失敗風險。"
   }
 ]
