@@ -1,99 +1,5 @@
 [
   {
-    "date": "2026-07-22",
-    "episode": "EP681",
-    "market_view": "牛熊拉鋸",
-    "host_short": "牛熊拉鋸",
-    "stocks": [
-      {
-        "code": "2330/TSM",
-        "name": "台積電",
-        "rating": "持續關注",
-        "theme": "AI 半導體核心供應鏈／大型防守標的"
-      },
-      {
-        "code": "AMD",
-        "name": "Advanced Micro Devices",
-        "rating": "認同前景",
-        "theme": "AI GPU／Helios 機櫃／V"
-      },
-      {
-        "code": "NVDA",
-        "name": "NVIDIA",
-        "rating": "背景提及",
-        "theme": "AI GPU／CUDA 生態／AI "
-      },
-      {
-        "code": "GOOGL",
-        "name": "Alphabet",
-        "rating": "持續關注",
-        "theme": "AI 模型／TPU／自研 AI 晶片"
-      },
-      {
-        "code": "AVGO",
-        "name": "Broadcom",
-        "rating": "背景提及",
-        "theme": "AI ASIC／Google TPU"
-      },
-      {
-        "code": "MRVL",
-        "name": "Marvell Technology",
-        "rating": "有趣題材",
-        "theme": "AI ASIC／TPU infere"
-      },
-      {
-        "code": "INTC",
-        "name": "Intel",
-        "rating": "保留觀察",
-        "theme": "伺服器 CPU／Clearwater"
-      },
-      {
-        "code": "MSFT",
-        "name": "Microsoft",
-        "rating": "背景提及",
-        "theme": "雲端 AI capex／AMD He"
-      },
-      {
-        "code": "META",
-        "name": "Meta Platforms",
-        "rating": "背景提及",
-        "theme": "AI 雲端客戶／模型訓練與推論"
-      },
-      {
-        "code": "ORCL",
-        "name": "Oracle",
-        "rating": "背景提及",
-        "theme": "AI 雲端基礎設施"
-      },
-      {
-        "code": "2327",
-        "name": "國巨",
-        "rating": "保留觀察",
-        "theme": "被動元件／減資增資資本操作"
-      },
-      {
-        "code": "NVTS",
-        "name": "Navitas Semiconductor",
-        "rating": "持續關注",
-        "theme": "800V 機櫃／功率半導體"
-      },
-      {
-        "code": "WOLF",
-        "name": "Wolfspeed",
-        "rating": "持續關注",
-        "theme": "SiC／功率半導體／800V 電力架"
-      },
-      {
-        "code": "STM",
-        "name": "STMicroelectronics",
-        "rating": "持續關注",
-        "theme": "功率半導體／800V AI 機櫃"
-      }
-    ],
-    "signals": [],
-    "digest": "市場環境與主持人核心觀點 多空研判： 短期：[牛熊拉鋸] 主持人把近兩天反彈稱為「人道走廊」，認為台股雖然有漲破重要均線，但反彈上來會碰到套牢賣壓與多條均線，仍屬警戒階段。 長期：[牛中帶熊] 主持人沒有否定 AI 基本面，甚至說許多公司後續營收「就是會好」，但也提醒 AI 這波循環拉得太高，未來大循環回檔一定會很慘，要先做壓力測試。 資金輪動方向： 主持人觀察到，近期資金有從「中小型、高 PER、跌壞的動能股」往「大型股、老 AI、低估值業績股」移動。 他提到很多人下跌時先把錢散進指數、台積電，等大盤回穩後再從指數與台積電拿錢出來，去找新的強勢族群。 盤面上他特別提到載板表現強勢，「今天集體蠻多都漲停」；但很多過去主流股，即使基本面沒有壞，型態已經跌壞，可能進入休息。 老 AI 重新轉強，是因為前面休息很久、估值相對便宜，部分 ODM／伺服器供應鏈 forward PE 可能落在 10"
-  },
-  {
     "date": "2026-07-27",
     "episode": "EP682",
     "market_view": "強熊",
@@ -944,5 +850,25 @@
       "Marvell新案偏利多、博通承壓"
     ],
     "digest": "主持人認為盤面雖黏、追漲延續性差，但不少個股已逐步收復七月底失土，基本面標的呈現漲後休息、再墊高的走法，因此整體仍相對樂觀。本集核心是Google與Marvell合作及COT模式：Google可能自行掌握主晶片、光罩、投片與關鍵採購，再把周邊晶片、IP及設計服務分給多家夥伴。Marvell取得的較像新開周邊案，未直接取代聯發科或Broadcom既有TPU主晶片；對聯發科、世芯與創意未必是利空，甚至可能因Google增加案量而受惠。Broadcom則因原有Turnkey高毛利模式可能被削弱，負面解讀較合理。主持人另提醒生技股即使臨床成功，仍有商業化失敗風險。"
+  },
+  {
+    "date": "2026-08-26",
+    "episode": "EP691",
+    "market_view": "牛熊拉鋸",
+    "host_short": "牛熊拉鋸",
+    "stocks": [
+      {
+        "code": "NVDA",
+        "name": "輝達",
+        "rating": "背景提及",
+        "theme": "** AI伺服器／資料中心電力架構／AI硬體供應鏈"
+      }
+    ],
+    "signals": [
+      "盤勢震盪無方向，近期出現反彈",
+      "AI加速研究，卻未形成壓倒性優勢",
+      "人找訊號、AI做後端，決策仍在人"
+    ],
+    "digest": "主持人將近期盤勢定義為震盪、缺乏明確方向，所幸近兩日出現反彈，整體位置尚可。本集核心在AI如何改變投資研究：財報、年報、產業概況與情境分析可在短時間內完成，但因人人都有類似工具，AI未形成壓倒性優勢，反而讓市場定價更快。實際流程仍由人從量價、強勢族群及事件中識別訊號，再交由AI處理後端研究，最後由人決定部位與進退。產業案例包括輝達Power白皮書、光通訊、可插拔元件及記憶體；主持人僅指出少數股票受到題材帶動，沒有全面看多相關族群。"
   }
 ]
