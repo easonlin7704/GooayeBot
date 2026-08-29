@@ -1,181 +1,5 @@
 [
   {
-    "date": "2026-07-27",
-    "episode": "EP682",
-    "market_view": "強熊",
-    "host_short": "強熊",
-    "stocks": [
-      {
-        "code": "AMD",
-        "name": "超微半導體",
-        "rating": "有趣題材",
-        "theme": "** AI加速器／AI供應鏈"
-      },
-      {
-        "code": "2330",
-        "name": "台積電",
-        "rating": "認同前景",
-        "theme": "** 先進製程／AI晶片製造"
-      },
-      {
-        "code": "GOOGL",
-        "name": "Alphabet",
-        "rating": "認同前景",
-        "theme": "** 雲端服務／生成式AI／AI資本支出"
-      },
-      {
-        "code": "AAPL",
-        "name": "蘋果",
-        "rating": "認同前景",
-        "theme": "** 終端裝置／AI應用入口"
-      },
-      {
-        "code": "AMZN",
-        "name": "亞馬遜",
-        "rating": "背景提及",
-        "theme": "** 雲端服務／AI資本支出"
-      },
-      {
-        "code": "MSFT",
-        "name": "微軟",
-        "rating": "背景提及",
-        "theme": "** 雲端服務／企業AI"
-      },
-      {
-        "code": "META",
-        "name": "Meta Platforms",
-        "rating": "背景提及",
-        "theme": "** AI資本支出／開放權重模型"
-      },
-      {
-        "code": "TSLA",
-        "name": "特斯拉",
-        "rating": "保留觀察",
-        "theme": "** Physical AI／人形機器人"
-      },
-      {
-        "code": "TXN",
-        "name": "德州儀器",
-        "rating": "認同前景",
-        "theme": "** 類比半導體／功率元件"
-      },
-      {
-        "code": "MU",
-        "name": "美光科技",
-        "rating": "保留觀察",
-        "theme": "** 記憶體景氣循環"
-      },
-      {
-        "code": "005930.KS",
-        "name": "三星電子",
-        "rating": "保留觀察",
-        "theme": "** DRAM／HBM／晶圓代工"
-      },
-      {
-        "code": "未提供",
-        "name": "長鑫存儲（CXMT）",
-        "rating": "持續關注",
-        "theme": "** 中國記憶體國產化"
-      },
-      {
-        "code": "PLTR",
-        "name": "Palantir Technologies",
-        "rating": "認同前景",
-        "theme": "** 國防AI／企業資料分析"
-      },
-      {
-        "code": "ON",
-        "name": "安森美半導體",
-        "rating": "持續關注",
-        "theme": "** 功率半導體／800V架構"
-      },
-      {
-        "code": "ADI",
-        "name": "亞德諾半導體",
-        "rating": "持續關注",
-        "theme": "** 類比半導體／資料中心電源"
-      },
-      {
-        "code": "VSH",
-        "name": "Vishay Intertechnology",
-        "rating": "背景提及",
-        "theme": "** 功率元件／被動元件"
-      },
-      {
-        "code": "VICR",
-        "name": "Vicor",
-        "rating": "背景提及",
-        "theme": "** 高密度電源模組"
-      },
-      {
-        "code": "2481",
-        "name": "強茂",
-        "rating": "持續關注",
-        "theme": "** 功率半導體IDM"
-      },
-      {
-        "code": "3675",
-        "name": "德微",
-        "rating": "持續關注",
-        "theme": "** 功率半導體IDM"
-      },
-      {
-        "code": "3707",
-        "name": "漢磊",
-        "rating": "持續關注",
-        "theme": "** 功率半導體晶圓代工"
-      },
-      {
-        "code": "6525",
-        "name": "捷敏-KY",
-        "rating": "持續關注",
-        "theme": "** 功率半導體封裝測試"
-      },
-      {
-        "code": "6996.T",
-        "name": "Nichicon",
-        "rating": "認同前景",
-        "theme": "** 鋁電解電容"
-      },
-      {
-        "code": "6997.T",
-        "name": "Nippon Chemi-Con",
-        "rating": "背景提及",
-        "theme": "** 鋁電解電容"
-      },
-      {
-        "code": "1314",
-        "name": "中石化",
-        "rating": "背景提及",
-        "theme": "** 塑化／弱勢盤資金避風"
-      },
-      {
-        "code": "BIDU",
-        "name": "百度",
-        "rating": "背景提及",
-        "theme": "** 中國雲端AI"
-      },
-      {
-        "code": "BABA",
-        "name": "阿里巴巴",
-        "rating": "背景提及",
-        "theme": "** 中國雲端AI"
-      },
-      {
-        "code": "0700.HK",
-        "name": "騰訊",
-        "rating": "背景提及",
-        "theme": "** 中國平台AI"
-      }
-    ],
-    "signals": [
-      "基本面未明顯轉壞，股價卻全面殺估值",
-      "AI投資不可停，但運算成本將壓縮毛利",
-      "降低交易頻率，破底續演則提高現金"
-    ],
-    "digest": "主持人認為當前市場近似魂系遊戲，科技股全面殺估值、費半低點接近回落三成，指數又有破底跡象；短線若無法反彈，可能存在未知風險。他尚未大幅提高現金，但若淨值回撤擴大至25%至30%，將採更保守策略並降低交易頻率。產業面未見明顯惡化：Google雲端與AI變現獲得肯定，巨頭擴大資本支出是不得不做的競爭投入，但每次AI推論都有成本，可能形成更大市場與較低毛利並存。記憶體前期漲價極大，預期第三季起收斂、第四季至隔年第一季轉平；功率與類比半導體則受400V升級800V、資料中心需求與漲價支持。台積電、Google及德州儀器財報或展望均被他評為正向，股價仍下跌則反映市場與基本面脫鉤；Tesla投資Physical AI具必要性，但回收難以評價。Palantir產品被認為具利基與護城河，估值能否合理化仍不一定。"
-  },
-  {
     "date": "2026-07-29",
     "episode": "EP683",
     "market_view": "強熊",
@@ -870,5 +694,55 @@
       "人找訊號、AI做後端，決策仍在人"
     ],
     "digest": "主持人將近期盤勢定義為震盪、缺乏明確方向，所幸近兩日出現反彈，整體位置尚可。本集核心在AI如何改變投資研究：財報、年報、產業概況與情境分析可在短時間內完成，但因人人都有類似工具，AI未形成壓倒性優勢，反而讓市場定價更快。實際流程仍由人從量價、強勢族群及事件中識別訊號，再交由AI處理後端研究，最後由人決定部位與進退。產業案例包括輝達Power白皮書、光通訊、可插拔元件及記憶體；主持人僅指出少數股票受到題材帶動，沒有全面看多相關族群。"
+  },
+  {
+    "date": "2026-08-29",
+    "episode": "EP692",
+    "market_view": "牛中帶熊",
+    "host_short": "牛中帶熊",
+    "stocks": [
+      {
+        "code": "CRM",
+        "name": "Salesforce",
+        "rating": "認同前景",
+        "theme": "** 企業AI／SaaS轉型／企業資料應用"
+      },
+      {
+        "code": "MRVL",
+        "name": "Marvell Technology",
+        "rating": "認同前景",
+        "theme": "** AI ASIC／XPU／DSP／光通訊"
+      },
+      {
+        "code": "NVDA",
+        "name": "NVIDIA",
+        "rating": "認同前景",
+        "theme": "** AI GPU／CPU／高速互連／供應鏈產能"
+      },
+      {
+        "code": "GOOGL",
+        "name": "Alphabet",
+        "rating": "持續關注",
+        "theme": "** AI模型／自研ASIC／雲端運算"
+      },
+      {
+        "code": "AMZN",
+        "name": "Amazon",
+        "rating": "背景提及",
+        "theme": "** 雲端AI／自研加速器／模型基礎設施"
+      },
+      {
+        "code": "2330",
+        "name": "台積電",
+        "rating": "背景提及",
+        "theme": "** AI先進製程／晶圓代工／產能競爭"
+      }
+    ],
+    "signals": [
+      "AI軟體不是一鍋端，價值分配將重洗牌",
+      "光通訊、載板成AI擴產關鍵瓶頸",
+      "GPU與ASIC競爭，供應鏈能力決勝"
+    ],
+    "digest": "主持人認為近期企業合作、財報與展望偏正面，盤面已具備發展下一波多頭的條件，但仍提醒缺貨漲價最終可能造成需求破壞。核心主軸一是企業AI與SaaS價值重分配：Salesforce憑企業資料、法遵與工作流程形成門檻，Anthropic則可能掌握較強模型定價權，雙方最後如何拆帳仍待觀察。二是AI硬體瓶頸，光通訊、雷射、載板與板材比單一晶片跑分更關鍵。主持人認為Marvell受惠XPU及光互連，NVIDIA則以通用GPU、研發規模及鎖定供應鏈產能維持優勢；ASIC雖會增加市占，但未必能動搖GPU在擴張中市場的價值。"
   }
 ]
