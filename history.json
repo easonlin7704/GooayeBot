@@ -1,127 +1,5 @@
 [
   {
-    "date": "2026-07-29",
-    "episode": "EP683",
-    "market_view": "強熊",
-    "host_short": "強熊",
-    "stocks": [
-      {
-        "code": "2330",
-        "name": "台積電",
-        "rating": "保留觀察",
-        "theme": "** AI晶圓代工／先進製程／防禦型權值股"
-      },
-      {
-        "code": "NVDA",
-        "name": "輝達",
-        "rating": "保留觀察",
-        "theme": "** AI GPU／AI伺服器／CPU與GPU整合"
-      },
-      {
-        "code": "AMD",
-        "name": "超微",
-        "rating": "持續關注",
-        "theme": "** EPYC伺服器CPU／AI加速器／Agentic AI"
-      },
-      {
-        "code": "INTC",
-        "name": "英特爾",
-        "rating": "持續關注",
-        "theme": "** 資料中心CPU／通用型伺服器／Agentic AI"
-      },
-      {
-        "code": "AAPL",
-        "name": "蘋果",
-        "rating": "保留觀察",
-        "theme": "** 消費電子／大型科技股／中國記憶體採購"
-      },
-      {
-        "code": "000660.KS",
-        "name": "SK海力士",
-        "rating": "保留觀察",
-        "theme": "** HBM／DRAM／AI記憶體"
-      },
-      {
-        "code": "005930.KS",
-        "name": "三星電子",
-        "rating": "保留觀察",
-        "theme": "** DRAM／HBM／半導體景氣循環"
-      },
-      {
-        "code": "MU",
-        "name": "美光",
-        "rating": "背景提及",
-        "theme": "** DRAM／HBM／AI資料中心記憶體"
-      },
-      {
-        "code": "META",
-        "name": "Meta Platforms",
-        "rating": "背景提及",
-        "theme": "** AI資料中心／CSP資本支出／智慧眼鏡"
-      },
-      {
-        "code": "CXMT",
-        "name": "長鑫存儲",
-        "rating": "持續關注",
-        "theme": "** 中國DRAM／半導體自主化／產能競爭"
-      },
-      {
-        "code": "ASML",
-        "name": "艾司摩爾",
-        "rating": "背景提及",
-        "theme": "** 半導體設備／DUV／EUV"
-      },
-      {
-        "code": "AMZN",
-        "name": "亞馬遜",
-        "rating": "背景提及",
-        "theme": "** 雲端運算／AI資本支出／極端估值修正"
-      },
-      {
-        "code": "GOOGL",
-        "name": "Alphabet",
-        "rating": "背景提及",
-        "theme": "** AI ASIC／雲端運算／自研晶片"
-      },
-      {
-        "code": "MRVL",
-        "name": "Marvell Technology",
-        "rating": "背景提及",
-        "theme": "** AI ASIC／資料中心連接／客製化晶片"
-      },
-      {
-        "code": "6531",
-        "name": "愛普科技",
-        "rating": "背景提及",
-        "theme": "** 特殊型記憶體／AI記憶體"
-      },
-      {
-        "code": "3231",
-        "name": "緯創",
-        "rating": "背景提及",
-        "theme": "** AI伺服器ODM"
-      },
-      {
-        "code": "6669",
-        "name": "緯穎",
-        "rating": "背景提及",
-        "theme": "** 雲端資料中心／AI伺服器ODM"
-      },
-      {
-        "code": "2317",
-        "name": "鴻海",
-        "rating": "背景提及",
-        "theme": "** ODM／AI伺服器／歷史回檔案例"
-      }
-    ],
-    "signals": [
-      "科技股全面殺估值，短線尚未止穩",
-      "降槓桿、分散持股，必要時轉進指數",
-      "Agentic AI帶動通用伺服器CPU需求"
-    ],
-    "digest": "主持人將本波定義為可載入史冊的AI科技大屠殺，短線多數個股跌破季線、跌停未完全打開，尚無明確止穩；但深跌後可能先出現大型反彈，再經橫盤整理。操作上將降低槓桿、單一持股壓在10%以下，增加指數與現金。產業主軸一是Agentic AI可能透過通用型伺服器推升Intel、AMD CPU需求，而非單一AI機櫃立即達成CPU、GPU一比一；二是記憶體雖最缺，三星與SK海力士仍重挫，需警戒AI估值重定價。台積電被視為相對防禦的停泊處，但反彈時也可能遭資金提款；中國DUV與長鑫存儲的外溢風險，關鍵在美國是否開放蘋果及CSP採用中國記憶體。"
-  },
-  {
     "date": "2026-08-01",
     "episode": "EP684",
     "market_view": "牛中帶熊",
@@ -744,5 +622,97 @@
       "GPU與ASIC競爭，供應鏈能力決勝"
     ],
     "digest": "主持人認為近期企業合作、財報與展望偏正面，盤面已具備發展下一波多頭的條件，但仍提醒缺貨漲價最終可能造成需求破壞。核心主軸一是企業AI與SaaS價值重分配：Salesforce憑企業資料、法遵與工作流程形成門檻，Anthropic則可能掌握較強模型定價權，雙方最後如何拆帳仍待觀察。二是AI硬體瓶頸，光通訊、雷射、載板與板材比單一晶片跑分更關鍵。主持人認為Marvell受惠XPU及光互連，NVIDIA則以通用GPU、研發規模及鎖定供應鏈產能維持優勢；ASIC雖會增加市占，但未必能動搖GPU在擴張中市場的價值。"
+  },
+  {
+    "date": "2026-09-02",
+    "episode": "EP693",
+    "market_view": "牛熊拉鋸",
+    "host_short": "牛熊拉鋸",
+    "stocks": [
+      {
+        "code": "2454",
+        "name": "聯發科",
+        "rating": "認同前景",
+        "theme": "** AI客製化XPU／ASIC、零息可轉債、輝達AI平台"
+      },
+      {
+        "code": "NVDA",
+        "name": "輝達",
+        "rating": "認同前景",
+        "theme": "** AI平台、XPU生態系、NVLink、NVHBM"
+      },
+      {
+        "code": "GOOGL",
+        "name": "Alphabet",
+        "rating": "持續關注",
+        "theme": "** Google TPU、AI客製晶片、資料中心互聯"
+      },
+      {
+        "code": "3661",
+        "name": "世芯-KY",
+        "rating": "背景提及",
+        "theme": "** AI ASIC、策略投資"
+      },
+      {
+        "code": "AMZN",
+        "name": "Amazon",
+        "rating": "背景提及",
+        "theme": "** 雲端服務、自研AI晶片"
+      },
+      {
+        "code": "2330",
+        "name": "台積電",
+        "rating": "認同前景",
+        "theme": "** HBM基礎裸晶、先進製程、先進封裝"
+      },
+      {
+        "code": "AMD",
+        "name": "超微",
+        "rating": "背景提及",
+        "theme": "** AI GPU、XPU競爭"
+      },
+      {
+        "code": "MRVL",
+        "name": "Marvell Technology",
+        "rating": "持續關注",
+        "theme": "** AI ASIC、資料中心互聯"
+      },
+      {
+        "code": "AVGO",
+        "name": "Broadcom",
+        "rating": "認同前景",
+        "theme": "** AI ASIC、交換器與互聯、客製晶片競爭"
+      },
+      {
+        "code": "000660.KS",
+        "name": "SK海力士",
+        "rating": "背景提及",
+        "theme": "** HBM4、AI記憶體"
+      },
+      {
+        "code": "005930.KS",
+        "name": "三星電子",
+        "rating": "背景提及",
+        "theme": "** HBM、記憶體垂直整合"
+      },
+      {
+        "code": "MU",
+        "name": "美光科技",
+        "rating": "背景提及",
+        "theme": "** HBM、AI記憶體、Base Die外包"
+      },
+      {
+        "code": "3008",
+        "name": "大立光",
+        "rating": "保留觀察",
+        "theme": "** 光學／光通訊題材、高估值成長股"
+      }
+    ],
+    "signals": [
+      "盤面震盪墊高，持股勝過追逐動能",
+      "輝達入股聯發科，深化XPU生態合作",
+      "AI市場仍在早期，競合不等於零和"
+    ],
+    "digest": "主持人認為8月以來盤面雖牛皮、對動能交易者磨人，但底部持續墊高，7月重挫後的修復速度已超出預期；操作上偏向持股不亂動、看對加碼，並依美股跳空風險及台股流動性調整部位。產業主軸是輝達與Alphabet認購聯發科可轉債，以及AI客製XPU、互聯與NVHBM生態。主持人將聯發科案視為夥伴深化與選擇權布局，不宜簡化為Seller Financing；輝達則由GPU轉向全套AI平台。博通雖遭各方挑戰，但設計整合能力仍強，不代表必然失去業務。長線上AI仍在早期，ASIC出貨增加不等於輝達或其他業者獲利必然下降。"
   }
 ]
