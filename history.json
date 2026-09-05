@@ -1,85 +1,5 @@
 [
   {
-    "date": "2026-08-01",
-    "episode": "EP684",
-    "market_view": "牛中帶熊",
-    "host_short": "牛中帶熊",
-    "stocks": [
-      {
-        "code": "2454",
-        "name": "聯發科",
-        "rating": "持續關注",
-        "theme": "** AI ASIC／半導體設計／資料中心晶片"
-      },
-      {
-        "code": "6770",
-        "name": "力積電",
-        "rating": "背景提及",
-        "theme": "** 成熟製程晶圓代工／記憶體景氣循環"
-      },
-      {
-        "code": "6531",
-        "name": "愛普*",
-        "rating": "背景提及",
-        "theme": "** 特殊記憶體／AI記憶體IP"
-      },
-      {
-        "code": "NBIS",
-        "name": "Nebius Group",
-        "rating": "背景提及",
-        "theme": "** AI雲端基礎設施／GPU算力"
-      },
-      {
-        "code": "SNDK",
-        "name": "SanDisk",
-        "rating": "背景提及",
-        "theme": "** NAND Flash／資料中心儲存"
-      },
-      {
-        "code": "IREN",
-        "name": "IREN",
-        "rating": "背景提及",
-        "theme": "** AI資料中心／高效能運算"
-      },
-      {
-        "code": "BE",
-        "name": "Bloom Energy",
-        "rating": "背景提及",
-        "theme": "** 資料中心電力／燃料電池"
-      },
-      {
-        "code": "MU",
-        "name": "Micron Technology",
-        "rating": "背景提及",
-        "theme": "** HBM／DRAM／AI記憶體"
-      },
-      {
-        "code": "000660.KS",
-        "name": "SK海力士",
-        "rating": "背景提及",
-        "theme": "** HBM／AI記憶體"
-      },
-      {
-        "code": "MSFT",
-        "name": "Microsoft",
-        "rating": "保留觀察",
-        "theme": "** 雲端運算／AI資本支出"
-      },
-      {
-        "code": "0050",
-        "name": "元大台灣50",
-        "rating": "認同前景",
-        "theme": "** 台股大型權值／被動投資"
-      }
-    ],
-    "signals": [
-      "去槓桿與流動性枯竭主導急跌",
-      "短線可望修復，仍有清算餘震",
-      "AI長多未變，但終將面臨大修正"
-    ],
-    "digest": "主持人將本波全球股市急跌的核心歸因於全市場降槓桿與流動性枯竭，Situational Awareness 爆倉只是最醒目的案例，其他基金動能團隊與散戶槓桿也可能同步清算。短線在台股暴力反彈、聯發科上修展望後仍有修復空間，但檯面下部位整理可能帶來餘震。最重要主軸是 AI、半導體與記憶體動能股，以及台股處置制度對流動性的破壞。主持人認為 Nebius、SanDisk、Micron、SK 海力士等並非壞資產，問題在槓桿過大與持倉擁擠；長期仍以做多為主，但相信真正的大型 AI 修正終將發生。操作上不追求完美逃頂，重視出場流動性、降低槓桿，並主張把部分投資獲利轉化為家庭生活與實體資產。"
-  },
-  {
     "date": "2026-08-05",
     "episode": "EP685",
     "market_view": "牛中帶熊",
@@ -714,5 +634,103 @@
       "AI市場仍在早期，競合不等於零和"
     ],
     "digest": "主持人認為8月以來盤面雖牛皮、對動能交易者磨人，但底部持續墊高，7月重挫後的修復速度已超出預期；操作上偏向持股不亂動、看對加碼，並依美股跳空風險及台股流動性調整部位。產業主軸是輝達與Alphabet認購聯發科可轉債，以及AI客製XPU、互聯與NVHBM生態。主持人將聯發科案視為夥伴深化與選擇權布局，不宜簡化為Seller Financing；輝達則由GPU轉向全套AI平台。博通雖遭各方挑戰，但設計整合能力仍強，不代表必然失去業務。長線上AI仍在早期，ASIC出貨增加不等於輝達或其他業者獲利必然下降。"
+  },
+  {
+    "date": "2026-09-05",
+    "episode": "EP694",
+    "market_view": "牛熊拉鋸",
+    "host_short": "牛熊拉鋸",
+    "stocks": [
+      {
+        "code": "AVGO",
+        "name": "Broadcom",
+        "rating": "認同前景",
+        "theme": "** AI ASIC／資料中心互聯／光通訊／AI融資生態"
+      },
+      {
+        "code": "NVDA",
+        "name": "Nvidia",
+        "rating": "認同前景",
+        "theme": "** AI GPU／AI投資生態／消費型運算"
+      },
+      {
+        "code": "2454",
+        "name": "聯發科",
+        "rating": "認同前景",
+        "theme": "** AI ASIC／客製化晶片／Nvidia策略合作"
+      },
+      {
+        "code": "2330",
+        "name": "台積電",
+        "rating": "認同前景",
+        "theme": "** AI晶圓代工／先進製程／先進封裝"
+      },
+      {
+        "code": "MSFT",
+        "name": "Microsoft",
+        "rating": "持續關注",
+        "theme": "** 雲端運算／AI資本支出／大型模型基礎設施"
+      },
+      {
+        "code": "TSLA",
+        "name": "Tesla",
+        "rating": "有趣題材",
+        "theme": "** Cybercab／無稀土馬達／自駕車供應鏈"
+      },
+      {
+        "code": "SNOW",
+        "name": "Snowflake",
+        "rating": "認同前景",
+        "theme": "** AI資料平台／資料治理／模型路由／FDE"
+      },
+      {
+        "code": "CRM",
+        "name": "Salesforce",
+        "rating": "持續關注",
+        "theme": "** 企業AI／CRM／資料治理／代理型AI"
+      },
+      {
+        "code": "PLTR",
+        "name": "Palantir",
+        "rating": "背景提及",
+        "theme": "** FDE／企業AI導入／資料整合"
+      },
+      {
+        "code": "GOOGL",
+        "name": "Alphabet",
+        "rating": "背景提及",
+        "theme": "** TPU／AI ASIC／雲端運算"
+      },
+      {
+        "code": "AAPL",
+        "name": "Apple",
+        "rating": "背景提及",
+        "theme": "** 消費電子／品牌護城河"
+      },
+      {
+        "code": "BAC",
+        "name": "Bank of America",
+        "rating": "背景提及",
+        "theme": "** AI融資／信用市場／金融研究"
+      },
+      {
+        "code": "6758",
+        "name": "Sony Group",
+        "rating": "背景提及",
+        "theme": "** 遊戲主機／內容發行／創投生態"
+      },
+      {
+        "code": "7974",
+        "name": "Nintendo",
+        "rating": "背景提及",
+        "theme": "** 遊戲主機／獨立遊戲發行／內容平台"
+      }
+    ],
+    "signals": [
+      "指數墊高，但短線動能交易難度升高",
+      "AI需求仍強，龍頭股需要耐心等待",
+      "AI內容爆量，信任與品質反而更值錢"
+    ],
+    "digest": "主持人認為9月盤勢震盪、動能交易明顯轉難，沿用4至7月追價策略容易反覆停損；但指數仍持續墊高，整體盤勢不差，因此選擇縮小槓桿、保留參與並等待方向突破。產業主軸仍是AI ASIC、互聯與企業AI軟體。Broadcom財報、Fabric及中長期指引均強，顯示Frontier Labs需求並非虛假；股價不漲較像高檔休息，不代表基本面轉差。Broadcom首次公開評論聯發科，反而證明聯發科已成為實質競爭者，但晶片時程可能較市場預期慢。Snowflake則展現資料治理、模型路由與FDE價值，平台若取得客戶信任，可掌握模型選擇、毛利及定價權。主持人長期仍相信AI，但提醒資本市場存在循環，現階段應跟隨獲利與EPS改善，並提高耐心。"
   }
 ]
