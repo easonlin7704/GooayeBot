@@ -1,109 +1,5 @@
 [
   {
-    "date": "2026-08-05",
-    "episode": "EP685",
-    "market_view": "牛中帶熊",
-    "host_short": "牛中帶熊",
-    "stocks": [
-      {
-        "code": "2330",
-        "name": "台積電",
-        "rating": "背景提及",
-        "theme": "** 先進製程／AI半導體／電子權值"
-      },
-      {
-        "code": "2308",
-        "name": "台達電",
-        "rating": "持續關注",
-        "theme": "** AI資料中心電源／800VDC"
-      },
-      {
-        "code": "2301",
-        "name": "光寶科",
-        "rating": "持續關注",
-        "theme": "** AI伺服器電源／800VDC"
-      },
-      {
-        "code": "2454",
-        "name": "聯發科",
-        "rating": "持續關注",
-        "theme": "** AI ASIC／TPU供應鏈"
-      },
-      {
-        "code": "AVGO",
-        "name": "Broadcom",
-        "rating": "持續關注",
-        "theme": "** AI ASIC／客製化加速器／網通"
-      },
-      {
-        "code": "300308.SZ",
-        "name": "中際旭創",
-        "rating": "持續關注",
-        "theme": "** 高速光模組／中國加一／AI資料中心"
-      },
-      {
-        "code": "300502.SZ",
-        "name": "新易盛",
-        "rating": "持續關注",
-        "theme": "** 高速光模組／中國加一／AI資料中心"
-      },
-      {
-        "code": "NVDA",
-        "name": "NVIDIA",
-        "rating": "認同前景",
-        "theme": "** AI GPU／HBM／光通訊／開源模型"
-      },
-      {
-        "code": "AMD",
-        "name": "超微",
-        "rating": "背景提及",
-        "theme": "** AI GPU／開源模型／資料中心"
-      },
-      {
-        "code": "GOOGL",
-        "name": "Alphabet（Google）",
-        "rating": "背景提及",
-        "theme": "** TPU／雲端AI／光通訊"
-      },
-      {
-        "code": "PLTR",
-        "name": "Palantir Technologies",
-        "rating": "認同前景",
-        "theme": "** 企業AI軟體／資料整合／高估值成長股"
-      },
-      {
-        "code": "NET",
-        "name": "Cloudflare",
-        "rating": "認同前景",
-        "theme": "** 雲端資安／邊緣運算／AI軟體"
-      },
-      {
-        "code": "ORCL",
-        "name": "Oracle",
-        "rating": "背景提及",
-        "theme": "** 雲端基礎建設／企業軟體"
-      },
-      {
-        "code": "MSFT",
-        "name": "微軟",
-        "rating": "持續關注",
-        "theme": "** 雲端AI／大型科技／市場風險偏好"
-      },
-      {
-        "code": "未確認",
-        "name": "SpaceX",
-        "rating": "認同前景",
-        "theme": "** 太空經濟／衛星通訊／AI資本支出"
-      }
-    ],
-    "signals": [
-      "超跌快速修復，但短線已逼近壓力區",
-      "AI硬體降規遞延，不改長線升級方向",
-      "高估值龍頭守穩，是風險偏好關鍵"
-    ],
-    "digest": "主持人認為七月半導體、AI基建與中小型股急跌，主要受到槓桿爆倉及融資收縮影響；四個交易日快速反彈後，市場已由便宜區回到中性估值，但不應預設必有第二隻腳。產業上，HBM降規、TPU與800V時程調整較像成本、良率及放量過程的彈性，不改長期升級方向；光通訊則可能成為AI算力競爭的重要瓶頸。Palantir財報後大漲的重點不只在數字，而是市場重新接受高估值軟體；若Palantir、SpaceX等昂貴標的能守穩，其他成長股估值仍有上修空間。操作上持續留在市場、降低槓桿，不為等待第二隻腳先行離場。"
-  },
-  {
     "date": "2026-08-08",
     "episode": "EP686",
     "market_view": "牛中帶熊",
@@ -732,5 +628,103 @@
       "AI內容爆量，信任與品質反而更值錢"
     ],
     "digest": "主持人認為9月盤勢震盪、動能交易明顯轉難，沿用4至7月追價策略容易反覆停損；但指數仍持續墊高，整體盤勢不差，因此選擇縮小槓桿、保留參與並等待方向突破。產業主軸仍是AI ASIC、互聯與企業AI軟體。Broadcom財報、Fabric及中長期指引均強，顯示Frontier Labs需求並非虛假；股價不漲較像高檔休息，不代表基本面轉差。Broadcom首次公開評論聯發科，反而證明聯發科已成為實質競爭者，但晶片時程可能較市場預期慢。Snowflake則展現資料治理、模型路由與FDE價值，平台若取得客戶信任，可掌握模型選擇、毛利及定價權。主持人長期仍相信AI，但提醒資本市場存在循環，現階段應跟隨獲利與EPS改善，並提高耐心。"
+  },
+  {
+    "date": "2026-09-09",
+    "episode": "EP695",
+    "market_view": "牛中帶熊",
+    "host_short": "牛熊拉鋸",
+    "stocks": [
+      {
+        "code": "GOOGL",
+        "name": "Alphabet",
+        "rating": "認同前景",
+        "theme": "** AI 雲端基礎設施／TPU／自研 ASIC"
+      },
+      {
+        "code": "2330",
+        "name": "台積電",
+        "rating": "認同前景",
+        "theme": "** AI 晶圓代工／先進封裝／光通訊平台整合"
+      },
+      {
+        "code": "NVDA",
+        "name": "Nvidia",
+        "rating": "背景提及",
+        "theme": "** AI GPU／加速運算"
+      },
+      {
+        "code": "ORCL",
+        "name": "Oracle",
+        "rating": "背景提及",
+        "theme": "** AI 雲端基礎設施"
+      },
+      {
+        "code": "MSFT",
+        "name": "Microsoft",
+        "rating": "背景提及",
+        "theme": "** AI 雲端／循環融資"
+      },
+      {
+        "code": "TSLA",
+        "name": "Tesla",
+        "rating": "背景提及",
+        "theme": "** AI 算力集群／自動駕駛"
+      },
+      {
+        "code": "XYZ",
+        "name": "Block",
+        "rating": "背景提及",
+        "theme": "** AI 模型採用／金融科技"
+      },
+      {
+        "code": "INTC",
+        "name": "Intel",
+        "rating": "背景提及",
+        "theme": "** 半導體／事件交易"
+      },
+      {
+        "code": "BRK.B",
+        "name": "Berkshire Hathaway",
+        "rating": "認同前景",
+        "theme": "** 價值投資／基礎設施型科技"
+      },
+      {
+        "code": "COHR",
+        "name": "Coherent",
+        "rating": "有趣題材",
+        "theme": "** 光通訊／光引擎"
+      },
+      {
+        "code": "LITE",
+        "name": "Lumentum",
+        "rating": "有趣題材",
+        "theme": "** 光通訊／光引擎"
+      },
+      {
+        "code": "PLTR",
+        "name": "Palantir Technologies",
+        "rating": "認同前景",
+        "theme": "** 政府 AI／軍工軟體"
+      },
+      {
+        "code": "9697.T",
+        "name": "Capcom",
+        "rating": "背景提及",
+        "theme": "** 電玩內容／遊戲 IP"
+      },
+      {
+        "code": "6758.T",
+        "name": "Sony Group",
+        "rating": "背景提及",
+        "theme": "** 遊戲生態系／企業創投"
+      }
+    ],
+    "signals": [
+      "盤勢震盪墊高，追強容易付出成本",
+      "Google AI 基建回收快，擴產動機強",
+      "前沿模型溢價收斂，算力成本更關鍵"
+    ],
+    "digest": "主持人認為台股已在新高附近震盪一個多月，短線缺乏明確突破棒，隔日沖與追強容易被反殺，但個股整理後仍常重新墊高，因此並未轉為看空。他調整做法為縮小追價部位、等待熱門股回落，並持續以產業趨勢而非短期股價為核心。最重要主軸是 Google AI 雲端與 TPU：主持人轉述 AI 伺服器回收期不到兩年、自研 ASIC 可能一年回本，認為這足以解釋 Google 擴大資本支出，也使 AI 泡沫短期破裂的機率看來不高。另一主軸是模型 API 溢價收斂與光通訊價值鏈；他認為模型排名變動快速，成本優勢將提高 TPU 吸引力，而 FAU、主動對位、光引擎及台積電平台誰能取得最大利潤仍需邊走邊看，初期宜分散包進整條價值鏈。"
   }
 ]
