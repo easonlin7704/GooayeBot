@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>股癌研報 · EP697 | 🔥 · 2026-09-16</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Microsoft JhengHei", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", sans-serif; background: #eef1f5; color: #1a1a2e; line-height: 1.75; font-size: 15px; overflow-x: hidden; }
+.cover { background: linear-gradient(160deg, #0d2137 60%, #1a3a5c); border-bottom: 4px solid #c89b32; }
+.cover-inner { max-width: 860px; margin: 0 auto; padding: 52px 32px 44px; text-align: center; }
+.cover h1 { font-size: 2em; font-weight: 700; letter-spacing: 3px; color: white; margin-bottom: 8px; }
+.cover-subtitle { color: #c89b32; font-size: 1.25em; font-weight: 600; margin-bottom: 24px; }
+.cover-ep { color: #b0c8de; font-size: 0.95em; margin-bottom: 4px; }
+.cover-date { color: #7a9ab5; font-size: 0.85em; margin-bottom: 28px; }
+.cover-disclaimer { font-size: 0.78em; color: #4a6a85; line-height: 1.6; }
+.container { max-width: 860px; margin: 0 auto; padding: 28px 24px 60px; }
+.summary-card { background: white; border-radius: 8px; border: 1px solid #d8dde8; box-shadow: 0 2px 12px rgba(0,0,0,.07); margin-bottom: 28px; overflow: hidden; }
+.summary-header { background: #0d2137; color: white; padding: 12px 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.summary-title { font-size: 1em; font-weight: 700; letter-spacing: 1px; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: .82em; font-weight: 700; }
+.badge-bull { background: #c89b32; color: white; }
+.badge-bear { background: #c0392b; color: white; }
+.badge-neutral { background: #5a6a7a; color: white; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.summary-section { padding: 16px 20px; border-right: 1px solid #e8eaf0; border-bottom: 1px solid #e8eaf0; min-width: 0; }
+.summary-section:nth-child(even) { border-right: none; }
+.signals-section { grid-column: 1 / -1; border-right: none; }
+.risks-section { grid-column: 1 / -1; border-right: none; border-bottom: none; }
+.summary-section h4 { color: #0d2137; font-size: .8em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 2px solid #c89b32; display: inline-block; }
+.signals-section ol { display: flex; gap: 10px; flex-wrap: wrap; list-style: none; counter-reset: sig; }
+.signals-section li { counter-increment: sig; flex: 1 1 200px; background: #f5f7fb; border-left: 3px solid #c89b32; padding: 6px 10px; border-radius: 0 4px 4px 0; font-size: .88em; color: #2c2c3e; }
+.signals-section li::before { content: counter(sig) ". "; font-weight: 700; color: #c89b32; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: .83em; }
+.summary-table th { background: #f0f3f8; color: #0d2137; padding: 5px 8px; text-align: left; font-weight: 600; }
+.summary-table td { padding: 4px 8px; border-bottom: 1px solid #eef0f5; color: #2c2c3e; }
+.summary-table td, .summary-table th { word-break: break-word; }
+.summary-table .code { font-weight: 700; color: #0f3460; white-space: nowrap; }
+.r-sbull { color: #c0392b; font-weight: 700; } .r-bull { color: #b8860b; font-weight: 700; }
+.r-watch { color: #2980b9; } .r-neutral { color: #7f8c8d; } .r-bear { color: #884400; }
+.weight { font-weight: 700; color: #c89b32; }
+.risks-section ul { padding-left: 0; display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.risks-section li { list-style: none; font-size: .88em; color: #2c2c3e; padding-left: 14px; position: relative; }
+.risks-section li::before { content: "▸"; color: #c89b32; position: absolute; left: 0; font-weight: 700; }
+.report-content { background: white; border-radius: 8px; border: 1px solid #d8dde8; padding: 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+.report-content h1 { background: #0d2137; color: white; padding: 10px 16px; margin: 28px -32px 18px; font-size: 1.05em; letter-spacing: .5px; }
+.report-content h1:first-child { margin-top: -28px; border-radius: 7px 7px 0 0; }
+.report-content h2 { color: #0d2137; font-size: 1em; margin: 20px 0 10px; padding-bottom: 4px; border-bottom: 2px solid #c89b32; display: inline-block; }
+.report-content h3 { background: #f5f7fb; color: #0f3460; padding: 7px 14px; margin: 16px 0 10px; font-size: .98em; border-left: 3px solid #c89b32; border-radius: 0 4px 4px 0; }
+.report-content p { margin: 8px 0; color: #2c2c3e; font-size: .94em; }
+.report-content ul, .report-content ol { padding-left: 22px; margin: 8px 0; }
+.report-content li { margin: 4px 0; color: #2c2c3e; font-size: .92em; }
+.report-content li::marker { color: #c89b32; }
+.report-content strong { color: #0d2137; font-weight: 600; }
+.report-content em { color: #5a6a7a; }
+.report-content blockquote { border-left: 3px solid #c89b32; background: #fdfbf3; padding: 10px 16px; margin: 12px 0; color: #555; border-radius: 0 4px 4px 0; }
+.report-content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .88em; }
+.report-content thead tr { background: #0d2137; color: white; }
+.report-content thead th { padding: 9px 12px; text-align: left; font-weight: 600; }
+.report-content tbody tr:nth-child(even) { background: #f5f7fb; }
+.report-content tbody tr:hover { background: #eef2f7; }
+.report-content td { padding: 7px 12px; border-bottom: 1px solid #e0e4ea; color: #2c2c3e; }
+.report-content hr { border: none; border-top: 1px solid #d8dde8; margin: 24px 0; }
+.page-footer { text-align: center; color: #8a9ab5; font-size: .8em; margin-top: 28px; padding: 16px; }
+
+/* ── Layout ──────────────────────────────────────────────────── */
+.page-outer { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.page-flex  { display: flex; gap: 24px; align-items: flex-start; padding: 28px 0 60px; }
+.toc-col    { width: 176px; flex-shrink: 0; position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+.main-col   { flex: 1; min-width: 0; }
+
+/* ── Desktop TOC ─────────────────────────────────────────────── */
+.toc-box    { background: white; border-radius: 8px; border: 1px solid #d8dde8; padding: 14px 12px; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.toc-ttl    { font-size: .72em; font-weight: 700; color: #0d2137; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #eef0f5; }
+.toc-list   { list-style: none; padding: 0; margin: 0; }
+.toc-list a { display: block; padding: 5px 8px; font-size: .8em; color: #5a6a7a; text-decoration: none; border-left: 2px solid transparent; border-radius: 0 3px 3px 0; transition: all .15s; line-height: 1.4; }
+.toc-list a:hover, .toc-list a.tac { color: #0d2137; border-left-color: #c89b32; font-weight: 600; background: #f5f7fb; }
+
+/* ── Mobile TOC ──────────────────────────────────────────────── */
+.toc-mob  { display: none; position: sticky; top: 0; z-index: 50; background: white; border-bottom: 2px solid #c89b32; overflow-x: auto; scrollbar-width: none; }
+.toc-mob::-webkit-scrollbar { display: none; }
+.toc-mob ul { display: flex; list-style: none; padding: 0 12px; margin: 0; white-space: nowrap; }
+.toc-mob a  { display: inline-block; padding: 9px 14px; font-size: .8em; color: #5a6a7a; text-decoration: none; border-bottom: 2px solid transparent; transition: all .15s; }
+.toc-mob a:hover, .toc-mob a.tac { color: #0d2137; border-bottom-color: #c89b32; font-weight: 600; }
+
+/* ── Stock cards ─────────────────────────────────────────────── */
+.stock-card { border: 1px solid #d8dde8; border-radius: 6px; margin: 14px 0; overflow: hidden; }
+.stock-card > summary { list-style: none; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 11px 16px; background: #f5f7fb; cursor: pointer; user-select: none; transition: background .15s; }
+.stock-card > summary::-webkit-details-marker { display: none; }
+.stock-card > summary:hover { background: #eef2f7; }
+.stock-card[open] > summary { background: #0d2137; }
+.stock-card[open] .sc-code { color: #c89b32; }
+.stock-card[open] .sc-name { color: white; }
+.stock-card[open] .sc-theme { color: #8ab0cc; background: rgba(255,255,255,.08); }
+.stock-card[open] .sc-chev { transform: rotate(180deg); color: #c89b32; }
+.sc-code  { font-weight: 700; color: #0f3460; font-size: .86em; font-family: monospace; }
+.sc-name  { font-weight: 600; color: #1a1a2e; font-size: .95em; }
+.sc-theme { font-size: .74em; color: #5a6a7a; background: #e8edf5; padding: 2px 9px; border-radius: 10px; }
+.sc-right { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.sc-rtxt  { font-size: .8em; font-weight: 700; }
+.sc-bars  { display: flex; gap: 2px; align-items: center; }
+.cb-dot   { display: inline-block; width: 9px; height: 9px; border-radius: 2px; }
+.sc-chev  { font-size: .65em; color: #8a9ab5; transition: transform .2s; margin-left: 4px; }
+.sc-body  { padding: 16px 20px; background: white; border-top: 1px solid #e8eaf0; }
+.sc-body ul { padding-left: 0; list-style: none; margin: 0; }
+.sc-body li { padding: 6px 0; border-bottom: 1px solid #f5f7fb; font-size: .9em; color: #2c2c3e; display: flex; flex-wrap: wrap; gap: 4px; }
+.sc-body li:last-child { border-bottom: none; }
+.sc-body li strong { color: #0d2137; min-width: 88px; flex-shrink: 0; }
+
+/* ── Stock technicals (close + MA sparkline) ─────────────────── */
+.sc-tech  { margin: 0 0 14px; padding: 10px 12px; background: #fafbfd; border: 1px solid #e8eaf0; border-radius: 6px; }
+.sct-row  { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: .86em; margin-bottom: 6px; }
+.sct-px   { font-weight: 700; color: #0d2137; }
+.sct-tv   { color: #5a6a7a; }
+.sct-sig  { margin-left: auto; color: #fff; font-weight: 700; font-size: .78em; padding: 2px 10px; border-radius: 10px; }
+.sct-svg  { width: 100%; height: 70px; display: block; background: #fff; border: 1px solid #eef0f5; border-radius: 4px; }
+.sct-ma   { display: flex; flex-wrap: wrap; gap: 14px; font-size: .78em; font-weight: 700; margin-top: 5px; }
+.sct-na   { color: #999; font-size: .85em; text-align: center; }
+
+/* ── Market trend chart (近期趨勢回顧) ───────────────────────── */
+.trend-chart { margin: 6px 0 18px; }
+.tc-title { font-size: .82em; font-weight: 700; color: #0d2137; margin-bottom: 6px; }
+.tr-svg { width: 100%; height: auto; display: block; background: #fff; border: 1px solid #eef0f5; border-radius: 6px; }
+
+/* ── Holdings bar chart (report body) ───────────────────────── */
+.hc-chart { margin: 12px 0 20px; }
+.hc-row   { display: grid; grid-template-columns: 160px 1fr; gap: 10px; align-items: center; padding: 5px 0; border-bottom: 1px solid #f0f3f8; }
+.hc-row:last-child { border-bottom: none; }
+.hc-name  { display: block; font-weight: 700; font-size: .86em; color: #0f3460; }
+.hc-theme { display: block; font-size: .72em; color: #7a9ab5; margin-top: 1px; }
+.hc-track { position: relative; background: #f0f3f8; border-radius: 3px; height: 24px; }
+.hc-fill  { height: 100%; background: linear-gradient(90deg, #0d2137, #1e4a6e); border-radius: 3px; }
+.hc-lbl   { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-weight: 700; font-size: .82em; color: #0d2137; }
+
+/* ── Summary card holdings bar chart ────────────────────────── */
+.shc-row   { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+.shc-name  { font-size: .82em; font-weight: 700; color: #0f3460; width: 96px; flex-shrink: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.shc-track { flex: 1; background: #e8edf5; border-radius: 3px; height: 16px; position: relative; }
+.shc-fill  { height: 100%; background: linear-gradient(90deg, #0d2137, #1e4a6e); border-radius: 3px; }
+.shc-pct   { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: .72em; font-weight: 700; color: #0d2137; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .toc-col { display: none; }
+  .toc-mob { display: block; }
+  .page-flex { padding: 20px 0 40px; }
+}
+@media (max-width: 620px) {
+  .summary-grid { grid-template-columns: 1fr; }
+  .summary-section { border-right: none; padding: 14px 13px; }
+  .summary-header { padding: 11px 13px; }
+  .page-outer { padding: 0 7px; }
+  .container { padding: 18px 8px 40px; }
+  .report-content { padding: 16px 13px; }
+  .report-content h1 { margin-left: -13px; margin-right: -13px; }
+  .sc-body { padding: 14px 13px; }
+  .sc-tech { padding: 10px 10px; }
+  .hc-row { grid-template-columns: 1fr; }
+  .sc-body li { flex-direction: column; }
+  .sc-body li strong { min-width: auto; }
+}
+</style>
+</head>
+<body>
+<div class="cover"><div class="cover-inner">
+  <h1>股癌 Podcast</h1>
+  <div class="cover-subtitle">AI 深度投資研報</div>
+  <div class="cover-ep">EP697 | 🔥</div>
+  <div class="cover-date">2026-09-16</div>
+  <div class="cover-disclaimer">本報告由人工智慧模型輔助生成，內容僅供參考，不構成任何投資建議或邀約。<br>投資有風險，入市前請獨立評估，自行承擔決策責任。</div>
+</div></div>
+<nav class="toc-mob"><ul id="toc-m"></ul></nav>
+<div class="page-outer"><div class="page-flex">
+  <aside class="toc-col">
+    <div class="toc-box">
+      <div class="toc-ttl">目錄</div>
+      <ul class="toc-list" id="toc-d"></ul>
+    </div>
+  </aside>
+  <div class="main-col">
+    <div class="container">
+<div class="summary-card">
+  <div class="summary-header"><span class="summary-title">本集快覽</span><span class="badge badge-neutral">大盤：牛熊拉鋸</span></div>
+  <div class="summary-grid">
+    <div class="summary-section signals-section"><h4>三大核心訊號</h4><ol><li>AI安全監管未必降低整體算力需求</li><li>資安走強、半導體回檔的反應偏怪</li><li>籌資解凍能否帶回活水仍待驗證</li></ol></div>
+    <div class="summary-section stocks-section"><h4>點名個股</h4><table class="summary-table"><thead><tr><th>代號</th><th>名稱</th><th>評級</th></tr></thead><tbody><tr><td class="code">[7856]</td><td>漢測</td><td style="color:#7f8c8d;font-weight:700">背景提及&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[7769]</td><td>鴻勁</td><td style="color:#7f8c8d;font-weight:700">背景提及&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[CRWD]</td><td>CrowdStrike</td><td style="color:#2980b9;font-weight:700">有趣題材&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#2980b9;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[TSLA]</td><td>Tesla</td><td style="color:#7f8c8d;font-weight:700">背景提及&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[002484.SZ]</td><td>江海股份</td><td style="color:#1a9e8f;font-weight:700">持續關注&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#1a9e8f;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#1a9e8f;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#1a9e8f;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#1a9e8f;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[5314]</td><td>世紀*</td><td style="color:#884400;font-weight:700">保留觀察&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#884400;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr><tr><td class="code">[9904]</td><td>寶成</td><td style="color:#7f8c8d;font-weight:700">背景提及&nbsp;<span style="display:inline-flex;gap:1px;vertical-align:middle"><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#7f8c8d;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span><span style="display:inline-block;width:6px;height:6px;border-radius:1px;background:#dde2ea;margin:0 1px"></span></span></td></tr></tbody></table></div>
+    <div class="summary-section holdings-section"><h4>核心持股建議</h4><div><div class="shc-row"><span class="shc-name" title="TSM">TSM</span><div class="shc-track"><div class="shc-fill" style="width:25%"></div><span class="shc-pct">25%</span></div></div><div class="shc-row"><span class="shc-name" title="NVDA">NVDA</span><div class="shc-track"><div class="shc-fill" style="width:25%"></div><span class="shc-pct">25%</span></div></div><div class="shc-row"><span class="shc-name" title="AVGO">AVGO</span><div class="shc-track"><div class="shc-fill" style="width:20%"></div><span class="shc-pct">20%</span></div></div><div class="shc-row"><span class="shc-name" title="CRWD">CRWD</span><div class="shc-track"><div class="shc-fill" style="width:15%"></div><span class="shc-pct">15%</span></div></div></div></div>
+    <div class="summary-section risks-section"><h4>主要風險</h4><ul><li>最大尾部風險：最大風險是主要經濟體真的對前沿AI訓練設下具強制力的算力上限、晶片採購限制或跨國協議，且雲端業者同步下修資本支出。若發生，NVDA、TSM與AVGO可能面臨訂單預期及估值同時下修，CRWD雖可能受益於監管需求，也難完全抵銷科技股系統性賣壓。應對方式是保留現金、限制槓桿，並以實際資本支出與訂單數據驗證，而非只依管理層論述交易。</li><li>短期擾動因素：- 聯準會利率決策及主席對後續升息路徑的說法。</li><li>本次分析盲點：主持人對AI安全帶來額外算力需求的數量沒有可驗證案例，所提15%至20%以上需求增幅亦來自AI整理與類比，不是公司正式財測。對OpenAI、Anthropic及馬斯克動機的拆解，主持人自己也明確稱為偏陰謀論的推測，不能視為已證實事實。此外，本集沒有提出明確持股水位、目標價或買賣點，第四部分配置均屬AI推論，不是主持人的直接建議。</li></ul></div>
+  </div>
+</div>
+<div class="report-content" id="report"><h1>近期趨勢回顧（近 4 集：EP694–EP697）</h1>
+<div class="trend-chart"><div class="tc-title">主持人多空判斷（短期）走勢</div><svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg" class="tr-svg" role="img" aria-label="主持人多空短期判斷走勢"><rect x="118" y="26" width="387" height="85.0" fill="#1e8449" opacity="0.05"/><rect x="118" y="111.0" width="387" height="85.0" fill="#c0392b" opacity="0.05"/><line x1="118" y1="26.0" x2="505" y2="26.0" stroke="#e3e8ef" stroke-width="1"/><text x="106" y="30.0" text-anchor="end" font-size="12.5" font-weight="700" fill="#1e8449">強牛</text><line x1="118" y1="68.5" x2="505" y2="68.5" stroke="#e3e8ef" stroke-width="1"/><text x="106" y="72.5" text-anchor="end" font-size="12.5" font-weight="700" fill="#27ae60">牛中帶熊</text><line x1="118" y1="111.0" x2="505" y2="111.0" stroke="#c8b26a" stroke-width="1" stroke-dasharray="4 4"/><text x="106" y="115.0" text-anchor="end" font-size="12.5" font-weight="700" fill="#7f8c8d">牛熊拉鋸</text><line x1="118" y1="153.5" x2="505" y2="153.5" stroke="#e3e8ef" stroke-width="1"/><text x="106" y="157.5" text-anchor="end" font-size="12.5" font-weight="700" fill="#e67e22">熊中帶牛</text><line x1="118" y1="196.0" x2="505" y2="196.0" stroke="#e3e8ef" stroke-width="1"/><text x="106" y="200.0" text-anchor="end" font-size="12.5" font-weight="700" fill="#c0392b">強熊</text><polyline points="118.0,111.0 247.0,111.0 376.0,111.0 505.0,111.0" fill="none" stroke="#0d2137" stroke-width="2.5" stroke-linejoin="round"/><circle cx="118.0" cy="111.0" r="5.5" fill="#7f8c8d" stroke="#fff" stroke-width="2"/><text x="118.0" y="218" text-anchor="middle" font-size="12" fill="#5a6a7a" font-weight="400">EP694</text><circle cx="247.0" cy="111.0" r="5.5" fill="#7f8c8d" stroke="#fff" stroke-width="2"/><text x="247.0" y="218" text-anchor="middle" font-size="12" fill="#5a6a7a" font-weight="400">EP695</text><circle cx="376.0" cy="111.0" r="5.5" fill="#7f8c8d" stroke="#fff" stroke-width="2"/><text x="376.0" y="218" text-anchor="middle" font-size="12" fill="#5a6a7a" font-weight="400">EP696</text><circle cx="505.0" cy="111.0" r="7" fill="#7f8c8d" stroke="#fff" stroke-width="2"/><text x="505.0" y="218" text-anchor="middle" font-size="12" fill="#5a6a7a" font-weight="700">EP697</text></svg></div>
+<p><strong>趨勢研判（AI）</strong></p>
+<p>綜合近 4 集研判，AI仍是持續發酵的核心，但重心由Broadcom、聯發科的ASIC與互聯，延伸至Google TPU、Oracle資料中心需求，再轉向AI監管、算力增量與資安機會；台積電、Nvidia的長線前景亦未被推翻。企業AI軟體、Snowflake及光通訊後續著墨減少，蘋果摺疊機與群聯地端AI則屬新冒出但仍待驗證的支線，尚不能斷言已形成主軸。主持人四集皆維持「牛熊拉鋸」，實際語氣卻從高檔震盪、縮槓桿等待突破，逐步轉為低波動偏弱整理；並未翻空，但明顯降低追價意願，更重視獲利落地、融資與監管風險。</p>
+<h1>本集摘要</h1>
+<p>本集三大核心訊號：<br />
+1. AI安全監管未必降低整體算力需求<br />
+2. 資安走強、半導體回檔的反應偏怪<br />
+3. 籌資解凍能否帶回活水仍待驗證</p>
+<h1>一、市場環境與主持人核心觀點</h1>
+<p><strong>多空研判：</strong> [牛熊拉鋸] 主持人形容盤面「像死掉一半」、維持低波動，NASDAQ也接近盤整下緣；雖期待申購凍結資金釋放後帶來活水，但自己仍「打一個問號」。</p>
+<p><strong>資金輪動方向：</strong></p>
+<ul>
+<li>大量資金因漢測申購暫時被圈存，主持人觀察申購款解凍後，市場是否重新出現「活水」。</li>
+<li>AI安全與放緩論述發酵後，半導體及AI硬體承壓，資安股則逆勢大漲。</li>
+<li>被動元件上半年曾是強勢主線，目前不少個股已轉弱休息，但主持人認為漲價趨勢仍在持續。</li>
+<li>主持人認為市場把AI安全監管直接解讀成硬體需求放緩並不合理，因驗證、監控、對齊與資安同樣需要額外算力。</li>
+</ul>
+<p><strong>整體操作哲學：</strong></p>
+<ul>
+<li>主持人沒有提出明確持股水位，而是強調目前市場不好做、量價波動有限，是否出現資金回流仍需觀察。</li>
+<li>選股以產業大趨勢為主，刻意避免在節目大量點名中小型股；即使自己會操作中小型股，也不希望節目被當成「報牌台」。</li>
+<li>對申購抽籤的看法是，有閒置資金者理論上可以參加，但他本人因不相信自己的籤運而不抽。</li>
+<li>不應只因聽到題材就盲目跟單；產業資訊只是分析渠道，如何應用、何時停損，仍要由投資人自行判斷。</li>
+</ul>
+<p><strong>本集最重要的產業主軸：</strong></p>
+<ol>
+<li><strong>AI算力與半導體硬體：</strong> 主持人認為即使前沿模型的能力提升速度受到限制，推論需求未必下降，而且資料過濾、第三方評估、危險能力測試、對齊考試及部署後監控，都會增加額外算力使用，因此「AI安全等於硬體需求下滑」的市場共識可能出現逆轉。</li>
+<li><strong>AI資安與模型治理：</strong> 模型上線前後都需要持續監考、隔離、紀錄與重新測試，資安公司可能因此取得新的合作與需求；主持人也指出，資安不可能因AI出現就被完全取代。</li>
+</ol>
+<h1>二、主持人點名個股</h1>
+<h3>[7856] 漢測</h3>
+<ul>
+<li><strong>主持人態度：</strong> [背景提及]<br />
+  評級依據：主持人主要討論大量資金參與漢測申購、申購款遭圈存及解凍後是否帶回市場活水，沒有評論公司基本面。</li>
+<li><strong>產業主題：</strong> 半導體測試／IPO申購資金</li>
+<li><strong>主持人核心論述：</strong> 漢測申購規模很大，許多投資人的資金因抽籤暫時被圈住；身邊朋友回測過往案例後認為，申購款釋放可能讓市場重新出現活水。不過主持人對此仍持保留態度，因國際股市本身並不強。</li>
+<li><strong>新聞佐證：</strong> 「漢測申購凍結台股逾8600億資金　抽籤結果公布中籤率僅0.29%」— tw.stock.yahoo.com</li>
+<li><strong>現況評估（AI研判）：</strong> 綜合主持人觀點與近期市場新聞研判，[過熱慎追] 漢測短線焦點集中於申購熱度與稀缺籌碼，中籤率偏低、凍結資金規模龐大，上市後價格波動可能明顯高於基本面變化。</li>
+<li><strong>操作參考（AI推論）：</strong> 基於以上分析推論，非主持人直接建議，未中籤者不宜因申購熱度追逐開盤溢價，可等待成交量、籌碼及價格區間穩定後再評估。</li>
+</ul>
+<h3>[7769] 鴻勁</h3>
+<ul>
+<li><strong>主持人態度：</strong> [背景提及]<br />
+  評級依據：主持人只把7769過去的大型申購案例拿來與漢測比較，沒有提出公司營運或估值判斷。</li>
+<li><strong>產業主題：</strong> 半導體設備／IPO申購資金</li>
+<li><strong>主持人核心論述：</strong> 主持人提到，市場先前也曾因大量投資人參與7769申購而出現資金被圈存的情況；這次漢測申購規模看起來更大，因此可觀察申購款解凍是否再次影響市場流動性。</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估（AI研判）：</strong> 綜合主持人觀點與近期市場新聞研判，[震盪整理等待] 主持人引用的是申購資金效應，而非鴻勁目前的營運催化劑，不能直接延伸為看多公司股價。</li>
+<li><strong>操作參考（AI推論）：</strong> 基於以上分析推論，非主持人直接建議，應將申購熱度與公司基本面分開評估，優先追蹤訂單、出貨及估值消化狀況。</li>
+</ul>
+<h3>[CRWD] CrowdStrike</h3>
+<ul>
+<li><strong>主持人態度：</strong> [有趣題材]<br />
+  評級依據：主持人注意到AI安全爭議後資安股逆勢上漲，並認為模型驗證與監控可能需要資安公司的方案，但未直接給出看多評價。</li>
+<li><strong>產業主題：</strong> AI資安／模型監控與治理</li>
+<li><strong>主持人核心論述：</strong> 主持人認為，AI模型需要資料消毒、第三方評估、危險能力測試、部署後監考及異常隔離。這些工作不一定要使用最尖端模型完成，也可能與CrowdStrike等資安公司合作，因此資安需求不會因AI而消失，反而可能新增模型治理場景。</li>
+<li><strong>新聞佐證：</strong> 「CrowdStrike CEO on Anthropic’s AI safety warning: ‘The genie’s out of the bottle’」— cnbc.com</li>
+<li><strong>現況評估（AI研判）：</strong> 綜合主持人觀點與近期市場新聞研判，[趨勢發酵中] AI安全爭議已使資安股取得資金關注，但真正轉化為持續營收，仍取決於企業是否增加模型監控、端點安全與AI治理預算。</li>
+<li><strong>操作參考（AI推論）：</strong> 基於以上分析推論，非主持人直接建議，可等待題材急漲後的量價整理，並追蹤AI安全產品是否帶動ARR、續約率或大型企業合約，而非單純追逐政策新聞。</li>
+</ul>
+<h3>[TSLA] Tesla</h3>
+<ul>
+<li><strong>主持人態度：</strong> [背景提及]<br />
+  評級依據：主持人提到Tesla主要是為了說明馬斯克的身分、AI立場及利益動機，沒有評論Tesla汽車業務或股價前景。</li>
+<li><strong>產業主題：</strong> AI模型競爭／馬斯克企業生態系</li>
+<li><strong>主持人核心論述：</strong> 主持人認為馬斯克支持放慢前沿AI能力提升，可能有自身商業盤算。由於xAI仍在追趕領先者，若其他實驗室暫時放慢，馬斯克可利用快速建置大型資料中心與算力叢集的執行力縮小差距；這是主持人的動機推測，並非對Tesla股票的看多判斷。</li>
+<li><strong>新聞佐證：</strong> 「特斯拉新款Roadster預計10/1亮相 馬斯克：保證讓人興奮」— tw.stock.yahoo.com</li>
+<li><strong>現況評估（AI研判）：</strong> 綜合主持人觀點與近期市場新聞研判，[震盪整理等待] Tesla同時受到汽車交付、產品週期及馬斯克AI敘事影響，但本集論述不足以證明xAI算力擴張能直接轉化為Tesla獲利。</li>
+<li><strong>操作參考（AI推論）：</strong> 基於以上分析推論，非主持人直接建議，若布局Tesla，應分別評估汽車本業、Roadster題材及AI選擇權，避免把馬斯克旗下不同公司的價值全部直接計入Tesla。</li>
+</ul>
+<h3>[002484.SZ] 江海股份</h3>
+<ul>
+<li><strong>主持人態度：</strong> [持續關注]<br />
+  評級依據：主持人否認「點了就噴」的說法，但表示當時掌握被動元件漲價趨勢，而目前漲價方向仍在延續。</li>
+<li><strong>產業主題：</strong> 被動元件漲價</li>
+<li><strong>主持人核心論述：</strong> 主持人指出，江海股份先前上漲並不是因為節目點名，而是被動元件漲價行情本身很大。雖然目前不少相關個股已經轉弱、進入休息，但產業漲價趨勢仍在；相關資訊來自對產業人脈與風聲的掌握，不能被理解成無條件追價訊號。</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估（AI研判）：</strong> 綜合主持人觀點與近期市場新聞研判，[震盪整理等待] 產業價格趨勢仍有支撐，但股價經歷一輪反映後，需確認漲價是否真正帶動毛利率及獲利，而不只是題材延續。</li>
+<li><strong>操作參考（AI推論）：</strong> 基於以上分析推論，非主持人直接建議，可等待族群整理及報價、稼動率數據確認，避免在短線急漲時把產業漲價直接等同於股價持續上漲。</li>
+</ul>
+<h3>[5314] 世紀*</h3>
+<ul>
+<li><strong>主持人態度：</strong> [保留觀察]<br />
+  評級依據：主持人把它歸類為市場上不時出現、突然暴漲又連跌的中小型標的，並表示節目通常不會深入討論這類股票。</li>
+<li><strong>產業主題：</strong> 中小型題材股／特殊籌碼</li>
+<li><strong>主持人核心論述：</strong> 主持人知道該標的，但沒有討論公司基本面。他指出，名稱旁的星號通常是曾進行面額變更的註記；市場不時會出現突然暴漲、隨後連跌的股票，自己會了解原因，若能掌握也可能參與，但不會在節目針對單一小型股報牌。</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估（AI研判）：</strong> 綜合主持人觀點與近期市場新聞研判，[過熱慎追] 此類標的容易受到籌碼、題材與流動性左右，主持人亦未提供足以支持長線估值的基本面論述。</li>
+<li><strong>操作參考（AI推論）：</strong> 基於以上分析推論，非主持人直接建議，若無法掌握籌碼與事件細節，宜避免追逐連續急漲，並以嚴格部位上限及停損管理尾部風險。</li>
+</ul>
+<h3>[9904] 寶成</h3>
+<ul>
+<li><strong>主持人態度：</strong> [背景提及]<br />
+  評級依據：9904只出現在聽眾祝福家人「順利登出」的內容中，主持人沒有分析其營運或投資價值。</li>
+<li><strong>產業主題：</strong> 製鞋代工</li>
+<li><strong>主持人核心論述：</strong> 本集沒有寶成基本面、產業趨勢或股價方向的論述，僅在QA祝福內容中提到公司代號，不應解讀為主持人對該股有任何態度。</li>
+<li><strong>新聞佐證：</strong> 本期新聞暫無直接佐證</li>
+<li><strong>現況評估（AI研判）：</strong> 綜合主持人觀點與近期市場新聞研判，[低度關注尚未爆發] 本集沒有足夠資訊可建立寶成的投資判斷，亦與AI算力、資安及申購資金等主要論述缺乏直接關聯。</li>
+<li><strong>操作參考（AI推論）：</strong> 基於以上分析推論，非主持人直接建議，不宜因節目出現代號而採取交易，應另行研究品牌客戶庫存、接單、產能利用率及匯率影響。</li>
+</ul>
+<h1>三、延伸推論標的</h1>
+<h3>[NVDA] Nvidia</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]<br />
+  推論依據：主持人的核心論點是AI安全驗證、監控與推論將增加算力使用，GPU為目前最直接的運算基礎設施。</li>
+<li><strong>產業主題：</strong> AI GPU／資料中心算力</li>
+<li><strong>受惠邏輯：</strong></li>
+<li><strong>觸發條件：</strong> 若AI實驗室導入資料消毒、第三方評估、反覆對齊測試及部署後即時監控，模型生命週期將增加大量運算步驟。</li>
+<li><strong>傳導機制：</strong> 額外測試與推論會提高GPU使用時數及叢集需求，支撐加速器、網路設備與相關軟體收入；但若前沿訓練真正遭到強制放緩，部分新增需求可能被抵銷。</li>
+<li><strong>公司定位：</strong> Nvidia具備GPU、CUDA軟體生態系及資料中心網路整合優勢，是模型訓練與推論擴張最直接的供應商之一。</li>
+<li><strong>受惠時程：</strong> 短期可能先受AI放緩情緒與估值修正干擾；中長期若安全監控成為標準流程，算力需求才較可能反映於訂單及營收。</li>
+<li><strong>新聞佐證：</strong> 「AI生態系兩年新增3,500億美元營收，75%流向半導體、輝達成最大贏家」— tw.stock.yahoo.com</li>
+<li><strong>現況評估（AI研判）：</strong> 綜合主持人論述脈絡與近期市場新聞研判，[趨勢發酵中] 實質算力仍可能短缺，但AI監管爭議、美債殖利率上升及高估值會放大短線波動。</li>
+<li><strong>操作參考（AI推論）：</strong> 基於以上推論分析，非主持人直接建議，可採分批布局而非追逐單日反彈，並持續檢視雲端客戶資本支出、推論需求及監管措施是否實際影響出貨。</li>
+</ul>
+<h3>[TSM] 台積電</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]<br />
+  推論依據：若AI安全流程使總算力使用增加，先進製程與先進封裝需求將同步受惠，台積電是主要供應環節。</li>
+<li><strong>產業主題：</strong> AI晶片製造／先進封裝</li>
+<li><strong>受惠邏輯：</strong></li>
+<li><strong>觸發條件：</strong> AI訓練、推論、驗證與監控需求持續擴張，帶動GPU及ASIC晶片投片。</li>
+<li><strong>傳導機制：</strong> 更多AI加速器需求可提高先進製程晶圓量與先進封裝使用，進而支撐營收、產能利用率與產品組合。</li>
+<li><strong>公司定位：</strong> 台積電在先進製程、良率、客戶廣度及封裝整合方面具領先地位，可同時承接GPU與客製化ASIC需求，較不依賴單一架構勝負。</li>
+<li><strong>受惠時程：</strong> 中長期六個月以上較明確，因新增晶片需求需經設計、投片、封裝及資料中心部署後才會完整反映。</li>
+<li><strong>新聞佐證：</strong> 「台積電8月營收又破紀錄！網嗨喊「電梯向上大爆噴」 分析師也看多」— tw.stock.yahoo.com</li>
+<li><strong>現況評估（AI研判）：</strong> 綜合主持人論述脈絡與近期市場新聞研判，[趨勢發酵中] AI硬體長線需求仍有基本面支持，但短期受AI放緩論述、外資賣超及利率上升影響，股價可能維持高檔震盪。</li>
+<li><strong>操作參考（AI推論）：</strong> 基於以上推論分析，非主持人直接建議，可將台積電視為AI硬體核心配置，利用市場對監管或利率的情緒性回檔分批建立部位，避免一次押注。</li>
+</ul>
+<h3>[AVGO] Broadcom</h3>
+<ul>
+<li><strong>推論強度：</strong> [強關聯]<br />
+  推論依據：主持人認為推論、驗證與監控算力不減反增，將同時帶動客製化ASIC與資料中心高速網路需求。</li>
+<li><strong>產業主題：</strong> AI ASIC／資料中心網路</li>
+<li><strong>受惠邏輯：</strong></li>
+<li><strong>觸發條件：</strong> 大型雲端業者持續建置AI叢集，並為安全評估、推論及監控工作導入更多專用算力。</li>
+<li><strong>傳導機制：</strong> 客製化AI晶片與高速交換器需求提升，可帶動半導體收入及高附加價值產品比重。</li>
+<li><strong>公司定位：</strong> Broadcom具備大型客戶ASIC設計能力及資料中心網路產品組合，可同時受惠於算力晶片與叢集互連需求。</li>
+<li><strong>受惠時程：</strong> 短期取決於主要客戶資本支出是否維持；中長期則受益於GPU與ASIC並存、模型推論持續擴張。</li>
+<li><strong>新聞佐證：</strong> 「Broadcom CEO addresses Anthropic's slowdown push, says AI revenue targets haven't changed」— cnbc.com</li>
+<li><strong>現況評估（AI研判）：</strong> 綜合主持人論述脈絡與近期市場新聞研判，[趨勢發酵中] 公司AI營收目標未因安全爭議改變，與主持人「硬體實質用量未必下降」的判斷方向一致，但客戶集中與估值仍是風險。</li>
+<li><strong>操作參考（AI推論）：</strong> 基於以上推論分析，非主持人直接建議，可等待市場消化AI放緩疑慮後分批布局，並追蹤主要雲端客戶ASIC專案進度與網路晶片成長率。</li>
+</ul>
+<h1>四、整體投資策略</h1>
+<p><strong>大盤研判：</strong> [牛熊拉鋸] 盤面低波動、國際科技股位於整理區下緣，申購款解凍可能帶來短線活水，但利率與AI監管爭議仍壓抑追價意願。</p>
+<p><strong>核心持股建議（3-5 檔）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>標的</th>
+<th>產業主題</th>
+<th>建議比重</th>
+<th>操作策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TSM</td>
+<td>先進製程與封裝</td>
+<td>25%</td>
+<td>核心分批持有，利用情緒性回檔布局</td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td>AI GPU與推論算力</td>
+<td>25%</td>
+<td>避免追高，依資本支出與訂單趨勢調整</td>
+</tr>
+<tr>
+<td>AVGO</td>
+<td>AI ASIC與高速網路</td>
+<td>20%</td>
+<td>趨勢持有，留意客戶集中及估值</td>
+</tr>
+<tr>
+<td>CRWD</td>
+<td>AI資安與模型治理</td>
+<td>15%</td>
+<td>等待急漲整理，觀察AI產品營收轉化</td>
+</tr>
+</tbody>
+</table>
+<p>其餘15%保留現金，以因應利率決策、AI監管消息及高波動回檔。</p>
+<p><strong>積極型佈局（可承受 20%+ 回撤）：</strong></p>
+<p>可由NVDA、AVGO及CRWD組成較積極的AI算力與安全組合。進場邏輯不是押注AI監管消失，而是押注即使能力提升速度放慢，推論、測試、驗證及監控仍會增加總運算量。宜分三至四批進場，避免在單日題材急漲後一次投入；若大型雲端業者削減資本支出，則應立即下修配置。</p>
+<p><strong>保守型佈局（下行保護優先）：</strong></p>
+<p>以台積電為主要科技配置，搭配較高現金水位，降低單一AI模型公司或單一晶片架構的風險。保守型投資人不宜參與漢測、世紀*等申購或籌碼主導型標的，也不應把主持人對馬斯克動機的分析直接轉換成Tesla買進理由。</p>
+<h1>五、關鍵風險提示</h1>
+<h3>最大尾部風險</h3>
+<p>最大風險是主要經濟體真的對前沿AI訓練設下具強制力的算力上限、晶片採購限制或跨國協議，且雲端業者同步下修資本支出。若發生，NVDA、TSM與AVGO可能面臨訂單預期及估值同時下修，CRWD雖可能受益於監管需求，也難完全抵銷科技股系統性賣壓。應對方式是保留現金、限制槓桿，並以實際資本支出與訂單數據驗證，而非只依管理層論述交易。</p>
+<h3>短期擾動因素</h3>
+<ul>
+<li>聯準會利率決策及主席對後續升息路徑的說法。</li>
+<li>美國10年期公債殖利率已升至5%附近，可能壓縮科技股估值。</li>
+<li>AI安全與放緩爭議持續發酵，政策人物及科技公司領袖發言可能造成快速輪動。</li>
+<li>漢測申購款解凍後，資金是否實際回流台股，或僅形成短暫流動性效果。</li>
+</ul>
+<h3>本次分析盲點</h3>
+<p>主持人對AI安全帶來額外算力需求的數量沒有可驗證案例，所提15%至20%以上需求增幅亦來自AI整理與類比，不是公司正式財測。對OpenAI、Anthropic及馬斯克動機的拆解，主持人自己也明確稱為偏陰謀論的推測，不能視為已證實事實。此外，本集沒有提出明確持股水位、目標價或買賣點，第四部分配置均屬AI推論，不是主持人的直接建議。</p>
+<hr />
+<p><em>本報告基於 Podcast 集數：EP697 | [過熱慎追]，分析日期：2026-09-16，由 AI 模型 gpt-5.6-sol 輔助生成。</em><br />
+<em>資訊僅供參考，不構成任何投資建議或邀約。投資有風險，決策請獨立判斷。</em></p></div>
+    </div>
+  </div>
+</div></div>
+<div class="page-footer">本報告基於 EP697 | 🔥，分析日期：2026-09-16 · 由 AI 模型輔助生成 · 僅供參考，不構成投資建議</div>
+<script>window.__TECH__ = {"7856": "<div class=\"sc-tech sct-na\">行情資料暫無</div>", "7769": "<div class=\"sc-tech\"><div class=\"sct-row\"><span class=\"sct-px\">收盤 6125.0</span><span class=\"sct-tv\">日均成交值 40 億元</span><span class=\"sct-sig\" style=\"background:#7f8c8d\">均線糾結</span></div><svg class=\"sct-svg\" viewBox=\"0 0 320 70\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"6.0,64.0 11.2,63.3 16.4,62.7 21.7,62.0 26.9,61.2 32.1,60.4 37.3,59.7 42.5,59.0 47.8,58.4 53.0,57.8 58.2,57.1 63.4,56.4 68.6,55.7 73.9,55.0 79.1,54.3 84.3,53.6 89.5,53.1 94.7,52.5 100.0,51.9 105.2,51.3 110.4,50.7 115.6,50.1 120.8,49.6 126.1,49.2 131.3,48.9 136.5,48.5 141.7,48.0 146.9,47.4 152.2,46.9 157.4,46.3 162.6,45.8 167.8,45.2 173.1,44.7 178.3,44.1 183.5,43.6 188.7,43.0 193.9,42.5 199.2,42.0 204.4,41.6 209.6,41.2 214.8,40.9 220.0,40.5 225.3,40.0 230.5,39.5 235.7,39.1 240.9,38.7 246.1,38.1 251.4,37.7 256.6,37.4 261.8,37.1 267.0,36.7 272.2,36.3 277.5,35.8 282.7,35.3 287.9,34.7 293.1,34.2 298.3,33.7 303.6,33.2 308.8,32.7 314.0,32.2\" fill=\"none\" stroke=\"#9aa7b4\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,6.0 11.2,7.5 16.4,9.9 21.7,11.2 26.9,11.5 32.1,12.1 37.3,12.8 42.5,13.4 47.8,14.5 53.0,15.6 58.2,15.9 63.4,16.4 68.6,17.0 73.9,18.0 79.1,18.9 84.3,19.7 89.5,20.8 94.7,22.0 100.0,22.4 105.2,22.8 110.4,23.4 115.6,24.0 120.8,24.3 126.1,25.2 131.3,27.5 136.5,29.3 141.7,30.2 146.9,30.7 152.2,30.6 157.4,30.0 162.6,30.3 167.8,30.7 173.1,31.3 178.3,31.3 183.5,31.6 188.7,31.5 193.9,30.9 199.2,29.9 204.4,29.9 209.6,29.8 214.8,29.8 220.0,29.4 225.3,29.2 230.5,28.6 235.7,27.1 240.9,26.2 246.1,25.8 251.4,26.5 256.6,27.0 261.8,28.0 267.0,28.8 272.2,29.2 277.5,28.8 282.7,28.1 287.9,27.7 293.1,28.1 298.3,28.5 303.6,29.0 308.8,29.5 314.0,29.9\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,14.5 11.2,16.9 16.4,19.6 21.7,21.3 26.9,20.3 32.1,19.7 37.3,17.9 42.5,15.8 47.8,17.3 53.0,21.9 58.2,23.8 63.4,24.8 68.6,25.3 73.9,24.2 79.1,20.8 84.3,20.6 89.5,23.6 94.7,27.2 100.0,26.7 105.2,28.3 110.4,29.5 115.6,29.5 120.8,29.0 126.1,32.8 131.3,39.1 136.5,43.4 141.7,42.8 146.9,41.1 152.2,38.9 157.4,32.0 162.6,27.6 167.8,26.9 173.1,27.7 178.3,26.9 183.5,27.1 188.7,25.6 193.9,24.2 199.2,21.8 204.4,20.9 209.6,21.1 214.8,22.7 220.0,23.7 225.3,26.2 230.5,27.8 235.7,28.4 240.9,28.9 246.1,28.5 251.4,30.5 256.6,32.2 261.8,35.4 267.0,37.8 272.2,40.4 277.5,36.8 282.7,31.2 287.9,26.1 293.1,23.0 298.3,21.3 303.6,22.6 308.8,26.9 314.0,29.9\" fill=\"none\" stroke=\"#c89b32\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,13.4 11.2,24.1 16.4,26.8 21.7,24.8 26.9,12.4 32.1,10.6 37.3,14.8 42.5,16.4 47.8,32.2 53.0,35.4 58.2,20.0 63.4,20.0 68.6,18.9 73.9,26.8 79.1,18.5 84.3,19.1 89.5,35.0 94.7,36.7 100.0,24.1 105.2,26.5 110.4,25.0 115.6,35.4 120.8,34.0 126.1,43.2 131.3,57.8 136.5,46.5 141.7,32.2 146.9,26.0 152.2,32.0 157.4,23.3 162.6,24.7 167.8,28.7 173.1,29.7 178.3,27.9 183.5,24.6 188.7,17.2 193.9,21.8 199.2,17.7 204.4,23.4 209.6,25.5 214.8,25.2 220.0,26.5 225.3,30.3 230.5,31.5 235.7,28.3 240.9,28.0 246.1,24.3 251.4,40.4 256.6,40.1 261.8,44.2 267.0,40.1 272.2,37.3 277.5,22.4 282.7,12.1 287.9,18.5 293.1,24.7 298.3,28.9 303.6,29.0 308.8,33.4 314.0,33.6\" fill=\"none\" stroke=\"#0d2137\" stroke-width=\"1.8\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg><div class=\"sct-ma\"><span style=\"color:#c89b32\">5MA 6270.0</span><span style=\"color:#2980b9\">20MA 6269.5</span><span style=\"color:#7f8c8d\">120MA 6181.4</span></div></div>", "CRWD": "<div class=\"sc-tech\"><div class=\"sct-row\"><span class=\"sct-px\">收盤 242.49</span><span class=\"sct-tv\">日均成交值 25.5 億美元</span><span class=\"sct-sig\" style=\"background:#1e8449\">多頭排列</span></div><svg class=\"sct-svg\" viewBox=\"0 0 320 70\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"6.0,64.0 11.2,63.8 16.4,63.6 21.7,63.4 26.9,63.1 32.1,62.9 37.3,62.6 42.5,62.3 47.8,61.9 53.0,61.6 58.2,61.3 63.4,61.0 68.6,60.7 73.9,60.4 79.1,60.1 84.3,59.7 89.5,59.3 94.7,59.0 100.0,58.6 105.2,58.3 110.4,58.0 115.6,57.7 120.8,57.4 126.1,57.1 131.3,56.8 136.5,56.5 141.7,56.2 146.9,55.9 152.2,55.5 157.4,55.1 162.6,54.7 167.8,54.2 173.1,53.8 178.3,53.4 183.5,52.9 188.7,52.4 193.9,52.0 199.2,51.5 204.4,51.0 209.6,50.4 214.8,50.0 220.0,49.5 225.3,49.1 230.5,48.8 235.7,48.4 240.9,48.1 246.1,47.7 251.4,47.3 256.6,46.8 261.8,46.3 267.0,45.9 272.2,45.5 277.5,45.1 282.7,44.7 287.9,44.3 293.1,43.9 298.3,43.5 303.6,43.1 308.8,42.5 314.0,42.0\" fill=\"none\" stroke=\"#9aa7b4\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,39.4 11.2,39.3 16.4,39.3 21.7,39.1 26.9,39.0 32.1,38.9 37.3,39.0 42.5,39.0 47.8,38.8 53.0,38.3 58.2,37.7 63.4,37.1 68.6,36.2 73.9,35.6 79.1,35.2 84.3,34.2 89.5,33.4 94.7,32.6 100.0,31.9 105.2,31.2 110.4,30.7 115.6,30.2 120.8,29.9 126.1,29.5 131.3,29.4 136.5,29.5 141.7,29.8 146.9,30.0 152.2,30.1 157.4,30.0 162.6,29.6 167.8,29.1 173.1,28.9 178.3,28.3 183.5,27.4 188.7,27.1 193.9,26.8 199.2,26.2 204.4,25.9 209.6,25.5 214.8,25.0 220.0,24.7 225.3,24.5 230.5,24.3 235.7,24.1 240.9,24.0 246.1,23.7 251.4,22.7 256.6,22.1 261.8,21.4 267.0,21.3 272.2,21.4 277.5,21.3 282.7,21.3 287.9,21.7 293.1,22.0 298.3,22.3 303.6,22.8 308.8,22.3 314.0,21.6\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,40.3 11.2,40.6 16.4,40.8 21.7,40.9 26.9,40.5 32.1,38.9 37.3,36.9 42.5,34.5 47.8,32.2 53.0,29.9 58.2,29.0 63.4,29.0 68.6,28.5 73.9,29.2 79.1,30.3 84.3,28.7 89.5,27.2 94.7,26.7 100.0,25.2 105.2,24.2 110.4,26.0 115.6,27.8 120.8,29.7 126.1,31.6 131.3,33.4 136.5,34.3 141.7,35.2 146.9,35.0 152.2,34.3 157.4,32.1 162.6,29.3 167.8,26.4 173.1,24.3 178.3,22.0 183.5,19.8 188.7,18.8 193.9,17.7 199.2,15.9 204.4,15.7 209.6,16.8 214.8,17.6 220.0,19.6 225.3,22.9 230.5,25.3 235.7,27.5 240.9,30.2 246.1,31.4 251.4,27.8 256.6,25.2 261.8,21.4 267.0,18.5 272.2,17.2 277.5,18.4 282.7,18.9 287.9,20.9 293.1,21.6 298.3,21.1 303.6,21.9 308.8,19.8 314.0,16.7\" fill=\"none\" stroke=\"#c89b32\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,41.3 11.2,40.6 16.4,41.6 21.7,40.9 26.9,38.2 32.1,33.2 37.3,30.8 42.5,29.6 47.8,29.2 53.0,26.6 58.2,28.9 63.4,30.6 68.6,27.1 73.9,32.5 79.1,32.1 84.3,21.2 89.5,23.1 94.7,24.6 100.0,24.9 105.2,27.1 110.4,30.6 115.6,31.9 120.8,34.3 126.1,34.4 131.3,35.9 136.5,35.1 141.7,36.2 146.9,33.4 152.2,30.7 157.4,25.1 162.6,21.0 167.8,21.6 173.1,22.8 178.3,19.4 183.5,14.3 188.7,15.9 193.9,15.9 199.2,14.1 204.4,18.2 209.6,19.7 214.8,20.2 220.0,25.6 225.3,31.0 230.5,30.2 235.7,30.8 240.9,33.4 246.1,31.5 251.4,13.0 256.6,17.5 261.8,11.5 267.0,19.1 272.2,24.7 277.5,19.2 282.7,20.1 287.9,21.6 293.1,22.6 298.3,22.1 303.6,23.1 308.8,9.4 314.0,6.0\" fill=\"none\" stroke=\"#0d2137\" stroke-width=\"1.8\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg><div class=\"sct-ma\"><span style=\"color:#c89b32\">5MA 220.25</span><span style=\"color:#2980b9\">20MA 209.86</span><span style=\"color:#7f8c8d\">120MA 167.40</span></div></div>", "TSLA": "<div class=\"sc-tech\"><div class=\"sct-row\"><span class=\"sct-px\">收盤 356.58</span><span class=\"sct-tv\">日均成交值 140.2 億美元</span><span class=\"sct-sig\" style=\"background:#7f8c8d\">均線糾結</span></div><svg class=\"sct-svg\" viewBox=\"0 0 320 70\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"6.0,14.5 11.2,14.8 16.4,15.1 21.7,15.4 26.9,15.6 32.1,15.7 37.3,15.8 42.5,15.8 47.8,16.0 53.0,16.1 58.2,16.2 63.4,16.4 68.6,16.6 73.9,16.7 79.1,16.8 84.3,16.9 89.5,17.1 94.7,17.3 100.0,17.6 105.2,17.8 110.4,18.0 115.6,18.2 120.8,18.6 126.1,19.0 131.3,19.5 136.5,19.9 141.7,20.3 146.9,20.7 152.2,21.0 157.4,21.4 162.6,21.8 167.8,22.2 173.1,22.5 178.3,22.9 183.5,23.2 188.7,23.5 193.9,23.8 199.2,24.1 204.4,24.3 209.6,24.6 214.8,24.9 220.0,25.1 225.3,25.3 230.5,25.5 235.7,25.6 240.9,25.8 246.1,26.1 251.4,26.2 256.6,26.4 261.8,26.5 267.0,26.7 272.2,26.9 277.5,26.9 282.7,27.1 287.9,27.2 293.1,27.3 298.3,27.4 303.6,27.4 308.8,27.5 314.0,27.6\" fill=\"none\" stroke=\"#9aa7b4\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,11.6 11.2,12.6 16.4,13.9 21.7,15.4 26.9,16.8 32.1,17.4 37.3,17.3 42.5,17.3 47.8,17.9 53.0,17.9 58.2,17.6 63.4,18.0 68.6,17.8 73.9,17.2 79.1,17.3 84.3,17.5 89.5,17.9 94.7,18.2 100.0,18.5 105.2,19.2 110.4,19.8 115.6,20.0 120.8,21.3 126.1,22.7 131.3,24.3 136.5,26.7 141.7,29.5 146.9,32.2 152.2,34.0 157.4,36.3 162.6,38.0 167.8,39.6 173.1,41.6 178.3,43.4 183.5,44.9 188.7,46.3 193.9,47.9 199.2,49.0 204.4,49.9 209.6,50.6 214.8,51.6 220.0,52.1 225.3,51.5 230.5,50.4 235.7,49.5 240.9,48.5 246.1,47.4 251.4,46.4 256.6,45.5 261.8,44.5 267.0,43.8 272.2,43.0 277.5,41.7 282.7,41.1 287.9,40.3 293.1,39.5 298.3,38.6 303.6,38.1 308.8,37.7 314.0,37.3\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,15.9 11.2,18.6 16.4,21.3 21.7,23.2 26.9,25.1 32.1,24.5 37.3,21.0 42.5,16.4 47.8,14.7 53.0,11.1 58.2,11.9 63.4,14.3 68.6,16.0 73.9,14.7 79.1,17.0 84.3,17.6 89.5,17.6 94.7,19.0 100.0,21.5 105.2,23.8 110.4,25.3 115.6,27.2 120.8,33.7 126.1,39.9 131.3,45.4 136.5,52.0 141.7,58.9 146.9,59.9 152.2,60.0 157.4,58.9 162.6,57.0 167.8,54.9 173.1,53.9 178.3,52.4 183.5,51.5 188.7,51.1 193.9,50.5 199.2,48.6 204.4,47.4 209.6,46.6 214.8,46.2 220.0,44.1 225.3,43.6 230.5,41.7 235.7,40.9 240.9,39.6 246.1,40.1 251.4,39.2 256.6,40.5 261.8,38.8 267.0,38.3 272.2,37.2 277.5,35.3 282.7,34.8 287.9,34.8 293.1,33.7 298.3,33.1 303.6,34.1 308.8,33.6 314.0,34.7\" fill=\"none\" stroke=\"#c89b32\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,15.2 11.2,26.0 16.4,28.7 21.7,28.9 26.9,26.8 32.1,12.1 37.3,8.1 42.5,6.0 47.8,20.5 53.0,8.5 58.2,16.2 63.4,20.3 68.6,14.6 73.9,14.0 79.1,19.9 84.3,19.3 89.5,20.1 94.7,21.6 100.0,26.3 105.2,31.5 110.4,27.2 115.6,29.4 120.8,54.2 126.1,57.3 131.3,59.0 136.5,59.8 141.7,64.0 146.9,59.2 152.2,58.1 157.4,53.1 162.6,50.7 167.8,53.4 173.1,54.3 178.3,50.2 183.5,49.1 188.7,48.2 193.9,50.7 199.2,45.0 204.4,43.9 209.6,45.3 214.8,46.4 220.0,39.9 225.3,42.6 230.5,34.5 235.7,40.9 240.9,40.3 246.1,42.3 251.4,38.2 256.6,41.0 261.8,32.2 267.0,37.6 272.2,37.2 277.5,28.3 282.7,38.5 287.9,32.1 293.1,32.3 298.3,34.2 303.6,33.3 308.8,36.3 314.0,37.4\" fill=\"none\" stroke=\"#0d2137\" stroke-width=\"1.8\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg><div class=\"sct-ma\"><span style=\"color:#c89b32\">5MA 362.47</span><span style=\"color:#2980b9\">20MA 356.83</span><span style=\"color:#7f8c8d\">120MA 378.09</span></div></div>", "002484.SZ": "<div class=\"sc-tech\"><div class=\"sct-row\"><span class=\"sct-px\">收盤 60.28</span><span class=\"sct-tv\">日均成交值 25.5 億美元</span><span class=\"sct-sig\" style=\"background:#7f8c8d\">均線糾結</span></div><svg class=\"sct-svg\" viewBox=\"0 0 320 70\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"6.0,64.0 11.2,63.4 16.4,62.9 21.7,62.3 26.9,61.8 32.1,61.3 37.3,60.8 42.5,60.3 47.8,59.9 53.0,59.5 58.2,59.1 63.4,58.7 68.6,58.3 73.9,57.9 79.1,57.5 84.3,57.2 89.5,56.8 94.7,56.6 100.0,56.3 105.2,56.0 110.4,55.8 115.6,55.5 120.8,55.2 126.1,55.0 131.3,54.8 136.5,54.6 141.7,54.4 146.9,54.3 152.2,54.0 157.4,53.8 162.6,53.5 167.8,53.2 173.1,53.0 178.3,52.7 183.5,52.4 188.7,52.2 193.9,51.9 199.2,51.6 204.4,51.4 209.6,51.2 214.8,51.0 220.0,50.7 225.3,50.6 230.5,50.4 235.7,50.2 240.9,50.0 246.1,49.8 251.4,49.5 256.6,49.3 261.8,49.1 267.0,48.9 272.2,48.8 277.5,48.5 282.7,48.3 287.9,48.1 293.1,47.9 298.3,47.7 303.6,47.5 308.8,47.2 314.0,47.0\" fill=\"none\" stroke=\"#9aa7b4\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,23.2 11.2,21.7 16.4,20.5 21.7,19.4 26.9,18.4 32.1,17.9 37.3,17.8 42.5,17.5 47.8,17.3 53.0,17.7 58.2,17.5 63.4,17.4 68.6,17.5 73.9,17.5 79.1,17.9 84.3,18.9 89.5,20.4 94.7,22.1 100.0,23.0 105.2,24.3 110.4,26.2 115.6,28.2 120.8,29.7 126.1,31.6 131.3,33.5 136.5,35.4 141.7,37.1 146.9,38.9 152.2,40.2 157.4,41.0 162.6,42.1 167.8,42.9 173.1,43.5 178.3,44.4 183.5,45.3 188.7,46.0 193.9,46.1 199.2,46.0 204.4,46.2 209.6,46.6 214.8,46.9 220.0,46.9 225.3,47.3 230.5,47.5 235.7,47.5 240.9,47.2 246.1,47.2 251.4,46.7 256.6,46.7 261.8,47.1 267.0,47.4 272.2,47.9 277.5,48.1 282.7,48.3 287.9,48.6 293.1,49.0 298.3,49.5 303.6,50.0 308.8,50.4 314.0,50.4\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,12.2 11.2,12.0 16.4,11.8 21.7,10.0 26.9,9.0 32.1,11.1 37.3,13.1 42.5,14.7 47.8,17.6 53.0,21.5 58.2,22.9 63.4,24.9 68.6,28.0 73.9,28.4 79.1,27.7 84.3,29.3 89.5,31.6 94.7,33.7 100.0,36.1 105.2,39.0 110.4,41.6 115.6,43.3 120.8,42.6 126.1,44.2 131.3,45.9 136.5,47.8 141.7,48.6 146.9,51.4 152.2,52.0 157.4,51.5 162.6,49.9 167.8,48.3 173.1,46.2 178.3,45.1 183.5,45.0 188.7,44.7 193.9,44.3 199.2,43.7 204.4,43.3 209.6,44.1 214.8,45.3 220.0,46.2 225.3,48.0 230.5,49.3 235.7,49.5 240.9,49.1 246.1,49.7 251.4,49.1 256.6,49.2 261.8,49.8 267.0,50.5 272.2,51.3 277.5,51.5 282.7,51.5 287.9,51.0 293.1,51.0 298.3,50.7 303.6,51.3 308.8,51.5 314.0,51.2\" fill=\"none\" stroke=\"#c89b32\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,6.0 11.2,7.7 16.4,10.3 21.7,11.2 26.9,9.8 32.1,16.7 37.3,17.3 42.5,18.6 47.8,25.4 53.0,29.6 58.2,23.7 63.4,27.0 68.6,34.2 73.9,27.5 79.1,26.0 84.3,31.6 89.5,38.6 94.7,44.9 100.0,39.2 105.2,40.6 110.4,44.5 115.6,47.0 120.8,41.5 126.1,47.5 131.3,48.9 136.5,54.0 141.7,51.2 146.9,55.3 152.2,50.7 157.4,46.4 162.6,45.7 167.8,43.5 173.1,44.8 178.3,45.2 183.5,45.6 188.7,44.4 193.9,41.6 199.2,41.5 204.4,43.7 209.6,49.5 214.8,50.1 220.0,46.3 225.3,50.5 230.5,50.1 235.7,50.4 240.9,48.3 246.1,49.4 251.4,47.1 256.6,50.6 261.8,53.7 267.0,51.9 272.2,53.3 277.5,48.4 282.7,50.4 287.9,51.0 293.1,51.8 298.3,51.8 303.6,51.7 308.8,51.0 314.0,49.8\" fill=\"none\" stroke=\"#0d2137\" stroke-width=\"1.8\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg><div class=\"sct-ma\"><span style=\"color:#c89b32\">5MA 58.67</span><span style=\"color:#2980b9\">20MA 59.66</span><span style=\"color:#7f8c8d\">120MA 63.58</span></div></div>", "5314": "<div class=\"sc-tech\"><div class=\"sct-row\"><span class=\"sct-px\">收盤 30.8</span><span class=\"sct-tv\">日均成交值 4 億元</span><span class=\"sct-sig\" style=\"background:#7f8c8d\">均線糾結</span></div><svg class=\"sct-svg\" viewBox=\"0 0 320 70\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"6.0,51.3 11.2,51.5 16.4,51.6 21.7,51.7 26.9,51.9 32.1,52.0 37.3,52.1 42.5,52.2 47.8,52.3 53.0,52.4 58.2,52.4 63.4,52.5 68.6,52.7 73.9,52.8 79.1,52.9 84.3,53.0 89.5,53.1 94.7,53.2 100.0,53.3 105.2,53.5 110.4,53.6 115.6,53.7 120.8,53.9 126.1,54.0 131.3,54.1 136.5,54.3 141.7,54.5 146.9,54.6 152.2,54.8 157.4,54.9 162.6,55.0 167.8,55.1 173.1,55.2 178.3,55.3 183.5,55.4 188.7,55.4 193.9,55.5 199.2,55.6 204.4,55.6 209.6,55.6 214.8,55.6 220.0,55.5 225.3,55.4 230.5,55.3 235.7,55.1 240.9,54.8 246.1,54.6 251.4,54.3 256.6,54.1 261.8,53.9 267.0,53.7 272.2,53.5 277.5,53.3 282.7,53.0 287.9,52.7 293.1,52.3 298.3,52.0 303.6,51.7 308.8,51.4 314.0,51.3\" fill=\"none\" stroke=\"#9aa7b4\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,58.9 11.2,59.0 16.4,59.1 21.7,59.0 26.9,59.0 32.1,58.9 37.3,58.7 42.5,58.6 47.8,58.5 53.0,58.3 58.2,58.2 63.4,58.0 68.6,57.9 73.9,57.7 79.1,57.5 84.3,57.4 89.5,57.3 94.7,57.4 100.0,57.4 105.2,57.4 110.4,57.4 115.6,57.4 120.8,57.5 126.1,57.8 131.3,58.1 136.5,58.5 141.7,58.8 146.9,59.1 152.2,59.3 157.4,59.5 162.6,59.7 167.8,59.8 173.1,59.8 178.3,60.0 183.5,60.0 188.7,60.1 193.9,59.9 199.2,59.6 204.4,59.2 209.6,58.6 214.8,57.8 220.0,56.8 225.3,55.5 230.5,54.0 235.7,52.2 240.9,50.0 246.1,48.2 251.4,46.4 256.6,44.6 261.8,42.9 267.0,41.5 272.2,40.1 277.5,38.4 282.7,36.5 287.9,34.2 293.1,31.6 298.3,29.5 303.6,27.8 308.8,26.6 314.0,25.9\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,59.1 11.2,59.4 16.4,59.5 21.7,59.0 26.9,58.4 32.1,57.8 37.3,56.5 42.5,56.0 47.8,55.9 53.0,55.9 58.2,55.8 63.4,56.2 68.6,56.5 73.9,56.5 79.1,56.5 84.3,56.7 89.5,57.2 94.7,57.7 100.0,58.3 105.2,59.0 110.4,59.5 115.6,59.8 120.8,59.8 126.1,60.5 131.3,61.1 136.5,61.9 141.7,62.2 146.9,62.3 152.2,62.1 157.4,61.5 162.6,60.6 167.8,59.9 173.1,59.4 178.3,59.0 183.5,58.6 188.7,58.4 193.9,57.8 199.2,56.9 204.4,55.3 209.6,53.2 214.8,50.3 220.0,47.1 225.3,43.5 230.5,39.7 235.7,35.4 240.9,30.7 246.1,28.0 251.4,25.6 256.6,24.3 261.8,24.4 267.0,26.7 272.2,27.4 277.5,27.7 282.7,26.6 287.9,23.9 293.1,18.7 298.3,15.4 303.6,14.5 308.8,15.9 314.0,19.8\" fill=\"none\" stroke=\"#c89b32\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,59.8 11.2,60.8 16.4,58.7 21.7,56.3 26.9,56.2 32.1,57.0 37.3,54.5 42.5,56.0 47.8,55.9 53.0,56.1 58.2,56.6 63.4,56.6 68.6,57.2 73.9,55.8 79.1,56.4 84.3,57.3 89.5,59.3 94.7,59.9 100.0,58.7 105.2,59.6 110.4,60.2 115.6,60.5 120.8,60.3 126.1,61.7 131.3,62.8 136.5,64.0 141.7,62.2 146.9,60.9 152.2,60.4 157.4,60.2 162.6,59.2 167.8,59.0 173.1,58.1 178.3,58.5 183.5,58.0 188.7,58.5 193.9,56.1 199.2,53.5 204.4,50.6 209.6,47.4 214.8,43.9 220.0,40.0 225.3,35.8 230.5,31.1 235.7,26.1 240.9,20.4 246.1,26.6 251.4,23.7 256.6,24.8 261.8,26.6 267.0,31.9 272.2,30.2 277.5,25.0 282.7,19.3 287.9,13.0 293.1,6.0 298.3,13.6 303.6,20.5 308.8,26.6 314.0,32.2\" fill=\"none\" stroke=\"#0d2137\" stroke-width=\"1.8\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg><div class=\"sct-ma\"><span style=\"color:#c89b32\">5MA 38.4</span><span style=\"color:#2980b9\">20MA 34.7</span><span style=\"color:#7f8c8d\">120MA 19.1</span></div></div>", "9904": "<div class=\"sc-tech\"><div class=\"sct-row\"><span class=\"sct-px\">收盤 24.5</span><span class=\"sct-tv\">日均成交值 3 億元</span><span class=\"sct-sig\" style=\"background:#7f8c8d\">均線糾結</span></div><svg class=\"sct-svg\" viewBox=\"0 0 320 70\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"6.0,6.0 11.2,6.5 16.4,7.0 21.7,7.5 26.9,8.0 32.1,8.6 37.3,9.1 42.5,9.7 47.8,10.3 53.0,10.8 58.2,11.4 63.4,12.1 68.6,12.7 73.9,13.4 79.1,14.2 84.3,14.8 89.5,15.5 94.7,16.2 100.0,16.9 105.2,17.6 110.4,18.3 115.6,18.9 120.8,19.5 126.1,20.2 131.3,20.9 136.5,21.5 141.7,22.2 146.9,22.9 152.2,23.5 157.4,24.2 162.6,24.8 167.8,25.5 173.1,26.2 178.3,26.8 183.5,27.5 188.7,28.2 193.9,28.7 199.2,29.3 204.4,30.0 209.6,30.5 214.8,31.1 220.0,31.7 225.3,32.2 230.5,32.6 235.7,33.0 240.9,33.5 246.1,34.0 251.4,34.5 256.6,35.0 261.8,35.5 267.0,36.0 272.2,36.4 277.5,36.8 282.7,37.3 287.9,37.7 293.1,38.1 298.3,38.5 303.6,38.9 308.8,39.3 314.0,39.7\" fill=\"none\" stroke=\"#9aa7b4\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,32.6 11.2,32.6 16.4,32.6 21.7,32.9 26.9,33.5 32.1,34.9 37.3,36.0 42.5,37.2 47.8,38.1 53.0,39.4 58.2,40.7 63.4,41.9 68.6,43.3 73.9,44.8 79.1,45.9 84.3,47.0 89.5,47.9 94.7,48.9 100.0,49.8 105.2,50.8 110.4,51.8 115.6,52.3 120.8,52.9 126.1,53.7 131.3,54.2 136.5,54.3 141.7,54.5 146.9,54.6 152.2,54.9 157.4,55.4 162.6,55.7 167.8,55.9 173.1,56.0 178.3,56.0 183.5,56.2 188.7,56.6 193.9,56.2 199.2,56.0 204.4,55.9 209.6,55.6 214.8,55.2 220.0,54.8 225.3,54.4 230.5,53.8 235.7,53.2 240.9,52.8 246.1,52.5 251.4,52.2 256.6,51.6 261.8,50.8 267.0,50.3 272.2,49.9 277.5,49.7 282.7,49.3 287.9,48.9 293.1,48.8 298.3,49.4 303.6,49.9 308.8,50.0 314.0,50.1\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,34.1 11.2,36.1 16.4,37.7 21.7,39.2 26.9,41.4 32.1,45.7 37.3,47.7 42.5,50.1 47.8,52.4 53.0,54.0 58.2,53.7 63.4,54.2 68.6,54.4 73.9,55.1 79.1,55.1 84.3,54.3 89.5,53.5 94.7,53.2 100.0,52.4 105.2,52.5 110.4,53.4 115.6,53.8 120.8,53.9 126.1,54.7 131.3,55.1 136.5,55.7 141.7,56.7 146.9,56.7 152.2,57.4 157.4,58.9 162.6,59.5 167.8,59.6 173.1,60.1 178.3,59.4 183.5,58.2 188.7,57.9 193.9,54.7 199.2,53.1 204.4,52.1 209.6,50.3 214.8,47.7 220.0,48.3 225.3,47.7 230.5,46.3 235.7,45.5 240.9,46.1 246.1,47.6 251.4,48.0 256.6,48.5 261.8,49.2 267.0,49.8 272.2,49.2 277.5,49.8 282.7,50.2 287.9,50.7 293.1,51.7 298.3,52.7 303.6,53.9 308.8,55.0 314.0,55.1\" fill=\"none\" stroke=\"#c89b32\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,35.1 11.2,42.6 16.4,41.4 21.7,42.0 26.9,46.1 32.1,56.5 37.3,52.4 42.5,53.6 47.8,53.6 53.0,54.2 58.2,54.7 63.4,54.7 68.6,54.7 73.9,57.1 79.1,54.2 84.3,50.7 89.5,50.7 94.7,53.6 100.0,53.0 105.2,54.7 110.4,54.7 115.6,53.0 120.8,54.2 126.1,57.1 131.3,56.5 136.5,57.6 141.7,58.2 146.9,54.2 152.2,60.5 157.4,64.0 162.6,60.5 167.8,58.8 173.1,56.5 178.3,57.1 183.5,58.2 188.7,58.8 193.9,43.2 199.2,48.4 204.4,51.9 209.6,49.5 214.8,45.5 220.0,46.1 225.3,45.5 230.5,44.9 235.7,45.5 240.9,48.4 246.1,53.6 251.4,47.8 256.6,47.2 261.8,49.0 267.0,51.3 272.2,50.7 277.5,50.7 282.7,49.5 287.9,51.3 293.1,56.5 298.3,55.3 303.6,57.1 308.8,54.7 314.0,51.9\" fill=\"none\" stroke=\"#0d2137\" stroke-width=\"1.8\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg><div class=\"sct-ma\"><span style=\"color:#c89b32\">5MA 24.2</span><span style=\"color:#2980b9\">20MA 24.6</span><span style=\"color:#7f8c8d\">120MA 25.5</span></div></div>", "NVDA": "<div class=\"sc-tech\"><div class=\"sct-row\"><span class=\"sct-px\">收盤 212.17</span><span class=\"sct-tv\">日均成交值 285.8 億美元</span><span class=\"sct-sig\" style=\"background:#7f8c8d\">均線糾結</span></div><svg class=\"sct-svg\" viewBox=\"0 0 320 70\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"6.0,57.8 11.2,57.7 16.4,57.5 21.7,57.4 26.9,57.4 32.1,57.3 37.3,57.1 42.5,57.0 47.8,56.9 53.0,56.8 58.2,56.6 63.4,56.4 68.6,56.2 73.9,55.9 79.1,55.7 84.3,55.3 89.5,54.9 94.7,54.7 100.0,54.5 105.2,54.3 110.4,54.1 115.6,53.8 120.8,53.6 126.1,53.4 131.3,53.3 136.5,53.1 141.7,52.9 146.9,52.6 152.2,52.5 157.4,52.3 162.6,52.0 167.8,51.6 173.1,51.2 178.3,50.7 183.5,50.4 188.7,50.0 193.9,49.6 199.2,49.1 204.4,48.7 209.6,48.4 214.8,48.1 220.0,47.7 225.3,47.2 230.5,46.8 235.7,46.5 240.9,46.1 246.1,45.8 251.4,45.2 256.6,44.8 261.8,44.3 267.0,44.0 272.2,43.5 277.5,42.9 282.7,42.3 287.9,41.8 293.1,41.3 298.3,40.8 303.6,40.3 308.8,39.8 314.0,39.4\" fill=\"none\" stroke=\"#9aa7b4\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,33.5 11.2,34.6 16.4,35.7 21.7,36.9 26.9,38.5 32.1,39.6 37.3,41.4 42.5,43.2 47.8,44.6 53.0,46.3 58.2,46.9 63.4,47.2 68.6,47.6 73.9,46.8 79.1,46.9 84.3,46.5 89.5,46.5 94.7,46.5 100.0,46.6 105.2,47.1 110.4,47.2 115.6,46.4 120.8,45.7 126.1,44.9 131.3,44.6 136.5,44.4 141.7,45.1 146.9,45.3 152.2,44.9 157.4,44.1 162.6,43.0 167.8,41.9 173.1,40.8 178.3,39.8 183.5,38.8 188.7,38.4 193.9,37.6 199.2,36.3 204.4,34.7 209.6,33.1 214.8,32.2 220.0,31.8 225.3,31.3 230.5,30.7 235.7,29.8 240.9,28.7 246.1,27.3 251.4,24.9 256.6,23.7 261.8,22.7 267.0,22.3 272.2,21.9 277.5,21.2 282.7,20.8 287.9,20.2 293.1,19.7 298.3,20.2 303.6,20.7 308.8,21.7 314.0,22.6\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,37.0 11.2,40.6 16.4,43.0 21.7,45.6 26.9,50.8 32.1,54.7 37.3,54.7 42.5,55.1 47.8,55.4 53.0,54.5 58.2,54.0 63.4,52.8 68.6,51.3 73.9,46.7 79.1,44.4 84.3,40.1 89.5,37.7 94.7,36.4 100.0,38.7 105.2,38.8 110.4,40.1 115.6,40.2 120.8,39.8 126.1,38.6 131.3,40.6 136.5,43.6 141.7,49.9 146.9,53.8 152.2,55.6 157.4,52.7 162.6,48.4 167.8,40.0 173.1,33.1 178.3,26.4 183.5,23.3 188.7,21.7 193.9,20.3 199.2,18.5 204.4,18.1 209.6,16.0 214.8,15.3 220.0,17.2 225.3,19.6 230.5,22.7 235.7,27.4 240.9,29.3 246.1,31.6 251.4,28.4 256.6,27.6 261.8,24.0 267.0,22.8 272.2,18.5 277.5,18.4 282.7,14.7 287.9,13.3 293.1,11.5 298.3,13.3 303.6,16.2 308.8,21.8 314.0,25.6\" fill=\"none\" stroke=\"#c89b32\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,37.2 11.2,49.6 16.4,51.1 21.7,55.8 26.9,60.4 32.1,56.9 37.3,49.5 42.5,53.1 47.8,57.1 53.0,56.0 58.2,54.1 63.4,43.7 68.6,45.6 73.9,33.9 79.1,44.6 84.3,32.7 89.5,31.7 94.7,39.0 100.0,45.6 105.2,44.9 110.4,39.2 115.6,32.3 120.8,37.0 126.1,39.8 131.3,54.7 136.5,53.9 141.7,64.0 146.9,56.8 152.2,48.6 157.4,40.1 162.6,32.5 167.8,22.0 173.1,22.3 178.3,15.2 183.5,24.4 188.7,24.5 193.9,15.0 199.2,13.3 204.4,13.5 209.6,13.7 214.8,21.3 220.0,24.4 225.3,25.4 230.5,28.5 235.7,37.5 240.9,30.9 246.1,35.8 251.4,9.4 256.6,24.4 261.8,19.8 267.0,24.6 272.2,14.6 277.5,8.7 282.7,6.0 287.9,12.7 293.1,15.6 298.3,23.2 303.6,23.3 308.8,33.9 314.0,32.1\" fill=\"none\" stroke=\"#0d2137\" stroke-width=\"1.8\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg><div class=\"sct-ma\"><span style=\"color:#c89b32\">5MA 216.69</span><span style=\"color:#2980b9\">20MA 218.81</span><span style=\"color:#7f8c8d\">120MA 207.12</span></div></div>", "TSM": "<div class=\"sc-tech\"><div class=\"sct-row\"><span class=\"sct-px\">收盤 413.75</span><span class=\"sct-tv\">日均成交值 40.6 億美元</span><span class=\"sct-sig\" style=\"background:#7f8c8d\">均線糾結</span></div><svg class=\"sct-svg\" viewBox=\"0 0 320 70\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"6.0,64.0 11.2,63.4 16.4,62.8 21.7,62.2 26.9,61.7 32.1,61.1 37.3,60.4 42.5,59.8 47.8,59.3 53.0,58.7 58.2,58.3 63.4,57.8 68.6,57.3 73.9,56.9 79.1,56.5 84.3,56.1 89.5,55.7 94.7,55.3 100.0,55.1 105.2,54.7 110.4,54.4 115.6,54.0 120.8,53.7 126.1,53.3 131.3,53.1 136.5,52.8 141.7,52.6 146.9,52.3 152.2,52.0 157.4,51.8 162.6,51.6 167.8,51.4 173.1,51.2 178.3,50.9 183.5,50.7 188.7,50.4 193.9,50.1 199.2,49.8 204.4,49.6 209.6,49.4 214.8,49.2 220.0,49.1 225.3,48.9 230.5,48.7 235.7,48.4 240.9,48.2 246.1,47.9 251.4,47.5 256.6,47.2 261.8,46.9 267.0,46.6 272.2,46.2 277.5,45.9 282.7,45.5 287.9,45.1 293.1,44.6 298.3,44.2 303.6,43.8 308.8,43.4 314.0,43.1\" fill=\"none\" stroke=\"#9aa7b4\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,31.6 11.2,30.8 16.4,30.0 21.7,29.7 26.9,29.5 32.1,28.5 37.3,27.3 42.5,27.4 47.8,27.5 53.0,27.3 58.2,26.8 63.4,26.6 68.6,26.3 73.9,25.6 79.1,25.6 84.3,25.7 89.5,26.3 94.7,26.7 100.0,27.6 105.2,29.2 110.4,30.4 115.6,30.8 120.8,31.5 126.1,32.3 131.3,33.2 136.5,34.9 141.7,37.7 146.9,38.8 152.2,39.6 157.4,40.8 162.6,41.2 167.8,41.9 173.1,42.4 178.3,42.8 183.5,42.8 188.7,42.8 193.9,42.5 199.2,42.0 204.4,41.2 209.6,40.4 214.8,40.7 220.0,41.0 225.3,41.0 230.5,40.6 235.7,40.3 240.9,39.6 246.1,38.4 251.4,37.8 256.6,37.4 261.8,37.2 267.0,37.3 272.2,37.2 277.5,37.3 282.7,37.0 287.9,36.5 293.1,36.1 298.3,36.1 303.6,36.1 308.8,36.3 314.0,36.8\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,23.1 11.2,23.6 16.4,22.0 21.7,21.7 26.9,24.9 32.1,26.3 37.3,21.8 42.5,21.5 47.8,21.5 53.0,19.5 58.2,21.9 63.4,26.3 68.6,27.0 73.9,27.0 79.1,30.3 84.3,31.6 89.5,33.5 94.7,36.4 100.0,40.3 105.2,42.3 110.4,41.9 115.6,41.7 120.8,41.1 126.1,40.5 131.3,40.9 136.5,44.4 141.7,49.4 146.9,50.7 152.2,50.6 157.4,49.8 162.6,47.2 167.8,42.9 173.1,41.3 178.3,39.6 183.5,38.3 188.7,37.8 193.9,36.1 199.2,34.8 204.4,34.1 209.6,32.8 214.8,33.7 220.0,35.6 225.3,37.1 230.5,37.9 235.7,40.2 240.9,39.7 246.1,39.1 251.4,37.9 256.6,38.1 261.8,37.5 267.0,37.9 272.2,38.1 277.5,39.2 282.7,38.0 287.9,35.4 293.1,33.1 298.3,31.8 303.6,30.0 308.8,31.2 314.0,33.9\" fill=\"none\" stroke=\"#c89b32\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,11.3 11.2,28.2 16.4,25.8 21.7,28.9 26.9,30.3 32.1,18.1 37.3,6.0 42.5,23.9 47.8,29.4 53.0,19.9 58.2,30.2 63.4,27.8 68.6,27.9 73.9,29.4 79.1,36.1 84.3,36.8 89.5,37.3 94.7,42.5 100.0,48.6 105.2,46.5 110.4,34.5 115.6,36.3 120.8,39.4 126.1,45.9 131.3,48.2 136.5,51.9 141.7,61.4 146.9,46.0 152.2,45.5 157.4,44.5 162.6,38.5 167.8,40.2 173.1,38.0 178.3,37.0 183.5,37.8 188.7,35.9 193.9,32.1 199.2,31.3 204.4,33.6 209.6,31.1 214.8,40.5 220.0,41.2 225.3,39.1 230.5,37.6 235.7,42.3 240.9,38.4 246.1,38.2 251.4,33.1 256.6,38.3 261.8,39.5 267.0,40.2 272.2,39.4 277.5,38.6 282.7,32.2 287.9,26.8 293.1,28.7 298.3,32.7 303.6,29.9 308.8,38.1 314.0,40.4\" fill=\"none\" stroke=\"#0d2137\" stroke-width=\"1.8\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg><div class=\"sct-ma\"><span style=\"color:#c89b32\">5MA 425.68</span><span style=\"color:#2980b9\">20MA 420.43</span><span style=\"color:#7f8c8d\">120MA 408.64</span></div></div>", "AVGO": "<div class=\"sc-tech\"><div class=\"sct-row\"><span class=\"sct-px\">收盤 339.27</span><span class=\"sct-tv\">日均成交值 94.5 億美元</span><span class=\"sct-sig\" style=\"background:#c0392b\">空頭排列</span></div><svg class=\"sct-svg\" viewBox=\"0 0 320 70\" preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><polyline points=\"6.0,47.6 11.2,47.4 16.4,47.2 21.7,47.0 26.9,47.0 32.1,46.8 37.3,46.6 42.5,46.5 47.8,46.3 53.0,46.2 58.2,46.1 63.4,45.9 68.6,45.5 73.9,45.2 79.1,45.0 84.3,44.7 89.5,44.4 94.7,44.1 100.0,43.8 105.2,43.5 110.4,43.3 115.6,42.9 120.8,42.6 126.1,42.3 131.3,42.0 136.5,41.7 141.7,41.3 146.9,40.9 152.2,40.6 157.4,40.3 162.6,39.9 167.8,39.5 173.1,39.0 178.3,38.5 183.5,38.0 188.7,37.5 193.9,37.1 199.2,36.6 204.4,36.3 209.6,35.9 214.8,35.6 220.0,35.4 225.3,35.2 230.5,34.9 235.7,34.6 240.9,34.4 246.1,34.3 251.4,34.1 256.6,34.0 261.8,33.8 267.0,33.7 272.2,33.5 277.5,33.3 282.7,33.1 287.9,32.9 293.1,32.6 298.3,32.4 303.6,32.1 308.8,32.0 314.0,31.8\" fill=\"none\" stroke=\"#9aa7b4\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,15.9 11.2,17.0 16.4,18.3 21.7,19.8 26.9,21.8 32.1,24.2 37.3,26.9 42.5,30.6 47.8,34.5 53.0,36.0 58.2,36.4 63.4,36.7 68.6,36.4 73.9,35.5 79.1,35.5 84.3,35.3 89.5,35.3 94.7,35.4 100.0,36.1 105.2,37.2 110.4,37.4 115.6,36.8 120.8,36.5 126.1,36.4 131.3,35.8 136.5,35.5 141.7,35.8 146.9,35.1 152.2,34.2 157.4,33.6 162.6,32.1 167.8,31.1 173.1,30.4 178.3,29.5 183.5,28.3 188.7,27.4 193.9,26.7 199.2,25.3 204.4,24.5 209.6,24.1 214.8,24.3 220.0,25.4 225.3,26.3 230.5,26.8 235.7,27.6 240.9,28.4 246.1,28.9 251.4,29.4 256.6,30.1 261.8,30.8 267.0,32.4 272.2,34.0 277.5,36.1 282.7,38.4 287.9,40.2 293.1,41.9 298.3,43.7 303.6,45.5 308.8,47.1 314.0,48.8\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,28.5 11.2,30.3 16.4,29.6 21.7,31.5 26.9,37.5 32.1,40.1 37.3,40.4 42.5,42.1 47.8,44.5 53.0,43.3 58.2,43.6 63.4,42.1 68.6,38.0 73.9,32.8 79.1,31.5 84.3,29.1 89.5,28.3 94.7,31.8 100.0,35.6 105.2,36.4 110.4,36.8 115.6,36.4 120.8,34.1 126.1,32.6 131.3,31.9 136.5,32.7 141.7,36.1 146.9,36.8 152.2,35.8 157.4,34.6 162.6,29.7 167.8,23.4 173.1,19.1 178.3,14.1 183.5,10.1 188.7,10.4 193.9,10.7 199.2,11.1 204.4,15.6 209.6,19.6 214.8,24.3 220.0,31.3 225.3,38.4 230.5,41.6 235.7,46.0 240.9,49.0 246.1,49.9 251.4,49.0 256.6,48.9 261.8,47.4 267.0,45.7 272.2,44.2 277.5,46.1 282.7,47.5 287.9,47.7 293.1,48.4 298.3,49.3 303.6,48.6 308.8,50.3 314.0,54.2\" fill=\"none\" stroke=\"#c89b32\" stroke-width=\"1\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><polyline points=\"6.0,29.4 11.2,37.2 16.4,35.9 21.7,38.0 26.9,47.1 32.1,42.3 37.3,38.8 42.5,44.3 47.8,50.1 53.0,41.3 58.2,43.3 63.4,31.6 68.6,23.5 73.9,24.2 79.1,34.6 84.3,31.3 89.5,27.9 94.7,40.9 100.0,43.3 105.2,38.5 110.4,33.0 115.6,26.3 120.8,29.1 126.1,36.0 131.3,35.2 136.5,36.7 141.7,43.6 146.9,32.2 152.2,31.2 157.4,29.3 162.6,12.3 167.8,12.2 173.1,10.7 178.3,6.0 183.5,9.5 188.7,13.7 193.9,13.7 199.2,12.5 204.4,28.8 209.6,29.2 214.8,37.3 220.0,48.8 225.3,47.8 230.5,44.9 235.7,51.2 240.9,52.5 246.1,53.3 251.4,42.8 256.6,44.7 261.8,43.6 267.0,44.1 272.2,45.7 277.5,52.3 282.7,51.8 287.9,44.8 293.1,47.5 298.3,49.9 303.6,49.1 308.8,60.4 314.0,64.0\" fill=\"none\" stroke=\"#0d2137\" stroke-width=\"1.8\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg><div class=\"sct-ma\"><span style=\"color:#c89b32\">5MA 354.24</span><span style=\"color:#2980b9\">20MA 362.42</span><span style=\"color:#7f8c8d\">120MA 388.32</span></div></div>"};</script>
+<script>
+(function(){
+'use strict';
+
+const R_COL = {"認同前景": "#b8860b", "持續關注": "#1a9e8f", "有趣題材": "#2980b9", "背景提及": "#7f8c8d", "保留觀察": "#884400"};
+const R_LV  = {"認同前景": 5, "持續關注": 4, "有趣題材": 3, "背景提及": 2, "保留觀察": 1};
+const RATINGS = Object.keys(R_COL);
+
+function convBar(r){
+  const lv=R_LV[r]||0, col=R_COL[r]||'#ccc';
+  return Array.from({length:5},(_,i)=>
+    `<span class="cb-dot" style="background:${i<lv?col:'#dde2ea'}"></span>`
+  ).join('');
+}
+
+/* ── 1. Stock cards ──────────────────────────────────────────── */
+const report = document.getElementById('report');
+if(report){
+  [...report.querySelectorAll('h3')].forEach(h3=>{
+    const txt=h3.textContent.trim();
+    let code='',name='';
+    const m1=txt.match(/^\[(.+?)\]\s*(.+)/);
+    if(m1){code=m1[1];name=m1[2].trim();}
+    else{const m2=txt.match(/^([A-Za-z0-9][A-Za-z0-9/]*)\s+(.+)/);if(m2){code=m2[1];name=m2[2].trim();}}
+    if(!code||!name) return;
+
+    const sibs=[];
+    let el=h3.nextElementSibling;
+    while(el && !['H1','H2','H3'].includes(el.tagName)){ sibs.push(el); el=el.nextElementSibling; }
+
+    let rating='', theme='';
+    sibs.forEach(s=>{
+      const t=s.textContent;
+      if(!rating && t.includes('主持人態度')) for(const r of RATINGS) if(t.includes(r)){rating=r;break;}
+      if(!theme  && t.includes('產業主題')){
+        const tm=t.match(/產業主題[：:]\s*([^；;。]{2,25})/);
+        if(tm) theme=tm[1].replace(/[\[\]【】（）()]/g,'').trim();
+      }
+    });
+
+    const card=document.createElement('details');
+    card.className='stock-card';
+    const rHtml=rating?`<span class="sc-rtxt" style="color:${R_COL[rating]}">${rating}</span><span class="sc-bars">${convBar(rating)}</span>`:'';
+    const tHtml=theme?`<span class="sc-theme">${theme}</span>`:'';
+    card.innerHTML=`<summary><span class="sc-code">[${code}]</span><span class="sc-name">${name}</span>${tHtml}<span class="sc-right">${rHtml}<span class="sc-chev">▼</span></span></summary><div class="sc-body"></div>`;
+    const body=card.querySelector('.sc-body');
+    const tech=(window.__TECH__||{})[code.toUpperCase()];
+    if(tech){ const w=document.createElement('div'); w.innerHTML=tech; while(w.firstChild) body.appendChild(w.firstChild); }
+    sibs.forEach(s=>body.appendChild(s));
+    h3.parentNode.insertBefore(card,h3); h3.remove();
+  });
+}
+
+/* ── 2. Holdings bar chart ───────────────────────────────────── */
+if(report){
+  report.querySelectorAll('table').forEach(tbl=>{
+    const ths=[...tbl.querySelectorAll('thead th')].map(t=>t.textContent.trim());
+    const pi=ths.findIndex(t=>t.includes('比重'));
+    if(pi<0) return;
+    const rows=[...tbl.querySelectorAll('tbody tr')];
+    if(!rows.length) return;
+    const chart=document.createElement('div');
+    chart.className='hc-chart';
+    rows.forEach(tr=>{
+      const c=[...tr.querySelectorAll('td')].map(td=>td.textContent.trim());
+      if(!c[0]) return;
+      const pn=parseFloat(c[pi])||0;
+      chart.innerHTML+=`<div class="hc-row"><div><span class="hc-name">${c[0]}</span><span class="hc-theme">${c[1]||''}</span></div><div class="hc-track"><div class="hc-fill" style="width:${Math.min(pn,100)}%"></div><span class="hc-lbl">${c[pi]}</span></div></div>`;
+    });
+    tbl.parentNode.insertBefore(chart,tbl); tbl.remove();
+  });
+}
+
+/* ── 3. TOC ──────────────────────────────────────────────────── */
+const tocD=document.getElementById('toc-d');
+const tocM=document.getElementById('toc-m');
+if(report && tocD){
+  const heads=[...report.querySelectorAll('h1')];
+  heads.forEach((h,i)=>{
+    h.id='s'+i;
+    const label=h.textContent.replace(/^[零一二三四五六七八九十]+[、.．]\s*/,'').replace(/^[一-龥]+、/,'').trim();
+    [tocD,tocM].forEach(ul=>{
+      if(!ul) return;
+      const li=document.createElement('li');
+      li.innerHTML=`<a href="#s${i}">${label}</a>`;
+      ul.appendChild(li);
+    });
+  });
+
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(()=>{
+      const sy=window.scrollY+130;
+      let active=heads[0];
+      heads.forEach(h=>{ if(h.offsetTop<=sy) active=h; });
+      if(active){
+        document.querySelectorAll('.toc-list a,.toc-mob a').forEach(a=>{
+          a.classList.toggle('tac', a.getAttribute('href')==='#'+active.id);
+        });
+      }
+      ticking=false;
+    });
+  },{passive:true});
+}
+
+/* ── 4. Rating badges ────────────────────────────────────────── */
+const BADGE_MAP = {"認同前景": "#b8860b", "持續關注": "#1a9e8f", "有趣題材": "#2980b9", "背景提及": "#7f8c8d", "保留觀察": "#884400", "強關聯": "#c0392b", "中關聯": "#e67e22", "弱關聯": "#95a5a6", "過熱慎追": "#e74c3c", "趨勢發酵中": "#27ae60", "低度關注尚未爆發": "#5d8aa8", "震盪整理等待": "#f39c12", "強牛": "#1e8449", "牛中帶熊": "#27ae60", "牛熊拉鋸": "#7f8c8d", "熊中帶牛": "#e67e22", "強熊": "#c0392b", "多頭排列": "#1e8449", "空頭排列": "#c0392b", "均線糾結": "#7f8c8d"};
+(function applyBadges(root){
+  const tags=Object.keys(BADGE_MAP).sort((a,b)=>b.length-a.length);
+  const re=new RegExp('\\[('+(tags.map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'))+')'+'\\]','g');
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);
+  const nodes=[];let n;while(n=walker.nextNode())nodes.push(n);
+  nodes.forEach(tn=>{
+    if(!re.test(tn.textContent))return;re.lastIndex=0;
+    const frag=document.createDocumentFragment();
+    let last=0,m;
+    while((m=re.exec(tn.textContent))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.textContent.slice(last,m.index)));
+      const sp=document.createElement('span');
+      sp.style.cssText='display:inline-block;padding:2px 9px;border-radius:10px;font-size:.75em;font-weight:700;color:white;background:'+BADGE_MAP[m[1]]+';margin:0 3px;vertical-align:middle';
+      sp.textContent=m[1];frag.appendChild(sp);last=m.index+m[0].length;
+    }
+    if(last<tn.textContent.length)frag.appendChild(document.createTextNode(tn.textContent.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+})(report||document.body);
+
+/* ── 5. Smooth scroll ────────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(!t) return; e.preventDefault();
+    t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+})();
+</script>
+</body>
+</html>
