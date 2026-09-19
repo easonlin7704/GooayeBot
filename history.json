@@ -1,67 +1,5 @@
 [
   {
-    "date": "2026-08-15",
-    "episode": "EP688",
-    "market_view": "牛中帶熊",
-    "host_short": "牛中帶熊",
-    "stocks": [
-      {
-        "code": "未提供",
-        "name": "SpaceX",
-        "rating": "持續關注",
-        "theme": "** 商業太空／解禁籌碼與流動性"
-      },
-      {
-        "code": "CBRS",
-        "name": "Cerebras Systems",
-        "rating": "認同前景",
-        "theme": "** AI推論晶片／晶圓級引擎／SRAM"
-      },
-      {
-        "code": "NVDA",
-        "name": "NVIDIA",
-        "rating": "背景提及",
-        "theme": "** AI GPU／資料中心電源架構"
-      },
-      {
-        "code": "AMD",
-        "name": "Advanced Micro Devices",
-        "rating": "有趣題材",
-        "theme": "** AI加速器／分離式推論"
-      },
-      {
-        "code": "VSH",
-        "name": "Vishay Intertechnology",
-        "rating": "持續關注",
-        "theme": "** 被動元件／功率元件／AI需求"
-      },
-      {
-        "code": "STM",
-        "name": "STMicroelectronics",
-        "rating": "持續關注",
-        "theme": "** 功率半導體／SiC／資料中心電源"
-      },
-      {
-        "code": "6976.T",
-        "name": "太陽誘電",
-        "rating": "背景提及",
-        "theme": "** MLCC／被動元件漲價"
-      },
-      {
-        "code": "2327",
-        "name": "國巨",
-        "rating": "持續關注",
-        "theme": "** 被動元件／AI高階元件"
-      }
-    ],
-    "signals": [
-      "解禁衝擊前大後小，流動性改善定價",
-      "推論晶片分工深化，Cerebras值得追蹤",
-      "V電源架構醞釀新一輪輪動"
-    ],
-    "digest": "主持人認為目前市場故事仍很充沛，散熱、銅線、光通訊回魂後，電源族群可能因800V DC白皮書重新獲得關注；但短期股價與資金輪動無法精準預測，抄底應分批並保留資金。產業主軸一是Cerebras以晶圓級引擎及SRAM負責低延遲decode，搭配AMD處理長上下文的分離式推論，技術方向有搞頭，但須先消化解禁籌碼並驗證商業化。二是AI機櫃功耗上升迫使電源由54V走向更高電壓，短期以Power Rack為主，中期才看Power Center、SiC、GaN、UPS，2030年後才可能進入DC Power Block。被動與功率元件基本面仍見漲價、營收創高及獲利增速較快，但AI需求與消費性排擠漲價必須區分。"
-  },
-  {
     "date": "2026-08-19",
     "episode": "EP689",
     "market_view": "牛中帶熊",
@@ -714,5 +652,61 @@
       "籌資解凍能否帶回活水仍待驗證"
     ],
     "digest": "主持人認為盤面仍處於低波動、偏弱整理，NASDAQ接近區間下緣；漢測申購款解凍或帶來活水，但他對效果仍打問號。本集主軸是AI安全監管、算力與資安。他認為OpenAI、Anthropic及馬斯克支持放慢前沿AI，各有監管捕獲、排擠競爭者或爭取追趕時間等利益考量，但明確承認這屬動機推測。產業面上，即使前沿訓練稍微減速，資料過濾、第三方評估、對齊測試、部署後監控與推論仍會增加算力，因此硬體全面下跌在他看來偏奇怪，資安公司則可能取得新需求。另提江海股份先前受惠被動元件漲價，目前族群雖整理，漲價趨勢仍在。"
+  },
+  {
+    "date": "2026-09-19",
+    "episode": "EP698",
+    "market_view": "牛熊拉鋸",
+    "host_short": "牛熊拉鋸",
+    "stocks": [
+      {
+        "code": "2330／TSM",
+        "name": "台積電",
+        "rating": "持續關注",
+        "theme": "** 晶圓代工漲價／先進製程／AI供應鏈"
+      },
+      {
+        "code": "AMD",
+        "name": "超微",
+        "rating": "有趣題材",
+        "theme": "** CPU／GPU漲價／晶圓代工成本／記憶體成本"
+      },
+      {
+        "code": "NVDA",
+        "name": "輝達",
+        "rating": "持續關注",
+        "theme": "** AI GPU／顯示卡漲價／GDDR記憶體"
+      },
+      {
+        "code": "ASML",
+        "name": "艾司摩爾",
+        "rating": "背景提及",
+        "theme": "** 半導體設備／EUV"
+      },
+      {
+        "code": "TTWO",
+        "name": "Take-Two Interactive",
+        "rating": "背景提及",
+        "theme": "** 遊戲軟體／GTA系列"
+      },
+      {
+        "code": "CDR",
+        "name": "CD Projekt",
+        "rating": "背景提及",
+        "theme": "** 遊戲開發／內容IP"
+      },
+      {
+        "code": "6180",
+        "name": "遊戲橘子",
+        "rating": "背景提及",
+        "theme": "** 線上遊戲／遊戲代理"
+      }
+    ],
+    "signals": [
+      "AI供應鏈降規傳聞偏短期交易題材",
+      "材料升級長期趨勢尚未被推翻",
+      "盤勢缺乏連續性，追強殺低風險高"
+    ],
+    "digest": "主持人認為大盤仍在新高附近，但個股缺乏連續性，追強隔日停損的交易方式可能讓績效遠遜指數。AI供應鏈近期流傳CCL、HBM與Power Rack降規或遞延，但他判斷多屬成本、缺貨下的替代方案，不等於長期規格升級終止。高速訊號轉光只能消除部分長距離走線，PCIe Gen6、NIC與CXL仍需高階板材。台積電漲價具合理性，但AMD成本上升不能只歸因晶圓代工，記憶體才是重要因子；輝達則可透過GPU搭配GDDR整套出貨，把成本傳至AIC與終端。操作上不宜為每次鬼故事反覆進出，須依自身週期控制槓桿。"
   }
 ]
