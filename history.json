@@ -1,43 +1,5 @@
 [
   {
-    "date": "2026-08-19",
-    "episode": "EP689",
-    "market_view": "牛中帶熊",
-    "host_short": "牛中帶熊",
-    "stocks": [
-      {
-        "code": "NVDA",
-        "name": "NVIDIA",
-        "rating": "背景提及",
-        "theme": "** AI算力、供應商融資、封測瓶頸、光通訊"
-      },
-      {
-        "code": "MU",
-        "name": "Micron Technology（美光）",
-        "rating": "背景提及",
-        "theme": "** 記憶體景氣循環、AI記憶體"
-      },
-      {
-        "code": "3665",
-        "name": "貿聯-KY",
-        "rating": "背景提及",
-        "theme": "** AI伺服器線束、高速連接、銅纜與光通訊"
-      },
-      {
-        "code": "APH",
-        "name": "Amphenol",
-        "rating": "背景提及",
-        "theme": "** 高速連接器、AI伺服器、Socket與可插拔元件"
-      }
-    ],
-    "signals": [
-      "修正若轉橫盤，反而開始找機會",
-      "記憶體與封測是景氣領先觀察指標",
-      "AI表外承諾是尚未爆發的尾部風險"
-    ],
-    "digest": "主持人認為本次科技股回檔放在七月急跌、八月快速修復的脈絡下仍屬可控，只要不加速破底並轉為橫盤，反而可尋找下一個主流；但AI表外租賃、採購承諾與供應商融資已是潛在尾部風險。產業上以記憶體及封裝測試最重要：記憶體是最缺、展望最清楚的零組件，其股價能否維持強勢會影響其他Components；封測則是Bottleneck Trade指標。NVIDIA被用來說明購置設備、包產能及光通備料策略；美光僅涉及員工分紅問答；貿聯與Amphenol則是主持人說明線材、連接器研究經驗的案例，均非直接薦股。"
-  },
-  {
     "date": "2026-08-22",
     "episode": "EP690",
     "market_view": "牛中帶熊",
@@ -708,5 +670,79 @@
       "盤勢缺乏連續性，追強殺低風險高"
     ],
     "digest": "主持人認為大盤仍在新高附近，但個股缺乏連續性，追強隔日停損的交易方式可能讓績效遠遜指數。AI供應鏈近期流傳CCL、HBM與Power Rack降規或遞延，但他判斷多屬成本、缺貨下的替代方案，不等於長期規格升級終止。高速訊號轉光只能消除部分長距離走線，PCIe Gen6、NIC與CXL仍需高階板材。台積電漲價具合理性，但AMD成本上升不能只歸因晶圓代工，記憶體才是重要因子；輝達則可透過GPU搭配GDDR整套出貨，把成本傳至AIC與終端。操作上不宜為每次鬼故事反覆進出，須依自身週期控制槓桿。"
+  },
+  {
+    "date": "2026-09-23",
+    "episode": "EP699",
+    "market_view": "牛中帶熊",
+    "host_short": "牛中帶熊",
+    "stocks": [
+      {
+        "code": "META",
+        "name": "Meta Platforms",
+        "rating": "有趣題材",
+        "theme": "** Agentic AI／AI Agent 應用"
+      },
+      {
+        "code": "AMD",
+        "name": "Advanced Micro Devices",
+        "rating": "持續關注",
+        "theme": "** Agentic AI／資料中心 CPU與GPU"
+      },
+      {
+        "code": "ARM",
+        "name": "Arm Holdings",
+        "rating": "背景提及",
+        "theme": "** CPU IP／Agentic AI"
+      },
+      {
+        "code": "2353",
+        "name": "宏碁",
+        "rating": "保留觀察",
+        "theme": "** PC品牌／AI終端／零組件供需"
+      },
+      {
+        "code": "INTC",
+        "name": "Intel",
+        "rating": "背景提及",
+        "theme": "** 資料中心 CPU"
+      },
+      {
+        "code": "MRVL",
+        "name": "Marvell Technology",
+        "rating": "持續關注",
+        "theme": "** 光通訊 DSP／高速互連"
+      },
+      {
+        "code": "MXL",
+        "name": "MaxLinear",
+        "rating": "持續關注",
+        "theme": "** 光通訊 DSP／高速類比與混合訊號"
+      },
+      {
+        "code": "QCOM",
+        "name": "Qualcomm",
+        "rating": "背景提及",
+        "theme": "** 邊緣AI／NPU／DSP"
+      },
+      {
+        "code": "2330",
+        "name": "台積電",
+        "rating": "背景提及",
+        "theme": "** 晶圓代工／大型權值股"
+      },
+      {
+        "code": "MCD",
+        "name": "麥當勞",
+        "rating": "認同前景",
+        "theme": "** 全球餐飲連鎖／消費品牌"
+      }
+    ],
+    "signals": [
+      "指數創高，盤面輪動與結構同步改善",
+      "Muse二度催化Agentic CPU需求",
+      "DSP缺貨漲價，長期替代仍待觀察"
+    ],
+    "digest": "主持人認為指數與那斯達克期貨創高、弱勢族群回穩，盤面結構正逐步改善，此時直接轉空近似摸頭；但連假前及題材過熱仍需觀察。他維持八至九成以上部位，只有在指數破底、個股普遍轉空時才考慮明確轉空。本集主軸為Agentic AI帶動CPU需求，以及高速光模組升級推升DSP需求與漲價。Meta Muse屬第二波催化，合理CPU對GPU比例約1比4至1比2，1比1偏樂觀，40比1則缺乏依據。Marvell與MaxLinear後續評論值得追蹤；宏碁雖曾成功多角化，但主持人認為其目前在AI主線相對落隊。"
   }
 ]
