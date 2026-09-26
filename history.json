@@ -1,97 +1,5 @@
 [
   {
-    "date": "2026-08-22",
-    "episode": "EP690",
-    "market_view": "牛中帶熊",
-    "host_short": "牛中帶熊",
-    "stocks": [
-      {
-        "code": "MRVL",
-        "name": "Marvell Technology",
-        "rating": "認同前景",
-        "theme": "** Google TPU生態系／AI ASIC／COT晶片設計"
-      },
-      {
-        "code": "GOOGL",
-        "name": "Alphabet",
-        "rating": "認同前景",
-        "theme": "** AI雲端服務／自研TPU／COT"
-      },
-      {
-        "code": "AVGO",
-        "name": "Broadcom",
-        "rating": "保留觀察",
-        "theme": "** AI ASIC Turnkey／Google TPU／COT轉型"
-      },
-      {
-        "code": "2454",
-        "name": "聯發科",
-        "rating": "認同前景",
-        "theme": "** Google TPU／AI ASIC設計服務／COT"
-      },
-      {
-        "code": "AMD",
-        "name": "Advanced Micro Devices",
-        "rating": "有趣題材",
-        "theme": "** COT Chiplet／CPU IP／Google自研晶片"
-      },
-      {
-        "code": "3661",
-        "name": "世芯-KY",
-        "rating": "認同前景",
-        "theme": "** ASIC設計服務／COT／先進製程產能"
-      },
-      {
-        "code": "3443",
-        "name": "創意",
-        "rating": "認同前景",
-        "theme": "** ASIC設計服務／COT／台積電生態系"
-      },
-      {
-        "code": "2330",
-        "name": "台積電",
-        "rating": "背景提及",
-        "theme": "** AI先進製程／ASIC投片／先進封裝"
-      },
-      {
-        "code": "INTC",
-        "name": "Intel",
-        "rating": "背景提及",
-        "theme": "** 晶圓代工／Google ASIC潛在投片"
-      },
-      {
-        "code": "AAPL",
-        "name": "Apple",
-        "rating": "背景提及",
-        "theme": "** Chiplet設計／供應鏈議價權"
-      },
-      {
-        "code": "MRNA",
-        "name": "Moderna",
-        "rating": "保留觀察",
-        "theme": "** mRNA個人化癌症疫苗／生技新藥"
-      },
-      {
-        "code": "6446",
-        "name": "藥華藥",
-        "rating": "背景提及",
-        "theme": "** 生技新藥／商業化"
-      },
-      {
-        "code": "MU",
-        "name": "Micron Technology",
-        "rating": "保留觀察",
-        "theme": "** AI記憶體／人才競爭／景氣循環"
-      }
-    ],
-    "signals": [
-      "盤勢健康但追漲容易被修理",
-      "Google加速轉向COT自研模式",
-      "Marvell新案偏利多、博通承壓"
-    ],
-    "digest": "主持人認為盤面雖黏、追漲延續性差，但不少個股已逐步收復七月底失土，基本面標的呈現漲後休息、再墊高的走法，因此整體仍相對樂觀。本集核心是Google與Marvell合作及COT模式：Google可能自行掌握主晶片、光罩、投片與關鍵採購，再把周邊晶片、IP及設計服務分給多家夥伴。Marvell取得的較像新開周邊案，未直接取代聯發科或Broadcom既有TPU主晶片；對聯發科、世芯與創意未必是利空，甚至可能因Google增加案量而受惠。Broadcom則因原有Turnkey高毛利模式可能被削弱，負面解讀較合理。主持人另提醒生技股即使臨床成功，仍有商業化失敗風險。"
-  },
-  {
     "date": "2026-08-26",
     "episode": "EP691",
     "market_view": "牛熊拉鋸",
@@ -744,5 +652,145 @@
       "DSP缺貨漲價，長期替代仍待觀察"
     ],
     "digest": "主持人認為指數與那斯達克期貨創高、弱勢族群回穩，盤面結構正逐步改善，此時直接轉空近似摸頭；但連假前及題材過熱仍需觀察。他維持八至九成以上部位，只有在指數破底、個股普遍轉空時才考慮明確轉空。本集主軸為Agentic AI帶動CPU需求，以及高速光模組升級推升DSP需求與漲價。Meta Muse屬第二波催化，合理CPU對GPU比例約1比4至1比2，1比1偏樂觀，40比1則缺乏依據。Marvell與MaxLinear後續評論值得追蹤；宏碁雖曾成功多角化，但主持人認為其目前在AI主線相對落隊。"
+  },
+  {
+    "date": "2026-09-26",
+    "episode": "EP700",
+    "market_view": "牛中帶熊",
+    "host_short": "牛中帶熊",
+    "stocks": [
+      {
+        "code": "META",
+        "name": "Meta Platforms",
+        "rating": "持續關注",
+        "theme": "** 個人AI裝置／代理式AI／AR與VR生態系"
+      },
+      {
+        "code": "GOOGL",
+        "name": "Alphabet",
+        "rating": "認同前景",
+        "theme": "** AI平台／行動作業系統／數位廣告"
+      },
+      {
+        "code": "AAPL",
+        "name": "Apple",
+        "rating": "背景提及",
+        "theme": "** 智慧型手機平台／空間運算"
+      },
+      {
+        "code": "AMZN",
+        "name": "Amazon",
+        "rating": "背景提及",
+        "theme": "** 電商平台／AI代理交易入口"
+      },
+      {
+        "code": "TSM",
+        "name": "台積電",
+        "rating": "有趣題材",
+        "theme": "** AI眼鏡／光波導／先進晶圓製造"
+      },
+      {
+        "code": "HPQ",
+        "name": "HP Inc.",
+        "rating": "背景提及",
+        "theme": "** AI硬體資產／個人運算"
+      },
+      {
+        "code": "WMT",
+        "name": "Walmart",
+        "rating": "背景提及",
+        "theme": "** AI代理購物／零售電商"
+      },
+      {
+        "code": "BBY",
+        "name": "Best Buy",
+        "rating": "背景提及",
+        "theme": "** 消費電子零售／AI代理購物"
+      },
+      {
+        "code": "GPS",
+        "name": "Gap",
+        "rating": "背景提及",
+        "theme": "** AI代理購物／服飾零售"
+      },
+      {
+        "code": "PYPL",
+        "name": "PayPal",
+        "rating": "背景提及",
+        "theme": "** AI支付／代理式商務"
+      },
+      {
+        "code": "EXPE",
+        "name": "Expedia Group",
+        "rating": "背景提及",
+        "theme": "** AI旅遊代理／線上旅遊平台"
+      },
+      {
+        "code": "IFX",
+        "name": "Infineon Technologies",
+        "rating": "保留觀察",
+        "theme": "** 功率半導體"
+      },
+      {
+        "code": "LITE",
+        "name": "Lumentum",
+        "rating": "有趣題材",
+        "theme": "** AI資料中心光通訊"
+      },
+      {
+        "code": "COHR",
+        "name": "Coherent",
+        "rating": "有趣題材",
+        "theme": "** AI資料中心光通訊／光學元件"
+      },
+      {
+        "code": "BE",
+        "name": "Bloom Energy",
+        "rating": "有趣題材",
+        "theme": "** 資料中心電力／表後供電"
+      },
+      {
+        "code": "GLW",
+        "name": "Corning",
+        "rating": "認同前景",
+        "theme": "** 光纖光纜／AI資料中心互連"
+      },
+      {
+        "code": "TER",
+        "name": "Teradyne",
+        "rating": "有趣題材",
+        "theme": "** 半導體測試設備／AI晶片"
+      },
+      {
+        "code": "AMD",
+        "name": "Advanced Micro Devices",
+        "rating": "有趣題材",
+        "theme": "** AI加速器／資料中心CPU"
+      },
+      {
+        "code": "2308",
+        "name": "台達電",
+        "rating": "保留觀察",
+        "theme": "** AI資料中心電源／散熱"
+      },
+      {
+        "code": "6223",
+        "name": "旺矽",
+        "rating": "背景提及",
+        "theme": "** 半導體測試介面／探針卡"
+      },
+      {
+        "code": "6515",
+        "name": "穎崴",
+        "rating": "背景提及",
+        "theme": "** 半導體測試座／AI晶片測試"
+      }
+    ],
+    "signals": [
+      "連假資金有望回流，但短線仍有變數",
+      "動能追價失靈，改採強中帶弱與波段",
+      "Meta AI裝置有突破機會，信任仍是罩門"
+    ],
+    "digest": "主持人認為指數仍持續墊高，連假前因降部位與資金收回形成賣壓，假期後可能回流；近期也開始聞到市場信任感恢復的味道，但仍須觀察中秋後表現。操作上不再追逐快速動能，改採放慢節奏、挑選多頭結構中拉回的「強中帶弱」標的。產業主軸集中於Meta的Muse Charm、AI眼鏡及代理式AI生態系；他認為Muse比過往AI Pin類產品更有突破機會，但手機仍是難以取代的競爭者，Meta的低信任度也是最大隱憂。個股方面，他認為Google沒有問題；Lumentum、Coherent、Corning、Teradyne、AMD及Bloom Energy可構成光通訊、測試、運算與資料中心電力組合，但部分標的現階段未必仍會選。台達電則被指出當時技術形態偏弱，不符合純追強策略。"
   }
 ]
