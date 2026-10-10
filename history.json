@@ -1,103 +1,5 @@
 [
   {
-    "date": "2026-09-05",
-    "episode": "EP694",
-    "market_view": "牛熊拉鋸",
-    "host_short": "牛熊拉鋸",
-    "stocks": [
-      {
-        "code": "AVGO",
-        "name": "Broadcom",
-        "rating": "認同前景",
-        "theme": "** AI ASIC／資料中心互聯／光通訊／AI融資生態"
-      },
-      {
-        "code": "NVDA",
-        "name": "Nvidia",
-        "rating": "認同前景",
-        "theme": "** AI GPU／AI投資生態／消費型運算"
-      },
-      {
-        "code": "2454",
-        "name": "聯發科",
-        "rating": "認同前景",
-        "theme": "** AI ASIC／客製化晶片／Nvidia策略合作"
-      },
-      {
-        "code": "2330",
-        "name": "台積電",
-        "rating": "認同前景",
-        "theme": "** AI晶圓代工／先進製程／先進封裝"
-      },
-      {
-        "code": "MSFT",
-        "name": "Microsoft",
-        "rating": "持續關注",
-        "theme": "** 雲端運算／AI資本支出／大型模型基礎設施"
-      },
-      {
-        "code": "TSLA",
-        "name": "Tesla",
-        "rating": "有趣題材",
-        "theme": "** Cybercab／無稀土馬達／自駕車供應鏈"
-      },
-      {
-        "code": "SNOW",
-        "name": "Snowflake",
-        "rating": "認同前景",
-        "theme": "** AI資料平台／資料治理／模型路由／FDE"
-      },
-      {
-        "code": "CRM",
-        "name": "Salesforce",
-        "rating": "持續關注",
-        "theme": "** 企業AI／CRM／資料治理／代理型AI"
-      },
-      {
-        "code": "PLTR",
-        "name": "Palantir",
-        "rating": "背景提及",
-        "theme": "** FDE／企業AI導入／資料整合"
-      },
-      {
-        "code": "GOOGL",
-        "name": "Alphabet",
-        "rating": "背景提及",
-        "theme": "** TPU／AI ASIC／雲端運算"
-      },
-      {
-        "code": "AAPL",
-        "name": "Apple",
-        "rating": "背景提及",
-        "theme": "** 消費電子／品牌護城河"
-      },
-      {
-        "code": "BAC",
-        "name": "Bank of America",
-        "rating": "背景提及",
-        "theme": "** AI融資／信用市場／金融研究"
-      },
-      {
-        "code": "6758",
-        "name": "Sony Group",
-        "rating": "背景提及",
-        "theme": "** 遊戲主機／內容發行／創投生態"
-      },
-      {
-        "code": "7974",
-        "name": "Nintendo",
-        "rating": "背景提及",
-        "theme": "** 遊戲主機／獨立遊戲發行／內容平台"
-      }
-    ],
-    "signals": [
-      "指數墊高，但短線動能交易難度升高",
-      "AI需求仍強，龍頭股需要耐心等待",
-      "AI內容爆量，信任與品質反而更值錢"
-    ],
-    "digest": "主持人認為9月盤勢震盪、動能交易明顯轉難，沿用4至7月追價策略容易反覆停損；但指數仍持續墊高，整體盤勢不差，因此選擇縮小槓桿、保留參與並等待方向突破。產業主軸仍是AI ASIC、互聯與企業AI軟體。Broadcom財報、Fabric及中長期指引均強，顯示Frontier Labs需求並非虛假；股價不漲較像高檔休息，不代表基本面轉差。Broadcom首次公開評論聯發科，反而證明聯發科已成為實質競爭者，但晶片時程可能較市場預期慢。Snowflake則展現資料治理、模型路由與FDE價值，平台若取得客戶信任，可掌握模型選擇、毛利及定價權。主持人長期仍相信AI，但提醒資本市場存在循環，現階段應跟隨獲利與EPS改善，並提高耐心。"
-  },
-  {
     "date": "2026-09-09",
     "episode": "EP695",
     "market_view": "牛中帶熊",
@@ -846,5 +748,73 @@
       "留意缺料受害股在供應正常化後翻身"
     ],
     "digest": "主持人認為台股已回到相對好做的多頭環境，市場仍戒慎恐懼，短線應還有上漲空間；以台積電未來一至三年 EPS 推估，五萬點不是終點，但供應鏈狂潮終將修正，因此開始未雨綢繆。他仍以股票為核心，不打算立即採股債配置，主要透過減碼未跟上大盤、未創月高或持續破底的弱勢股，降低質押並保留現金。產業上關注 AI 半導體循環，以及因 CPU、記憶體漲價受害、待供應正常化後可由出貨量復甦受惠的公司。台積電被視為指數定海神針；輝達則用來說明投資理由可隨公司轉型而改變。對 Nebius、CoreWeave 等 Neo Cloud 題材明確保留，認為雖可能隨 AI 上漲，但風險特別大。"
+  },
+  {
+    "date": "2026-10-10",
+    "episode": "EP704",
+    "market_view": "牛中帶熊",
+    "host_short": "牛中帶熊",
+    "stocks": [
+      {
+        "code": "代號未提供",
+        "name": "SpaceX",
+        "rating": "認同前景",
+        "theme": "** 太空通訊／衛星網路／長期成長投資"
+      },
+      {
+        "code": "未上市",
+        "name": "OpenAI",
+        "rating": "認同前景",
+        "theme": "** 生成式AI／模型服務／AI基礎建設需求"
+      },
+      {
+        "code": "未上市",
+        "name": "Anthropic",
+        "rating": "背景提及",
+        "theme": "** 生成式AI／大型語言模型／IPO預期"
+      },
+      {
+        "code": "MRVL",
+        "name": "Marvell Technology",
+        "rating": "認同前景",
+        "theme": "** AI ASIC／資料中心互連／光通訊／交換器"
+      },
+      {
+        "code": "AVGO",
+        "name": "Broadcom",
+        "rating": "持續關注",
+        "theme": "** AI ASIC／交換器／高速互連／光通訊"
+      },
+      {
+        "code": "2303／UMC",
+        "name": "聯華電子",
+        "rating": "有趣題材",
+        "theme": "** TFLN材料／1.6T光通訊／矽光子"
+      },
+      {
+        "code": "5274",
+        "name": "信驊",
+        "rating": "保留觀察",
+        "theme": "** BMC／資料中心管理晶片／伺服器管理"
+      },
+      {
+        "code": "4919",
+        "name": "新唐",
+        "rating": "保留觀察",
+        "theme": "** MCU／BMC／伺服器管理晶片"
+      },
+      {
+        "code": "NVDA",
+        "name": "NVIDIA",
+        "rating": "背景提及",
+        "theme": "** AI加速器／資料中心整合／AI基礎建設"
+      }
+    ],
+    "signals": [
+      "AI營收雜訊不改長期方向",
+      "資料中心互連成下一波主菜",
+      "夢想題材漲多後須防深度回撤"
+    ],
+    "digest": "主持人對市場維持長期偏多、短期慎追的態度，認為OpenAI年化營收由市場流傳的700億修正至約500億美元，主要是口徑與年化方式差異，不足以推翻AI趨勢。操作上更重視事前配置與風控，遇到閃崩會先讓消息沉澱，不再反覆砍倉追回。本集產業主軸是資料中心互連與光通訊：Marvell大幅上修長期營收目標，並把Interconnect視為主要成長來源；Broadcom可能跟進推出交換器或調高展望。主持人提醒Marvell已漲不少，1.6T尚未全面普及，市場卻開始交易3.2T等遠期技術，押對路線仍可能承受五成以上回撤。信驊、新唐的BMC市場目前偏小，但若管理範圍擴大至整個資料中心，潛在市場也可能同步放大。"
   }
 ]
