@@ -1,115 +1,5 @@
 [
   {
-    "date": "2026-09-12",
-    "episode": "EP696",
-    "market_view": "牛熊拉鋸",
-    "host_short": "牛熊拉鋸",
-    "stocks": [
-      {
-        "code": "AAPL",
-        "name": "Apple",
-        "rating": "認同前景",
-        "theme": "** 摺疊手機／消費電子平台／AI終端入口"
-      },
-      {
-        "code": "3376",
-        "name": "新日興",
-        "rating": "保留觀察",
-        "theme": "** 蘋果摺疊機鉸鏈"
-      },
-      {
-        "code": "2317",
-        "name": "鴻海",
-        "rating": "背景提及",
-        "theme": "** 蘋果組裝／AI伺服器"
-      },
-      {
-        "code": "QCOM",
-        "name": "Qualcomm",
-        "rating": "保留觀察",
-        "theme": "** 手機射頻／數據機晶片"
-      },
-      {
-        "code": "NVDA",
-        "name": "NVIDIA",
-        "rating": "認同前景",
-        "theme": "** AI加速器／資料中心"
-      },
-      {
-        "code": "2330",
-        "name": "台積電",
-        "rating": "認同前景",
-        "theme": "** AI先進製程／晶圓代工"
-      },
-      {
-        "code": "ORCL",
-        "name": "Oracle",
-        "rating": "認同前景",
-        "theme": "** AI雲端／資料中心基礎建設"
-      },
-      {
-        "code": "TSLA",
-        "name": "Tesla",
-        "rating": "有趣題材",
-        "theme": "** 儲能／太陽能／垂直整合"
-      },
-      {
-        "code": "GOOGL",
-        "name": "Alphabet",
-        "rating": "背景提及",
-        "theme": "** AI模型／行動平台"
-      },
-      {
-        "code": "005930",
-        "name": "Samsung Electronics",
-        "rating": "背景提及",
-        "theme": "** 摺疊手機／Android生態系"
-      },
-      {
-        "code": "7974",
-        "name": "Nintendo",
-        "rating": "背景提及",
-        "theme": "** 遊戲平台／IP內容"
-      },
-      {
-        "code": "7309",
-        "name": "Shimano",
-        "rating": "背景提及",
-        "theme": "** 高階自行車零組件"
-      },
-      {
-        "code": "8299",
-        "name": "群聯",
-        "rating": "認同前景",
-        "theme": "** NAND／企業地端AI／儲存運算"
-      },
-      {
-        "code": "2395",
-        "name": "研華",
-        "rating": "持續關注",
-        "theme": "** 邊緣AI／工業電腦／企業地端運算"
-      },
-      {
-        "code": "UBER",
-        "name": "Uber",
-        "rating": "背景提及",
-        "theme": "** AI應用成本／雲端支出"
-      },
-      {
-        "code": "PEP",
-        "name": "PepsiCo",
-        "rating": "背景提及",
-        "theme": "** 飲料新品／品牌消費"
-      }
-    ],
-    "signals": [
-      "短線利多不漲，市場信任仍待修復",
-      "蘋果摺疊機看好產品、不追供應鏈",
-      "AI成長續強，融資與電力風險升高"
-    ],
-    "digest": "主持人認為短線市場處於利多不一定上漲、題材隔日缺乏延續性的震盪期，但中長期仍以多單為核心，不鼓勵散戶猜頭或過度避險。產業主軸一是蘋果摺疊機：他看好iPhone Duo的定價、UI與平台能力，認為銷量可能優於預期，但新日興等供應商受蘋果壓價、分潤與替代風險影響，產品成功未必等於高獲利。二是AI資料中心：Oracle營收、RPO與舊GPU價格顯示需求仍旺，惟客戶預付、供應商融資、債務、電力許可及地方政治均可能放大反轉風險。群聯利用NAND推動企業地端AI、降低雲端與高價記憶體成本的方向獲主持人認同，但實際放量仍須等待客戶採用。"
-  },
-  {
     "date": "2026-09-16",
     "episode": "EP697",
     "market_view": "牛熊拉鋸",
@@ -792,5 +682,115 @@
       "AI價值仍在，焦點轉向實際投資報酬"
     ],
     "digest": "主持人認為目前指數整體仍緩步墊高，但盤面反覆急漲急殺，追動能者容易被修理；較適合在市場亂丟時承接、狂熱時調節。他特別提醒熱門設備股籌碼擁擠，即使營收與EPS很好，也可能因車上投資人都知道利多而漲不動。產業主軸集中於AI投資報酬與記憶體風向：他以量化團隊Token預算翻倍及自身研究效率提升為例，認為AI確實能創造價值，但不同企業ROI差異很大；記憶體最缺、漲價最強卻股價偏弱，若財報仍無法扭轉，市場可能從供應瓶頸交易轉向真正產生價值的公司。個股方面，他認為NVIDIA先前偏便宜，Broadcom長期受惠AI但論述存在矛盾，華新科、玉晶光與國精化則主要用來說明題材連動及比價交易。"
+  },
+  {
+    "date": "2026-10-17",
+    "episode": "EP706",
+    "market_view": "熊中帶牛",
+    "host_short": "熊中帶牛",
+    "stocks": [
+      {
+        "code": "TSLA",
+        "name": "Tesla",
+        "rating": "有趣題材",
+        "theme": "** 電動車／火箭技術整合／自動駕駛"
+      },
+      {
+        "code": "P911.DE",
+        "name": "Porsche AG",
+        "rating": "背景提及",
+        "theme": "** 豪華車／性能車"
+      },
+      {
+        "code": "RACE",
+        "name": "Ferrari",
+        "rating": "背景提及",
+        "theme": "** 超豪華車"
+      },
+      {
+        "code": "AAPL",
+        "name": "Apple",
+        "rating": "背景提及",
+        "theme": "** 摺疊手機／消費電子"
+      },
+      {
+        "code": "2330／TSM",
+        "name": "台積電",
+        "rating": "認同前景",
+        "theme": "** AI晶圓代工／先進製程／估值修正"
+      },
+      {
+        "code": "AMD",
+        "name": "Advanced Micro Devices",
+        "rating": "持續關注",
+        "theme": "** AI加速器／半導體"
+      },
+      {
+        "code": "NVDA",
+        "name": "Nvidia",
+        "rating": "認同前景",
+        "theme": "** AI運算／GPU／Neo Cloud生態系"
+      },
+      {
+        "code": "CRWV",
+        "name": "CoreWeave",
+        "rating": "保留觀察",
+        "theme": "** Neo Cloud／AI資料中心／信用風險"
+      },
+      {
+        "code": "NBIS",
+        "name": "Nebius Group",
+        "rating": "保留觀察",
+        "theme": "** Neo Cloud／AI基礎設施"
+      },
+      {
+        "code": "ORCL",
+        "name": "Oracle",
+        "rating": "背景提及",
+        "theme": "** 雲端運算／AI基礎設施"
+      },
+      {
+        "code": "CRM",
+        "name": "Salesforce",
+        "rating": "認同前景",
+        "theme": "** 企業軟體／AI應用"
+      },
+      {
+        "code": "AVGO",
+        "name": "Broadcom",
+        "rating": "認同前景",
+        "theme": "** AI ASIC／網通／光互連"
+      },
+      {
+        "code": "ALAB",
+        "name": "Astera Labs",
+        "rating": "認同前景",
+        "theme": "** AI資料中心連接晶片"
+      },
+      {
+        "code": "MU",
+        "name": "Micron Technology",
+        "rating": "保留觀察",
+        "theme": "** 記憶體／HBM景氣循環"
+      },
+      {
+        "code": "2454",
+        "name": "聯發科",
+        "rating": "持續關注",
+        "theme": "** AI ASIC／手機晶片"
+      },
+      {
+        "code": "MSFT",
+        "name": "Microsoft",
+        "rating": "背景提及",
+        "theme": "** 雲端運算／企業軟體"
+      }
+    ],
+    "signals": [
+      "短線轉保守，市場強勢股快速減少",
+      "硬體退潮，資金開始轉向軟體",
+      "AI基本面仍強，但估值與信用風險升溫"
+    ],
+    "digest": "主持人認為短線盤面已進入相對警戒狀態：強勢股快速減少，許多硬體、記憶體與半導體標的跌破季線，台積電繳出良好成績卻無法帶動反彈，是重要的「利多不漲」訊號。不過AMD、Nvidia及台積電等產業端說法仍正向，因此暫時較像技術修正與估值壓縮，真正關鍵是下一波反彈能否成功。操作上仍維持六至七成以上部位，但降低動能題材、保留現金，避免槓桿抄底。產業主軸是AI硬體退潮與軟體接棒，資金可能依Infrastructure、Platform、Application三階段轉向Software。Broadcom基本面仍獲肯定，市占下降不等於停止成長；CoreWeave、Nebius風險偏高，但最差情境可能是被巨頭承接，而非業務完全消失，股價仍可能大幅崩跌。"
   }
 ]
