@@ -1,79 +1,5 @@
 [
   {
-    "date": "2026-09-23",
-    "episode": "EP699",
-    "market_view": "牛中帶熊",
-    "host_short": "牛中帶熊",
-    "stocks": [
-      {
-        "code": "META",
-        "name": "Meta Platforms",
-        "rating": "有趣題材",
-        "theme": "** Agentic AI／AI Agent 應用"
-      },
-      {
-        "code": "AMD",
-        "name": "Advanced Micro Devices",
-        "rating": "持續關注",
-        "theme": "** Agentic AI／資料中心 CPU與GPU"
-      },
-      {
-        "code": "ARM",
-        "name": "Arm Holdings",
-        "rating": "背景提及",
-        "theme": "** CPU IP／Agentic AI"
-      },
-      {
-        "code": "2353",
-        "name": "宏碁",
-        "rating": "保留觀察",
-        "theme": "** PC品牌／AI終端／零組件供需"
-      },
-      {
-        "code": "INTC",
-        "name": "Intel",
-        "rating": "背景提及",
-        "theme": "** 資料中心 CPU"
-      },
-      {
-        "code": "MRVL",
-        "name": "Marvell Technology",
-        "rating": "持續關注",
-        "theme": "** 光通訊 DSP／高速互連"
-      },
-      {
-        "code": "MXL",
-        "name": "MaxLinear",
-        "rating": "持續關注",
-        "theme": "** 光通訊 DSP／高速類比與混合訊號"
-      },
-      {
-        "code": "QCOM",
-        "name": "Qualcomm",
-        "rating": "背景提及",
-        "theme": "** 邊緣AI／NPU／DSP"
-      },
-      {
-        "code": "2330",
-        "name": "台積電",
-        "rating": "背景提及",
-        "theme": "** 晶圓代工／大型權值股"
-      },
-      {
-        "code": "MCD",
-        "name": "麥當勞",
-        "rating": "認同前景",
-        "theme": "** 全球餐飲連鎖／消費品牌"
-      }
-    ],
-    "signals": [
-      "指數創高，盤面輪動與結構同步改善",
-      "Muse二度催化Agentic CPU需求",
-      "DSP缺貨漲價，長期替代仍待觀察"
-    ],
-    "digest": "主持人認為指數與那斯達克期貨創高、弱勢族群回穩，盤面結構正逐步改善，此時直接轉空近似摸頭；但連假前及題材過熱仍需觀察。他維持八至九成以上部位，只有在指數破底、個股普遍轉空時才考慮明確轉空。本集主軸為Agentic AI帶動CPU需求，以及高速光模組升級推升DSP需求與漲價。Meta Muse屬第二波催化，合理CPU對GPU比例約1比4至1比2，1比1偏樂觀，40比1則缺乏依據。Marvell與MaxLinear後續評論值得追蹤；宏碁雖曾成功多角化，但主持人認為其目前在AI主線相對落隊。"
-  },
-  {
     "date": "2026-09-26",
     "episode": "EP700",
     "market_view": "牛中帶熊",
@@ -768,5 +694,127 @@
       "反彈或近，但主持人不打算搶"
     ],
     "digest": "主持人認為市場結構已出現微妙變化，流動性不足、資金成本上升，使過去資料中心資本支出與缺貨漲價的全包式行情退潮。短線悲觀情緒累積後可能反彈，但他不打算搶反彈，操作上重視保住既有成果、避免受前高錨定。產業主軸集中於AI算力與半導體供應鏈，以及相對強勢的軟體、資安與支付。GPU若供過於求，可能因高固定成本與低邊際成本出現快速降價。Meta則被認為方向良好；即使Muse用戶下滑，公司持續推出新產品，且AI若能對本業或新跑道產生實際效益，後續仍值得觀察。"
+  },
+  {
+    "date": "2026-10-31",
+    "episode": "EP710",
+    "market_view": "強熊",
+    "host_short": "強熊",
+    "stocks": [
+      {
+        "code": "AAPL",
+        "name": "Apple",
+        "rating": "認同前景",
+        "theme": "** 消費電子／大型科技股／現金流防禦"
+      },
+      {
+        "code": "MSFT",
+        "name": "Microsoft",
+        "rating": "認同前景",
+        "theme": "** 雲端運算／企業軟體／AI基礎建設"
+      },
+      {
+        "code": "GOOGL",
+        "name": "Alphabet",
+        "rating": "保留觀察",
+        "theme": "** 生成式AI／搜尋廣告／雲端運算"
+      },
+      {
+        "code": "META",
+        "name": "Meta Platforms",
+        "rating": "保留觀察",
+        "theme": "** 數位廣告／生成式AI／大型科技資本支出"
+      },
+      {
+        "code": "AMZN",
+        "name": "Amazon",
+        "rating": "保留觀察",
+        "theme": "** 雲端運算／AI資本支出／電商"
+      },
+      {
+        "code": "INTC",
+        "name": "Intel",
+        "rating": "保留觀察",
+        "theme": "** 伺服器CPU／PC半導體／先進封裝"
+      },
+      {
+        "code": "AMD",
+        "name": "Advanced Micro Devices",
+        "rating": "持續關注",
+        "theme": "** 伺服器CPU／AI加速器／X86市占"
+      },
+      {
+        "code": "SNDK",
+        "name": "Sandisk",
+        "rating": "持續關注",
+        "theme": "** NAND儲存／AI伺服器記憶體"
+      },
+      {
+        "code": "NVDA",
+        "name": "Nvidia",
+        "rating": "背景提及",
+        "theme": "** AI加速器／光通訊供應鏈／供應鏈管理"
+      },
+      {
+        "code": "MRVL",
+        "name": "Marvell Technology",
+        "rating": "認同前景",
+        "theme": "** AI ASIC／光通訊／垂直整合"
+      },
+      {
+        "code": "LITE",
+        "name": "Lumentum",
+        "rating": "認同前景",
+        "theme": "** 光通訊元件／AI資料中心互連"
+      },
+      {
+        "code": "AVGO",
+        "name": "Broadcom",
+        "rating": "持續關注",
+        "theme": "** AI ASIC／網通晶片／光通訊"
+      },
+      {
+        "code": "4062.T",
+        "name": "IBIDEN",
+        "rating": "保留觀察",
+        "theme": "** ABF載板／EMIB先進封裝"
+      },
+      {
+        "code": "3037",
+        "name": "欣興",
+        "rating": "保留觀察",
+        "theme": "** ABF載板／先進封裝／AI伺服器"
+      },
+      {
+        "code": "3363",
+        "name": "上詮",
+        "rating": "保留觀察",
+        "theme": "** FAU／矽光子／光通訊"
+      },
+      {
+        "code": "3008",
+        "name": "大立光",
+        "rating": "認同前景",
+        "theme": "** FAU／精密光學加工／矽光子"
+      },
+      {
+        "code": "2454",
+        "name": "聯發科",
+        "rating": "背景提及",
+        "theme": "** IC設計／邊緣AI／高階手機晶片"
+      },
+      {
+        "code": "2409",
+        "name": "友達",
+        "rating": "背景提及",
+        "theme": "** 面板／顯示器／AI轉型"
+      }
+    ],
+    "signals": [
+      "利多不漲，盤面進入詭譎崩壞階段",
+      "融資斷頭將至，正二籌碼仍是隱憂",
+      "降槓桿、少操作，回歸現金流與估值"
+    ],
+    "digest": "主持人認為盤面已由難做轉為詭譎、接近崩壞，反彈快速失敗，融資追繳與正二籌碼可能放大下跌；但AI雲端、伺服器CPU需求尚未明確轉空，因此不主張未見產業破壞便全面翻空。核心主軸是市場由營收增速轉向自由現金流與財務穩健度，以及伺服器CPU、記憶體、載板和光通訊的供需瓶頸。Apple與Microsoft因現金流穩健而逆勢強勢；Intel需求強但受PC、X86市占、產能和載板限制；Marvell整合光通訊方向獲其認同；上詮訂單仍待確認，大立光技術與資本較受肯定但估值不低。操作上強調降槓桿、減少情緒交易、慢慢買並優先保住已有資產。"
   }
 ]
